@@ -91,6 +91,13 @@ function Sidebar({ onClose }: { onClose?: () => void }) {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const pathname = usePathname();
+  const isLogin = pathname === '/admin/login';
+
+  // Login page: render without sidebar
+  if (isLogin) {
+    return <>{children}</>;
+  }
 
   return (
     <div className="flex h-screen bg-slate-100 overflow-hidden">
