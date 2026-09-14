@@ -189,9 +189,9 @@ export default function HomePage() {
                 { label: 'Soluciones', href: '#soluciones' },
                 { label: 'Coberturas', href: '#coberturas-destacadas' },
                 { label: 'Por qué Aegis', href: '#por-que-aegis' },
+                { label: 'Blog', href: '/blog' },
                 { label: 'Cotizador', href: '#cotizador' },
                 { label: 'FAQ', href: '#faq' },
-                { label: 'Contacto', href: '#contacto' },
               ].map(({ label, href }) => (
                 <a
                   key={label}
@@ -258,9 +258,9 @@ export default function HomePage() {
               {[
                 { label: 'Inicio', href: '#' },
                 { label: 'Soluciones', href: '#soluciones' },
-                { label: 'Líneas Especializadas', href: '#coberturas-destacadas' },
-                { label: 'Cotizador Online', href: '#cotizador' },
-                { label: 'Preguntas Frecuentes', href: '#faq' },
+                { label: 'Blog', href: '/blog' },
+                { label: 'Cotizador', href: '#cotizador' },
+                { label: 'FAQ', href: '#faq' },
                 { label: 'Contacto', href: '#contacto' },
               ].map(({ label, href }) => (
                 <a
@@ -1292,7 +1292,7 @@ export default function HomePage() {
               <h5 className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Compañía</h5>
               <ul className="space-y-2.5 text-xs text-slate-400 font-light">
                 <li><a className="hover:text-white transition-colors" href="#">Sobre Aegis National</a></li>
-                <li><a className="hover:text-white transition-colors" href="#">Liderazgo & Gobierno</a></li>
+                <li><a className="hover:text-white transition-colors" href="/blog">Blog y Recursos</a></li>
                 <li><a className="hover:text-white transition-colors" href="#">Reportes de Solvencia Financiera</a></li>
                 <li><a className="hover:text-white transition-colors" href="#">Oportunidades de Carrera</a></li>
                 <li><a className="hover:text-white transition-colors" href="#">Sala de Prensa</a></li>
