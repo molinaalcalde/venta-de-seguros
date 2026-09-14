@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Shield,
   ArrowRight,
@@ -90,6 +90,13 @@ const initialFormData = {
 export default function HomePage() {
   // Navigation
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   // Solutions tabs
   const [activeTab, setActiveTab] = useState(0);
@@ -137,16 +144,113 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ── Floating Left Navigation Indicator ── */}
-      <aside className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-4">
-        <div className="glass-capsule px-2.5 py-4 rounded-full shadow-lg shadow-black/5 flex flex-col items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-slate-900 ring-2 ring-slate-900/20"></span>
-          <span className="w-1.5 h-1.5 rounded-full bg-slate-400 hover:bg-slate-700 transition-colors cursor-pointer"></span>
-          <span className="w-1.5 h-1.5 rounded-full bg-slate-400 hover:bg-slate-700 transition-colors cursor-pointer"></span>
-          <div className="w-px h-6 bg-slate-300 my-1"></div>
-          <Shield className="w-3.5 h-3.5 text-slate-700" aria-hidden="true" />
+      {/* ── Fixed Sticky Navbar ── */}
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-100'
+          : 'bg-transparent'
+      }`}>
+        <div className="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <a className="flex items-center gap-2 group tracking-tight" href="#">
+            <div className={`w-5 h-5 rounded-full border-[2.2px] flex items-center justify-center transition-all group-hover:scale-105 ${
+              scrolled ? 'border-slate-900' : 'border-white/90'
+            }`}>
+              <span className={`w-1.5 h-1.5 rounded-full ${scrolled ? 'bg-slate-900' : 'bg-white'}`}></span>
+            </div>
+            <span className={`font-medium text-lg tracking-tight transition-colors ${scrolled ? 'text-slate-900' : 'text-white'}`}>
+              insurance
+            </span>
+          </a>
+
+          {/* Desktop Navigation */}
+          <nav aria-label="Main Navigation" className={`hidden lg:flex items-center gap-8 text-[13.5px] font-normal transition-colors ${
+            scrolled ? 'text-slate-600' : 'text-white/85'
+          }`}>
+            <a className={`font-medium transition-colors ${scrolled ? 'text-slate-900 hover:text-slate-700' : 'text-white hover:text-white'}`} href="#">Inicio</a>
+            <a className={`transition-colors ${scrolled ? 'hover:text-slate-900' : 'hover:text-white'}`} href="#soluciones">Soluciones</a>
+            <a className={`transition-colors ${scrolled ? 'hover:text-slate-900' : 'hover:text-white'}`} href="#coberturas-destacadas">Líneas Especializadas</a>
+            <a className={`transition-colors ${scrolled ? 'hover:text-slate-900' : 'hover:text-white'}`} href="#cotizador">Cotizador Online</a>
+            <a className={`transition-colors ${scrolled ? 'hover:text-slate-900' : 'hover:text-white'}`} href="#faq">Preguntas Frecuentes</a>
+            <a className={`transition-colors ${scrolled ? 'hover:text-slate-900' : 'hover:text-white'}`} href="#contacto">Contacto</a>
+          </nav>
+
+          {/* CTA + Hamburger */}
+          <div className="flex items-center gap-3">
+            <a
+              className={`px-5 py-2 text-xs sm:text-[13px] font-medium rounded-full transition-all shadow-md active:scale-95 ${
+                scrolled
+                  ? 'bg-slate-900 text-white hover:bg-slate-800'
+                  : 'bg-white text-slate-900 hover:bg-slate-100'
+              }`}
+              href="#cotizador"
+            >
+              Cotizar Ahora
+            </a>
+            {/* Hamburger */}
+            <button
+              className="lg:hidden flex flex-col gap-1.5 p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Abrir menú"
+            >
+              <span className={`block w-5 h-0.5 transition-all duration-300 ${scrolled ? 'bg-slate-900' : 'bg-white'} ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`block w-5 h-0.5 transition-all duration-300 ${scrolled ? 'bg-slate-900' : 'bg-white'} ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`block w-5 h-0.5 transition-all duration-300 ${scrolled ? 'bg-slate-900' : 'bg-white'} ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            </button>
+          </div>
         </div>
-      </aside>
+      </header>
+
+      {/* ── Mobile Menu Overlay ── */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 lg:hidden">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          {/* Slide-in panel */}
+          <div className="absolute top-0 right-0 h-full w-72 bg-white shadow-2xl flex flex-col">
+            <div className="flex items-center justify-between px-6 h-16 border-b border-slate-100">
+              <span className="font-medium text-slate-900">Menú</span>
+              <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-slate-500 hover:text-slate-900">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <nav className="flex flex-col px-6 py-8 gap-1 flex-1">
+              {[
+                { label: 'Inicio', href: '#' },
+                { label: 'Soluciones', href: '#soluciones' },
+                { label: 'Líneas Especializadas', href: '#coberturas-destacadas' },
+                { label: 'Cotizador Online', href: '#cotizador' },
+                { label: 'Preguntas Frecuentes', href: '#faq' },
+                { label: 'Contacto', href: '#contacto' },
+              ].map(({ label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-3.5 px-3 rounded-xl text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-all border-b border-slate-100 last:border-0"
+                >
+                  {label}
+                </a>
+              ))}
+            </nav>
+            <div className="px-6 pb-8">
+              <a
+                href="#cotizador"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-3.5 rounded-xl bg-slate-900 text-white text-sm font-semibold text-center flex items-center justify-center gap-2 hover:bg-slate-800 transition-all"
+              >
+                Cotizar Ahora
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Hero & Header Wrapper ── */}
       <div className="p-3 sm:p-5 lg:p-6 max-w-[1720px] mx-auto">
@@ -161,60 +265,8 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/75"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/60"></div>
 
-          {/* ── Header ── */}
-          <header className="relative z-30 w-full px-6 sm:px-10 lg:px-14 pt-8 flex items-center justify-between text-white">
-            {/* Logo */}
-            <a className="flex items-center gap-2 group tracking-tight" href="#">
-              <div className="w-5 h-5 rounded-full border-[2.2px] border-white/90 flex items-center justify-center transition-transform group-hover:scale-105">
-                <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
-              </div>
-              <span className="font-medium text-lg tracking-tight text-white">insurance</span>
-            </a>
-
-            {/* Desktop Navigation */}
-            <nav aria-label="Main Navigation" className="hidden lg:flex items-center gap-8 text-[13.5px] font-normal text-white/85">
-              <a className="text-white font-medium hover:text-white transition-colors" href="#">Inicio</a>
-              <a className="hover:text-white transition-colors" href="#soluciones">Soluciones</a>
-              <a className="hover:text-white transition-colors" href="#coberturas-destacadas">Líneas Especializadas</a>
-              <a className="hover:text-white transition-colors" href="#cotizador">Cotizador Online</a>
-              <a className="hover:text-white transition-colors" href="#faq">Preguntas Frecuentes</a>
-              <a className="hover:text-white transition-colors" href="#contacto">Contacto</a>
-            </nav>
-
-            {/* Header CTA + Mobile Menu */}
-            <div className="flex items-center gap-3">
-              <a
-                className="px-5 py-2 text-xs sm:text-[13px] font-medium tracking-normal text-slate-900 bg-white rounded-full hover:bg-slate-100 transition-all shadow-md active:scale-95"
-                href="#cotizador"
-              >
-                Cotizar Ahora
-              </a>
-              {/* Mobile hamburger */}
-              <button
-                className="lg:hidden flex flex-col gap-1.5 p-2"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Abrir menú"
-              >
-                <span className={`w-5 h-0.5 bg-white transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                <span className={`w-5 h-0.5 bg-white transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`w-5 h-0.5 bg-white transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-              </button>
-            </div>
-          </header>
-
-          {/* Mobile Menu Dropdown */}
-          {mobileMenuOpen && (
-            <div className="relative z-30 lg:hidden mx-6 mt-2 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-              <nav className="flex flex-col gap-3 text-sm text-white/90">
-                <a className="hover:text-white transition-colors py-1" href="#" onClick={() => setMobileMenuOpen(false)}>Inicio</a>
-                <a className="hover:text-white transition-colors py-1" href="#soluciones" onClick={() => setMobileMenuOpen(false)}>Soluciones</a>
-                <a className="hover:text-white transition-colors py-1" href="#coberturas-destacadas" onClick={() => setMobileMenuOpen(false)}>Líneas Especializadas</a>
-                <a className="hover:text-white transition-colors py-1" href="#cotizador" onClick={() => setMobileMenuOpen(false)}>Cotizador Online</a>
-                <a className="hover:text-white transition-colors py-1" href="#faq" onClick={() => setMobileMenuOpen(false)}>Preguntas Frecuentes</a>
-                <a className="hover:text-white transition-colors py-1" href="#contacto" onClick={() => setMobileMenuOpen(false)}>Contacto</a>
-              </nav>
-            </div>
-          )}
+          {/* Spacer for fixed navbar */}
+          <div className="h-16" />
 
           {/* ── Hero Content ── */}
           <div className="relative z-20 w-full px-6 sm:px-10 lg:px-16 pb-12 sm:pb-16 flex flex-col justify-end">
