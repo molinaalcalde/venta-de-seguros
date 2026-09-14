@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Editorial typography */
+.font-editorial-italic {
+  font-family: 'Newsreader', 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  letter-spacing: -0.015em;
+}
+
+.tracking-tight-title {
+  letter-spacing: -0.035em;
+}
+
+/* Glass capsule for floating nav indicator */
+.glass-capsule {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Hero rounded mask */
+.hero-mask {
+  border-radius: 28px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: #d1e3d4;
+  color: #17281b;
+}

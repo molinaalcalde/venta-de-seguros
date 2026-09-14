@@ -1,0 +1,1077 @@
+'use client';
+
+import { useState } from 'react';
+import {
+  Shield,
+  ArrowRight,
+  ChevronRight,
+  ShieldCheck,
+  Layers,
+  CreditCard,
+  Sparkles,
+  ArrowUpRight,
+  Lock,
+  Compass,
+} from 'lucide-react';
+
+// ─── Solutions Tab Data ───────────────────────────────────────────────────────
+const solutionsTabs = [
+  {
+    label: 'Seguro de Auto / EV',
+    category: 'Movilidad Inteligente & EV',
+    title: 'Protección Total para Auto & Vehículos Eléctricos',
+    description:
+      'Cobertura integral con telemática LiDAR preventiva, asistencia 24/7 en carretera para recarga rápida de batería y reposición garantizada con piezas originales OEM.',
+    cta: 'Cotizar Cobertura Auto/EV',
+    price: '$89',
+    priceLabel: 'Tarifa inicial para póliza de Auto & Movilidad',
+  },
+  {
+    label: 'Seguro de Mascotas (VetDirect™)',
+    category: 'Salud Animal & Bienestar',
+    title: 'Cobertura Veterinaria con Pago Directo VetDirect™',
+    description:
+      'Atención médica veterinaria con liquidación instantánea en clínica sin desembolsar de tu bolsillo para consultas, cirugías y medicación.',
+    cta: 'Cotizar Seguro de Mascotas',
+    price: '$29',
+    priceLabel: 'Planes desde $29/mes para perros y gatos',
+  },
+  {
+    label: 'Seguro de Vida & Legado',
+    category: 'Protección Familiar & Legado',
+    title: 'Seguro de Vida con Living Benefits & Planificación Sucesoria',
+    description:
+      'Pólizas de término y universal con beneficios en vida (Living Benefits) para obtener liquidez inmediata ante enfermedades críticas o imprevistos.',
+    cta: 'Explorar Seguro de Vida',
+    price: '$45',
+    priceLabel: 'Coberturas desde $500k en adelante',
+  },
+  {
+    label: 'Seguros Comerciales & BOP',
+    category: 'Empresas & Cyber Shield',
+    title: 'Paquete Comercial BOP con Protección Cibernética',
+    description:
+      'Pólizas BOP blindadas con Cyber Shield ante secuestro de datos (ransomware), lucro cesante y responsabilidad civil profesional.',
+    cta: 'Proteger Mi Empresa',
+    price: '$120',
+    priceLabel: 'Paquetes para PyMEs y corporativos',
+  },
+  {
+    label: 'Seguro de Salud & Medicare',
+    category: 'Salud Integral & Medicare',
+    title: 'Planes de Salud & Medicare con Cobertura Completa',
+    description:
+      'Planes individuales, familiares y Medicare Advantage con amplia red de proveedores, cobertura de medicamentos y beneficios preventivos sin copagos.',
+    cta: 'Ver Planes de Salud',
+    price: '$199',
+    priceLabel: 'Planes familiares desde $199/mes',
+  },
+  {
+    label: 'Protección de Patrimonio / Umbrella',
+    category: 'Escudo Patrimonial Umbrella',
+    title: 'Protección Umbrella para tu Patrimonio Total',
+    description:
+      'Cobertura adicional de responsabilidad civil sobre tus pólizas existentes, protegiendo activos, inversiones y bienes raíces ante reclamaciones de alto impacto.',
+    cta: 'Calcular Cobertura Umbrella',
+    price: '$19',
+    priceLabel: 'Protección hasta $5M desde $19/mes',
+  },
+];
+
+// ─── Form Initial State ───────────────────────────────────────────────────────
+const initialFormData = {
+  nombre: '',
+  email: '',
+  telefono: '',
+  tipo_seguro: 'Seguro de Auto / EV',
+  nivel_proteccion: 'Estándar (Cobertura Esencial)',
+};
+
+export default function HomePage() {
+  // Navigation
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Solutions tabs
+  const [activeTab, setActiveTab] = useState(0);
+
+  // Lead form
+  const [formData, setFormData] = useState(initialFormData);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleFormChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || 'Ocurrió un error. Inténtalo de nuevo.');
+      } else {
+        setSuccess(true);
+        setFormData(initialFormData);
+      }
+    } catch {
+      setError('Error de conexión. Por favor intenta de nuevo.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const activeTabData = solutionsTabs[activeTab];
+
+  return (
+    <>
+      {/* ── Floating Left Navigation Indicator ── */}
+      <aside className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-4">
+        <div className="glass-capsule px-2.5 py-4 rounded-full shadow-lg shadow-black/5 flex flex-col items-center gap-3">
+          <span className="w-2 h-2 rounded-full bg-slate-900 ring-2 ring-slate-900/20"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-slate-400 hover:bg-slate-700 transition-colors cursor-pointer"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-slate-400 hover:bg-slate-700 transition-colors cursor-pointer"></span>
+          <div className="w-px h-6 bg-slate-300 my-1"></div>
+          <Shield className="w-3.5 h-3.5 text-slate-700" aria-hidden="true" />
+        </div>
+      </aside>
+
+      {/* ── Hero & Header Wrapper ── */}
+      <div className="p-3 sm:p-5 lg:p-6 max-w-[1720px] mx-auto">
+        <div className="relative w-full rounded-[28px] overflow-hidden min-h-[680px] lg:min-h-[820px] flex flex-col justify-between shadow-2xl shadow-stone-900/10">
+          {/* Hero Background */}
+          <img
+            alt="Affectionate young family embracing warmly in golden sunset meadow"
+            className="absolute inset-0 w-full h-full object-cover object-center lg:object-[center_32%]"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBorFuyfcmKxjwFbRybc5SVfFvvQe9JFQKbNqGJheGbdohO4BdjSi5aOedf4KQJmDoD861C-pa0lzdzv9FQfFNp1p0qJ4ZrdBawFOQdRPqinPoIW2m9itcP0CKYtqcvVP7k6RyhjRAWC05TWyy_CZsyJPoXNCs-yIxnt6EsQ0CjMSErUT_hd9y6qd6FlBj7aRHdhfMBq_suMAYHYxo2D88_FQbVDI3HZFx2Y6ewZYafi4NnQoQs6ru0"
+          />
+          {/* Gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/75"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/60"></div>
+
+          {/* ── Header ── */}
+          <header className="relative z-30 w-full px-6 sm:px-10 lg:px-14 pt-8 flex items-center justify-between text-white">
+            {/* Logo */}
+            <a className="flex items-center gap-2 group tracking-tight" href="#">
+              <div className="w-5 h-5 rounded-full border-[2.2px] border-white/90 flex items-center justify-center transition-transform group-hover:scale-105">
+                <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
+              </div>
+              <span className="font-medium text-lg tracking-tight text-white">insurance</span>
+            </a>
+
+            {/* Desktop Navigation */}
+            <nav aria-label="Main Navigation" className="hidden lg:flex items-center gap-8 text-[13.5px] font-normal text-white/85">
+              <a className="text-white font-medium hover:text-white transition-colors" href="#">Inicio</a>
+              <a className="hover:text-white transition-colors" href="#soluciones">Soluciones</a>
+              <a className="hover:text-white transition-colors" href="#coberturas-destacadas">Líneas Especializadas</a>
+              <a className="hover:text-white transition-colors" href="#cotizador">Cotizador Online</a>
+              <a className="hover:text-white transition-colors" href="#faq">Preguntas Frecuentes</a>
+              <a className="hover:text-white transition-colors" href="#contacto">Contacto</a>
+            </nav>
+
+            {/* Header CTA + Mobile Menu */}
+            <div className="flex items-center gap-3">
+              <a
+                className="px-5 py-2 text-xs sm:text-[13px] font-medium tracking-normal text-slate-900 bg-white rounded-full hover:bg-slate-100 transition-all shadow-md active:scale-95"
+                href="#cotizador"
+              >
+                Cotizar Ahora
+              </a>
+              {/* Mobile hamburger */}
+              <button
+                className="lg:hidden flex flex-col gap-1.5 p-2"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Abrir menú"
+              >
+                <span className={`w-5 h-0.5 bg-white transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                <span className={`w-5 h-0.5 bg-white transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+                <span className={`w-5 h-0.5 bg-white transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+              </button>
+            </div>
+          </header>
+
+          {/* Mobile Menu Dropdown */}
+          {mobileMenuOpen && (
+            <div className="relative z-30 lg:hidden mx-6 mt-2 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+              <nav className="flex flex-col gap-3 text-sm text-white/90">
+                <a className="hover:text-white transition-colors py-1" href="#" onClick={() => setMobileMenuOpen(false)}>Inicio</a>
+                <a className="hover:text-white transition-colors py-1" href="#soluciones" onClick={() => setMobileMenuOpen(false)}>Soluciones</a>
+                <a className="hover:text-white transition-colors py-1" href="#coberturas-destacadas" onClick={() => setMobileMenuOpen(false)}>Líneas Especializadas</a>
+                <a className="hover:text-white transition-colors py-1" href="#cotizador" onClick={() => setMobileMenuOpen(false)}>Cotizador Online</a>
+                <a className="hover:text-white transition-colors py-1" href="#faq" onClick={() => setMobileMenuOpen(false)}>Preguntas Frecuentes</a>
+                <a className="hover:text-white transition-colors py-1" href="#contacto" onClick={() => setMobileMenuOpen(false)}>Contacto</a>
+              </nav>
+            </div>
+          )}
+
+          {/* ── Hero Content ── */}
+          <div className="relative z-20 w-full px-6 sm:px-10 lg:px-16 pb-12 sm:pb-16 flex flex-col justify-end">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+              {/* Scroll cue */}
+              <div className="flex items-center gap-3 text-white/90 text-xs font-light select-none">
+                <div className="w-5 h-8 rounded-full border border-white/70 flex items-start justify-center pt-1.5">
+                  <span className="w-1 h-1.5 bg-white rounded-full animate-bounce"></span>
+                </div>
+                <span className="tracking-wide">Scroll Down</span>
+              </div>
+
+              {/* Headline */}
+              <div className="max-w-2xl lg:text-right text-white">
+                <h1 className="text-5xl sm:text-6xl lg:text-[76px] font-normal tracking-tight-title leading-[1.08] drop-shadow-sm">
+                  Protegiendo <br />
+                  <span className="font-sans font-light">lo que más</span>{' '}
+                  <span className="font-editorial-italic font-normal">Valoras</span>
+                </h1>
+                <p className="mt-4 text-white/90 text-sm sm:text-base font-light max-w-xl lg:ml-auto leading-relaxed">
+                  Soluciones integrales de auto, mascotas, vida y patrimonio con respaldo institucional y liquidación en tiempo real.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
+                  <a
+                    className="px-6 py-3 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-slate-100 transition-all shadow-lg active:scale-95 flex items-center gap-2"
+                    href="#cotizador"
+                  >
+                    <span>Iniciar Cotización Inmediata</span>
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </a>
+                  <a
+                    className="group inline-flex items-center gap-2 text-xs sm:text-sm text-white/95 hover:text-white font-light tracking-wide underline underline-offset-8 decoration-white/50 hover:decoration-white transition-all"
+                    href="#coberturas-destacadas"
+                  >
+                    <span>Explorar Coberturas</span>
+                    <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* ── END: HeroAndHeaderWrapper ── */}
+
+      {/* ── Solutions Section ── */}
+      <section className="py-20 lg:py-28 px-4 sm:px-8 max-w-7xl mx-auto" id="soluciones">
+        {/* Section Heading */}
+        <div className="text-center mb-14 max-w-2xl mx-auto">
+          <div className="inline-flex items-center justify-center gap-2 mb-3 text-slate-700">
+            <div className="w-4 h-4 rounded-full border-[1.8px] border-slate-800 flex items-center justify-center">
+              <span className="w-1 h-1 bg-slate-800 rounded-full"></span>
+            </div>
+            <span className="text-xs uppercase tracking-widest font-semibold text-slate-600">Portafolio Especializado</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-normal text-slate-900 tracking-tight leading-tight">
+            Descubre nuestra gama de <br />
+            <span className="font-editorial-italic font-normal">soluciones y coberturas</span>
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 mt-3 max-w-xl mx-auto">
+            Protección transparente diseñada a la medida de tu estilo de vida, familia, mascotas y negocios.
+          </p>
+        </div>
+
+        {/* Triple-Pane Sage Container */}
+        <div className="bg-[#dbe7dc] rounded-[32px] p-4 sm:p-7 lg:p-8 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 lg:gap-6 items-stretch">
+
+            {/* Left: Tab Pills */}
+            <div className="md:col-span-4 flex flex-col justify-center space-y-2">
+              {solutionsTabs.map((tab, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveTab(idx)}
+                  className={`w-full text-left px-5 py-3 rounded-2xl font-medium text-xs sm:text-[13px] transition-all flex items-center justify-between ${
+                    activeTab === idx
+                      ? 'bg-white text-slate-900 font-semibold shadow-sm'
+                      : 'text-slate-700 hover:text-slate-950 hover:bg-white/40 py-2.5'
+                  }`}
+                >
+                  <span>{tab.label}</span>
+                  {activeTab === idx ? (
+                    <span className="w-2 h-2 rounded-full bg-slate-900"></span>
+                  ) : (
+                    <ChevronRight className="w-3.5 h-3.5 opacity-60" aria-hidden="true" />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            {/* Middle: Featured Card */}
+            <div className="md:col-span-5 bg-[#ccdccc]/80 rounded-2xl p-7 lg:p-9 flex flex-col justify-between min-h-[280px] border border-white/20">
+              <div>
+                <span className="text-xs uppercase tracking-wider text-slate-700 font-semibold">
+                  {activeTabData.category}
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-normal text-slate-900 tracking-tight leading-snug mt-3">
+                  {activeTabData.title}
+                </h3>
+                <p className="text-xs text-slate-700 mt-2 font-light leading-relaxed">
+                  {activeTabData.description}
+                </p>
+              </div>
+              <div className="pt-6">
+                <a
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-900 hover:underline"
+                  href="#cotizador"
+                >
+                  <span>{activeTabData.cta}</span>
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+
+            {/* Right: Price Metric Card */}
+            <div className="md:col-span-3 bg-[#f0f6f0]/90 rounded-2xl p-7 lg:p-8 flex flex-col justify-between min-h-[280px] border border-white/60">
+              <div className="flex justify-end">
+                <a
+                  className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-800 hover:scale-110 hover:text-black transition-all shadow-sm"
+                  href="#cotizador"
+                  title="Calcular Prima"
+                >
+                  <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+                </a>
+              </div>
+              <div>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900">
+                    {activeTabData.price}
+                  </span>
+                  <span className="text-slate-500 text-xs font-medium">/mes</span>
+                </div>
+                <p className="text-xs font-normal text-slate-600 mt-1">{activeTabData.priceLabel}</p>
+                <a
+                  className="mt-4 w-full py-2.5 px-4 rounded-xl bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all text-center flex items-center justify-center gap-1.5"
+                  href="#cotizador"
+                >
+                  <span>Calcular Prima</span>
+                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* 3 Value Propositions */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 px-4 sm:px-8">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center shrink-0 text-slate-800">
+                <ShieldCheck className="w-5 h-5 text-sage-800" aria-hidden="true" />
+              </div>
+              <div>
+                <h4 className="text-sm font-semibold text-slate-900">VetDirect™ Liquidación Inmediata</h4>
+                <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                  Pago directo a clínicas veterinarias asociadas sin desembolsos imprevistos ni demoras por reembolso.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center shrink-0 text-slate-800">
+                <Layers className="w-5 h-5 text-sage-800" aria-hidden="true" />
+              </div>
+              <div>
+                <h4 className="text-sm font-semibold text-slate-900">Descuentos Multilínea</h4>
+                <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                  Ahorra hasta un 25% consolidando tus pólizas de auto, vivienda, vida y protección para mascotas.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center shrink-0 text-slate-800">
+                <CreditCard className="w-5 h-5 text-sage-800" aria-hidden="true" />
+              </div>
+              <div>
+                <h4 className="text-sm font-semibold text-slate-900">Solvencia Calificada A+</h4>
+                <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                  Calificación AM Best A+ Superior que garantiza reservas de capital sólidas para siniestros y reclamos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ── END: Solutions Section ── */}
+
+      {/* ── Featured Coverage Lines ── */}
+      <section className="py-20 bg-[#fafbfa] border-t border-stone-200/70" id="coberturas-destacadas">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold">Especialidades Aegis</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-normal text-slate-900 tracking-tight leading-tight mt-2">
+              Líneas de Protección{' '}
+              <span className="font-editorial-italic font-normal">Integrales</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 mt-3">
+              Coberturas premium diseñadas para proteger lo que amas con tecnología avanzada y soporte humano experto.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Card 1 – Auto & EV */}
+            <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+              <div className="relative h-52 w-full overflow-hidden">
+                <img
+                  src="https://lh3.googleusercontent.com/aida/AEtjO1Vn9TVQWIybHlufHx6Uoe8BDHhnIe22cMilgQyVfep9gkS5ulXUYzi3Vzfryf9-n3WitxE-qKwc1GpPNZkLQgftir-O_HO1zYamlKziOR3nLyayWpB6lYZci6qR5ldzZyLrpxR_nB2Sg74RQ0t9WdCRF2r_iKOwxuyY6wYDDOgaulV0YdN_I0GQ30xhI4BX0rNeRwbe1fk5hr2G_BE9C8gZ8jFDxH0PspctCWgcKwftu_WKhmwHc2nQp0w"
+                  alt="Seguro de Autos y Movilidad Eléctrica"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">
+                  Movilidad Inteligente
+                </span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                  Desde $75/mes
+                </span>
+              </div>
+              <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro de Autos & Movilidad Eléctrica</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    Protege tu vehículo tradicional o eléctrico con respaldo de batería de alta tensión, sustitución por EV de cortesía y telemática preventiva.
+                  </p>
+                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Asistencia y rescate de carga EV 24/7 en carretera
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Piezas originales de fábrica (OEM) certificadas
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Reembolso por sobretensión en cargador doméstico
+                    </li>
+                  </ul>
+                </div>
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-900">Deducible Cero Opcional</span>
+                  <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
+                    Ver Cobertura Auto <span className="text-sm">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 – Mascotas */}
+            <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+              <div className="relative h-52 w-full overflow-hidden">
+                <img
+                  src="https://lh3.googleusercontent.com/aida/AEtjO1WCthRCePEcpgbKpd-d1V9YjUvuWRBLqKD_YHN1m8qahA5s2c2ZONFZqKCmbNw7hvVrV672Gym4ZrBOD1IkxDiVyCrziK9Gifm1kX84Eo-PvOoItGZYz3AseCDhsAe0fFTAeGft8EIyXOWSpqsWZjrzzACeisRnJpBEs0i6k4jOA19KDgn6mkl9ZU9JRbJpYUeX1gZIcMOaHtwomL-syV-1PPEwha3YJepaTtu0-LS5Fy07Ch-uQhqf6Q"
+                  alt="Seguro de Mascotas VetDirect"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">
+                  VetDirect™ Technology
+                </span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                  Planes desde $29/mes
+                </span>
+              </div>
+              <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro de Mascotas (Salud Canina y Felina)</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    Atención médica veterinaria con liquidación instantánea en clínica sin desembolsar de tu bolsillo para consultas, cirugías o medicación.
+                  </p>
+                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      VetDirect™: pago directo en más de 8,500 clínicas
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Cobertura de accidentes, enfermedades y vacunas
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Sin deducibles sorpresivos ni plazos de carencia abusivos
+                    </li>
+                  </ul>
+                </div>
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-900">Reembolso 90% en Red</span>
+                  <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
+                    Cotizar Mascotas <span className="text-sm">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 – Vida */}
+            <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+              <div className="relative h-52 w-full overflow-hidden">
+                <img
+                  src="https://lh3.googleusercontent.com/aida/AEtjO1X7Fsl95nUF-Lp5Lff5U0pm19f6MSz9GOCmjjKo0fCZNv9O3rYuqZl69L1su4s9Lg_UXnQ_Ooap4L6zaqGTyZVjIflziXskEcdRy0zQtJc7LZWhM-e0xHK38oZQkk3kEJ439GhT7rA8v2y_unh8f-IFzVojqQoBXslc6sSkwzqydPTZap34_QhXnj1xihdb-A8e68h8Ap_dEq2WHhgyff7M5MLXHF3C2syuCTX_PkerUHg2IwuPu2MDxf0"
+                  alt="Seguro de Vida y Preservación de Patrimonio"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">
+                  Protección Familiar & Legado
+                </span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                  Coberturas desde $500k
+                </span>
+              </div>
+              <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro de Vida & Preservación de Patrimonio</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    Pólizas de término y universal con beneficios en vida (Living Benefits) para obtener liquidez inmediata ante enfermedades críticas o imprevistos.
+                  </p>
+                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Living Benefits: acceso anticipado a tu capital en vida
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Acumulación de valor en efectivo con ventajas fiscales
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Planificación sucesoria con asesores patrimoniales
+                    </li>
+                  </ul>
+                </div>
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-900">Respaldo Calificado A+</span>
+                  <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
+                    Explorar Vida <span className="text-sm">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 4 – Comercial */}
+            <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+              <div className="relative h-52 w-full overflow-hidden">
+                <img
+                  src="https://lh3.googleusercontent.com/aida/AEtjO1Ut8ix4c4svI2T0dezIF5fAym35f_jmGbgJg24hUDZXPE9LaFHoVpC4tE5p4JLdPqh111gWzEerZtZ_inQ7fZWS3uhr6AC-UcwCwC9wDlhJzSy2myjJOmuRmZgSKOzuuko_9lPoIq9PlAyyHOz8KxUpdvVhrRedT2jg84Jjql5seN67hQYsR-vhjHSDBb6TAQsyeFPAmBjV_eeF-zjuoSzQ8jyx5ed_yslMplNe8n3ahVt4VUjwApfjhtE"
+                  alt="Seguros Comerciales y Protección Cibernética"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">
+                  Empresas & Cyber
+                </span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                  PyMEs y Corporativos
+                </span>
+              </div>
+              <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguros Comerciales & Protección Cibernética</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    Pólizas de Paquete Comercial (BOP) blindadas con Cyber Shield ante secuestro de datos (ransomware), lucro cesante y responsabilidad civil.
+                  </p>
+                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Respuesta de emergencia ante brechas digitales y extorsión
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Cobertura de responsabilidad profesional D&O y E&O
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      Auditoría continua de riesgos con Inteligencia Artificial
+                    </li>
+                  </ul>
+                </div>
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-900">Pólizas a Medida</span>
+                  <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
+                    Proteger Empresa <span className="text-sm">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ── END: Featured Coverage Lines ── */}
+
+      {/* ── Brand Story & Metrics ── */}
+      <section className="py-16 lg:py-24 bg-white border-y border-stone-100">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+            <div className="inline-flex items-center justify-center gap-2 mb-4 text-slate-700">
+              <div className="w-4 h-4 rounded-full border-[1.8px] border-slate-800 flex items-center justify-center">
+                <span className="w-1 h-1 bg-slate-800 rounded-full"></span>
+              </div>
+              <span className="text-xs uppercase tracking-widest font-semibold text-slate-600">Aegis National Assurance</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[50px] font-normal text-slate-900 tracking-tight leading-tight">
+              Asegurando tu Tranquilidad, <br />
+              <span className="font-editorial-italic font-normal">Hoy y en el Futuro.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Left Column */}
+            <div className="lg:col-span-5 flex flex-col justify-between space-y-12">
+              <div>
+                <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">Posicionamiento Institucional</span>
+                <h3 className="text-2xl sm:text-3xl font-normal tracking-tight text-slate-900 mt-2">
+                  Liderazgo comprobado en <br />solvencia y atención
+                </h3>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 rounded-lg bg-sage-50 border border-sage-200 flex items-center justify-center shrink-0 mt-0.5">
+                  <Sparkles className="w-4 h-4 text-sage-800" aria-hidden="true" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-slate-900">Gestor Personal de Siniestros</h4>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    Asesoría directa y dedicada en cada reclamación, simplificando trámites y liquidando siniestros en tiempo récord.
+                  </p>
+                </div>
+              </div>
+              <div className="py-2 border-y border-stone-100">
+                <div className="text-5xl lg:text-6xl font-normal tracking-tight text-slate-900">$1.7B</div>
+                <p className="text-xs text-slate-500 mt-1">
+                  Reservas de capital resguardadas para garantizar el cumplimiento con cada titular.
+                </p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 rounded-lg bg-sage-50 border border-sage-200 flex items-center justify-center shrink-0 mt-0.5">
+                  <Layers className="w-4 h-4 text-sage-800" aria-hidden="true" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-slate-900">Tecnología Preventiva Aegis</h4>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    Sistemas dinámicos de suscripción que premian la conducción segura, la prevención médica y la ciberseguridad.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column – Photo Grid */}
+            <div className="lg:col-span-7">
+              <div className="grid grid-cols-12 gap-4 sm:gap-6 items-stretch">
+                <div className="col-span-8 overflow-hidden rounded-[30px] shadow-lg relative min-h-[460px] lg:min-h-[540px]">
+                  <img
+                    alt="Familia y aventura en la naturaleza protegidos por seguros de viaje y vida"
+                    className="absolute inset-0 w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhpcaKyb3Dv730KusfGdXUSFLVOmaJp0G2G_CD1Tm9Jj8IxgPMza1YquaADeho2Ikn26nxl7iqjIrPOURTfaDHqJv5XuULnS9ZYK-j_TvrMATbnyT3XwxMK_SXvT6R8JhS23olqKL_HGLrsx-7qrUCiD5ifWYXJwbKk0vl3dc1gyau-UNkcZqYOdgu426BczMtMhs16n4lm2CTfZHpi3SW9-mvjm3PCIitHa2T_1vtp0wuOsas8BA5"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 text-white text-xs tracking-wide font-light">
+                    Cobertura Integral para Aventuras & Estilo de Vida
+                  </div>
+                </div>
+                <div className="col-span-4 overflow-hidden rounded-[30px] shadow-md relative min-h-[460px] lg:min-h-[540px]">
+                  <img
+                    alt="Paisajes abiertos y seguros"
+                    className="absolute inset-0 w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuALlX2I4j-SU_STw4ViFQeVDt0M4YxEt0cbgHQFMCr8RXn9gV-DavMlNlAmXZS5X0494HA4XpJvw5jwxaZjTbKrAT0cs5qhPlhNB6tBGECcuhEVItlT7n37JJ8JTVwq74OszgS9qLJhKo48A4YdUUD4hWflLudi-RKeyKWWeGXfWlGE7qzxaFJEee_eU5SF0rSAfIv10xx7FgIu3fdsemCQoRviPDgmodbQI5MoL1-DJGq2_eRboNg7"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50"></div>
+                  <div className="absolute bottom-6 left-4 right-4 text-white text-[11px] font-light leading-snug">
+                    Cada horizonte resguardado con Aegis.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ── END: Brand Story ── */}
+
+      {/* ── Quote Calculator / Lead Form ── */}
+      <section className="py-20 bg-[#f7faf7]" id="cotizador">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="bg-white rounded-[32px] p-8 sm:p-12 shadow-sm border border-stone-200/70">
+            <div className="max-w-xl mx-auto text-center mb-8">
+              <span className="text-xs font-semibold uppercase tracking-widest text-sage-800">
+                Tarificación Online Directa
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-normal text-slate-900 mt-2 tracking-tight">
+                Calcula tu{' '}
+                <span className="font-editorial-italic">prima personalizada</span>
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 mt-2">
+                Sin llamadas molestas. Evaluación de nivel instantánea y transparente en menos de un minuto.
+              </p>
+            </div>
+
+            {success ? (
+              <div className="max-w-xl mx-auto text-center py-12 px-6 bg-sage-50 rounded-2xl border border-sage-200">
+                <div className="w-14 h-14 rounded-full bg-sage-100 flex items-center justify-center mx-auto mb-4">
+                  <ShieldCheck className="w-7 h-7 text-sage-800" />
+                </div>
+                <h4 className="text-xl font-semibold text-slate-900 mb-2">¡Cotización recibida!</h4>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Gracias por tu interés. Un asesor certificado se pondrá en contacto contigo en las próximas 24 horas para revisar tu cotización personalizada.
+                </p>
+                <button
+                  className="mt-6 px-6 py-2.5 rounded-full bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all"
+                  onClick={() => setSuccess(false)}
+                >
+                  Enviar otra cotización
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
+                  {/* Nombre */}
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-2" htmlFor="nombre">
+                      Nombre Completo
+                    </label>
+                    <input
+                      id="nombre"
+                      name="nombre"
+                      type="text"
+                      required
+                      placeholder="Ej. María González"
+                      value={formData.nombre}
+                      onChange={handleFormChange}
+                      className="w-full text-xs sm:text-sm rounded-xl border-slate-200 bg-slate-50/50 py-3 px-3.5 focus:border-sage-500 focus:ring-sage-500"
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-2" htmlFor="email">
+                      Correo Electrónico
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="correo@ejemplo.com"
+                      value={formData.email}
+                      onChange={handleFormChange}
+                      className="w-full text-xs sm:text-sm rounded-xl border-slate-200 bg-slate-50/50 py-3 px-3.5 focus:border-sage-500 focus:ring-sage-500"
+                    />
+                  </div>
+
+                  {/* Teléfono */}
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-2" htmlFor="telefono">
+                      Teléfono
+                    </label>
+                    <input
+                      id="telefono"
+                      name="telefono"
+                      type="tel"
+                      placeholder="+1 (555) 000-0000"
+                      value={formData.telefono}
+                      onChange={handleFormChange}
+                      className="w-full text-xs sm:text-sm rounded-xl border-slate-200 bg-slate-50/50 py-3 px-3.5 focus:border-sage-500 focus:ring-sage-500"
+                    />
+                  </div>
+
+                  {/* Categoría */}
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-2" htmlFor="tipo_seguro">
+                      Categoría de Cobertura
+                    </label>
+                    <select
+                      id="tipo_seguro"
+                      name="tipo_seguro"
+                      value={formData.tipo_seguro}
+                      onChange={handleFormChange}
+                      className="w-full text-xs sm:text-sm rounded-xl border-slate-200 bg-slate-50/50 py-3 px-3.5 focus:border-sage-500 focus:ring-sage-500"
+                    >
+                      <option>Seguro de Auto / EV</option>
+                      <option>Seguro de Mascotas (VetDirect™)</option>
+                      <option>Seguro de Vida & Legado (Living Benefits)</option>
+                      <option>Seguros Comerciales & Cyber Shield</option>
+                      <option>Salud Integral & Medicare</option>
+                      <option>Protección Patrimonial Umbrella</option>
+                    </select>
+                  </div>
+
+                  {/* Nivel de Protección */}
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-2" htmlFor="nivel_proteccion">
+                      Nivel de Protección
+                    </label>
+                    <select
+                      id="nivel_proteccion"
+                      name="nivel_proteccion"
+                      value={formData.nivel_proteccion}
+                      onChange={handleFormChange}
+                      className="w-full text-xs sm:text-sm rounded-xl border-slate-200 bg-slate-50/50 py-3 px-3.5 focus:border-sage-500 focus:ring-sage-500"
+                    >
+                      <option>Estándar (Cobertura Esencial)</option>
+                      <option>Avanzada (Deducible Cero / Reposición OEM)</option>
+                      <option>Centurion Infinite (Patrimonio Total)</option>
+                    </select>
+                  </div>
+
+                  {/* Submit */}
+                  <div className="sm:col-span-2">
+                    {error && (
+                      <p className="text-xs text-red-600 mb-3 text-center">{error}</p>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 disabled:opacity-60 disabled:cursor-not-allowed text-white text-xs sm:text-sm font-medium transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
+                    >
+                      {loading ? (
+                        <span>Enviando cotización...</span>
+                      ) : (
+                        <>
+                          <span>Ver Cotización Instantánea</span>
+                          <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </form>
+            )}
+
+            {/* Trust footer */}
+            <div className="mt-6 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-between text-[11px] text-slate-400">
+              <span className="flex items-center gap-1.5">
+                <Lock className="w-3.5 h-3.5 text-sage-800" aria-hidden="true" />
+                Cifrado de grado bancario institucional de 256 bits
+              </span>
+              <span>Resolución de póliza con tecnología de suscripción Aegis AI</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ── END: Quote Calculator ── */}
+
+      {/* ── Partner Trust Bar ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-slate-400 mb-10">
+            Our Partner That Helps Us To Protect You
+          </p>
+          <div className="flex flex-wrap items-center justify-center md:justify-between gap-8 sm:gap-12 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
+            <div className="flex items-center gap-2 font-serif text-lg font-semibold text-slate-700">
+              <span className="text-xl">❖</span> Prudential
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="font-serif tracking-widest text-sm font-bold text-slate-800 uppercase">STERLING</span>
+              <span className="text-[8px] tracking-wider text-slate-500 uppercase -mt-0.5">Insurance Company Limited</span>
+            </div>
+            <div className="flex items-center gap-1 text-sm font-semibold tracking-tight text-slate-800">
+              <span className="font-serif text-lg">𝖀</span> UnitedHealthcare
+            </div>
+            <div className="flex items-center gap-1.5 text-xs font-serif font-bold text-slate-700 tracking-wider">
+              <Compass className="w-4 h-4" aria-hidden="true" /> Continental <span className="font-sans font-light text-[10px]">Insurance</span>
+            </div>
+            <div className="font-serif text-base tracking-wide text-slate-800 italic font-medium">
+              Credo-Classic
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ Section ── */}
+      <section className="py-20 bg-[#fafbfa] border-t border-stone-200/70" id="faq">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold">Claridad & Transparencia</span>
+            <h2 className="text-3xl sm:text-4xl font-normal text-slate-900 tracking-tight leading-tight mt-2">
+              Preguntas <span className="font-editorial-italic font-normal">Frecuentes</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-2">
+              Respuestas directas a las inquietudes más habituales sobre nuestras coberturas.
+            </p>
+          </div>
+          <div className="space-y-4">
+            <details className="group bg-white rounded-2xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition-all duration-200 open:bg-sage-50/40 open:border-sage-300" open>
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm sm:text-base text-slate-900 select-none">
+                <span className="flex items-center gap-3">
+                  <span className="w-7 h-7 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs font-bold">01</span>
+                  ¿Cómo funciona la cobertura directa en clínicas veterinarias con VetDirect™?
+                </span>
+                <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-open:rotate-45 transition-transform duration-200 text-lg font-light leading-none">+</span>
+              </summary>
+              <p className="text-xs sm:text-sm text-slate-600 mt-4 pl-10 leading-relaxed">
+                Con VetDirect™, no necesitas pagar de tu bolsillo y esperar meses de reembolso. Al presentar tu tarjeta digital Aegis en clínicas asociadas, autorizamos el pago de la factura veterinaria directamente al centro médico en tiempo real, cubriendo consultas, intervenciones y tratamientos elegibles sin deducibles ocultos.
+              </p>
+            </details>
+
+            <details className="group bg-white rounded-2xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition-all duration-200 open:bg-sage-50/40 open:border-sage-300">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm sm:text-base text-slate-900 select-none">
+                <span className="flex items-center gap-3">
+                  <span className="w-7 h-7 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs font-bold">02</span>
+                  ¿Puedo unificar mi póliza de automóvil y hogar para obtener descuentos multilínea?
+                </span>
+                <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-open:rotate-45 transition-transform duration-200 text-lg font-light leading-none">+</span>
+              </summary>
+              <p className="text-xs sm:text-sm text-slate-600 mt-4 pl-10 leading-relaxed">
+                Sí. Aegis ofrece el programa Aegis Bundle, permitiendo agrupar seguros de vehículo (incluidos eléctricos y de carga), hogar, vida y mascotas bajo un único estado de cuenta, con descuentos acumulativos de hasta el 25% en tu prima total anual.
+              </p>
+            </details>
+
+            <details className="group bg-white rounded-2xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition-all duration-200 open:bg-sage-50/40 open:border-sage-300">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm sm:text-base text-slate-900 select-none">
+                <span className="flex items-center gap-3">
+                  <span className="w-7 h-7 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs font-bold">03</span>
+                  ¿En qué momento se activan los beneficios en vida (Living Benefits) de los seguros de vida?
+                </span>
+                <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-open:rotate-45 transition-transform duration-200 text-lg font-light leading-none">+</span>
+              </summary>
+              <p className="text-xs sm:text-sm text-slate-600 mt-4 pl-10 leading-relaxed">
+                A diferencia del seguro de vida tradicional que solo indemniza tras el fallecimiento, nuestras pólizas con Living Benefits permiten acceder por anticipado a un porcentaje sustancial del capital asegurado en caso de diagnóstico de enfermedad crítica, crónica o incapacitante grave.
+              </p>
+            </details>
+
+            <details className="group bg-white rounded-2xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition-all duration-200 open:bg-sage-50/40 open:border-sage-300">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm sm:text-base text-slate-900 select-none">
+                <span className="flex items-center gap-3">
+                  <span className="w-7 h-7 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs font-bold">04</span>
+                  ¿Qué requisitos necesita mi empresa para el seguro comercial y contra ciberataques?
+                </span>
+                <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-open:rotate-45 transition-transform duration-200 text-lg font-light leading-none">+</span>
+              </summary>
+              <p className="text-xs sm:text-sm text-slate-600 mt-4 pl-10 leading-relaxed">
+                Realizamos una breve evaluación digital de seguridad en minutos sin interrumpir tus operaciones. Evaluamos protocolos básicos como autenticación multifactor (MFA) y respaldos en la nube, estructurando de inmediato tu paquete comercial BOP y escudo ante ransomware y filtraciones de datos.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+      {/* ── END: FAQ ── */}
+
+      {/* ── Contact / CTA Section ── */}
+      <section className="relative py-20 bg-gradient-to-br from-[#17281b] via-[#233d28] to-[#0f1d12] text-white overflow-hidden border-t border-b border-sage-800/60 shadow-2xl" id="contacto">
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#53825d]/20 blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#86f2e4]/10 blur-3xl pointer-events-none"></div>
+        <div className="relative max-w-5xl mx-auto px-6 text-center space-y-6 z-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#89f5e7]"></span>
+            <span className="text-xs uppercase tracking-widest text-sage-200 font-semibold">Asesoría de Élite Sin Compromiso</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight leading-tight max-w-3xl mx-auto">
+            ¿Listo para proteger tu futuro con la{' '}
+            <span className="font-editorial-italic font-normal text-sage-200">certeza</span> que mereces?
+          </h2>
+          <p className="text-sm sm:text-base text-sage-100/90 max-w-2xl mx-auto leading-relaxed font-light">
+            Habla con un asesor patrimonial certificado o inicia tu cotización 100% digital en menos de un minuto.
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
+            <a
+              className="px-8 py-3.5 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-sage-50 transition-all shadow-xl active:scale-95 flex items-center gap-2 group"
+              href="#cotizador"
+            >
+              <span>Iniciar Cotización Inmediata</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-slate-900" aria-hidden="true" />
+            </a>
+            <a
+              className="px-8 py-3.5 rounded-full border border-white/40 text-white font-medium text-xs sm:text-sm hover:bg-white/10 transition-all flex items-center gap-2"
+              href="#cotizador"
+            >
+              <svg className="w-4 h-4 text-sage-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>Agendar Llamada con Asesor</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      {/* ── END: Contact ── */}
+
+      {/* ── Footer ── */}
+      <footer className="bg-slate-900 text-slate-300 pt-20 pb-12 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-10 pb-16 border-b border-slate-800">
+            {/* Brand Col */}
+            <div className="md:col-span-2 space-y-4">
+              <div className="flex items-center gap-2 text-white">
+                <div className="w-5 h-5 rounded-full border-[2.2px] border-white flex items-center justify-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
+                </div>
+                <span className="font-medium text-lg tracking-tight">Aegis National Assurance</span>
+              </div>
+              <p className="text-xs text-slate-400 max-w-sm leading-relaxed font-light">
+                Seguridad generacional, protección de vehículos y mascotas, y resguardo patrimonial integral con solidez institucional de primer nivel.
+              </p>
+              <div className="text-xs text-slate-500 pt-1">
+                Correduría Aseguradora Autorizada • Miembro NAIC #892110 • Calificación AM Best A+ Superior
+              </div>
+              <div className="pt-4">
+                <span className="block text-xs uppercase tracking-widest text-slate-400 font-semibold mb-3">Conéctate con Nosotros</span>
+                <div className="flex items-center gap-3">
+                  <a className="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-all hover:scale-105 border border-slate-700/60" href="https://linkedin.com" rel="noreferrer" target="_blank" aria-label="LinkedIn">
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28m1.39 9.74v-8.37H5.07v8.37h2.78z"></path></svg>
+                  </a>
+                  <a className="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-all hover:scale-105 border border-slate-700/60" href="https://twitter.com" rel="noreferrer" target="_blank" aria-label="X / Twitter">
+                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                  </a>
+                  <a className="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-all hover:scale-105 border border-slate-700/60" href="https://instagram.com" rel="noreferrer" target="_blank" aria-label="Instagram">
+                    <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                  </a>
+                  <a className="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-all hover:scale-105 border border-slate-700/60" href="https://youtube.com" rel="noreferrer" target="_blank" aria-label="YouTube">
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Solutions */}
+            <div>
+              <h5 className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Soluciones</h5>
+              <ul className="space-y-2.5 text-xs text-slate-400 font-light">
+                <li><a className="hover:text-white transition-colors" href="#cotizador">Seguro de Auto / EV</a></li>
+                <li><a className="hover:text-white transition-colors" href="#cotizador">Seguro de Mascotas VetDirect™</a></li>
+                <li><a className="hover:text-white transition-colors" href="#cotizador">Seguro de Vida & Legado</a></li>
+                <li><a className="hover:text-white transition-colors" href="#cotizador">Seguros Comerciales & Cyber</a></li>
+                <li><a className="hover:text-white transition-colors" href="#cotizador">Salud & Medicare</a></li>
+                <li><a className="hover:text-white transition-colors" href="#cotizador">Protección Patrimonial Umbrella</a></li>
+              </ul>
+            </div>
+
+            {/* Company */}
+            <div>
+              <h5 className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Compañía</h5>
+              <ul className="space-y-2.5 text-xs text-slate-400 font-light">
+                <li><a className="hover:text-white transition-colors" href="#">Sobre Aegis National</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Liderazgo & Gobierno</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Reportes de Solvencia Financiera</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Oportunidades de Carrera</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Sala de Prensa</a></li>
+              </ul>
+            </div>
+
+            {/* Support */}
+            <div>
+              <h5 className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Atención al Titular</h5>
+              <ul className="space-y-2.5 text-xs text-slate-400 font-light">
+                <li><a className="hover:text-white transition-colors" href="#">Reportar un Siniestro de Emergencia</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Red de Clínicas VetDirect™</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Descargar Tarjeta de Identificación</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Documentos de Póliza</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Soporte al Cliente 24/7</a></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Footer Bottom */}
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-light gap-4">
+            <div>
+              © {new Date().getFullYear()} Aegis National Assurance Group Inc. Todos los derechos reservados.
+            </div>
+            <div className="flex items-center gap-6">
+              <a className="hover:text-slate-400 transition-colors" href="#">Aviso de Privacidad</a>
+              <a className="hover:text-slate-400 transition-colors" href="#">Términos de Suscripción</a>
+              <a className="hover:text-slate-400 transition-colors" href="#">Divulgación de Seguridad</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+      {/* ── END: Footer ── */}
+    </>
+  );
+}
