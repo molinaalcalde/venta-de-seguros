@@ -1,0 +1,54 @@
+# Aegis National Assurance
+
+> Agencia de seguros en Estados Unidos especializada en la comunidad hispana. Ofrecemos seguros de auto, vida, salud, mascotas y comerciales con atención bilingüe en español e inglés.
+
+URL: https://venta-de-seguros.vercel.app
+
+## Quiénes somos
+
+Aegis National Assurance es una correduría de seguros autorizada que sirve a la comunidad hispana en Estados Unidos. Nuestros asesores bilingües entienden las necesidades únicas de las familias inmigrantes: privacidad garantizada, documentación accesible y atención completamente en español.
+
+## Servicios principales
+
+- **Seguro de Auto y Vehículos Eléctricos**: Cobertura integral para vehículos tradicionales y eléctricos, asistencia 24/7 en carretera. Sujeto a términos y condiciones.
+- **Seguro de Mascotas (VetDirect)**: Pago directo en clínicas veterinarias asociadas, sin desembolso previo. Sujeto a términos y condiciones.
+- **Seguro de Vida con Living Benefits**: Pólizas de término y universal; acceso anticipado al capital en caso de enfermedad crítica. Sujeto a términos y condiciones.
+- **Seguros Comerciales (BOP + Cyber)**: Protección para pequeñas y medianas empresas, incluyendo cobertura ante ransomware. Sujeto a términos y condiciones.
+- **Seguro de Salud y Medicare**: Planes individuales, familiares y Medicare Advantage con amplia red de proveedores. Sujeto a términos y condiciones.
+- **Protección Umbrella**: Cobertura adicional de responsabilidad civil sobre pólizas existentes. Sujeto a términos y condiciones.
+
+## Para la comunidad hispana
+
+- Atención 100% en español
+- Agentes bilingüe certificados
+- Privacidad garantizada — tu información nunca se comparte sin tu consentimiento
+- Cotización sin requerir SSN (número de seguro social)
+- Aceptamos ITIN como identificación
+- Servicio disponible en todos los estados de EE.UU.
+- Sin importar tu estatus migratorio, puedes cotizar
+
+## Preguntas frecuentes
+
+**¿Puedo obtener seguro sin SSN?**
+Sí. Para cotizar solo necesitas tu nombre y correo. Muchos planes aceptan ITIN. Los requisitos varían según tipo de póliza y estado.
+
+**¿Atienden en español?**
+Sí. Todos nuestros asesores hablan español. La atención es 100% en español de principio a fin.
+
+**¿Puedo obtener seguro siendo inmigrante?**
+Sí. Ofrecemos opciones para inmigrantes y personas con ITIN. Los requisitos dependen del tipo de cobertura y el estado donde resides.
+
+**¿Mi información es confidencial?**
+Sí. Tu información personal nunca se comparte con terceros ni agencias gubernamentales sin tu consentimiento. Usamos cifrado de 256 bits.
+
+**¿Cómo obtengo una cotización?**
+Completa el formulario en el sitio web con tu nombre, correo y tipo de seguro. Un asesor te contacta en 24 horas.
+
+## Cómo contactarnos
+
+Formulario de cotización online disponible en el sitio web.
+Respuesta de asesores en 24 horas hábiles.
+
+## Aviso legal
+
+Todos los precios y coberturas son referenciales y están sujetos a términos, condiciones y aprobación de suscripción. Aegis National Assurance es una correduría aseguradora autorizada. Los servicios específicos y su disponibilidad varían según el estado.

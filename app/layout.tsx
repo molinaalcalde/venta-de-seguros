@@ -1,38 +1,63 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+const BASE_URL = 'https://venta-de-seguros.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Aegis National Assurance | Safeguarding Your Valuables',
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: 'Aegis National Assurance | Seguros en Español para la Comunidad Hispana',
+    template: '%s | Aegis National Assurance',
+  },
   description:
-    'Soluciones integrales de seguro de auto, mascotas, vida y patrimonio en USA. Cotiza online en menos de un minuto. Respaldo institucional A+ AM Best. Liquidación en tiempo real.',
+    'Seguros de auto, vida, salud, mascotas y comerciales para la comunidad hispana en Estados Unidos. Atención 100% en español. Cotiza online en menos de un minuto. Acepta ITIN.',
   keywords: [
-    'seguro de vida USA',
-    'seguro de auto',
+    'seguros en español',
+    'seguro de vida para inmigrantes',
+    'seguro de auto hispanos',
+    'seguro con ITIN',
+    'seguros baratos hispanos',
+    'seguro de salud en español USA',
+    'agencia de seguros hispana',
+    'seguros para inmigrantes',
+    'seguro sin SSN',
+    'Medicare en español',
     'seguro de mascotas',
-    'seguros comerciales',
-    'Medicare seguro salud',
-    'life insurance',
-    'auto insurance',
-    'pet insurance',
-    'umbrella insurance',
+    'seguros comerciales hispanos',
     'Aegis National Assurance',
+    'insurance en español',
   ],
+  alternates: {
+    canonical: BASE_URL,
+    languages: {
+      'es-US': BASE_URL,
+    },
+  },
   openGraph: {
-    title: 'Aegis National Assurance | Protegiendo lo que más Valoras',
+    title: 'Aegis National Assurance | Seguros en Español para la Comunidad Hispana',
     description:
-      'Protección transparente diseñada a la medida de tu estilo de vida, familia, mascotas y negocios. Calificación AM Best A+ Superior.',
+      'Seguros de auto, vida, salud, mascotas y comerciales con atención 100% en español. Cotiza sin SSN. Acepta ITIN. Agentes bilingüe certificados.',
     type: 'website',
     locale: 'es_US',
+    url: BASE_URL,
+    siteName: 'Aegis National Assurance',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aegis National Assurance',
+    title: 'Aegis National Assurance | Seguros en Español',
     description:
-      'Seguros de auto, mascotas, vida y patrimonio con respaldo institucional y liquidación en tiempo real.',
+      'Seguros de auto, vida, salud, mascotas y comerciales para la comunidad hispana. Cotiza online, sin SSN, atención 100% en español.',
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
   },
 };
 

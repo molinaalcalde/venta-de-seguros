@@ -12,7 +12,11 @@ import {
   ArrowUpRight,
   Lock,
   Compass,
+  Globe,
+  Heart,
+  Star,
 } from 'lucide-react';
+import JsonLd from '@/components/JsonLd';
 
 // ─── Solutions Tab Data ───────────────────────────────────────────────────────
 const solutionsTabs = [
@@ -144,6 +148,7 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd />
       {/* ── Fixed Sticky Navbar ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
@@ -281,13 +286,23 @@ export default function HomePage() {
 
               {/* Headline */}
               <div className="max-w-2xl lg:text-right text-white">
+                <div className="flex flex-wrap gap-2 mb-5 lg:justify-end">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
+                    <Globe className="w-3.5 h-3.5" aria-hidden="true" />
+                    Atención 100% en español
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
+                    <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
+                    Acepta ITIN · Sin SSN
+                  </span>
+                </div>
                 <h1 className="text-5xl sm:text-6xl lg:text-[76px] font-normal tracking-tight-title leading-[1.08] drop-shadow-sm">
                   Protegiendo <br />
                   <span className="font-sans font-light">lo que más</span>{' '}
                   <span className="font-editorial-italic font-normal">Valoras</span>
                 </h1>
                 <p className="mt-4 text-white/90 text-sm sm:text-base font-light max-w-xl lg:ml-auto leading-relaxed">
-                  Soluciones integrales de auto, mascotas, vida y patrimonio con respaldo institucional y liquidación en tiempo real.
+                  Seguros de auto, vida, salud y mascotas para tu familia. Agentes bilingüe que entienden tu comunidad, sin importar tu estatus migratorio.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
                   <a
@@ -741,6 +756,159 @@ export default function HomePage() {
       </section>
       {/* ── END: Brand Story ── */}
 
+      {/* ── Por qué Aegis ── */}
+      <section className="py-20 lg:py-28 bg-white border-t border-stone-100" id="por-que-aegis">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <div className="inline-flex items-center justify-center gap-2 mb-3 text-slate-700">
+              <div className="w-4 h-4 rounded-full border-[1.8px] border-slate-800 flex items-center justify-center">
+                <span className="w-1 h-1 bg-slate-800 rounded-full"></span>
+              </div>
+              <span className="text-xs uppercase tracking-widest font-semibold text-slate-600">Por qué elegirnos</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-normal text-slate-900 tracking-tight leading-tight">
+              Seguros que entienden{' '}
+              <span className="font-editorial-italic font-normal">tu comunidad</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 mt-3 max-w-xl mx-auto">
+              Somos más que una aseguradora. Somos el aliado que tu familia necesita en Estados Unidos.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Pilar 1 */}
+            <div className="bg-[#f4f8f4] rounded-[24px] p-7 flex flex-col gap-4">
+              <div className="w-11 h-11 rounded-2xl bg-white border border-sage-200 flex items-center justify-center shadow-sm">
+                <Globe className="w-5 h-5 text-slate-800" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-900">Agentes 100% bilingüe</h3>
+                <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                  Te atendemos completamente en español. Sin traductores, sin malentendidos. Tu asesor habla tu idioma de principio a fin.
+                </p>
+              </div>
+            </div>
+
+            {/* Pilar 2 */}
+            <div className="bg-[#f4f8f4] rounded-[24px] p-7 flex flex-col gap-4">
+              <div className="w-11 h-11 rounded-2xl bg-white border border-sage-200 flex items-center justify-center shadow-sm">
+                <Lock className="w-5 h-5 text-slate-800" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-900">Tu privacidad, protegida</h3>
+                <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                  Tu información personal nunca se comparte con terceros ni agencias gubernamentales sin tu consentimiento explícito. Cifrado de 256 bits.
+                </p>
+              </div>
+            </div>
+
+            {/* Pilar 3 */}
+            <div className="bg-[#f4f8f4] rounded-[24px] p-7 flex flex-col gap-4">
+              <div className="w-11 h-11 rounded-2xl bg-white border border-sage-200 flex items-center justify-center shadow-sm">
+                <ShieldCheck className="w-5 h-5 text-slate-800" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-900">Sin SSN para cotizar</h3>
+                <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                  Cotiza sin número de seguro social. Aceptamos ITIN y trabajamos con familias en todas las situaciones migratorias.
+                </p>
+              </div>
+            </div>
+
+            {/* Pilar 4 */}
+            <div className="bg-[#f4f8f4] rounded-[24px] p-7 flex flex-col gap-4">
+              <div className="w-11 h-11 rounded-2xl bg-white border border-sage-200 flex items-center justify-center shadow-sm">
+                <Heart className="w-5 h-5 text-slate-800" aria-hidden="true" />
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-900">Comunidad primero</h3>
+                <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                  Entendemos los desafíos de construir una vida en un país nuevo. Estamos aquí para proteger lo que con tanto esfuerzo has logrado.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ── END: Por qué Aegis ── */}
+
+      {/* ── Testimonios ── */}
+      <section className="py-20 lg:py-24 bg-[#f4f8f4]">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="text-center mb-14 max-w-xl mx-auto">
+            <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold">Historias reales</span>
+            <h2 className="text-3xl sm:text-4xl font-normal text-slate-900 tracking-tight leading-tight mt-2">
+              Familias que{' '}
+              <span className="font-editorial-italic font-normal">confían en Aegis</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Testimonio 1 */}
+            <div className="bg-white rounded-[24px] p-7 shadow-sm border border-stone-200/60 flex flex-col justify-between">
+              <div>
+                <div className="flex gap-0.5 mb-4">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" aria-hidden="true" />
+                  ))}
+                </div>
+                <p className="text-sm text-slate-700 leading-relaxed font-light">
+                  "Llevaba años sin seguro de vida porque pensaba que era complicado sin papeles. Me ayudaron a entender mis opciones en español y sin presión. Ahora mi familia está protegida."
+                </p>
+              </div>
+              <div className="mt-6 pt-5 border-t border-slate-100">
+                <p className="text-sm font-semibold text-slate-900">María T.</p>
+                <p className="text-xs text-slate-500 mt-0.5">Trabajadora doméstica · Florida</p>
+                <p className="text-xs text-slate-400 mt-1">Seguro de Vida con Living Benefits</p>
+              </div>
+            </div>
+
+            {/* Testimonio 2 */}
+            <div className="bg-white rounded-[24px] p-7 shadow-sm border border-stone-200/60 flex flex-col justify-between">
+              <div>
+                <div className="flex gap-0.5 mb-4">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" aria-hidden="true" />
+                  ))}
+                </div>
+                <p className="text-sm text-slate-700 leading-relaxed font-light">
+                  "Tengo mi restaurante asegurado y también el seguro de salud para mis empleados. Todo en español, fácil de entender. Siento que alguien cuida mi negocio como yo lo cuido."
+                </p>
+              </div>
+              <div className="mt-6 pt-5 border-t border-slate-100">
+                <p className="text-sm font-semibold text-slate-900">Carlos R.</p>
+                <p className="text-xs text-slate-500 mt-0.5">Dueño de restaurante · Texas</p>
+                <p className="text-xs text-slate-400 mt-1">Seguro Comercial + Salud para empleados</p>
+              </div>
+            </div>
+
+            {/* Testimonio 3 */}
+            <div className="bg-white rounded-[24px] p-7 shadow-sm border border-stone-200/60 flex flex-col justify-between">
+              <div>
+                <div className="flex gap-0.5 mb-4">
+                  {[1,2,3,4,5].map(i => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" aria-hidden="true" />
+                  ))}
+                </div>
+                <p className="text-sm text-slate-700 leading-relaxed font-light">
+                  "Cotizar fue rapidísimo. Sin burocracia, sin que me pregunten si tengo papeles. Tenemos seguro de auto para los dos carros y seguro de vida. El asesor nos llamó al día siguiente."
+                </p>
+              </div>
+              <div className="mt-6 pt-5 border-t border-slate-100">
+                <p className="text-sm font-semibold text-slate-900">Ana L.</p>
+                <p className="text-xs text-slate-500 mt-0.5">Familia de 4 · California</p>
+                <p className="text-xs text-slate-400 mt-1">Seguro de Auto + Seguro de Vida</p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-center text-xs text-slate-400 mt-8">
+            Los testimonios reflejan experiencias individuales. Los resultados de cobertura varían según la póliza contratada. Sujeto a términos y condiciones.
+          </p>
+        </div>
+      </section>
+      {/* ── END: Testimonios ── */}
+
       {/* ── Quote Calculator / Lead Form ── */}
       <section className="py-20 bg-[#f7faf7]" id="cotizador">
         <div className="max-w-5xl mx-auto px-6">
@@ -943,57 +1111,60 @@ export default function HomePage() {
             </p>
           </div>
           <div className="space-y-4">
-            <details className="group bg-white rounded-2xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition-all duration-200 open:bg-sage-50/40 open:border-sage-300" open>
-              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm sm:text-base text-slate-900 select-none">
-                <span className="flex items-center gap-3">
-                  <span className="w-7 h-7 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs font-bold">01</span>
-                  ¿Cómo funciona la cobertura directa en clínicas veterinarias con VetDirect™?
-                </span>
-                <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-open:rotate-45 transition-transform duration-200 text-lg font-light leading-none">+</span>
-              </summary>
-              <p className="text-xs sm:text-sm text-slate-600 mt-4 pl-10 leading-relaxed">
-                Con VetDirect™, no necesitas pagar de tu bolsillo y esperar meses de reembolso. Al presentar tu tarjeta digital Aegis en clínicas asociadas, autorizamos el pago de la factura veterinaria directamente al centro médico en tiempo real, cubriendo consultas, intervenciones y tratamientos elegibles sin deducibles ocultos.
-              </p>
-            </details>
-
-            <details className="group bg-white rounded-2xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition-all duration-200 open:bg-sage-50/40 open:border-sage-300">
-              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm sm:text-base text-slate-900 select-none">
-                <span className="flex items-center gap-3">
-                  <span className="w-7 h-7 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs font-bold">02</span>
-                  ¿Puedo unificar mi póliza de automóvil y hogar para obtener descuentos multilínea?
-                </span>
-                <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-open:rotate-45 transition-transform duration-200 text-lg font-light leading-none">+</span>
-              </summary>
-              <p className="text-xs sm:text-sm text-slate-600 mt-4 pl-10 leading-relaxed">
-                Sí. Aegis ofrece el programa Aegis Bundle, permitiendo agrupar seguros de vehículo (incluidos eléctricos y de carga), hogar, vida y mascotas bajo un único estado de cuenta, con descuentos acumulativos de hasta el 25% en tu prima total anual.
-              </p>
-            </details>
-
-            <details className="group bg-white rounded-2xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition-all duration-200 open:bg-sage-50/40 open:border-sage-300">
-              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm sm:text-base text-slate-900 select-none">
-                <span className="flex items-center gap-3">
-                  <span className="w-7 h-7 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs font-bold">03</span>
-                  ¿En qué momento se activan los beneficios en vida (Living Benefits) de los seguros de vida?
-                </span>
-                <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-open:rotate-45 transition-transform duration-200 text-lg font-light leading-none">+</span>
-              </summary>
-              <p className="text-xs sm:text-sm text-slate-600 mt-4 pl-10 leading-relaxed">
-                A diferencia del seguro de vida tradicional que solo indemniza tras el fallecimiento, nuestras pólizas con Living Benefits permiten acceder por anticipado a un porcentaje sustancial del capital asegurado en caso de diagnóstico de enfermedad crítica, crónica o incapacitante grave.
-              </p>
-            </details>
-
-            <details className="group bg-white rounded-2xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition-all duration-200 open:bg-sage-50/40 open:border-sage-300">
-              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm sm:text-base text-slate-900 select-none">
-                <span className="flex items-center gap-3">
-                  <span className="w-7 h-7 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs font-bold">04</span>
-                  ¿Qué requisitos necesita mi empresa para el seguro comercial y contra ciberataques?
-                </span>
-                <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-open:rotate-45 transition-transform duration-200 text-lg font-light leading-none">+</span>
-              </summary>
-              <p className="text-xs sm:text-sm text-slate-600 mt-4 pl-10 leading-relaxed">
-                Realizamos una breve evaluación digital de seguridad en minutos sin interrumpir tus operaciones. Evaluamos protocolos básicos como autenticación multifactor (MFA) y respaldos en la nube, estructurando de inmediato tu paquete comercial BOP y escudo ante ransomware y filtraciones de datos.
-              </p>
-            </details>
+            {[
+              {
+                n: '01',
+                q: '¿Puedo obtener seguro sin número de seguro social (SSN)?',
+                a: 'Sí. Para cotizar solo necesitas tu nombre y correo electrónico. Los requisitos de documentación varían según el tipo de póliza y el estado donde resides. Muchos de nuestros planes aceptan ITIN como identificación válida. Nuestros asesores te guían en cada paso sin complicaciones.',
+                open: true,
+              },
+              {
+                n: '02',
+                q: '¿Puedo obtener seguro siendo inmigrante o con ITIN?',
+                a: 'Sí. Trabajamos con familias en todas las situaciones migratorias. Aceptamos ITIN y entendemos los desafíos de la comunidad hispana en EE.UU. Tu estatus migratorio no es un obstáculo para proteger a tu familia. Los requisitos específicos dependen del tipo de cobertura y el estado donde resides.',
+              },
+              {
+                n: '03',
+                q: '¿Cómo funciona la cobertura directa en clínicas veterinarias con VetDirect™?',
+                a: 'Con VetDirect™, no necesitas pagar de tu bolsillo y esperar meses de reembolso. Al presentar tu tarjeta digital Aegis en clínicas asociadas, autorizamos el pago de la factura veterinaria directamente al centro médico en tiempo real, cubriendo consultas, intervenciones y tratamientos elegibles. Sujeto a términos y condiciones.',
+              },
+              {
+                n: '04',
+                q: '¿Puedo unificar mi póliza de automóvil y hogar para obtener descuentos multilínea?',
+                a: 'Sí. Aegis ofrece el programa Aegis Bundle, permitiendo agrupar seguros de vehículo (incluidos eléctricos), hogar, vida y mascotas bajo un único estado de cuenta, con descuentos acumulativos en tu prima total anual. Sujeto a términos y condiciones.',
+              },
+              {
+                n: '05',
+                q: '¿En qué momento se activan los beneficios en vida (Living Benefits) de los seguros de vida?',
+                a: 'A diferencia del seguro de vida tradicional que solo indemniza tras el fallecimiento, nuestras pólizas con Living Benefits permiten acceder por anticipado a un porcentaje del capital asegurado en caso de diagnóstico de enfermedad crítica, crónica o incapacitante grave. Sujeto a términos y condiciones de la póliza.',
+              },
+              {
+                n: '06',
+                q: '¿Mi información personal es confidencial?',
+                a: 'Absolutamente. Tu información personal nunca se comparte con terceros ni con agencias gubernamentales sin tu consentimiento explícito. Utilizamos cifrado de grado bancario de 256 bits para proteger todos tus datos. Tu privacidad es nuestra prioridad.',
+              },
+              {
+                n: '07',
+                q: '¿Cómo reporto un siniestro?',
+                a: 'Puedes reportar un siniestro a través del portal digital o llamando a nuestra línea de emergencias 24/7, disponible en español. Un gestor personal de siniestros se asigna a tu caso para acompañarte en cada paso del proceso hasta la resolución. Sujeto a los términos de tu póliza.',
+              },
+              {
+                n: '08',
+                q: '¿Qué requisitos necesita mi empresa para el seguro comercial y contra ciberataques?',
+                a: 'Realizamos una breve evaluación digital de seguridad en minutos sin interrumpir tus operaciones. Evaluamos protocolos básicos como autenticación multifactor (MFA) y respaldos en la nube, estructurando de inmediato tu paquete comercial BOP y escudo ante ransomware y filtraciones de datos. Sujeto a aprobación de suscripción.',
+              },
+            ].map(({ n, q, a, open }) => (
+              <details key={n} className="group bg-white rounded-2xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition-all duration-200 open:bg-sage-50/40 open:border-sage-300" open={open}>
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm sm:text-base text-slate-900 select-none">
+                  <span className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center text-xs font-bold shrink-0">{n}</span>
+                    {q}
+                  </span>
+                  <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-open:rotate-45 transition-transform duration-200 text-lg font-light leading-none shrink-0">+</span>
+                </summary>
+                <p className="text-xs sm:text-sm text-slate-600 mt-4 pl-10 leading-relaxed">{a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
