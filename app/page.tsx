@@ -937,7 +937,7 @@ export default function HomePage() {
                     {tipo === 'Salud' && '🏥 '}
                     {tipo === 'Comercial' && '🏢 '}
                     {tipo === 'Umbrella' && '☂️ '}
-                    {tipo === 'Auto' ? 'Seguro de Auto' : tipo === 'Umbrella' ? 'Umbrella' : `Seguro ${tipo === 'Mascotas' ? 'de Mascotas' : tipo === 'Vida' ? 'de Vida' : tipo === 'Salud' ? 'de Salud' : 'Comercial'}`}
+                    {tipo === 'Auto' ? 'Seguro de Auto' : tipo === 'Umbrella' ? 'Protección Extra' : `Seguro ${tipo === 'Mascotas' ? 'de Mascotas' : tipo === 'Vida' ? 'de Vida' : tipo === 'Salud' ? 'de Salud' : 'Comercial'}`}
                   </button>
                 ))}
               </div>

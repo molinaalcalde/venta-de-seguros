@@ -40,7 +40,7 @@ const INSURANCE_OPTIONS: {
   { id: 'Vida',      label: 'Seguro de Vida',      price: 'Desde $45/mes',  icon: Heart,     color: 'text-rose-600 bg-rose-50' },
   { id: 'Salud',     label: 'Seguro de Salud',     price: 'Desde $199/mes', icon: Activity,  color: 'text-emerald-600 bg-emerald-50' },
   { id: 'Comercial', label: 'Seguro Comercial',    price: 'Desde $120/mes', icon: Building2, color: 'text-purple-600 bg-purple-50' },
-  { id: 'Umbrella',  label: 'Seguro Umbrella',     price: 'Desde $19/mes',  icon: Shield,    color: 'text-slate-600 bg-slate-100' },
+  { id: 'Umbrella',  label: 'Protección Extra',     price: 'Desde $19/mes',  icon: Shield,    color: 'text-slate-600 bg-slate-100' },
 ];
 
 const ADAPTIVE: Record<InsType, {
