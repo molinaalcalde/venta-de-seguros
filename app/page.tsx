@@ -17,6 +17,7 @@ import {
   Star,
 } from 'lucide-react';
 import JsonLd from '@/components/JsonLd';
+import Link from 'next/link';
 
 // ─── Solutions Tab Data ───────────────────────────────────────────────────────
 const solutionsTabs = [
@@ -1315,7 +1316,8 @@ export default function HomePage() {
           {/* Footer Bottom */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-light gap-4">
             <div>
-              © {new Date().getFullYear()} Aegis National Assurance Group Inc. Todos los derechos reservados.
+              <Link href="/admin/login" className="hover:opacity-60 transition-opacity">©</Link>{' '}
+              {new Date().getFullYear()} Aegis National Assurance Group Inc. Todos los derechos reservados.
             </div>
             <div className="flex items-center gap-6">
               <a className="hover:text-slate-400 transition-colors" href="#">Aviso de Privacidad</a>
