@@ -21,64 +21,64 @@ import JsonLd from '@/components/JsonLd';
 // ─── Solutions Tab Data ───────────────────────────────────────────────────────
 const solutionsTabs = [
   {
-    label: 'Seguro de Auto / EV',
-    category: 'Movilidad Inteligente & EV',
-    title: 'Protección Total para Auto & Vehículos Eléctricos',
+    label: 'Seguro de Auto',
+    category: 'Protección en Carretera',
+    title: 'Seguro de Auto para tu Tranquilidad en la Carretera',
     description:
-      'Cobertura integral con telemática LiDAR preventiva, asistencia 24/7 en carretera para recarga rápida de batería y reposición garantizada con piezas originales OEM.',
-    cta: 'Cotizar Cobertura Auto/EV',
-    price: '$89',
-    priceLabel: 'Tarifa inicial para póliza de Auto & Movilidad',
+      'Tu auto es tu herramienta de trabajo y libertad. Te cubrimos contra accidentes, robo y daños, con asistencia en carretera 24/7 atendida en español. Sin SSN para cotizar. Sujeto a términos y condiciones.',
+    cta: 'Cotizar Seguro de Auto',
+    price: 'Desde $89',
+    priceLabel: 'Tarifa referencial · sujeto a aprobación',
   },
   {
-    label: 'Seguro de Mascotas (VetDirect™)',
-    category: 'Salud Animal & Bienestar',
-    title: 'Cobertura Veterinaria con Pago Directo VetDirect™',
+    label: 'Seguro de Mascotas',
+    category: 'Salud de tu Mascota',
+    title: 'Cuida a tu Perro o Gato sin Preocuparte por la Cuenta',
     description:
-      'Atención médica veterinaria con liquidación instantánea en clínica sin desembolsar de tu bolsillo para consultas, cirugías y medicación.',
+      'Con VetDirect™ pagamos directamente a la clínica veterinaria — tú solo llevas a tu mascota. Sin adelantar dinero, sin esperar reembolsos. Sujeto a términos y condiciones.',
     cta: 'Cotizar Seguro de Mascotas',
-    price: '$29',
-    priceLabel: 'Planes desde $29/mes para perros y gatos',
+    price: 'Desde $29',
+    priceLabel: 'Tarifa referencial · sujeto a aprobación',
   },
   {
-    label: 'Seguro de Vida & Legado',
-    category: 'Protección Familiar & Legado',
-    title: 'Seguro de Vida con Living Benefits & Planificación Sucesoria',
+    label: 'Seguro de Vida',
+    category: 'Protección para tu Familia',
+    title: 'Seguro de Vida: lo Mejor que Puedes Dejarle a tu Familia',
     description:
-      'Pólizas de término y universal con beneficios en vida (Living Benefits) para obtener liquidez inmediata ante enfermedades críticas o imprevistos.',
-    cta: 'Explorar Seguro de Vida',
-    price: '$45',
-    priceLabel: 'Coberturas desde $500k en adelante',
+      'Si algo te pasara, tu familia estaría protegida económicamente. Y si enfrentas una enfermedad grave, puedes acceder al dinero mientras estás vivo. Atención 100% en español. Sujeto a términos y condiciones.',
+    cta: 'Cotizar Seguro de Vida',
+    price: 'Desde $45',
+    priceLabel: 'Tarifa referencial · sujeto a aprobación',
   },
   {
-    label: 'Seguros Comerciales & BOP',
-    category: 'Empresas & Cyber Shield',
-    title: 'Paquete Comercial BOP con Protección Cibernética',
+    label: 'Seguro Comercial',
+    category: 'Protección para tu Negocio',
+    title: 'Protege el Negocio que Construiste con Tanto Esfuerzo',
     description:
-      'Pólizas BOP blindadas con Cyber Shield ante secuestro de datos (ransomware), lucro cesante y responsabilidad civil profesional.',
-    cta: 'Proteger Mi Empresa',
-    price: '$120',
-    priceLabel: 'Paquetes para PyMEs y corporativos',
+      'Restaurante, ferretería, salón, empresa de construcción — protege tu local, tus equipos y tu responsabilidad. Asesoría en español para dueños de negocios hispanos. Sujeto a términos y condiciones.',
+    cta: 'Cotizar Seguro Comercial',
+    price: 'Desde $120',
+    priceLabel: 'Tarifa referencial · sujeto a aprobación',
   },
   {
-    label: 'Seguro de Salud & Medicare',
-    category: 'Salud Integral & Medicare',
-    title: 'Planes de Salud & Medicare con Cobertura Completa',
+    label: 'Seguro de Salud',
+    category: 'Tu Salud, tu Prioridad',
+    title: 'Planes de Salud que te Explican Todo en Español',
     description:
-      'Planes individuales, familiares y Medicare Advantage con amplia red de proveedores, cobertura de medicamentos y beneficios preventivos sin copagos.',
+      'Encuentra un plan que cubra médicos, medicamentos y emergencias. Incluimos Medicare para mayores de 65 años. Nuestros asesores te explican cada opción sin complicaciones ni letra chica. Sujeto a términos y condiciones.',
     cta: 'Ver Planes de Salud',
-    price: '$199',
-    priceLabel: 'Planes familiares desde $199/mes',
+    price: 'Desde $199',
+    priceLabel: 'Tarifa referencial · sujeto a aprobación',
   },
   {
-    label: 'Protección de Patrimonio / Umbrella',
-    category: 'Escudo Patrimonial Umbrella',
-    title: 'Protección Umbrella para tu Patrimonio Total',
+    label: 'Seguro Umbrella',
+    category: 'Protección Patrimonial',
+    title: 'Una Red de Seguridad Extra para lo que has Logrado',
     description:
-      'Cobertura adicional de responsabilidad civil sobre tus pólizas existentes, protegiendo activos, inversiones y bienes raíces ante reclamaciones de alto impacto.',
-    cta: 'Calcular Cobertura Umbrella',
-    price: '$19',
-    priceLabel: 'Protección hasta $5M desde $19/mes',
+      'Cuando un accidente grave supera los límites de tu seguro de auto o casa, el seguro umbrella protege tus ahorros, tu hogar y tu tranquilidad. Sujeto a términos y condiciones.',
+    cta: 'Cotizar Seguro Umbrella',
+    price: 'Desde $19',
+    priceLabel: 'Tarifa referencial · sujeto a aprobación',
   },
 ];
 
@@ -365,14 +365,15 @@ export default function HomePage() {
             <div className="w-4 h-4 rounded-full border-[1.8px] border-slate-800 flex items-center justify-center">
               <span className="w-1 h-1 bg-slate-800 rounded-full"></span>
             </div>
-            <span className="text-xs uppercase tracking-widest font-semibold text-slate-600">Portafolio Especializado</span>
+            <span className="text-xs uppercase tracking-widest font-semibold text-slate-600">Todos los Seguros en un Solo Lugar</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-normal text-slate-900 tracking-tight leading-tight">
-            Descubre nuestra gama de <br />
-            <span className="font-editorial-italic font-normal">soluciones y coberturas</span>
+            El seguro que necesitas,{' '}
+            <br />
+            <span className="font-editorial-italic font-normal">explicado en tu idioma</span>
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 mt-3 max-w-xl mx-auto">
-            Protección transparente diseñada a la medida de tu estilo de vida, familia, mascotas y negocios.
+            Sin letra chica, sin presiones. Elige el tipo de seguro y un asesor bilingüe te acompaña desde la cotización hasta el momento de usarlo.
           </p>
         </div>
 
@@ -460,12 +461,12 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 px-4 sm:px-8">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center shrink-0 text-slate-800">
-                <ShieldCheck className="w-5 h-5 text-sage-800" aria-hidden="true" />
+                <Globe className="w-5 h-5 text-sage-800" aria-hidden="true" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-slate-900">VetDirect™ Liquidación Inmediata</h4>
+                <h4 className="text-sm font-semibold text-slate-900">Cotiza en menos de un minuto</h4>
                 <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                  Pago directo a clínicas veterinarias asociadas sin desembolsos imprevistos ni demoras por reembolso.
+                  Solo tu nombre y correo para empezar. Un asesor bilingüe te llama en 24 horas con tu cotización personalizada.
                 </p>
               </div>
             </div>
@@ -474,20 +475,20 @@ export default function HomePage() {
                 <Layers className="w-5 h-5 text-sage-800" aria-hidden="true" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-slate-900">Descuentos Multilínea</h4>
+                <h4 className="text-sm font-semibold text-slate-900">Agrupa y ahorra</h4>
                 <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                  Ahorra hasta un 25% consolidando tus pólizas de auto, vivienda, vida y protección para mascotas.
+                  Combina auto, hogar, vida y mascotas en una sola cuenta. Mientras más coberturas tienes con Aegis, mayor es tu descuento. Sujeto a términos y condiciones.
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center shrink-0 text-slate-800">
-                <CreditCard className="w-5 h-5 text-sage-800" aria-hidden="true" />
+                <ShieldCheck className="w-5 h-5 text-sage-800" aria-hidden="true" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-slate-900">Solvencia Calificada A+</h4>
+                <h4 className="text-sm font-semibold text-slate-900">Respaldo sólido detrás de ti</h4>
                 <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                  Calificación AM Best A+ Superior que garantiza reservas de capital sólidas para siniestros y reclamos.
+                  Correduría autorizada con calificación AM Best A+ Superior. Cuando necesites usar tu seguro, el dinero está ahí.
                 </p>
               </div>
             </div>
@@ -500,13 +501,13 @@ export default function HomePage() {
       <section className="py-20 bg-[#fafbfa] border-t border-stone-200/70" id="coberturas-destacadas">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold">Especialidades Aegis</span>
+            <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold">Coberturas más solicitadas</span>
             <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-normal text-slate-900 tracking-tight leading-tight mt-2">
-              Líneas de Protección{' '}
-              <span className="font-editorial-italic font-normal">Integrales</span>
+              Protección real para{' '}
+              <span className="font-editorial-italic font-normal">lo que más importa</span>
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 mt-3">
-              Coberturas premium diseñadas para proteger lo que amas con tecnología avanzada y soporte humano experto.
+              Sin tecnicismos. Sin letra chica. Cada seguro explicado en español, con un asesor que entiende tu situación.
             </p>
           </div>
 
@@ -529,27 +530,27 @@ export default function HomePage() {
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
-                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro de Autos & Movilidad Eléctrica</h3>
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro de Auto</h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                    Protege tu vehículo tradicional o eléctrico con respaldo de batería de alta tensión, sustitución por EV de cortesía y telemática preventiva.
+                    Tu auto es tu independencia. Cubrimos accidentes, robo, daños a terceros y asistencia en carretera. Si tienes un accidente, te atendemos en español desde el primer momento. Sujeto a términos y condiciones.
                   </p>
                   <ul className="space-y-2 text-xs text-slate-600 pt-2">
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      Asistencia y rescate de carga EV 24/7 en carretera
+                      Cobertura de colisión, robo y daños a terceros
                     </li>
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      Piezas originales de fábrica (OEM) certificadas
+                      Asistencia en carretera 24/7 atendida en español
                     </li>
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      Reembolso por sobretensión en cargador doméstico
+                      Sin SSN requerido para cotizar
                     </li>
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Deducible Cero Opcional</span>
+                  <span className="text-xs font-semibold text-slate-900">Desde $89/mes · sujeto a aprobación</span>
                   <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
                     Ver Cobertura Auto <span className="text-sm">→</span>
                   </a>
@@ -575,27 +576,27 @@ export default function HomePage() {
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
-                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro de Mascotas (Salud Canina y Felina)</h3>
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro de Mascotas</h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                    Atención médica veterinaria con liquidación instantánea en clínica sin desembolsar de tu bolsillo para consultas, cirugías o medicación.
+                    Llevas a tu perro o gato a la clínica y nosotros pagamos directamente. Sin adelantar dinero, sin esperar semanas para que te reembolsen. Tu mascota recibe la atención que necesita cuando la necesita. Sujeto a términos y condiciones.
                   </p>
                   <ul className="space-y-2 text-xs text-slate-600 pt-2">
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      VetDirect™: pago directo en más de 8,500 clínicas
+                      VetDirect™: pago directo a la clínica veterinaria
                     </li>
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      Cobertura de accidentes, enfermedades y vacunas
+                      Cubre consultas, cirugías, vacunas y medicamentos
                     </li>
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      Sin deducibles sorpresivos ni plazos de carencia abusivos
+                      Sin sorpresas ni cobros ocultos en tu estado de cuenta
                     </li>
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Reembolso 90% en Red</span>
+                  <span className="text-xs font-semibold text-slate-900">Desde $29/mes · sujeto a aprobación</span>
                   <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
                     Cotizar Mascotas <span className="text-sm">→</span>
                   </a>
@@ -621,27 +622,27 @@ export default function HomePage() {
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
-                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro de Vida & Preservación de Patrimonio</h3>
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro de Vida</h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                    Pólizas de término y universal con beneficios en vida (Living Benefits) para obtener liquidez inmediata ante enfermedades críticas o imprevistos.
+                    Muchas familias hispanas trabajan toda su vida para construir algo. El seguro de vida es la garantía de que ese esfuerzo protege a quienes más amas, incluso si tú ya no estás. Y si te enfermas gravemente, puedes acceder al dinero mientras sigues vivo. Sujeto a términos y condiciones.
                   </p>
                   <ul className="space-y-2 text-xs text-slate-600 pt-2">
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      Living Benefits: acceso anticipado a tu capital en vida
+                      Tu familia protegida económicamente si algo te pasara
                     </li>
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      Acumulación de valor en efectivo con ventajas fiscales
+                      Acceso al dinero en vida ante enfermedad grave
                     </li>
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      Planificación sucesoria con asesores patrimoniales
+                      Planes accesibles, con o sin historial crediticio
                     </li>
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Respaldo Calificado A+</span>
+                  <span className="text-xs font-semibold text-slate-900">Desde $45/mes · sujeto a aprobación</span>
                   <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
                     Explorar Vida <span className="text-sm">→</span>
                   </a>
@@ -667,27 +668,27 @@ export default function HomePage() {
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
-                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguros Comerciales & Protección Cibernética</h3>
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro Comercial</h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                    Pólizas de Paquete Comercial (BOP) blindadas con Cyber Shield ante secuestro de datos (ransomware), lucro cesante y responsabilidad civil.
+                    Construiste tu negocio con esfuerzo. Un solo accidente, demanda o incendio puede derrumbarlo. El seguro comercial protege tu local, tu equipo y tu responsabilidad — para que puedas seguir adelante sin importar qué pase. Sujeto a términos y condiciones.
                   </p>
                   <ul className="space-y-2 text-xs text-slate-600 pt-2">
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      Respuesta de emergencia ante brechas digitales y extorsión
+                      Protección del local, equipos e inventario
                     </li>
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      Cobertura de responsabilidad profesional D&O y E&O
+                      Responsabilidad civil si alguien se lastima en tu negocio
                     </li>
                     <li className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                      Auditoría continua de riesgos con Inteligencia Artificial
+                      Asesoría en español para negocios hispanos
                     </li>
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Pólizas a Medida</span>
+                  <span className="text-xs font-semibold text-slate-900">Desde $120/mes · sujeto a aprobación</span>
                   <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
                     Proteger Empresa <span className="text-sm">→</span>
                   </a>
@@ -710,8 +711,8 @@ export default function HomePage() {
               <span className="text-xs uppercase tracking-widest font-semibold text-slate-600">Aegis National Assurance</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[50px] font-normal text-slate-900 tracking-tight leading-tight">
-              Asegurando tu Tranquilidad, <br />
-              <span className="font-editorial-italic font-normal">Hoy y en el Futuro.</span>
+              Aquí cuando más <br />
+              <span className="font-editorial-italic font-normal">nos necesitas.</span>
             </h2>
           </div>
 
@@ -719,9 +720,9 @@ export default function HomePage() {
             {/* Left Column */}
             <div className="lg:col-span-5 flex flex-col justify-between space-y-12">
               <div>
-                <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">Posicionamiento Institucional</span>
+                <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">Por qué familias hispanas eligen Aegis</span>
                 <h3 className="text-2xl sm:text-3xl font-normal tracking-tight text-slate-900 mt-2">
-                  Liderazgo comprobado en <br />solvencia y atención
+                  Más que un seguro —<br />un aliado de confianza
                 </h3>
               </div>
               <div className="flex items-start gap-4">
@@ -729,26 +730,26 @@ export default function HomePage() {
                   <Sparkles className="w-4 h-4 text-sage-800" aria-hidden="true" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-slate-900">Gestor Personal de Siniestros</h4>
+                  <h4 className="text-sm font-semibold text-slate-900">Un asesor dedicado cuando lo necesitas</h4>
                   <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                    Asesoría directa y dedicada en cada reclamación, simplificando trámites y liquidando siniestros en tiempo récord.
+                    Cuando tienes un accidente o un siniestro, no hablas con un bot. Un asesor en español te acompaña en cada paso hasta que todo se resuelva.
                   </p>
                 </div>
               </div>
               <div className="py-2 border-y border-stone-100">
                 <div className="text-5xl lg:text-6xl font-normal tracking-tight text-slate-900">$1.7B</div>
                 <p className="text-xs text-slate-500 mt-1">
-                  Reservas de capital resguardadas para garantizar el cumplimiento con cada titular.
+                  En reservas de capital para garantizar que cuando uses tu seguro, el dinero siempre esté ahí.
                 </p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-8 h-8 rounded-lg bg-sage-50 border border-sage-200 flex items-center justify-center shrink-0 mt-0.5">
-                  <Layers className="w-4 h-4 text-sage-800" aria-hidden="true" />
+                  <Heart className="w-4 h-4 text-sage-800" aria-hidden="true" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-slate-900">Tecnología Preventiva Aegis</h4>
+                  <h4 className="text-sm font-semibold text-slate-900">Construido para tu comunidad</h4>
                   <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                    Sistemas dinámicos de suscripción que premian la conducción segura, la prevención médica y la ciberseguridad.
+                    Entendemos lo que significa empezar de cero en un país nuevo. Por eso nuestros servicios son accesibles, claros y siempre en español.
                   </p>
                 </div>
               </div>
@@ -1105,7 +1106,7 @@ export default function HomePage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-[11px] tracking-[0.2em] uppercase font-semibold text-slate-400 mb-10">
-            Our Partner That Helps Us To Protect You
+            Nuestros socios que nos ayudan a protegerte
           </p>
           <div className="flex flex-wrap items-center justify-center md:justify-between gap-8 sm:gap-12 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
             <div className="flex items-center gap-2 font-serif text-lg font-semibold text-slate-700">
@@ -1207,14 +1208,14 @@ export default function HomePage() {
         <div className="relative max-w-5xl mx-auto px-6 text-center space-y-6 z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-[#89f5e7]"></span>
-            <span className="text-xs uppercase tracking-widest text-sage-200 font-semibold">Asesoría de Élite Sin Compromiso</span>
+            <span className="text-xs uppercase tracking-widest text-sage-200 font-semibold">Sin costo · Sin compromiso · En español</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight leading-tight max-w-3xl mx-auto">
-            ¿Listo para proteger tu futuro con la{' '}
-            <span className="font-editorial-italic font-normal text-sage-200">certeza</span> que mereces?
+            Tu familia merece estar{' '}
+            <span className="font-editorial-italic font-normal text-sage-200">protegida hoy</span>
           </h2>
           <p className="text-sm sm:text-base text-sage-100/90 max-w-2xl mx-auto leading-relaxed font-light">
-            Habla con un asesor patrimonial certificado o inicia tu cotización 100% digital en menos de un minuto.
+            Cotiza en menos de un minuto. Un asesor en español te contacta en 24 horas, sin presiones y sin letra chica.
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
             <a
