@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
+import QuoteModal, { type InsType } from '@/components/QuoteModal';
 
 // ─── Solutions Tab Data ───────────────────────────────────────────────────────
 const solutionsTabs = [
@@ -83,14 +84,8 @@ const solutionsTabs = [
   },
 ];
 
-// ─── Form Initial State ───────────────────────────────────────────────────────
-const initialFormData = {
-  nombre: '',
-  email: '',
-  telefono: '',
-  tipo_seguro: 'Seguro de Auto / EV',
-  nivel_proteccion: 'Estándar (Cobertura Esencial)',
-};
+// ─── Tab → InsType mapping ────────────────────────────────────────────────────
+const TAB_TO_INS: InsType[] = ['Auto', 'Mascotas', 'Vida', 'Comercial', 'Salud', 'Umbrella'];
 
 export default function HomePage() {
   // Navigation
@@ -106,44 +101,14 @@ export default function HomePage() {
   // Solutions tabs
   const [activeTab, setActiveTab] = useState(0);
 
-  // Lead form
-  const [formData, setFormData] = useState(initialFormData);
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+  // Quote modal
+  const [quoteOpen, setQuoteOpen] = useState(false);
+  const [quoteType, setQuoteType] = useState<InsType | undefined>(undefined);
 
-  const handleFormChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-
-    try {
-      const res = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || 'Ocurrió un error. Inténtalo de nuevo.');
-      } else {
-        setSuccess(true);
-        setFormData(initialFormData);
-      }
-    } catch {
-      setError('Error de conexión. Por favor intenta de nuevo.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  function openQuote(type?: InsType) {
+    setQuoteType(type);
+    setQuoteOpen(true);
+  }
 
   const activeTabData = solutionsTabs[activeTab];
 
@@ -336,13 +301,13 @@ export default function HomePage() {
                   Seguros de auto, vida, salud y mascotas para tu familia. Agentes bilingüe que entienden tu comunidad, sin importar tu estatus migratorio.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
-                  <a
+                  <button
+                    onClick={() => openQuote()}
                     className="px-6 py-3 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-slate-100 transition-all shadow-lg active:scale-95 flex items-center gap-2"
-                    href="#cotizador"
                   >
                     <span>Iniciar Cotización Inmediata</span>
                     <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                  </a>
+                  </button>
                   <a
                     className="group inline-flex items-center gap-2 text-xs sm:text-sm text-white/95 hover:text-white font-light tracking-wide underline underline-offset-8 decoration-white/50 hover:decoration-white transition-all"
                     href="#coberturas-destacadas"
@@ -418,26 +383,26 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="pt-6">
-                <a
+                <button
+                  onClick={() => openQuote(TAB_TO_INS[activeTab])}
                   className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-900 hover:underline"
-                  href="#cotizador"
                 >
                   <span>{activeTabData.cta}</span>
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                </a>
+                </button>
               </div>
             </div>
 
             {/* Right: Price Metric Card */}
             <div className="md:col-span-3 bg-[#f0f6f0]/90 rounded-2xl p-7 lg:p-8 flex flex-col justify-between min-h-[280px] border border-white/60">
               <div className="flex justify-end">
-                <a
+                <button
+                  onClick={() => openQuote(TAB_TO_INS[activeTab])}
                   className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-800 hover:scale-110 hover:text-black transition-all shadow-sm"
-                  href="#cotizador"
                   title="Calcular Prima"
                 >
                   <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-                </a>
+                </button>
               </div>
               <div>
                 <div className="flex items-baseline gap-1">
@@ -552,9 +517,9 @@ export default function HomePage() {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <span className="text-xs font-semibold text-slate-900">Desde $89/mes · sujeto a aprobación</span>
-                  <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
+                  <button onClick={() => openQuote('Auto')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Ver Cobertura Auto <span className="text-sm">→</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -598,9 +563,9 @@ export default function HomePage() {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <span className="text-xs font-semibold text-slate-900">Desde $29/mes · sujeto a aprobación</span>
-                  <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
+                  <button onClick={() => openQuote('Mascotas')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Cotizar Mascotas <span className="text-sm">→</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -644,9 +609,9 @@ export default function HomePage() {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <span className="text-xs font-semibold text-slate-900">Desde $45/mes · sujeto a aprobación</span>
-                  <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
+                  <button onClick={() => openQuote('Vida')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Explorar Vida <span className="text-sm">→</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -690,9 +655,9 @@ export default function HomePage() {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <span className="text-xs font-semibold text-slate-900">Desde $120/mes · sujeto a aprobación</span>
-                  <a className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm" href="#cotizador">
+                  <button onClick={() => openQuote('Comercial')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Proteger Empresa <span className="text-sm">→</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -941,162 +906,60 @@ export default function HomePage() {
       </section>
       {/* ── END: Testimonios ── */}
 
-      {/* ── Quote Calculator / Lead Form ── */}
+      {/* ── Quote Calculator ── */}
       <section className="py-20 bg-[#f7faf7]" id="cotizador">
         <div className="max-w-5xl mx-auto px-6">
           <div className="bg-white rounded-[32px] p-8 sm:p-12 shadow-sm border border-stone-200/70">
             <div className="max-w-xl mx-auto text-center mb-8">
               <span className="text-xs font-semibold uppercase tracking-widest text-sage-800">
-                Tarificación Online Directa
+                Cotización Online · 5 Pasos · 90 Segundos
               </span>
               <h3 className="text-2xl sm:text-3xl font-normal text-slate-900 mt-2 tracking-tight">
-                Calcula tu{' '}
-                <span className="font-editorial-italic">prima personalizada</span>
+                Tu cotización{' '}
+                <span className="font-editorial-italic">personalizada</span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-500 mt-2">
-                Sin llamadas molestas. Evaluación de nivel instantánea y transparente en menos de un minuto.
+                Elige tu seguro, responde unas preguntas rápidas y un asesor bilingüe te contacta en 15 minutos.
               </p>
             </div>
 
-            {success ? (
-              <div className="max-w-xl mx-auto text-center py-12 px-6 bg-sage-50 rounded-2xl border border-sage-200">
-                <div className="w-14 h-14 rounded-full bg-sage-100 flex items-center justify-center mx-auto mb-4">
-                  <ShieldCheck className="w-7 h-7 text-sage-800" />
-                </div>
-                <h4 className="text-xl font-semibold text-slate-900 mb-2">¡Cotización recibida!</h4>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Gracias por tu interés. Un asesor certificado se pondrá en contacto contigo en las próximas 24 horas para revisar tu cotización personalizada.
-                </p>
-                <button
-                  className="mt-6 px-6 py-2.5 rounded-full bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all"
-                  onClick={() => setSuccess(false)}
-                >
-                  Enviar otra cotización
-                </button>
+            <div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+                {(['Auto','Mascotas','Vida','Salud','Comercial','Umbrella'] as InsType[]).map(tipo => (
+                  <button
+                    key={tipo}
+                    onClick={() => openQuote(tipo)}
+                    className="px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-slate-700 hover:bg-slate-800 hover:text-white text-slate-700 text-sm font-medium transition-all text-center"
+                  >
+                    {tipo === 'Auto' && '🚗 '}
+                    {tipo === 'Mascotas' && '🐾 '}
+                    {tipo === 'Vida' && '❤️ '}
+                    {tipo === 'Salud' && '🏥 '}
+                    {tipo === 'Comercial' && '🏢 '}
+                    {tipo === 'Umbrella' && '☂️ '}
+                    {tipo === 'Auto' ? 'Seguro de Auto' : tipo === 'Umbrella' ? 'Umbrella' : `Seguro ${tipo === 'Mascotas' ? 'de Mascotas' : tipo === 'Vida' ? 'de Vida' : tipo === 'Salud' ? 'de Salud' : 'Comercial'}`}
+                  </button>
+                ))}
               </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
-                  {/* Nombre */}
-                  <div>
-                    <label className="block text-xs font-medium text-slate-700 mb-2" htmlFor="nombre">
-                      Nombre Completo
-                    </label>
-                    <input
-                      id="nombre"
-                      name="nombre"
-                      type="text"
-                      required
-                      placeholder="Ej. María González"
-                      value={formData.nombre}
-                      onChange={handleFormChange}
-                      className="w-full text-xs sm:text-sm rounded-xl border-slate-200 bg-slate-50/50 py-3 px-3.5 focus:border-sage-500 focus:ring-sage-500"
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div>
-                    <label className="block text-xs font-medium text-slate-700 mb-2" htmlFor="email">
-                      Correo Electrónico
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="correo@ejemplo.com"
-                      value={formData.email}
-                      onChange={handleFormChange}
-                      className="w-full text-xs sm:text-sm rounded-xl border-slate-200 bg-slate-50/50 py-3 px-3.5 focus:border-sage-500 focus:ring-sage-500"
-                    />
-                  </div>
-
-                  {/* Teléfono */}
-                  <div>
-                    <label className="block text-xs font-medium text-slate-700 mb-2" htmlFor="telefono">
-                      Teléfono
-                    </label>
-                    <input
-                      id="telefono"
-                      name="telefono"
-                      type="tel"
-                      placeholder="+1 (555) 000-0000"
-                      value={formData.telefono}
-                      onChange={handleFormChange}
-                      className="w-full text-xs sm:text-sm rounded-xl border-slate-200 bg-slate-50/50 py-3 px-3.5 focus:border-sage-500 focus:ring-sage-500"
-                    />
-                  </div>
-
-                  {/* Categoría */}
-                  <div>
-                    <label className="block text-xs font-medium text-slate-700 mb-2" htmlFor="tipo_seguro">
-                      Categoría de Cobertura
-                    </label>
-                    <select
-                      id="tipo_seguro"
-                      name="tipo_seguro"
-                      value={formData.tipo_seguro}
-                      onChange={handleFormChange}
-                      className="w-full text-xs sm:text-sm rounded-xl border-slate-200 bg-slate-50/50 py-3 px-3.5 focus:border-sage-500 focus:ring-sage-500"
-                    >
-                      <option>Seguro de Auto / EV</option>
-                      <option>Seguro de Mascotas (VetDirect™)</option>
-                      <option>Seguro de Vida & Legado (Living Benefits)</option>
-                      <option>Seguros Comerciales & Cyber Shield</option>
-                      <option>Salud Integral & Medicare</option>
-                      <option>Protección Patrimonial Umbrella</option>
-                    </select>
-                  </div>
-
-                  {/* Nivel de Protección */}
-                  <div>
-                    <label className="block text-xs font-medium text-slate-700 mb-2" htmlFor="nivel_proteccion">
-                      Nivel de Protección
-                    </label>
-                    <select
-                      id="nivel_proteccion"
-                      name="nivel_proteccion"
-                      value={formData.nivel_proteccion}
-                      onChange={handleFormChange}
-                      className="w-full text-xs sm:text-sm rounded-xl border-slate-200 bg-slate-50/50 py-3 px-3.5 focus:border-sage-500 focus:ring-sage-500"
-                    >
-                      <option>Estándar (Cobertura Esencial)</option>
-                      <option>Avanzada (Deducible Cero / Reposición OEM)</option>
-                      <option>Centurion Infinite (Patrimonio Total)</option>
-                    </select>
-                  </div>
-
-                  {/* Submit */}
-                  <div className="sm:col-span-2">
-                    {error && (
-                      <p className="text-xs text-red-600 mb-3 text-center">{error}</p>
-                    )}
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="w-full py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 disabled:opacity-60 disabled:cursor-not-allowed text-white text-xs sm:text-sm font-medium transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
-                    >
-                      {loading ? (
-                        <span>Enviando cotización...</span>
-                      ) : (
-                        <>
-                          <span>Ver Cotización Instantánea</span>
-                          <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              </form>
-            )}
+              <button
+                onClick={() => openQuote()}
+                className="w-full py-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
+              >
+                <span>Iniciar mi cotización gratis</span>
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </button>
+            </div>
 
             {/* Trust footer */}
-            <div className="mt-6 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-between text-[11px] text-slate-400">
+            <div className="mt-6 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-center gap-4 text-[11px] text-slate-400">
               <span className="flex items-center gap-1.5">
                 <Lock className="w-3.5 h-3.5 text-sage-800" aria-hidden="true" />
-                Cifrado de grado bancario institucional de 256 bits
+                Sin SSN — aceptamos ITIN
               </span>
-              <span>Resolución de póliza con tecnología de suscripción Aegis AI</span>
+              <span>·</span>
+              <span>Atención 100% en español</span>
+              <span>·</span>
+              <span>Sin presiones · Sin spam</span>
             </div>
           </div>
         </div>
@@ -1219,20 +1082,20 @@ export default function HomePage() {
             Cotiza en menos de un minuto. Un asesor en español te contacta en 24 horas, sin presiones y sin letra chica.
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
-            <a
+            <button
+              onClick={() => openQuote()}
               className="px-8 py-3.5 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-sage-50 transition-all shadow-xl active:scale-95 flex items-center gap-2 group"
-              href="#cotizador"
             >
               <span>Iniciar Cotización Inmediata</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-slate-900" aria-hidden="true" />
-            </a>
-            <a
+            </button>
+            <button
+              onClick={() => openQuote()}
               className="px-8 py-3.5 rounded-full border border-white/40 text-white font-medium text-xs sm:text-sm hover:bg-white/10 transition-all flex items-center gap-2"
-              href="#cotizador"
             >
               <svg className="w-4 h-4 text-sage-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
               <span>Agendar Llamada con Asesor</span>
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -1328,6 +1191,12 @@ export default function HomePage() {
         </div>
       </footer>
       {/* ── END: Footer ── */}
+
+      <QuoteModal
+        open={quoteOpen}
+        onClose={() => setQuoteOpen(false)}
+        initialType={quoteType}
+      />
     </>
   );
 }

@@ -4,45 +4,38 @@ import { supabaseAdmin } from '@/lib/supabase';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { nombre, email, telefono, tipo_seguro, nivel_proteccion } = body;
+    const {
+      nombre, email, telefono,
+      tipo_seguro, nivel_proteccion,
+      zip_code, estado_us, ciudad,
+      timeline, tiene_seguro, lead_score,
+      detalles,
+    } = body;
 
-    // Basic validation
     if (!nombre || typeof nombre !== 'string' || nombre.trim().length === 0) {
-      return NextResponse.json(
-        { error: 'El nombre es requerido.' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'El nombre es requerido.' }, { status: 400 });
+    }
+    if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      return NextResponse.json({ error: 'Por favor ingresa un correo electrónico válido.' }, { status: 400 });
     }
 
-    if (!email || typeof email !== 'string' || email.trim().length === 0) {
-      return NextResponse.json(
-        { error: 'El correo electrónico es requerido.' },
-        { status: 400 }
-      );
-    }
-
-    // Simple email format check
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email.trim())) {
-      return NextResponse.json(
-        { error: 'Por favor ingresa un correo electrónico válido.' },
-        { status: 400 }
-      );
-    }
-
-    // Insert into Supabase
     const { data, error } = await supabaseAdmin
       .from('leads')
-      .insert([
-        {
-          nombre: nombre.trim(),
-          email: email.trim().toLowerCase(),
-          telefono: telefono ? telefono.trim() : null,
-          tipo_seguro: tipo_seguro || null,
-          nivel_proteccion: nivel_proteccion || null,
-          created_at: new Date().toISOString(),
-        },
-      ])
+      .insert([{
+        nombre: nombre.trim(),
+        email: email.trim().toLowerCase(),
+        telefono: telefono?.trim() || null,
+        tipo_seguro: tipo_seguro || null,
+        nivel_proteccion: nivel_proteccion || null,
+        zip_code: zip_code || null,
+        estado_us: estado_us || null,
+        ciudad: ciudad || null,
+        timeline: timeline || null,
+        tiene_seguro: tiene_seguro || null,
+        lead_score: typeof lead_score === 'number' ? lead_score : null,
+        detalles: detalles || null,
+        created_at: new Date().toISOString(),
+      }])
       .select()
       .single();
 
@@ -60,9 +53,6 @@ export async function POST(request: NextRequest) {
     );
   } catch (err) {
     console.error('API route error:', err);
-    return NextResponse.json(
-      { error: 'Error interno del servidor.' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Error interno del servidor.' }, { status: 500 });
   }
 }
