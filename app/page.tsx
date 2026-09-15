@@ -273,8 +273,8 @@ export default function HomePage() {
               </div>
 
               {/* Headline */}
-              <div className="max-w-2xl lg:text-right text-white">
-                <div className="flex flex-wrap gap-2 mb-5 lg:justify-end">
+              <div className="max-w-2xl text-white">
+                <div className="flex flex-wrap gap-2 mb-5">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
                     <Globe className="w-3.5 h-3.5" aria-hidden="true" />
                     Atención 100% en español
@@ -289,10 +289,10 @@ export default function HomePage() {
                   <span className="font-sans font-light">lo que más</span>{' '}
                   <span className="font-editorial-italic font-normal">Valoras</span>
                 </h1>
-                <p className="mt-4 text-white/90 text-sm sm:text-base font-light max-w-xl lg:ml-auto leading-relaxed">
+                <p className="mt-4 text-white/90 text-sm sm:text-base font-light max-w-xl leading-relaxed">
                   Seguros de auto, vida, salud y mascotas para tu familia. Agentes bilingüe que entienden tu comunidad, sin importar tu estatus migratorio.
                 </p>
-                <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
+                <div className="mt-6 flex flex-wrap gap-4 items-center">
                   <button
                     onClick={() => openQuote()}
                     className="px-6 py-3 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-slate-100 transition-all shadow-lg active:scale-95 flex items-center gap-2"
