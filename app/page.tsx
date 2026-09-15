@@ -116,56 +116,49 @@ export default function HomePage() {
     <>
       <JsonLd />
       {/* ── Fixed Sticky Navbar ── */}
-      <header className="fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`flex items-center justify-between transition-all duration-300 ${
-            scrolled
-              ? 'mt-2.5 h-12 bg-white/95 backdrop-blur-md shadow-md border border-stone-200/70 rounded-2xl px-4 lg:px-5'
-              : 'mt-0 h-16 bg-transparent px-2 lg:px-4'
-          }`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm'
+          : 'bg-transparent'
+      }`}>
+        <div className="max-w-[1720px] mx-auto px-6 lg:px-10">
+          <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
             <a className="flex items-center gap-2.5 group shrink-0" href="#">
-              <div className={`rounded-full border-[2px] flex items-center justify-center transition-all duration-300 group-hover:scale-110 ${
-                scrolled
-                  ? 'w-5 h-5 border-slate-800'
-                  : 'w-6 h-6 border-white/90'
+              <div className={`rounded-full border-[2px] flex items-center justify-center transition-all duration-300 ${
+                scrolled ? 'w-5 h-5 border-slate-800' : 'w-5 h-5 border-white/90'
               }`}>
                 <span className={`rounded-full transition-all duration-300 ${
-                  scrolled ? 'w-1.5 h-1.5 bg-slate-800' : 'w-2 h-2 bg-white'
+                  scrolled ? 'w-1.5 h-1.5 bg-slate-800' : 'w-1.5 h-1.5 bg-white'
                 }`}></span>
               </div>
               <div className="leading-none">
-                <span className={`block font-semibold tracking-tight transition-all duration-300 ${
-                  scrolled ? 'text-[14px] text-slate-900' : 'text-base text-white'
-                }`}>
-                  Aegis
-                </span>
-                <span className={`block font-medium tracking-[0.1em] uppercase transition-all duration-300 ${
-                  scrolled ? 'text-[8px] text-slate-400' : 'text-[9px] text-white/60'
-                }`}>
-                  National Assurance
-                </span>
+                <span className={`block font-semibold text-sm tracking-tight transition-all duration-300 ${
+                  scrolled ? 'text-slate-900' : 'text-white'
+                }`}>Aegis</span>
+                <span className={`block font-medium tracking-[0.1em] uppercase text-[8px] transition-all duration-300 ${
+                  scrolled ? 'text-slate-400' : 'text-white/50'
+                }`}>National Assurance</span>
               </div>
             </a>
 
             {/* Desktop Navigation */}
-            <nav aria-label="Navegación principal" className="hidden lg:flex items-center gap-0.5">
+            <nav aria-label="Navegación principal" className="hidden lg:flex items-center gap-7">
               {[
                 { label: 'Soluciones', href: '#soluciones' },
                 { label: 'Coberturas', href: '#coberturas-destacadas' },
                 { label: 'Por qué Aegis', href: '#por-que-aegis' },
                 { label: 'Blog', href: '/blog' },
-                { label: 'Cotizador', href: '#cotizador' },
                 { label: 'FAQ', href: '#faq' },
               ].map(({ label, href }) => (
                 <a
                   key={label}
                   href={href}
-                  className={`relative px-3.5 py-2 text-[13px] font-medium rounded-xl transition-all duration-200 ${
+                  className={`text-[13px] font-medium transition-all duration-200 ${
                     scrolled
-                      ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                      : 'text-white/80 hover:text-white hover:bg-white/10'
+                      ? 'text-slate-600 hover:text-slate-900'
+                      : 'text-white/80 hover:text-white'
                   }`}
                 >
                   {label}
@@ -174,21 +167,20 @@ export default function HomePage() {
             </nav>
 
             {/* CTA + Hamburger */}
-            <div className="flex items-center gap-2">
-              <a
-                href="#cotizador"
-                className={`hidden lg:flex items-center gap-2 px-4 py-2 text-[13px] font-semibold rounded-xl transition-all duration-200 active:scale-95 ${
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => openQuote()}
+                className={`hidden lg:flex items-center gap-2 px-5 py-2 text-[13px] font-semibold rounded-full transition-all duration-200 active:scale-95 ${
                   scrolled
                     ? 'bg-slate-900 text-white hover:bg-slate-700'
-                    : 'bg-white text-slate-900 hover:bg-slate-100 shadow-lg'
+                    : 'bg-white text-slate-900 hover:bg-white/90 shadow-lg'
                 }`}
               >
                 Cotizar Ahora
-                <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-              </a>
+              </button>
               {/* Hamburger */}
               <button
-                className="lg:hidden flex flex-col gap-[5px] p-2.5 rounded-xl transition-all"
+                className="lg:hidden flex flex-col gap-[5px] p-2 transition-all"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Abrir menú"
               >
