@@ -19,6 +19,25 @@ import {
 import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
 import QuoteModal, { type InsType, TIPO_LABEL } from '@/components/QuoteModal';
+import type { ComponentType } from 'react';
+import {
+  Car as PhCar, Truck as PhTruck, PawPrint as PhPaw, Heart as PhHeart,
+  Stethoscope as PhSteth, Tooth as PhTooth, Package as PhPkg,
+  Buildings as PhBldg, Umbrella as PhUmbrella,
+} from '@phosphor-icons/react';
+
+type PhIcon = ComponentType<{ weight?: string; className?: string }>;
+const COTIZADOR_ICONS: Record<string, PhIcon> = {
+  Auto:          PhCar as PhIcon,
+  AutoComercial: PhTruck as PhIcon,
+  Mascotas:      PhPaw as PhIcon,
+  Vida:          PhHeart as PhIcon,
+  Salud:         PhSteth as PhIcon,
+  Dental:        PhTooth as PhIcon,
+  Paquete:       PhPkg as PhIcon,
+  Comercial:     PhBldg as PhIcon,
+  Umbrella:      PhUmbrella as PhIcon,
+};
 
 // ─── Solutions Tab Data ───────────────────────────────────────────────────────
 const solutionsTabs = [
@@ -1000,17 +1019,15 @@ export default function HomePage() {
             <div>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                 {((['Auto','AutoComercial','Mascotas','Vida','Salud','Dental','Paquete','Comercial','Umbrella']) as InsType[]).map(tipo => {
-                  const emojis: Record<string, string> = {
-                    Auto: '🚗', AutoComercial: '🚛', Mascotas: '🐾', Vida: '❤️',
-                    Salud: '🏥', Dental: '🦷', Paquete: '🏠', Comercial: '🏢', Umbrella: '☂️',
-                  };
+                  const Icon = COTIZADOR_ICONS[tipo];
                   return (
                     <button
                       key={tipo}
                       onClick={() => openQuote(tipo)}
-                      className="px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-slate-700 hover:bg-slate-800 hover:text-white text-slate-700 text-sm font-medium transition-all text-center"
+                      className="flex items-center justify-center gap-2 px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-slate-800 hover:bg-slate-800 hover:text-white text-slate-700 text-sm font-medium transition-all"
                     >
-                      {emojis[tipo]} {TIPO_LABEL[tipo]}
+                      <Icon weight="duotone" className="w-4 h-4 shrink-0" />
+                      {TIPO_LABEL[tipo]}
                     </button>
                   );
                 })}

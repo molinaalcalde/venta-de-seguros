@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback, type ComponentType } from 're
 import {
   X, CaretLeft, Check, CircleNotch, Car, Truck, PawPrint, Heart,
   Stethoscope, Tooth, Package, Buildings, Umbrella, MapPin,
-  Calendar, CreditCard,
+  Calendar, CreditCard, Headset, EnvelopeSimple,
 } from '@phosphor-icons/react';
 
 /* ─── Types ─────────────────────────────────────────────────────────────── */
@@ -528,31 +528,43 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
           {/* Step 1 — Ruta */}
           {!success && step === 1 && (
             <>
-              <h2 className="text-xl font-bold text-slate-800 mb-1">¿Cómo quieres tu cotización?</h2>
-              <p className="text-slate-500 text-sm mb-6">Elige la opción que más te convenga.</p>
+              <h2 className="text-xl font-bold text-slate-800 mb-1">¿Cómo prefieres continuar?</h2>
+              <p className="text-slate-500 text-sm mb-6">Ambas opciones son gratuitas y sin compromiso.</p>
               <div className="space-y-3">
-                {[
+                {([
                   {
-                    value: 'asesor' as QuotePath, emoji: '🤝',
-                    title: 'Quiero que un asesor me ayude',
-                    desc: 'Un asesor bilingüe te llama en 15 minutos. Solo necesito tu nombre y email. Rápido y sin complicaciones.',
-                    badge: '⚡ 3 minutos · Más rápido',
-                    selBg: 'border-slate-800 bg-slate-800', badgeSel: 'bg-white/20 text-white', badgeDef: 'bg-slate-100 text-slate-600',
+                    value: 'asesor' as QuotePath,
+                    Icon: Headset,
+                    iconBg: 'bg-slate-100',
+                    iconColor: 'text-slate-600',
+                    title: 'Hablar con un asesor',
+                    desc: 'Un especialista bilingüe te llama en 15 minutos con tu cotización personalizada. Sin formularios largos.',
+                    badge: 'Llamada en 15 min · Opción más rápida',
+                    selBg: 'border-slate-800 bg-slate-800',
+                    badgeSel: 'bg-white/20 text-white',
+                    badgeDef: 'bg-slate-100 text-slate-600',
                   },
                   {
-                    value: 'instantanea' as QuotePath, emoji: '⚡',
-                    title: 'Quiero mi cotización por email ahora',
-                    desc: 'Te enviamos un estimado real a tu correo en 5 minutos. Necesito un poco más de información.',
-                    badge: '📧 Estimado en 5 min · Sin llamadas',
-                    selBg: 'border-violet-600 bg-violet-600', badgeSel: 'bg-white/20 text-white', badgeDef: 'bg-violet-50 text-violet-600',
+                    value: 'instantanea' as QuotePath,
+                    Icon: EnvelopeSimple,
+                    iconBg: 'bg-violet-100',
+                    iconColor: 'text-violet-600',
+                    title: 'Cotización directa por email',
+                    desc: 'Calculamos tu precio real y lo enviamos a tu correo en minutos. Sin llamadas. Sin presión. A tu ritmo.',
+                    badge: 'En tu correo en 5 min · Sin llamadas',
+                    selBg: 'border-violet-600 bg-violet-600',
+                    badgeSel: 'bg-white/20 text-white',
+                    badgeDef: 'bg-violet-50 text-violet-600',
                   },
-                ].map(opt => {
+                ] as const).map(opt => {
                   const sel = data.quote_path === opt.value;
                   return (
                     <button key={opt.value} type="button" onClick={() => set('quote_path', opt.value)}
                       className={`w-full text-left p-5 rounded-2xl border-2 transition-all ${sel ? `${opt.selBg} text-white shadow-md` : 'border-slate-200 bg-white hover:border-slate-300'}`}>
                       <div className="flex items-start gap-4">
-                        <span className="text-2xl shrink-0">{opt.emoji}</span>
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${sel ? 'bg-white/20' : opt.iconBg}`}>
+                          <opt.Icon weight="duotone" className={`w-5 h-5 ${sel ? 'text-white' : opt.iconColor}`} />
+                        </div>
                         <div>
                           <p className={`font-semibold text-sm ${sel ? 'text-white' : 'text-slate-800'}`}>{opt.title}</p>
                           <p className={`text-xs mt-1 leading-relaxed ${sel ? 'text-white/75' : 'text-slate-500'}`}>{opt.desc}</p>
