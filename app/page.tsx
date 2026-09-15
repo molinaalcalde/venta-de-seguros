@@ -594,10 +594,13 @@ export default function HomePage() {
             {/* Card 2 – Mascotas */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <img
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1WCthRCePEcpgbKpd-d1V9YjUvuWRBLqKD_YHN1m8qahA5s2c2ZONFZqKCmbNw7hvVrV672Gym4ZrBOD1IkxDiVyCrziK9Gifm1kX84Eo-PvOoItGZYz3AseCDhsAe0fFTAeGft8EIyXOWSpqsWZjrzzACeisRnJpBEs0i6k4jOA19KDgn6mkl9ZU9JRbJpYUeX1gZIcMOaHtwomL-syV-1PPEwha3YJepaTtu0-LS5Fy07Ch-uQhqf6Q"
-                  alt="Seguro de Mascotas VetDirect"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                <video
+                  src="/videos/hero2.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">
