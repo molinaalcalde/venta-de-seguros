@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import {
   Shield,
   ArrowRight,
@@ -97,6 +97,46 @@ export default function HomePage() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // ── Video Hero Carousel ──
+  const HERO_VIDEOS = [
+    { src: '/videos/hero1.mp4', startTime: 2 },
+    { src: '/videos/hero2.mp4', startTime: 10 },
+  ] as const;
+  const [heroIndex, setHeroIndex] = useState(0);
+  const videoRef0 = useRef<HTMLVideoElement>(null);
+  const videoRef1 = useRef<HTMLVideoElement>(null);
+  const videoRefs = [videoRef0, videoRef1] as const;
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const goToVideo = useCallback((idx: number) => {
+    setHeroIndex(idx);
+  }, []);
+
+  const goNext = useCallback(() => {
+    setHeroIndex(prev => (prev + 1) % HERO_VIDEOS.length);
+  }, []);
+
+  // Cuando cambia el video activo, reinicia el currentTime y reproduce
+  useEffect(() => {
+    HERO_VIDEOS.forEach((v, i) => {
+      const el = videoRefs[i].current;
+      if (!el) return;
+      if (i === heroIndex) {
+        el.currentTime = v.startTime;
+        el.play().catch(() => {});
+      } else {
+        el.pause();
+      }
+    });
+    // Auto-avanzar cada 10s
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      setHeroIndex(prev => (prev + 1) % HERO_VIDEOS.length);
+    }, 10000);
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [heroIndex]);
 
   // Solutions tabs
   const [activeTab, setActiveTab] = useState(0);
@@ -245,75 +285,110 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* ── Hero & Header Wrapper ── */}
-      <div className="p-3 sm:p-5 lg:p-6 max-w-[1720px] mx-auto">
-        <div className="relative w-full rounded-[28px] overflow-hidden min-h-[680px] lg:min-h-[820px] flex flex-col justify-between shadow-2xl shadow-stone-900/10">
-          {/* Hero Background */}
-          <img
-            alt="Affectionate young family embracing warmly in golden sunset meadow"
-            className="absolute inset-0 w-full h-full object-cover object-center lg:object-[center_32%]"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBorFuyfcmKxjwFbRybc5SVfFvvQe9JFQKbNqGJheGbdohO4BdjSi5aOedf4KQJmDoD861C-pa0lzdzv9FQfFNp1p0qJ4ZrdBawFOQdRPqinPoIW2m9itcP0CKYtqcvVP7k6RyhjRAWC05TWyy_CZsyJPoXNCs-yIxnt6EsQ0CjMSErUT_hd9y6qd6FlBj7aRHdhfMBq_suMAYHYxo2D88_FQbVDI3HZFx2Y6ewZYafi4NnQoQs6ru0"
+      {/* ── Hero — Full Bleed ── */}
+      <div className="relative w-full min-h-[680px] lg:min-h-[860px] flex flex-col justify-between overflow-hidden">
+        {/* Hero Background — Video Carousel */}
+        {HERO_VIDEOS.map((v, i) => (
+          <video
+            key={v.src}
+            ref={videoRefs[i]}
+            src={v.src}
+            muted
+            playsInline
+            loop
+            preload="auto"
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
+              i === heroIndex ? 'opacity-100' : 'opacity-0'
+            }`}
           />
-          {/* Gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/75"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/60"></div>
+        ))}
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/15 to-black/70 z-[1]"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50 z-[1]"></div>
 
-          {/* Spacer for fixed navbar */}
-          <div className="h-16" />
+        {/* Spacer for fixed navbar */}
+        <div className="h-16 relative z-10" />
 
-          {/* ── Hero Content ── */}
-          <div className="relative z-20 w-full px-6 sm:px-10 lg:px-16 pb-12 sm:pb-16 flex flex-col justify-end">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
-              {/* Scroll cue */}
-              <div className="flex items-center gap-3 text-white/90 text-xs font-light select-none">
-                <div className="w-5 h-8 rounded-full border border-white/70 flex items-start justify-center pt-1.5">
-                  <span className="w-1 h-1.5 bg-white rounded-full animate-bounce"></span>
-                </div>
-                <span className="tracking-wide">Scroll Down</span>
+        {/* ── Hero Content ── */}
+        <div className="relative z-20 w-full px-6 sm:px-10 lg:px-16 pb-14 sm:pb-20 flex flex-col justify-end gap-6">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+            {/* Scroll cue — LEFT */}
+            <div className="hidden lg:flex items-center gap-3 text-white/80 text-xs font-light select-none shrink-0">
+              <div className="w-5 h-8 rounded-full border border-white/60 flex items-start justify-center pt-1.5">
+                <span className="w-1 h-1.5 bg-white rounded-full animate-bounce"></span>
               </div>
+              <span className="tracking-wide">Scroll Down</span>
+            </div>
 
-              {/* Headline */}
-              <div className="max-w-2xl text-white">
-                <div className="flex flex-wrap gap-2 mb-5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
-                    <Globe className="w-3.5 h-3.5" aria-hidden="true" />
-                    Atención 100% en español
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
-                    <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
-                    Acepta ITIN · Sin SSN
-                  </span>
-                </div>
-                <h1 className="text-5xl sm:text-6xl lg:text-[76px] font-normal tracking-tight-title leading-[1.08] drop-shadow-sm">
-                  Protegiendo <br />
-                  <span className="font-sans font-light">lo que más</span>{' '}
-                  <span className="font-editorial-italic font-normal">Valoras</span>
-                </h1>
-                <p className="mt-4 text-white/90 text-sm sm:text-base font-light max-w-xl leading-relaxed">
-                  Seguros de auto, vida, salud y mascotas para tu familia. Agentes bilingüe que entienden tu comunidad, sin importar tu estatus migratorio.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-4 items-center">
-                  <button
-                    onClick={() => openQuote()}
-                    className="px-6 py-3 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-slate-100 transition-all shadow-lg active:scale-95 flex items-center gap-2"
-                  >
-                    <span>Iniciar Cotización Inmediata</span>
-                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                  </button>
-                  <a
-                    className="group inline-flex items-center gap-2 text-xs sm:text-sm text-white/95 hover:text-white font-light tracking-wide underline underline-offset-8 decoration-white/50 hover:decoration-white transition-all"
-                    href="#coberturas-destacadas"
-                  >
-                    <span>Explorar Coberturas</span>
-                    <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                  </a>
-                </div>
+            {/* Headline — RIGHT */}
+            <div className="max-w-2xl text-white lg:text-right">
+              <div className="flex flex-wrap gap-2 mb-5 lg:justify-end">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
+                  <Globe className="w-3.5 h-3.5" aria-hidden="true" />
+                  Atención 100% en español
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
+                  <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
+                  Acepta ITIN · Sin SSN
+                </span>
+              </div>
+              <h1 className="text-5xl sm:text-6xl lg:text-[76px] font-normal tracking-tight-title leading-[1.08] drop-shadow-sm">
+                Protegiendo <br />
+                <span className="font-sans font-light">lo que más</span>{' '}
+                <span className="font-editorial-italic font-normal">Valoras</span>
+              </h1>
+              <p className="mt-4 text-white/90 text-sm sm:text-base font-light max-w-xl leading-relaxed lg:ml-auto">
+                Seguros de auto, vida, salud y mascotas para tu familia. Agentes bilingüe que entienden tu comunidad, sin importar tu estatus migratorio.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
+                <button
+                  onClick={() => openQuote()}
+                  className="px-6 py-3 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-slate-100 transition-all shadow-lg active:scale-95 flex items-center gap-2"
+                >
+                  <span>Iniciar Cotización Inmediata</span>
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </button>
+                <a
+                  className="group inline-flex items-center gap-2 text-xs sm:text-sm text-white/95 hover:text-white font-light tracking-wide underline underline-offset-8 decoration-white/50 hover:decoration-white transition-all"
+                  href="#coberturas-destacadas"
+                >
+                  <span>Explorar Coberturas</span>
+                  <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </a>
               </div>
             </div>
           </div>
+
+          {/* ── Carousel Controls ── */}
+          <div className="flex items-center gap-4 lg:justify-end">
+            {/* Dots */}
+            <div className="flex items-center gap-2">
+              {HERO_VIDEOS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goToVideo(i)}
+                  aria-label={`Video ${i + 1}`}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === heroIndex
+                      ? 'w-6 h-2 bg-white'
+                      : 'w-2 h-2 bg-white/40 hover:bg-white/70'
+                  }`}
+                />
+              ))}
+            </div>
+            {/* Next button */}
+            <button
+              onClick={goNext}
+              aria-label="Siguiente video"
+              className="flex items-center gap-1.5 text-white/80 hover:text-white text-xs font-light transition-all border border-white/30 hover:border-white/60 rounded-full px-3 py-1.5 backdrop-blur-sm"
+            >
+              <span>Siguiente</span>
+              <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </div>
-      {/* ── END: HeroAndHeaderWrapper ── */}
+      {/* ── END: Hero ── */}
 
       {/* ── Solutions Section ── */}
       <section className="py-20 lg:py-28 px-4 sm:px-8 max-w-7xl mx-auto" id="soluciones">
