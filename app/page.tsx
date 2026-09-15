@@ -297,6 +297,10 @@ export default function HomePage() {
             playsInline
             loop
             preload="auto"
+            onLoadedMetadata={() => {
+              const el = videoRefs[i].current;
+              if (el) el.currentTime = v.startTime;
+            }}
             className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
               i === heroIndex ? 'opacity-100' : 'opacity-0'
             }`}
