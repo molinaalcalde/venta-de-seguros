@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
-import QuoteModal, { type InsType } from '@/components/QuoteModal';
+import QuoteModal, { type InsType, TIPO_LABEL } from '@/components/QuoteModal';
 
 // ─── Solutions Tab Data ───────────────────────────────────────────────────────
 const solutionsTabs = [
@@ -999,21 +999,21 @@ export default function HomePage() {
 
             <div>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
-                {(['Auto','Mascotas','Vida','Salud','Comercial','Umbrella'] as InsType[]).map(tipo => (
-                  <button
-                    key={tipo}
-                    onClick={() => openQuote(tipo)}
-                    className="px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-slate-700 hover:bg-slate-800 hover:text-white text-slate-700 text-sm font-medium transition-all text-center"
-                  >
-                    {tipo === 'Auto' && '🚗 '}
-                    {tipo === 'Mascotas' && '🐾 '}
-                    {tipo === 'Vida' && '❤️ '}
-                    {tipo === 'Salud' && '🏥 '}
-                    {tipo === 'Comercial' && '🏢 '}
-                    {tipo === 'Umbrella' && '☂️ '}
-                    {tipo === 'Auto' ? 'Seguro de Auto' : tipo === 'Umbrella' ? 'Protección Extra' : `Seguro ${tipo === 'Mascotas' ? 'de Mascotas' : tipo === 'Vida' ? 'de Vida' : tipo === 'Salud' ? 'de Salud' : 'Comercial'}`}
-                  </button>
-                ))}
+                {((['Auto','AutoComercial','Mascotas','Vida','Salud','Dental','Paquete','Comercial','Umbrella']) as InsType[]).map(tipo => {
+                  const emojis: Record<string, string> = {
+                    Auto: '🚗', AutoComercial: '🚛', Mascotas: '🐾', Vida: '❤️',
+                    Salud: '🏥', Dental: '🦷', Paquete: '🏠', Comercial: '🏢', Umbrella: '☂️',
+                  };
+                  return (
+                    <button
+                      key={tipo}
+                      onClick={() => openQuote(tipo)}
+                      className="px-4 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-slate-700 hover:bg-slate-800 hover:text-white text-slate-700 text-sm font-medium transition-all text-center"
+                    >
+                      {emojis[tipo]} {TIPO_LABEL[tipo]}
+                    </button>
+                  );
+                })}
               </div>
               <button
                 onClick={() => openQuote()}
