@@ -754,6 +754,167 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+
+            {/* Card 5 – Auto Comercial */}
+            <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+              <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-slate-800 to-slate-600 flex items-center justify-center">
+                <PhTruck weight="duotone" className="w-28 h-28 text-white/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Flotas & Mudanzas</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Desde $110/mes</span>
+              </div>
+              <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Auto Comercial</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    Vans de carga, camiones de mudanza, pickups de trabajo y flotas. Tu vehículo de trabajo necesita cobertura especial que ningún seguro personal puede darte. Sin importar cuántos conductores. Sujeto a términos y condiciones.
+                  </p>
+                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                    {['Cubre vans, camiones y flotas comerciales', 'Uso laboral diario sin exclusiones', 'Conductores adicionales incluidos'].map(b => (
+                      <li key={b} className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-900">Desde $110/mes · sujeto a aprobación</span>
+                  <button onClick={() => openQuote('AutoComercial')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
+                    Cotizar Flota <span className="text-sm">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 6 – Salud */}
+            <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+              <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-emerald-800 to-emerald-600 flex items-center justify-center">
+                <PhSteth weight="duotone" className="w-28 h-28 text-white/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Individual & Familiar</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Desde $199/mes</span>
+              </div>
+              <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro de Salud</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    Accede a médicos, especialistas y hospitales sin pagar de tu bolsillo. Planes para ti y tu familia, con o sin SSN. En español, con asesores que te explican exactamente qué cubre cada plan antes de firmar nada. Sujeto a términos y condiciones.
+                  </p>
+                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                    {['Planes individuales, familiares y para empleados', 'Sin SSN ni historial crediticio requerido', 'Asesores en español que te guían paso a paso'].map(b => (
+                      <li key={b} className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-900">Desde $199/mes · sujeto a aprobación</span>
+                  <button onClick={() => openQuote('Salud')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
+                    Ver Planes de Salud <span className="text-sm">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 7 – Dental */}
+            <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+              <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-sky-800 to-sky-500 flex items-center justify-center">
+                <PhTooth weight="duotone" className="w-28 h-28 text-white/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Cuidado Bucal</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Desde $19/mes</span>
+              </div>
+              <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Seguro Dental</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    Limpieza, revisión anual, empastes y extracciones sin que cuesten una fortuna. Protege la salud bucal de toda tu familia sin esperar meses para activar el plan. Sujeto a términos y condiciones.
+                  </p>
+                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                    {['Limpieza y revisión preventiva incluida', 'Cubre tratamientos mayores con deducible bajo', 'Sin período de espera en servicios preventivos'].map(b => (
+                      <li key={b} className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-900">Desde $19/mes · sujeto a aprobación</span>
+                  <button onClick={() => openQuote('Dental')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
+                    Cotizar Dental <span className="text-sm">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 8 – Paquete Casa + Auto */}
+            <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+              <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-amber-800 to-amber-500 flex items-center justify-center">
+                <PhPkg weight="duotone" className="w-28 h-28 text-white/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Paquete Combinado</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Hasta 25% de ahorro</span>
+              </div>
+              <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Paquete Casa + Auto</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    Asegura tu hogar y tu auto juntos y paga menos que si los contrataras por separado. Un solo asesor, una sola cuenta, y más descuento por cada cobertura que sumes. Sujeto a términos y condiciones.
+                  </p>
+                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                    {['Hasta 25% de descuento combinando coberturas', 'Un solo asesor para ambas pólizas', 'Agrega vida o salud y el descuento crece'].map(b => (
+                      <li key={b} className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-900">Bundle desde $130/mes · sujeto a aprobación</span>
+                  <button onClick={() => openQuote('Paquete')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
+                    Armar mi Paquete <span className="text-sm">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 9 – Protección Extra */}
+            <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+              <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-violet-900 to-violet-600 flex items-center justify-center">
+                <PhUmbrella weight="duotone" className="w-28 h-28 text-white/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Cobertura Adicional</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Desde $19/mes</span>
+              </div>
+              <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">Protección Extra</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    Cuando un accidente supera los límites de tu seguro regular, la Protección Extra entra a cubrirte. Protege tus ahorros, tu hogar y tu reputación ante demandas inesperadas que pueden cambiar tu vida. Sujeto a términos y condiciones.
+                  </p>
+                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                    {['Extiende la cobertura de tu auto y hogar', 'Protege tus ahorros ante demandas civiles', 'Disponible desde $1M de cobertura adicional'].map(b => (
+                      <li key={b} className="flex items-center gap-2">
+                        <svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-900">Desde $19/mes · sujeto a aprobación</span>
+                  <button onClick={() => openQuote('Umbrella')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
+                    Añadir Protección Extra <span className="text-sm">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
