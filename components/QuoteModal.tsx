@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, type ComponentType } from 'react';
 import {
   X, CaretLeft, Check, CircleNotch, Car, Truck, PawPrint, Heart,
   Stethoscope, Tooth, Package, Buildings, Umbrella, MapPin,
@@ -41,7 +41,7 @@ interface QuoteData {
 }
 
 /* ─── Config ─────────────────────────────────────────────────────────────── */
-type PhosphorIcon = React.ComponentType<{ weight?: 'thin'|'light'|'regular'|'bold'|'fill'|'duotone'; className?: string; size?: number }>;
+type PhosphorIcon = ComponentType<{ weight?: 'thin'|'light'|'regular'|'bold'|'fill'|'duotone'; className?: string; size?: number }>;
 
 const INSURANCE_OPTIONS: {
   id: InsType; label: string; sublabel: string; price: string;
