@@ -2,10 +2,10 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import {
-  X, ChevronLeft, Check, Loader2, Car, Truck, PawPrint, Heart,
-  Stethoscope, Smile, Package, Building2, Umbrella, MapPin,
-  Calendar, CreditCard, CheckCircle2, ArrowRight,
-} from 'lucide-react';
+  X, CaretLeft, Check, CircleNotch, Car, Truck, PawPrint, Heart,
+  Stethoscope, Tooth, Package, Buildings, Umbrella, MapPin,
+  Calendar, CreditCard,
+} from '@phosphor-icons/react';
 
 /* ─── Types ─────────────────────────────────────────────────────────────── */
 export type InsType =
@@ -41,19 +41,21 @@ interface QuoteData {
 }
 
 /* ─── Config ─────────────────────────────────────────────────────────────── */
+type PhosphorIcon = React.ComponentType<{ weight?: 'thin'|'light'|'regular'|'bold'|'fill'|'duotone'; className?: string; size?: number }>;
+
 const INSURANCE_OPTIONS: {
   id: InsType; label: string; sublabel: string; price: string;
-  icon: React.ElementType; iconBg: string; iconColor: string; selBg: string; selText: string;
+  icon: PhosphorIcon; iconBg: string; iconColor: string; selBg: string; selText: string;
 }[] = [
-  { id: 'Auto',          label: 'Auto Personal',    sublabel: 'Para tu vehículo',       price: 'Desde $89/mes',    icon: Car,         iconBg: 'bg-blue-100',    iconColor: 'text-blue-600',    selBg: 'bg-blue-600',    selText: 'text-white' },
-  { id: 'AutoComercial', label: 'Auto Comercial',   sublabel: 'Vans · camiones · flotas', price: 'Desde $110/mes', icon: Truck,       iconBg: 'bg-orange-100',  iconColor: 'text-orange-600',  selBg: 'bg-orange-500',  selText: 'text-white' },
-  { id: 'Mascotas',      label: 'Mascotas',         sublabel: 'VetDirect™',             price: 'Desde $29/mes',    icon: PawPrint,    iconBg: 'bg-amber-100',   iconColor: 'text-amber-600',   selBg: 'bg-amber-500',   selText: 'text-white' },
-  { id: 'Vida',          label: 'Seguro de Vida',   sublabel: 'Protege a tu familia',   price: 'Desde $45/mes',    icon: Heart,       iconBg: 'bg-rose-100',    iconColor: 'text-rose-600',    selBg: 'bg-rose-500',    selText: 'text-white' },
-  { id: 'Salud',         label: 'Seguro de Salud',  sublabel: 'Individual o familiar',  price: 'Desde $199/mes',   icon: Stethoscope, iconBg: 'bg-emerald-100', iconColor: 'text-emerald-600', selBg: 'bg-emerald-600', selText: 'text-white' },
-  { id: 'Dental',        label: 'Seguro Dental',    sublabel: 'Sonríe sin preocuparte', price: 'Desde $19/mes',    icon: Smile,       iconBg: 'bg-cyan-100',    iconColor: 'text-cyan-600',    selBg: 'bg-cyan-600',    selText: 'text-white' },
-  { id: 'Paquete',       label: 'Casa + Auto',      sublabel: 'Paquete — ahorra hasta 25%', price: 'Bundle',       icon: Package,     iconBg: 'bg-violet-100',  iconColor: 'text-violet-600',  selBg: 'bg-violet-600',  selText: 'text-white' },
-  { id: 'Comercial',     label: 'Seguro Comercial', sublabel: 'Protege tu negocio',     price: 'Desde $120/mes',   icon: Building2,   iconBg: 'bg-purple-100',  iconColor: 'text-purple-600',  selBg: 'bg-purple-600',  selText: 'text-white' },
-  { id: 'Umbrella',      label: 'Protección Extra', sublabel: 'Cobertura adicional',    price: 'Desde $19/mes',    icon: Umbrella,    iconBg: 'bg-slate-100',   iconColor: 'text-slate-600',   selBg: 'bg-slate-700',   selText: 'text-white' },
+  { id: 'Auto',          label: 'Auto Personal',    sublabel: 'Para tu vehículo',           price: 'Desde $89/mes',  icon: Car as PhosphorIcon,         iconBg: 'bg-blue-100',    iconColor: 'text-blue-600',    selBg: 'bg-blue-600',    selText: 'text-white' },
+  { id: 'AutoComercial', label: 'Auto Comercial',   sublabel: 'Vans · camiones · flotas',   price: 'Desde $110/mes', icon: Truck as PhosphorIcon,       iconBg: 'bg-orange-100',  iconColor: 'text-orange-600',  selBg: 'bg-orange-500',  selText: 'text-white' },
+  { id: 'Mascotas',      label: 'Mascotas',         sublabel: 'VetDirect™',                 price: 'Desde $29/mes',  icon: PawPrint as PhosphorIcon,    iconBg: 'bg-amber-100',   iconColor: 'text-amber-600',   selBg: 'bg-amber-500',   selText: 'text-white' },
+  { id: 'Vida',          label: 'Seguro de Vida',   sublabel: 'Protege a tu familia',       price: 'Desde $45/mes',  icon: Heart as PhosphorIcon,       iconBg: 'bg-rose-100',    iconColor: 'text-rose-600',    selBg: 'bg-rose-500',    selText: 'text-white' },
+  { id: 'Salud',         label: 'Seguro de Salud',  sublabel: 'Individual o familiar',      price: 'Desde $199/mes', icon: Stethoscope as PhosphorIcon, iconBg: 'bg-emerald-100', iconColor: 'text-emerald-600', selBg: 'bg-emerald-600', selText: 'text-white' },
+  { id: 'Dental',        label: 'Seguro Dental',    sublabel: 'Sonríe sin preocuparte',     price: 'Desde $19/mes',  icon: Tooth as PhosphorIcon,       iconBg: 'bg-cyan-100',    iconColor: 'text-cyan-600',    selBg: 'bg-cyan-600',    selText: 'text-white' },
+  { id: 'Paquete',       label: 'Casa + Auto',      sublabel: 'Paquete — ahorra hasta 25%', price: 'Bundle',         icon: Package as PhosphorIcon,     iconBg: 'bg-violet-100',  iconColor: 'text-violet-600',  selBg: 'bg-violet-600',  selText: 'text-white' },
+  { id: 'Comercial',     label: 'Seguro Comercial', sublabel: 'Protege tu negocio',         price: 'Desde $120/mes', icon: Buildings as PhosphorIcon,   iconBg: 'bg-purple-100',  iconColor: 'text-purple-600',  selBg: 'bg-purple-600',  selText: 'text-white' },
+  { id: 'Umbrella',      label: 'Protección Extra', sublabel: 'Cobertura adicional',        price: 'Desde $19/mes',  icon: Umbrella as PhosphorIcon,    iconBg: 'bg-slate-100',   iconColor: 'text-slate-600',   selBg: 'bg-slate-700',   selText: 'text-white' },
 ];
 
 const ADAPTIVE: Record<InsType, { q1: string; opts1: string[]; key1: string; q2: string; opts2: string[]; key2: string }> = {
@@ -276,8 +278,8 @@ function VinField({ value, decoded, onChange, onDecoded }: {
   return (
     <div>
       <div className="relative">
-        <CreditCard className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-        {loading && <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 animate-spin" />}
+        <CreditCard weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+        {loading && <CircleNotch weight="bold" className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 animate-spin" />}
         <input
           type="text" value={value} onChange={e => handleChange(e.target.value)}
           placeholder="Ej. 1HGBH41JXMN109186" maxLength={17}
@@ -317,7 +319,7 @@ function AddressField({ value, onChange }: { value: string; onChange: (v: string
   return (
     <div className="relative">
       <div className="relative">
-        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+        <MapPin weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
         <input
           type="text" value={value} onChange={e => handleInput(e.target.value)}
           onFocus={() => suggestions.length > 0 && setOpen(true)}
@@ -332,7 +334,7 @@ function AddressField({ value, onChange }: { value: string; onChange: (v: string
           {suggestions.map((s, i) => (
             <button key={i} type="button" onMouseDown={() => { onChange(s); setSuggestions([]); setOpen(false); }}
               className="w-full text-left px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 border-b border-slate-100 last:border-0 flex items-start gap-2">
-              <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />{s}
+              <MapPin weight="duotone" className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />{s}
             </button>
           ))}
         </div>
@@ -456,13 +458,13 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
           <div className="flex items-center gap-3">
             {step > 0 && !success && (
               <button onClick={back} className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
-                <ChevronLeft className="w-4 h-4" />
+                <CaretLeft weight="bold" className="w-4 h-4" />
               </button>
             )}
             {!success && <ProgressDots total={totalSteps} current={visualStep(step)} />}
           </div>
           <button onClick={onClose} className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
-            <X className="w-4 h-4" />
+            <X weight="bold" className="w-4 h-4" />
           </button>
         </div>
 
@@ -474,7 +476,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
           {success && (
             <div className="text-center py-4">
               <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 ${isInstantanea ? 'bg-violet-100' : 'bg-emerald-100'}`}>
-                <Check className={`w-8 h-8 ${isInstantanea ? 'text-violet-600' : 'text-emerald-600'}`} strokeWidth={2.5} />
+                <Check weight="bold" className={`w-8 h-8 ${isInstantanea ? 'text-violet-600' : 'text-emerald-600'}`} />
               </div>
               <h2 className="text-2xl font-bold text-slate-800 mb-2">
                 {isInstantanea ? `¡En camino, ${data.nombre.split(' ')[0]}!` : `¡Listo, ${data.nombre.split(' ')[0]}!`}
@@ -510,7 +512,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                         sel ? `${opt.selBg} border-transparent shadow-md scale-[1.03]` : 'border-slate-100 bg-white hover:border-slate-200 hover:shadow-sm'
                       }`}>
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${sel ? 'bg-white/20' : opt.iconBg}`}>
-                        <Icon className={`w-5 h-5 ${sel ? 'text-white' : opt.iconColor}`} />
+                        <Icon weight="duotone" className={`w-5 h-5 ${sel ? 'text-white' : opt.iconColor}`} />
                       </div>
                       <div>
                         <p className={`text-[11px] font-semibold leading-tight ${sel ? 'text-white' : 'text-slate-800'}`}>{opt.label}</p>
@@ -570,8 +572,8 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
               <h2 className="text-xl font-bold text-slate-800 mb-1">¿Cuál es tu código postal?</h2>
               <p className="text-slate-500 text-sm mb-5">El precio varía por estado. No pedimos dirección exacta.</p>
               <div className="relative mb-3">
-                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                {zipLoading && <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 animate-spin" />}
+                <MapPin weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                {zipLoading && <CircleNotch weight="bold" className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 animate-spin" />}
                 <input type="text" inputMode="numeric" maxLength={5} autoComplete="postal-code"
                   placeholder="ej. 90210" value={data.zip_code}
                   onChange={e => {
@@ -615,7 +617,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                     {field.type === 'vin' && <VinField value={data.detalles[field.key] ?? ''} decoded={vinDecoded} onChange={v => setDetail(field.key, v)} onDecoded={setVinDecoded} />}
                     {field.type === 'date' && (
                       <div className="relative">
-                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                        <Calendar weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                         <input type="date" value={data.detalles[field.key] ?? ''}
                           onChange={e => setDetail(field.key, e.target.value)}
                           max={new Date(new Date().setFullYear(new Date().getFullYear() - 16)).toISOString().split('T')[0]}
@@ -696,7 +698,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
             ) : (
               <button onClick={submit} disabled={!canNext || submitting}
                 className="w-full py-3.5 font-semibold text-sm rounded-2xl transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white">
-                {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Enviando…</> : isInstantanea ? '📧 Enviar mi cotización →' : 'Ver mi cotización →'}
+                {submitting ? <><CircleNotch weight="bold" className="w-4 h-4 animate-spin" /> Enviando…</> : isInstantanea ? '📧 Enviar mi cotización →' : 'Ver mi cotización →'}
               </button>
             )}
           </div>
