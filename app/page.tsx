@@ -40,6 +40,25 @@ const COTIZADOR_ICONS: Record<string, PhIcon> = {
   Umbrella:      PhUmbrella as PhIcon,
 };
 
+// ─── Brand Story Reel Slides ─────────────────────────────────────────────────
+const REEL_SLIDES = [
+  {
+    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDhpcaKyb3Dv730KusfGdXUSFLVOmaJp0G2G_CD1Tm9Jj8IxgPMza1YquaADeho2Ikn26nxl7iqjIrPOURTfaDHqJv5XuULnS9ZYK-j_TvrMATbnyT3XwxMK_SXvT6R8JhS23olqKL_HGLrsx-7qrUCiD5ifWYXJwbKk0vl3dc1gyau-UNkcZqYOdgu426BczMtMhs16n4lm2CTfZHpi3SW9-mvjm3PCIitHa2T_1vtp0wuOsas8BA5',
+    alt: 'Familia y aventura en la naturaleza protegidos por seguros de viaje y vida',
+    caption: 'Cobertura Integral para Aventuras & Estilo de Vida',
+  },
+  {
+    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuALlX2I4j-SU_STw4ViFQeVDt0M4YxEt0cbgHQFMCr8RXn9gV-DavMlNlAmXZS5X0494HA4XpJvw5jwxaZjTbKrAT0cs5qhPlhNB6tBGECcuhEVItlT7n37JJ8JTVwq74OszgS9qLJhKo48A4YdUUD4hWflLudi-RKeyKWWeGXfWlGE7qzxaFJEee_eU5SF0rSAfIv10xx7FgIu3fdsemCQoRviPDgmodbQI5MoL1-DJGq2_eRboNg7',
+    alt: 'Paisajes abiertos y seguros — cada horizonte resguardado',
+    caption: 'Cada horizonte resguardado con Aegis.',
+  },
+  {
+    src: 'https://lh3.googleusercontent.com/aida/AEtjO1X7Fsl95nUF-Lp5Lff5U0pm19f6MSz9GOCmjjKo0fCZNv9O3rYuqZl69L1su4s9Lg_UXnQ_Ooap4L6zaqGTyZVjIflziXskEcdRy0zQtJc7LZWhM-e0xHK38oZQkk3kEJ439GhT7rA8v2y_unh8f-IFzVojqQoBXslc6sSkwzqydPTZap34_QhXnj1xihdb-A8e68h8Ap_dEq2WHhgyff7M5MLXHF3C2syuCTX_PkerUHg2IwuPu2MDxf0',
+    alt: 'Familia protegida y segura — legado para las próximas generaciones',
+    caption: 'Tu familia protegida en cada etapa de la vida.',
+  },
+] as const;
+
 // ─── Solutions Tab Data ───────────────────────────────────────────────────────
 const solutionsTabs = [
   {
@@ -159,6 +178,13 @@ export default function HomePage() {
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [heroIndex]);
+
+  // ── Brand Story Reel ──
+  const [reelIndex, setReelIndex] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setReelIndex(i => (i + 1) % REEL_SLIDES.length), 4000);
+    return () => clearInterval(t);
+  }, []);
 
   // Solutions tabs
   const [activeTab, setActiveTab] = useState(0);
@@ -793,9 +819,9 @@ export default function HomePage() {
 
             {/* Card 6 – Salud */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-              <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-emerald-800 to-emerald-600 flex items-center justify-center">
-                <PhSteth weight="duotone" className="w-28 h-28 text-white/10" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <div className="relative h-52 w-full overflow-hidden">
+                <video src="/videos/salud.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Individual & Familiar</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Desde $199/mes</span>
               </div>
@@ -979,30 +1005,39 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Column – Photo Grid */}
+            {/* Right Column – Photo Reel */}
             <div className="lg:col-span-7">
-              <div className="grid grid-cols-12 gap-4 sm:gap-6 items-stretch">
-                <div className="col-span-8 overflow-hidden rounded-[30px] shadow-lg relative min-h-[460px] lg:min-h-[540px]">
-                  <img
-                    alt="Familia y aventura en la naturaleza protegidos por seguros de viaje y vida"
-                    className="absolute inset-0 w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhpcaKyb3Dv730KusfGdXUSFLVOmaJp0G2G_CD1Tm9Jj8IxgPMza1YquaADeho2Ikn26nxl7iqjIrPOURTfaDHqJv5XuULnS9ZYK-j_TvrMATbnyT3XwxMK_SXvT6R8JhS23olqKL_HGLrsx-7qrUCiD5ifWYXJwbKk0vl3dc1gyau-UNkcZqYOdgu426BczMtMhs16n4lm2CTfZHpi3SW9-mvjm3PCIitHa2T_1vtp0wuOsas8BA5"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-6 left-6 text-white text-xs tracking-wide font-light">
-                    Cobertura Integral para Aventuras & Estilo de Vida
+              <div className="relative overflow-hidden rounded-[30px] shadow-lg min-h-[460px] lg:min-h-[540px]">
+                {REEL_SLIDES.map((slide, i) => (
+                  <div
+                    key={i}
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                      i === reelIndex ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                    }`}
+                  >
+                    <img
+                      src={slide.src}
+                      alt={slide.alt}
+                      className="w-full h-full object-cover object-center"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                    <div className="absolute bottom-6 left-6 right-20 text-white text-sm font-light tracking-wide">
+                      {slide.caption}
+                    </div>
                   </div>
-                </div>
-                <div className="col-span-4 overflow-hidden rounded-[30px] shadow-md relative min-h-[460px] lg:min-h-[540px]">
-                  <img
-                    alt="Paisajes abiertos y seguros"
-                    className="absolute inset-0 w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuALlX2I4j-SU_STw4ViFQeVDt0M4YxEt0cbgHQFMCr8RXn9gV-DavMlNlAmXZS5X0494HA4XpJvw5jwxaZjTbKrAT0cs5qhPlhNB6tBGECcuhEVItlT7n37JJ8JTVwq74OszgS9qLJhKo48A4YdUUD4hWflLudi-RKeyKWWeGXfWlGE7qzxaFJEee_eU5SF0rSAfIv10xx7FgIu3fdsemCQoRviPDgmodbQI5MoL1-DJGq2_eRboNg7"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50"></div>
-                  <div className="absolute bottom-6 left-4 right-4 text-white text-[11px] font-light leading-snug">
-                    Cada horizonte resguardado con Aegis.
-                  </div>
+                ))}
+                {/* Dot indicators */}
+                <div className="absolute bottom-6 right-6 flex gap-2 items-center">
+                  {REEL_SLIDES.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setReelIndex(i)}
+                      aria-label={`Ir a imagen ${i + 1}`}
+                      className={`rounded-full transition-all duration-300 ${
+                        i === reelIndex ? 'w-5 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>

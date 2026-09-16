@@ -460,9 +460,9 @@ export default function EnglishPage() {
 
             {/* Card – Health */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-              <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-emerald-800 to-emerald-600 flex items-center justify-center">
-                <PhSteth weight="duotone" className="w-28 h-28 text-white/10" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <div className="relative h-52 w-full overflow-hidden">
+                <video src="/videos/salud.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Individual & Family</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">From $199/mo</span>
               </div>
