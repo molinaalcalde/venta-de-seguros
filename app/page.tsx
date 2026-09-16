@@ -19,6 +19,7 @@ import {
 import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
 import QuoteModal, { type InsType, TIPO_LABEL } from '@/components/QuoteModal';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import type { ComponentType } from 'react';
 import {
   Car as PhCar, Truck as PhTruck, PawPrint as PhPaw, Heart as PhHeart,
@@ -225,8 +226,9 @@ export default function HomePage() {
               ))}
             </nav>
 
-            {/* CTA + Hamburger */}
-            <div className="flex items-center gap-3">
+            {/* CTA + Lang + Hamburger */}
+            <div className="flex items-center gap-2">
+              <LanguageSwitcher scrolled={scrolled} />
               <button
                 onClick={() => openQuote()}
                 className={`hidden lg:flex items-center gap-2 px-5 py-2 text-[13px] font-semibold rounded-full transition-all duration-200 active:scale-95 ${

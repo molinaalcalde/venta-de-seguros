@@ -31,6 +31,8 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
     languages: {
       'es-US': BASE_URL,
+      'en-US': `${BASE_URL}/en`,
+      'x-default': BASE_URL,
     },
   },
   openGraph: {
@@ -67,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es-US" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
