@@ -111,7 +111,7 @@ export default function EnglishPage() {
     setHeroIndex(idx);
   }, [heroIndex, videoRefs]);
 
-  const goNext = useCallback(() => goToVideo((heroIndex + 1) % 2), [heroIndex, goToVideo]);
+  const goNext = useCallback(() => goToVideo((heroIndex + 1) % HERO_VIDEOS.length), [heroIndex, goToVideo]);
 
   useEffect(() => {
     const el = videoRefs[heroIndex as 0 | 1 | 2]?.current;
