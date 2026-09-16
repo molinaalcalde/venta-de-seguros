@@ -433,9 +433,9 @@ export default function EnglishPage() {
 
             {/* Card – Commercial Auto */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-              <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-slate-800 to-slate-600 flex items-center justify-center">
-                <PhTruck weight="duotone" className="w-28 h-28 text-white/10" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <div className="relative h-52 w-full overflow-hidden">
+                <video src="/videos/comercial.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Fleets & Moving Trucks</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">From $110/mo</span>
               </div>
@@ -487,9 +487,9 @@ export default function EnglishPage() {
 
             {/* Card – Dental */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-              <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-sky-800 to-sky-500 flex items-center justify-center">
-                <PhTooth weight="duotone" className="w-28 h-28 text-white/10" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <div className="relative h-52 w-full overflow-hidden">
+                <video src="/videos/dental.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Dental Care</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">From $19/mo</span>
               </div>
