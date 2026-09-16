@@ -43,6 +43,7 @@ const TIPO_LABEL_EN: Record<InsType, string> = {
 const HERO_VIDEOS = [
   { src: '/videos/hero1.mp4', startTime: 2 },
   { src: '/videos/hero2.mp4', startTime: 10 },
+  { src: '/videos/hero3.mp4', startTime: 0 },
 ] as const;
 
 const FAQ_EN = [
@@ -90,7 +91,8 @@ export default function EnglishPage() {
 
   const videoRef0 = useRef<HTMLVideoElement>(null);
   const videoRef1 = useRef<HTMLVideoElement>(null);
-  const videoRefs = [videoRef0, videoRef1] as const;
+  const videoRef2 = useRef<HTMLVideoElement>(null);
+  const videoRefs = [videoRef0, videoRef1, videoRef2] as const;
   const timerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Scroll header
@@ -102,8 +104,8 @@ export default function EnglishPage() {
 
   // Video carousel
   const goToVideo = useCallback((idx: number) => {
-    const prev = videoRefs[heroIndex as 0 | 1]?.current;
-    const next = videoRefs[idx as 0 | 1]?.current;
+    const prev = videoRefs[heroIndex as 0 | 1 | 2]?.current;
+    const next = videoRefs[idx as 0 | 1 | 2]?.current;
     if (prev) prev.pause();
     if (next) { next.currentTime = HERO_VIDEOS[idx].startTime; next.play().catch(() => {}); }
     setHeroIndex(idx);
@@ -112,7 +114,7 @@ export default function EnglishPage() {
   const goNext = useCallback(() => goToVideo((heroIndex + 1) % 2), [heroIndex, goToVideo]);
 
   useEffect(() => {
-    const el = videoRefs[heroIndex as 0 | 1]?.current;
+    const el = videoRefs[heroIndex as 0 | 1 | 2]?.current;
     if (el) { el.currentTime = HERO_VIDEOS[heroIndex].startTime; el.play().catch(() => {}); }
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(goNext, 10000);
@@ -241,7 +243,7 @@ export default function EnglishPage() {
             src={v.src}
             muted playsInline loop preload="auto"
             onLoadedMetadata={() => {
-              const el = videoRefs[i as 0 | 1]?.current;
+              const el = videoRefs[i as 0 | 1 | 2]?.current;
               if (el) el.currentTime = v.startTime;
             }}
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
@@ -322,8 +324,7 @@ export default function EnglishPage() {
             {/* Card – Auto */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <img src="https://lh3.googleusercontent.com/aida/AEtjO1Vn9TVQWIybHlufHx6Uoe8BDHhnIe22cMilgQyVfep9gkS5ulXUYzi3Vzfryf9-n3WitxE-qKwc1GpPNZkLQgftir-O_HO1zYamlKziOR3nLyayWpB6lYZci6qR5ldzZyLrpxR_nB2Sg74RQ0t9WdCRF2r_iKOwxuyY6wYDDOgaulV0YdN_I0GQ30xhI4BX0rNeRwbe1fk5hr2G_BE9C8gZ8jFDxH0PspctCWgcKwftu_WKhmwHc2nQp0w"
-                  alt="Car Insurance" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                <video src="/videos/hero3.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Personal & EV</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">From $89/mo</span>
