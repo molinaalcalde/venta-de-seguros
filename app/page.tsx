@@ -742,11 +742,7 @@ export default function HomePage() {
             {/* Card 4 – Comercial */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <img
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1Ut8ix4c4svI2T0dezIF5fAym35f_jmGbgJg24hUDZXPE9LaFHoVpC4tE5p4JLdPqh111gWzEerZtZ_inQ7fZWS3uhr6AC-UcwCwC9wDlhJzSy2myjJOmuRmZgSKOzuuko_9lPoIq9PlAyyHOz8KxUpdvVhrRedT2jg84Jjql5seN67hQYsR-vhjHSDBb6TAQsyeFPAmBjV_eeF-zjuoSzQ8jyx5ed_yslMplNe8n3ahVt4VUjwApfjhtE"
-                  alt="Seguros Comerciales y Protección Cibernética"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
+                <video src="/videos/comercial-negocio.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">
                   Empresas & Cyber
