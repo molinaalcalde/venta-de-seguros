@@ -607,9 +607,6 @@ export default function HomePage() {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">
-                  Movilidad Inteligente
-                </span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">
                   Desde $75/mes
                 </span>
@@ -656,9 +653,6 @@ export default function HomePage() {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">
-                  VetDirect™ Technology
-                </span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">
                   Planes desde $29/mes
                 </span>
@@ -698,9 +692,6 @@ export default function HomePage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/vida.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">
-                  Protección Familiar & Legado
-                </span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">
                   Coberturas desde $500k
                 </span>
@@ -740,9 +731,6 @@ export default function HomePage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/comercial-negocio.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">
-                  Empresas & Cyber
-                </span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">
                   PyMEs y Corporativos
                 </span>
@@ -782,7 +770,6 @@ export default function HomePage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/comercial.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Flotas & Mudanzas</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Desde $110/mes</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -814,7 +801,6 @@ export default function HomePage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/salud.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Individual & Familiar</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Desde $199/mes</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -846,7 +832,6 @@ export default function HomePage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/dental.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Cuidado Bucal</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Desde $19/mes</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -878,7 +863,6 @@ export default function HomePage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/paquete.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Paquete Combinado</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Hasta 25% de ahorro</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -910,7 +894,6 @@ export default function HomePage() {
               <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-violet-900 to-violet-600 flex items-center justify-center">
                 <PhUmbrella weight="duotone" className="w-28 h-28 text-white/10" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Cobertura Adicional</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Desde $19/mes</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">

@@ -326,7 +326,6 @@ export default function EnglishPage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/hero3.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Personal & EV</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">From $89/mo</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -353,7 +352,7 @@ export default function EnglishPage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/hero2.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">VetDirect™ Technology</span>
+
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Plans from $29/mo</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -380,7 +379,6 @@ export default function EnglishPage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/vida.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Family Protection & Legacy</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Coverage from $500k</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -407,7 +405,6 @@ export default function EnglishPage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/comercial-negocio.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Small Business & Corporate</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">SMBs & Enterprises</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -434,7 +431,6 @@ export default function EnglishPage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/comercial.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Fleets & Moving Trucks</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">From $110/mo</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -461,7 +457,6 @@ export default function EnglishPage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/salud.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Individual & Family</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">From $199/mo</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -488,7 +483,6 @@ export default function EnglishPage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/dental.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Dental Care</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">From $19/mo</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -515,7 +509,6 @@ export default function EnglishPage() {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/paquete.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Bundle & Save</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">Save up to 25%</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
@@ -542,7 +535,6 @@ export default function EnglishPage() {
               <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-violet-900 to-violet-600 flex items-center justify-center">
                 <PhUmbrella weight="duotone" className="w-28 h-28 text-white/10" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-slate-800 backdrop-blur-sm shadow-sm">Extra Coverage</span>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">From $19/mo</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
