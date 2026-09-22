@@ -42,7 +42,7 @@ export default function AdminLogin() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="flex items-center justify-center mb-10">
-          <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-10 w-auto brightness-0 invert" />
+          <img src="/logo.jpg" alt="Maria Fernanda Insurance Consulting" className="h-10 w-auto brightness-0 invert" />
         </div>
 
         {/* Card */}

@@ -14,7 +14,7 @@ export default function BlogLayout({ children }: { children: ReactNode }) {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
               <Link href="/" className="block mb-2">
-                <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto brightness-0 invert" />
+                <img src="/logo.jpg" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto brightness-0 invert" />
               </Link>
               <p className="text-xs text-slate-500 max-w-xs leading-relaxed">
                 Seguros en español para la comunidad hispana en Estados Unidos. Sujeto a términos y condiciones.

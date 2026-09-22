@@ -131,7 +131,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
           <div className="flex items-center justify-between h-14">
             <Link href="/" className="flex items-center gap-2 group">
               <ArrowLeft weight="regular" className="w-4 h-4 text-slate-400 group-hover:text-slate-700 transition-colors" />
-              <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto" />
+              <img src="/logo.jpg" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto" />
             </Link>
             <button
               onClick={() => setQuoteOpen(true)}
@@ -367,7 +367,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8">
               <div>
                 <div className="mb-1.5">
-                  <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto brightness-0 invert" />
+                  <img src="/logo.jpg" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto brightness-0 invert" />
                 </div>
                 <p className="text-xs text-slate-400 font-light mb-4">Seguros para la comunidad hispana · Sin SSN · ITIN aceptado</p>
                 <button

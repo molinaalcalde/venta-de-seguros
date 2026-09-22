@@ -23,7 +23,7 @@ export default function BlogHeader() {
 
           {/* Logo */}
           <Link href="/" className="shrink-0">
-            <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-9 w-auto" />
+            <img src="/logo.jpg" alt="Maria Fernanda Insurance Consulting" className="h-9 w-auto" />
           </Link>
 
           {/* Desktop nav */}
