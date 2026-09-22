@@ -679,7 +679,9 @@ export default function HomePage() {
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Desde $29/mes · sujeto a aprobación</span>
+                  <Link href="/seguros/mascotas" className="text-xs font-medium text-slate-500 hover:text-slate-900 underline underline-offset-2 transition-colors">
+                    Ver detalle →
+                  </Link>
                   <button onClick={() => openQuote('Mascotas')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Cotizar Mascotas <span className="text-sm">→</span>
                   </button>
