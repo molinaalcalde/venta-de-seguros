@@ -156,7 +156,7 @@ export default function MascotasPage() {
           <div className="flex items-center justify-between h-14">
             <Link href="/" className="flex items-center gap-2 group">
               <ArrowLeft weight="regular" className="w-4 h-4 text-slate-400 group-hover:text-slate-700 transition-colors" />
-              <img src="/logo.jpg" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto" />
+              <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto" />
             </Link>
             <button
               onClick={() => setQuoteOpen(true)}
@@ -446,7 +446,7 @@ export default function MascotasPage() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <div className="mb-1">
-                  <img src="/logo.jpg" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto brightness-0 invert" />
+                  <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto brightness-0 invert" />
                 </div>
                 <p className="text-xs text-slate-400 font-light">
                   Seguros para la comunidad hispana · Sin SSN requerido · ITIN aceptado

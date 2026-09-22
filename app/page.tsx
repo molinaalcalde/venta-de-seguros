@@ -215,7 +215,7 @@ export default function HomePage() {
             {/* Logo */}
             <a className="shrink-0" href="#">
               <img
-                src="/logo.jpg"
+                src="/logo.png"
                 alt="Maria Fernanda Insurance Consulting"
                 className={`h-10 w-auto transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`}
               />
@@ -1382,7 +1382,7 @@ export default function HomePage() {
             {/* Brand Col */}
             <div className="md:col-span-2 space-y-4">
               <div className="text-white">
-                <img src="/logo.jpg" alt="Maria Fernanda Insurance Consulting" className="h-10 w-auto brightness-0 invert" />
+                <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-10 w-auto brightness-0 invert" />
               </div>
               <p className="text-xs text-slate-400 max-w-sm leading-relaxed font-light">
                 Seguridad generacional, protección de vehículos y mascotas, y resguardo patrimonial integral con solidez institucional de primer nivel.

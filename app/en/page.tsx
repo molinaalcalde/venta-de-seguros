@@ -180,7 +180,7 @@ export default function EnglishPage() {
           <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-16' : 'h-20'}`}>
             <a href="/en" className="shrink-0">
               <img
-                src="/logo.jpg"
+                src="/logo.png"
                 alt="Maria Fernanda Insurance Consulting"
                 className={`h-10 w-auto transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`}
               />
@@ -738,7 +738,7 @@ export default function EnglishPage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <img src="/logo.jpg" alt="Maria Fernanda Insurance Consulting" className="h-9 w-auto brightness-0 invert" />
+              <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-9 w-auto brightness-0 invert" />
             </div>
             <p className="text-white/30 text-xs text-center">
               © {new Date().getFullYear()} Maria Fernanda Insurance Consulting. All rights reserved. · Coverage subject to approval and terms & conditions.
