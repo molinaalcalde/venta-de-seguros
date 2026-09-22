@@ -633,7 +633,9 @@ export default function HomePage() {
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Desde $89/mes · sujeto a aprobación</span>
+                  <Link href="/seguros/auto" className="text-xs font-medium text-slate-500 hover:text-slate-900 underline underline-offset-2 transition-colors">
+                    Ver detalle →
+                  </Link>
                   <button onClick={() => openQuote('Auto')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Ver Cobertura Auto <span className="text-sm">→</span>
                   </button>
@@ -720,7 +722,9 @@ export default function HomePage() {
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Desde $45/mes · sujeto a aprobación</span>
+                  <Link href="/seguros/vida" className="text-xs font-medium text-slate-500 hover:text-slate-900 underline underline-offset-2 transition-colors">
+                    Ver detalle →
+                  </Link>
                   <button onClick={() => openQuote('Vida')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Explorar Vida <span className="text-sm">→</span>
                   </button>
@@ -759,7 +763,9 @@ export default function HomePage() {
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Desde $120/mes · sujeto a aprobación</span>
+                  <Link href="/seguros/comercial" className="text-xs font-medium text-slate-500 hover:text-slate-900 underline underline-offset-2 transition-colors">
+                    Ver detalle →
+                  </Link>
                   <button onClick={() => openQuote('Comercial')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Proteger Empresa <span className="text-sm">→</span>
                   </button>
@@ -790,7 +796,9 @@ export default function HomePage() {
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Desde $110/mes · sujeto a aprobación</span>
+                  <Link href="/seguros/auto-comercial" className="text-xs font-medium text-slate-500 hover:text-slate-900 underline underline-offset-2 transition-colors">
+                    Ver detalle →
+                  </Link>
                   <button onClick={() => openQuote('AutoComercial')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Cotizar Flota <span className="text-sm">→</span>
                   </button>
@@ -821,7 +829,9 @@ export default function HomePage() {
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Desde $199/mes · sujeto a aprobación</span>
+                  <Link href="/seguros/salud" className="text-xs font-medium text-slate-500 hover:text-slate-900 underline underline-offset-2 transition-colors">
+                    Ver detalle →
+                  </Link>
                   <button onClick={() => openQuote('Salud')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Ver Planes de Salud <span className="text-sm">→</span>
                   </button>
@@ -852,7 +862,9 @@ export default function HomePage() {
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Desde $19/mes · sujeto a aprobación</span>
+                  <Link href="/seguros/dental" className="text-xs font-medium text-slate-500 hover:text-slate-900 underline underline-offset-2 transition-colors">
+                    Ver detalle →
+                  </Link>
                   <button onClick={() => openQuote('Dental')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Cotizar Dental <span className="text-sm">→</span>
                   </button>
@@ -883,7 +895,9 @@ export default function HomePage() {
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Bundle desde $130/mes · sujeto a aprobación</span>
+                  <Link href="/seguros/paquete-casa-auto" className="text-xs font-medium text-slate-500 hover:text-slate-900 underline underline-offset-2 transition-colors">
+                    Ver detalle →
+                  </Link>
                   <button onClick={() => openQuote('Paquete')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Armar mi Paquete <span className="text-sm">→</span>
                   </button>
@@ -914,7 +928,9 @@ export default function HomePage() {
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-900">Desde $19/mes · sujeto a aprobación</span>
+                  <Link href="/seguros/proteccion-extra" className="text-xs font-medium text-slate-500 hover:text-slate-900 underline underline-offset-2 transition-colors">
+                    Ver detalle →
+                  </Link>
                   <button onClick={() => openQuote('Umbrella')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">
                     Añadir Protección Extra <span className="text-sm">→</span>
                   </button>
