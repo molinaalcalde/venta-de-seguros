@@ -22,14 +22,8 @@ export default function BlogHeader() {
         <div className="flex items-center justify-between h-14">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="w-5 h-5 rounded-full border-[2px] border-slate-800 flex items-center justify-center transition-all group-hover:scale-110">
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-800"></span>
-            </div>
-            <div className="leading-none">
-              <span className="block font-semibold text-[14px] tracking-tight text-slate-900">Aegis</span>
-              <span className="block text-[8px] font-medium tracking-[0.1em] uppercase text-slate-400">National Assurance</span>
-            </div>
+          <Link href="/" className="shrink-0">
+            <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-9 w-auto" />
           </Link>
 
           {/* Desktop nav */}

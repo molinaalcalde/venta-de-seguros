@@ -49,15 +49,15 @@ const HERO_VIDEOS = [
 const FAQ_EN = [
   {
     q: 'Can I get car insurance without a Social Security Number?',
-    a: 'Yes. You can get car insurance using an ITIN (Individual Taxpayer Identification Number) instead of a Social Security Number. At Aegis National Assurance, we accept ITIN for all coverage types — auto, life, health, dental, and more. No SSN is ever required to get a quote or enroll in a plan.',
+    a: 'Yes. You can get car insurance using an ITIN (Individual Taxpayer Identification Number) instead of a Social Security Number. At Maria Fernanda Insurance Consulting, we accept ITIN for all coverage types — auto, life, health, dental, and more. No SSN is ever required to get a quote or enroll in a plan.',
   },
   {
     q: 'Can undocumented immigrants get car insurance in the United States?',
-    a: 'Yes. Undocumented immigrants can legally purchase car insurance in all 50 states. Most states require all drivers to carry minimum liability insurance regardless of immigration status. Driving without insurance can result in fines, license suspension, and personal financial liability for damages caused. Aegis provides coverage regardless of your immigration status.',
+    a: 'Yes. Undocumented immigrants can legally purchase car insurance in all 50 states. Most states require all drivers to carry minimum liability insurance regardless of immigration status. Driving without insurance can result in fines, license suspension, and personal financial liability for damages caused. We provide coverage regardless of your immigration status.',
   },
   {
     q: 'What is ITIN insurance and how does it work?',
-    a: 'ITIN insurance refers to insurance policies available to people who use an Individual Taxpayer Identification Number (ITIN) instead of a Social Security Number. The ITIN is issued by the IRS to individuals who do not qualify for an SSN. At Aegis, we accept ITIN as valid identification for auto, life, health, pet, dental, and business insurance.',
+    a: 'ITIN insurance refers to insurance policies available to people who use an Individual Taxpayer Identification Number (ITIN) instead of a Social Security Number. The ITIN is issued by the IRS to individuals who do not qualify for an SSN. Here, we accept ITIN as valid identification for auto, life, health, pet, dental, and business insurance.',
   },
   {
     q: 'Is my personal information shared with immigration authorities?',
@@ -69,15 +69,15 @@ const FAQ_EN = [
   },
   {
     q: 'Does getting an insurance quote affect my credit score?',
-    a: 'No. Getting a quote from Aegis National Assurance does not affect your credit score. We do not require a credit check to provide you with a quote or to enroll in most plans. You can explore all your options with zero impact on your credit.',
+    a: 'No. Getting a quote from Maria Fernanda Insurance Consulting does not affect your credit score. We do not require a credit check to provide you with a quote or to enroll in most plans. You can explore all your options with zero impact on your credit.',
   },
   {
     q: 'How much does car insurance cost for immigrants in the US?',
     a: 'Car insurance for immigrants in the US typically starts from $89/month, depending on your state, vehicle type, and driving history. Using an ITIN instead of an SSN does not significantly affect your premium. We work with multiple top-rated carriers to find the most competitive rate for your situation. Get a free quote in under 90 seconds.',
   },
   {
-    q: 'What languages do Aegis insurance agents speak?',
-    a: 'All Aegis National Assurance agents are fully bilingual in English and Spanish. You can communicate with your agent in whichever language you prefer — we adapt to you. There are no additional fees for bilingual service. Our agents are available by phone, email, and chat.',
+    q: 'What languages do your insurance agents speak?',
+    a: 'All Maria Fernanda Insurance Consulting agents are fully bilingual in English and Spanish. You can communicate with your agent in whichever language you prefer — we adapt to you. There are no additional fees for bilingual service. Our agents are available by phone, email, and chat.',
   },
 ];
 
@@ -138,7 +138,7 @@ export default function EnglishPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'InsuranceAgency',
-            name: 'Aegis National Assurance',
+            name: 'Maria Fernanda Insurance Consulting',
             url: 'https://venta-de-seguros.vercel.app/en',
             description: 'Bilingual insurance agency specializing in coverage for immigrants and the Hispanic community across the US. Auto, life, health, pet, dental, and business insurance. ITIN accepted. No SSN required.',
             areaServed: { '@type': 'Country', name: 'United States' },
@@ -178,22 +178,18 @@ export default function EnglishPage() {
       }`}>
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-16' : 'h-20'}`}>
-            <a href="/en" className="flex items-center gap-3">
-              <div className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                scrolled ? 'bg-slate-900' : 'bg-white/20 backdrop-blur-sm'
-              }`}>
-                <Shield className={`w-4 h-4 transition-all duration-300 ${scrolled ? 'text-white' : 'text-white'}`} />
-              </div>
-              <div className="leading-none">
-                <span className={`block font-semibold text-sm tracking-tight transition-all duration-300 ${scrolled ? 'text-slate-900' : 'text-white'}`}>Aegis</span>
-                <span className={`block font-medium tracking-[0.1em] uppercase text-[8px] transition-all duration-300 ${scrolled ? 'text-slate-400' : 'text-white/50'}`}>National Assurance</span>
-              </div>
+            <a href="/en" className="shrink-0">
+              <img
+                src="/logo.png"
+                alt="Maria Fernanda Insurance Consulting"
+                className={`h-10 w-auto transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`}
+              />
             </a>
 
             <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-7">
               {[
                 { label: 'Coverage', href: '#coverage' },
-                { label: 'Why Aegis', href: '#why-aegis' },
+                { label: 'Why Us', href: '#why-aegis' },
                 { label: 'FAQ', href: '#faq' },
                 { label: 'Blog', href: '/blog' },
               ].map(({ label, href }) => (
@@ -235,7 +231,7 @@ export default function EnglishPage() {
               {[
                 { label: 'Home', href: '/en' },
                 { label: 'Coverage', href: '#coverage' },
-                { label: 'Why Aegis', href: '#why-aegis' },
+                { label: 'Why Us', href: '#why-aegis' },
                 { label: 'FAQ', href: '#faq' },
                 { label: 'Blog', href: '/blog' },
               ].map(({ label, href }) => (
@@ -586,7 +582,7 @@ export default function EnglishPage() {
       <section className="py-16 lg:py-24 bg-white border-y border-stone-100" id="why-aegis">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold">Aegis National Assurance</span>
+            <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold">Maria Fernanda Insurance Consulting</span>
             <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-normal text-slate-900 tracking-tight leading-tight mt-3">
               Here when you<br />
               <span className="font-editorial-italic font-normal">need us most.</span>
@@ -613,7 +609,7 @@ export default function EnglishPage() {
               {
                 icon: <Layers className="w-5 h-5 text-sage-800" />,
                 title: 'Bundle & Save More',
-                desc: 'Combine auto, home, life, and pet in one account. The more coverages you hold with Aegis, the greater your multi-policy discount.',
+                desc: 'Combine auto, home, life, and pet in one account. The more coverages you hold with us, the greater your multi-policy discount.',
               },
               {
                 icon: <Lock className="w-5 h-5 text-sage-800" />,
@@ -727,7 +723,7 @@ export default function EnglishPage() {
             <span className="font-editorial-italic font-normal">everything you've built?</span>
           </h2>
           <p className="text-white/60 text-sm mb-8 max-w-lg mx-auto leading-relaxed">
-            Join over 3,200 families who trust Aegis. Bilingual agents. No SSN required. Free quote in 90 seconds.
+            Join over 3,200 families who trust us. Bilingual agents. No SSN required. Free quote in 90 seconds.
           </p>
           <button onClick={() => openQuote()}
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-900 text-sm font-semibold rounded-full hover:bg-white/90 transition-all active:scale-95 shadow-xl">
@@ -741,17 +737,11 @@ export default function EnglishPage() {
       <footer className="bg-slate-950 py-12">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center">
-                <Shield className="w-3.5 h-3.5 text-white" />
-              </div>
-              <div className="leading-none">
-                <span className="block text-white text-sm font-semibold">Aegis</span>
-                <span className="block text-white/30 text-[8px] tracking-widest uppercase">National Assurance</span>
-              </div>
+            <div>
+              <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-9 w-auto brightness-0 invert" />
             </div>
             <p className="text-white/30 text-xs text-center">
-              © {new Date().getFullYear()} Aegis National Assurance. All rights reserved. · Coverage subject to approval and terms & conditions.
+              © {new Date().getFullYear()} Maria Fernanda Insurance Consulting. All rights reserved. · Coverage subject to approval and terms & conditions.
             </p>
             <div className="flex items-center gap-4 text-xs text-white/40">
               <Link href="/" className="hover:text-white/70 transition-colors">Español</Link>

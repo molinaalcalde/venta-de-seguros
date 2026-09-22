@@ -29,7 +29,7 @@ function Sidebar({ onClose }: { onClose?: () => void }) {
             <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
           </div>
           <div className="leading-none">
-            <span className="block font-semibold text-white text-sm tracking-tight">Aegis</span>
+            <span className="block font-semibold text-white text-sm tracking-tight">MF</span>
             <span className="block text-[8px] font-medium tracking-[0.1em] uppercase text-white/40">Admin</span>
           </div>
         </Link>
@@ -123,7 +123,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <button onClick={() => setSidebarOpen(true)} className="text-slate-600">
             <Menu className="w-5 h-5" />
           </button>
-          <span className="text-sm font-semibold text-slate-800">Aegis Admin</span>
+          <span className="text-sm font-semibold text-slate-800">MF Admin</span>
         </div>
 
         <main className="flex-1 overflow-y-auto">

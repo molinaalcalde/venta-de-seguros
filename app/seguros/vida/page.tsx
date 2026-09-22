@@ -40,10 +40,10 @@ const config: InsurancePageConfig = {
   testimonials: [
     { name: 'Roberto A.', location: 'New York, NY', text: 'No sabía que podía tener seguro de vida sin SSN. Lo que más me convenció fue que si me enfermo, puedo usar el dinero yo mismo mientras sigo vivo.' },
     { name: 'Lucia M.', location: 'Los Angeles, California', text: 'Mis hijos viven en Guatemala. Me confirmaron que el seguro les paga allá también si algo me pasara. Eso era lo más importante para mí.' },
-    { name: 'Héctor F.', location: 'Chicago, Illinois', text: 'Perdí a mi papá sin seguro y fue muy difícil para la familia. Yo no quería que mis hijos pasaran por eso. Aegis me lo explicó todo sin prisa.' },
+    { name: 'Héctor F.', location: 'Chicago, Illinois', text: 'Perdí a mi papá sin seguro y fue muy difícil para la familia. Yo no quería que mis hijos pasaran por eso. Me lo explicaron todo sin prisa.' },
   ],
   faq: [
-    { q: '¿Puede un inmigrante indocumentado tener seguro de vida en USA?', a: 'Sí. Los inmigrantes, incluyendo personas indocumentadas, residentes permanentes y titulares de visas pueden contratar seguro de vida en Estados Unidos. En Aegis aceptamos ITIN como identificación válida. No se requiere SSN.' },
+    { q: '¿Puede un inmigrante indocumentado tener seguro de vida en USA?', a: 'Sí. Los inmigrantes, incluyendo personas indocumentadas, residentes permanentes y titulares de visas pueden contratar seguro de vida en Estados Unidos. Aceptamos ITIN como identificación válida. No se requiere SSN.' },
     { q: '¿Qué son los beneficios en vida (living benefits)?', a: 'Los beneficios en vida te permiten acceder al dinero del seguro mientras sigues vivo, si te diagnostican una enfermedad grave (terminal, crítica o crónica como cáncer, infarto o ACV). No tienes que esperar a fallecer para que tu familia reciba apoyo económico.' },
     { q: '¿El seguro de vida paga si mis beneficiarios viven fuera de USA?', a: 'Sí. El beneficio por fallecimiento puede pagarse a beneficiarios que viven en México, Guatemala, El Salvador u otros países. El proceso puede variar según la aseguradora, pero es completamente posible. Contáctanos para confirmar los detalles para tu situación.' },
     { q: '¿Necesito examen médico para contratar seguro de vida?', a: 'Depende del plan. Muchos seguros tienen opciones sin examen médico que solo requieren un cuestionario de salud. Otros planes más completos pueden requerir un examen básico que en muchos casos se realiza a domicilio sin costo para ti.' },

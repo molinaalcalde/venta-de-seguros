@@ -40,7 +40,7 @@ const config: InsurancePageConfig = {
   testimonials: [
     { name: 'Alejandra C.', location: 'Los Angeles, California', text: 'Tengo un salón de belleza. Una clienta se resbaló y amenazó con demandarme. El seguro cubrió todo — los gastos legales y el arreglo. Sin eso hubiera cerrado.' },
     { name: 'Roberto H.', location: 'Miami, Florida', text: 'Soy dueño de un restaurante pequeño. El seguro comercial costó menos de lo que pensaba y cubre mi equipo de cocina, el inventario y la responsabilidad.' },
-    { name: 'Carmen M.', location: 'Houston, Texas', text: 'Mi landlord me exigía un COI para renovar el contrato del local. En menos de 24 horas lo tuve listo. Sin Aegis hubiera perdido el local.' },
+    { name: 'Carmen M.', location: 'Houston, Texas', text: 'Mi landlord me exigía un COI para renovar el contrato del local. En menos de 24 horas lo tuve listo. Sin este seguro hubiera perdido el local.' },
   ],
   faq: [
     { q: '¿Qué seguro necesita mi negocio pequeño en USA?', a: 'Como mínimo, la mayoría de negocios necesitan responsabilidad civil general (GL) que cubre lesiones y daños causados a terceros. Si tienes local, equipos o inventario, también necesitas protección de propiedad. La póliza BOP combina ambos en un paquete económico.' },

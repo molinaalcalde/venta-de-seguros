@@ -41,14 +41,8 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-slate-950 flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         {/* Logo */}
-        <div className="flex items-center justify-center gap-2.5 mb-10">
-          <div className="w-6 h-6 rounded-full border-[2px] border-white/80 flex items-center justify-center">
-            <span className="w-2 h-2 rounded-full bg-white/80" />
-          </div>
-          <div className="leading-none">
-            <span className="block font-semibold text-white text-base tracking-tight">Aegis</span>
-            <span className="block text-[9px] font-medium tracking-[0.12em] uppercase text-white/40">Admin Panel</span>
-          </div>
+        <div className="flex items-center justify-center mb-10">
+          <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-10 w-auto brightness-0 invert" />
         </div>
 
         {/* Card */}
@@ -116,7 +110,7 @@ export default function AdminLogin() {
         </div>
 
         <p className="text-center text-slate-600 text-xs mt-6">
-          Aegis National Assurance · Panel Administrativo
+          Maria Fernanda Insurance Consulting · Panel Administrativo
         </p>
       </div>
     </div>

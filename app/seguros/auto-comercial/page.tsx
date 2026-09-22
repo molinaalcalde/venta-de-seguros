@@ -39,7 +39,7 @@ const config: InsurancePageConfig = {
   ],
   testimonials: [
     { name: 'Ernesto P.', location: 'Houston, Texas', text: 'Soy contratista de construcción. Me pidieron un COI para trabajar en un proyecto y me lo tuvieron listo al otro día. Sin eso no hubiera entrado al trabajo.' },
-    { name: 'Diana L.', location: 'Chicago, Illinois', text: 'Tengo 3 vans de limpieza. Antes de Aegis nadie me quería asegurar la flota sin SSN. Aquí lo hicieron sin problema y más barato que en otros lugares.' },
+    { name: 'Diana L.', location: 'Chicago, Illinois', text: 'Tengo 3 vans de limpieza. Antes nadie me quería asegurar la flota sin SSN. Aquí lo hicieron sin problema y más barato que en otros lugares.' },
     { name: 'Ramón G.', location: 'Phoenix, Arizona', text: 'Mi seguro personal no cubría los accidentes yendo a entregas. Lo aprendí a las malas. Ahora tengo el comercial y trabajo tranquilo todos los días.' },
   ],
   faq: [

@@ -89,7 +89,7 @@ export default function ArticlePage({ params }: Props) {
     datePublished: post.date,
     publisher: {
       '@type': 'Organization',
-      name: 'Aegis National Assurance',
+      name: 'Maria Fernanda Insurance Consulting',
       url: 'https://venta-de-seguros.vercel.app',
     },
     inLanguage: 'es-US',

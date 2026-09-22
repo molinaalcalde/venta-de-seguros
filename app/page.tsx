@@ -50,7 +50,7 @@ const REEL_SLIDES = [
   {
     src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuALlX2I4j-SU_STw4ViFQeVDt0M4YxEt0cbgHQFMCr8RXn9gV-DavMlNlAmXZS5X0494HA4XpJvw5jwxaZjTbKrAT0cs5qhPlhNB6tBGECcuhEVItlT7n37JJ8JTVwq74OszgS9qLJhKo48A4YdUUD4hWflLudi-RKeyKWWeGXfWlGE7qzxaFJEee_eU5SF0rSAfIv10xx7FgIu3fdsemCQoRviPDgmodbQI5MoL1-DJGq2_eRboNg7',
     alt: 'Paisajes abiertos y seguros — cada horizonte resguardado',
-    caption: 'Cada horizonte resguardado con Aegis.',
+    caption: 'Cada horizonte resguardado con María Fernanda.',
   },
   {
     src: 'https://lh3.googleusercontent.com/aida/AEtjO1X7Fsl95nUF-Lp5Lff5U0pm19f6MSz9GOCmjjKo0fCZNv9O3rYuqZl69L1su4s9Lg_UXnQ_Ooap4L6zaqGTyZVjIflziXskEcdRy0zQtJc7LZWhM-e0xHK38oZQkk3kEJ439GhT7rA8v2y_unh8f-IFzVojqQoBXslc6sSkwzqydPTZap34_QhXnj1xihdb-A8e68h8Ap_dEq2WHhgyff7M5MLXHF3C2syuCTX_PkerUHg2IwuPu2MDxf0',
@@ -213,22 +213,12 @@ export default function HomePage() {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
-            <a className="flex items-center gap-2.5 group shrink-0" href="#">
-              <div className={`rounded-full border-[2px] flex items-center justify-center transition-all duration-300 ${
-                scrolled ? 'w-5 h-5 border-slate-800' : 'w-5 h-5 border-white/90'
-              }`}>
-                <span className={`rounded-full transition-all duration-300 ${
-                  scrolled ? 'w-1.5 h-1.5 bg-slate-800' : 'w-1.5 h-1.5 bg-white'
-                }`}></span>
-              </div>
-              <div className="leading-none">
-                <span className={`block font-semibold text-sm tracking-tight transition-all duration-300 ${
-                  scrolled ? 'text-slate-900' : 'text-white'
-                }`}>Aegis</span>
-                <span className={`block font-medium tracking-[0.1em] uppercase text-[8px] transition-all duration-300 ${
-                  scrolled ? 'text-slate-400' : 'text-white/50'
-                }`}>National Assurance</span>
-              </div>
+            <a className="shrink-0" href="#">
+              <img
+                src="/logo.png"
+                alt="Maria Fernanda Insurance Consulting"
+                className={`h-10 w-auto transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`}
+              />
             </a>
 
             {/* Desktop Navigation */}
@@ -236,7 +226,7 @@ export default function HomePage() {
               {[
                 { label: 'Soluciones', href: '#soluciones' },
                 { label: 'Coberturas', href: '#coberturas-destacadas' },
-                { label: 'Por qué Aegis', href: '#por-que-aegis' },
+                { label: 'Por qué Nosotros', href: '#por-que-aegis' },
                 { label: 'Blog', href: '/blog' },
                 { label: 'FAQ', href: '#faq' },
               ].map(({ label, href }) => (
@@ -563,7 +553,7 @@ export default function HomePage() {
               <div>
                 <h4 className="text-sm font-semibold text-slate-900">Agrupa y ahorra</h4>
                 <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                  Combina auto, hogar, vida y mascotas en una sola cuenta. Mientras más coberturas tienes con Aegis, mayor es tu descuento. Sujeto a términos y condiciones.
+                  Combina auto, hogar, vida y mascotas en una sola cuenta. Mientras más coberturas tienes con nosotros, mayor es tu descuento. Sujeto a términos y condiciones.
                 </p>
               </div>
             </div>
@@ -951,7 +941,7 @@ export default function HomePage() {
               <div className="w-4 h-4 rounded-full border-[1.8px] border-slate-800 flex items-center justify-center">
                 <span className="w-1 h-1 bg-slate-800 rounded-full"></span>
               </div>
-              <span className="text-xs uppercase tracking-widest font-semibold text-slate-600">Aegis National Assurance</span>
+              <span className="text-xs uppercase tracking-widest font-semibold text-slate-600">Maria Fernanda Insurance Consulting</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[50px] font-normal text-slate-900 tracking-tight leading-tight">
               Aquí cuando más <br />
@@ -963,7 +953,7 @@ export default function HomePage() {
             {/* Left Column */}
             <div className="lg:col-span-5 flex flex-col justify-between space-y-12">
               <div>
-                <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">Por qué familias hispanas eligen Aegis</span>
+                <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">Por qué familias hispanas eligen Maria Fernanda</span>
                 <h3 className="text-2xl sm:text-3xl font-normal tracking-tight text-slate-900 mt-2">
                   Más que un seguro —<br />un aliado de confianza
                 </h3>
@@ -1122,7 +1112,7 @@ export default function HomePage() {
             <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold">Historias reales</span>
             <h2 className="text-3xl sm:text-4xl font-normal text-slate-900 tracking-tight leading-tight mt-2">
               Familias que{' '}
-              <span className="font-editorial-italic font-normal">confían en Aegis</span>
+              <span className="font-editorial-italic font-normal">confían en nosotros</span>
             </h2>
           </div>
 
@@ -1294,18 +1284,18 @@ export default function HomePage() {
               {
                 n: '01',
                 q: '¿Necesito número de seguro social (SSN) para sacar un seguro de auto?',
-                a: 'No. En Aegis National Assurance puedes cotizar y contratar tu seguro de auto sin presentar número de seguro social. Aceptamos ITIN (Número de Identificación del Contribuyente Individual) como identificación válida. Solo necesitas tu nombre y correo electrónico para iniciar. Tu situación migratoria no es un obstáculo.',
+                a: 'No. En Maria Fernanda Insurance Consulting puedes cotizar y contratar tu seguro de auto sin presentar número de seguro social. Aceptamos ITIN (Número de Identificación del Contribuyente Individual) como identificación válida. Solo necesitas tu nombre y correo electrónico para iniciar. Tu situación migratoria no es un obstáculo.',
                 open: true,
               },
               {
                 n: '02',
                 q: '¿Los inmigrantes indocumentados pueden tener seguro de auto en EE.UU.?',
-                a: 'Sí. Las personas indocumentadas pueden contratar seguro de auto en los 50 estados de Estados Unidos. La mayoría de los estados exige seguro mínimo a todos los conductores, sin importar su estatus migratorio. Manejar sin seguro puede resultar en multas graves, suspensión de licencia y responsabilidad civil personal. En Aegis te cubrimos.',
+                a: 'Sí. Las personas indocumentadas pueden contratar seguro de auto en los 50 estados de Estados Unidos. La mayoría de los estados exige seguro mínimo a todos los conductores, sin importar su estatus migratorio. Manejar sin seguro puede resultar en multas graves, suspensión de licencia y responsabilidad civil personal. Con nosotros estás cubierto.',
               },
               {
                 n: '03',
                 q: '¿Qué es el ITIN y sirve para contratar seguros en Estados Unidos?',
-                a: 'El ITIN (Individual Taxpayer Identification Number) es un número emitido por el IRS para personas que no califican para un SSN. Sí sirve para contratar seguros. En Aegis lo aceptamos para seguros de auto, vida, salud, dental, mascotas y comerciales. No necesitas ciudadanía ni residencia permanente para obtener cobertura.',
+                a: 'El ITIN (Individual Taxpayer Identification Number) es un número emitido por el IRS para personas que no califican para un SSN. Sí sirve para contratar seguros. Lo aceptamos para seguros de auto, vida, salud, dental, mascotas y comerciales. No necesitas ciudadanía ni residencia permanente para obtener cobertura.',
               },
               {
                 n: '04',
@@ -1391,11 +1381,8 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-10 pb-16 border-b border-slate-800">
             {/* Brand Col */}
             <div className="md:col-span-2 space-y-4">
-              <div className="flex items-center gap-2 text-white">
-                <div className="w-5 h-5 rounded-full border-[2.2px] border-white flex items-center justify-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
-                </div>
-                <span className="font-medium text-lg tracking-tight">Aegis National Assurance</span>
+              <div className="text-white">
+                <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-10 w-auto brightness-0 invert" />
               </div>
               <p className="text-xs text-slate-400 max-w-sm leading-relaxed font-light">
                 Seguridad generacional, protección de vehículos y mascotas, y resguardo patrimonial integral con solidez institucional de primer nivel.
@@ -1439,7 +1426,7 @@ export default function HomePage() {
             <div>
               <h5 className="text-xs font-semibold text-white uppercase tracking-wider mb-4">Compañía</h5>
               <ul className="space-y-2.5 text-xs text-slate-400 font-light">
-                <li><a className="hover:text-white transition-colors" href="#">Sobre Aegis National</a></li>
+                <li><a className="hover:text-white transition-colors" href="#">Sobre Nosotros</a></li>
                 <li><a className="hover:text-white transition-colors" href="/blog">Blog y Recursos</a></li>
                 <li><a className="hover:text-white transition-colors" href="#">Reportes de Solvencia Financiera</a></li>
                 <li><a className="hover:text-white transition-colors" href="#">Oportunidades de Carrera</a></li>
@@ -1464,7 +1451,7 @@ export default function HomePage() {
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-light gap-4">
             <div>
               <Link href="/admin/login" className="hover:opacity-60 transition-opacity">©</Link>{' '}
-              {new Date().getFullYear()} Aegis National Assurance Group Inc. Todos los derechos reservados.
+              {new Date().getFullYear()} Maria Fernanda Insurance Consulting. Todos los derechos reservados.
             </div>
             <div className="flex items-center gap-6">
               <a className="hover:text-slate-400 transition-colors" href="#">Aviso de Privacidad</a>

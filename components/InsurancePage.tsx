@@ -99,7 +99,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
     description: config.schema.description,
     provider: {
       '@type': 'InsuranceAgency',
-      name: 'Aegis National Assurance',
+      name: 'Maria Fernanda Insurance Consulting',
       url: 'https://venta-de-seguros.vercel.app',
     },
     areaServed: { '@type': 'Country', name: 'United States' },
@@ -131,12 +131,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
           <div className="flex items-center justify-between h-14">
             <Link href="/" className="flex items-center gap-2 group">
               <ArrowLeft weight="regular" className="w-4 h-4 text-slate-400 group-hover:text-slate-700 transition-colors" />
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full border-[2px] border-slate-800 flex items-center justify-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-800" />
-                </div>
-                <span className="font-semibold text-sm text-slate-900 tracking-tight">Aegis</span>
-              </div>
+              <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto" />
             </Link>
             <button
               onClick={() => setQuoteOpen(true)}
@@ -270,11 +265,11 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
           </div>
         </section>
 
-        {/* ── Why Aegis ────────────────────────────────────────────── */}
+        {/* ── Por qué nosotros ─────────────────────────────────────── */}
         <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
           <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-10">
             ¿Por qué{' '}
-            <span className="font-editorial-italic text-slate-400">Aegis?</span>
+            <span className="font-editorial-italic text-slate-400">elegirnos?</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
             {[
@@ -371,11 +366,8 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
           <div className="max-w-5xl mx-auto px-5 lg:px-8 py-10">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8">
               <div>
-                <div className="flex items-center gap-2 mb-1.5">
-                  <div className="w-4 h-4 rounded-full border-[2px] border-white/80 flex items-center justify-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
-                  </div>
-                  <span className="font-semibold text-sm tracking-tight">Aegis National Assurance</span>
+                <div className="mb-1.5">
+                  <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto brightness-0 invert" />
                 </div>
                 <p className="text-xs text-slate-400 font-light mb-4">Seguros para la comunidad hispana · Sin SSN · ITIN aceptado</p>
                 <button
@@ -409,7 +401,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
             <div className="border-t border-slate-800 mt-8 pt-4">
               <p className="text-xs text-slate-500 font-light">
                 Los precios son referenciales. Cobertura, términos y condiciones varían por estado y sujetos a aprobación.
-                Aegis National Assurance es un agente de seguros con licencia.
+                Maria Fernanda Insurance Consulting es un agente de seguros con licencia.
               </p>
             </div>
           </div>

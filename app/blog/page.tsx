@@ -33,7 +33,7 @@ export default function BlogPage() {
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-normal text-slate-900 tracking-tight leading-tight">
               Blog{' '}
-              <span className="font-['Cormorant_Garamond',serif] italic font-normal">Aegis</span>
+              <span className="font-['Cormorant_Garamond',serif] italic font-normal">Seguros</span>
             </h1>
             <p className="text-sm sm:text-base text-slate-600 mt-4 leading-relaxed max-w-lg">
               Guías prácticas sobre seguros en Estados Unidos, escritas en español para la comunidad hispana. Sin tecnicismos, sin letra chica.

@@ -43,7 +43,7 @@ const config: InsurancePageConfig = {
     { name: 'Marcos V.', location: 'Atlanta, Georgia', text: 'Tuve un accidente el año pasado. Me resolvieron todo en español, contactaron a la otra parte y no tuve que lidiar con el inglés para nada.' },
   ],
   faq: [
-    { q: '¿Puedo tener seguro de auto sin número de seguro social?', a: 'Sí. No necesitas SSN para contratar seguro de auto en ningún estado de EE.UU. En Aegis aceptamos ITIN (Individual Taxpayer Identification Number) como identificación válida. Puedes cotizar y contratar con tu ITIN o pasaporte.' },
+    { q: '¿Puedo tener seguro de auto sin número de seguro social?', a: 'Sí. No necesitas SSN para contratar seguro de auto en ningún estado de EE.UU. Aceptamos ITIN (Individual Taxpayer Identification Number) como identificación válida. Puedes cotizar y contratar con tu ITIN o pasaporte.' },
     { q: '¿Aceptan licencia extranjera o matrícula consular?', a: 'Sí. Aceptamos licencias extranjeras y matrículas consulares como identificación. Los requisitos específicos pueden variar por estado. Contáctanos para confirmar los documentos disponibles en tu estado.' },
     { q: '¿Puede un inmigrante indocumentado conducir con seguro en USA?', a: 'Sí. Las personas indocumentadas pueden contratar y mantener seguro de auto en los 50 estados. De hecho, la mayoría de los estados exige seguro mínimo a todos los conductores sin importar su estatus migratorio. Manejar sin seguro puede resultar en multas de $150 a $5,000.' },
     { q: '¿Qué documentos necesito para contratar seguro de auto?', a: 'Generalmente necesitas: identificación (ITIN, pasaporte, matrícula consular o licencia extranjera), información del vehículo (placas, número VIN, año y modelo) y una dirección postal en USA. No se requiere SSN.' },

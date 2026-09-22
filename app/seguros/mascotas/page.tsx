@@ -125,7 +125,7 @@ export default function MascotasPage() {
               'Seguro de mascotas con pago directo a la clínica veterinaria. Sin SSN requerido. Acepta ITIN. Planes desde $29/mes.',
             provider: {
               '@type': 'InsuranceAgency',
-              name: 'Aegis National Assurance',
+              name: 'Maria Fernanda Insurance Consulting',
               url: 'https://venta-de-seguros.vercel.app',
             },
             areaServed: { '@type': 'Country', name: 'United States' },
@@ -156,12 +156,7 @@ export default function MascotasPage() {
           <div className="flex items-center justify-between h-14">
             <Link href="/" className="flex items-center gap-2 group">
               <ArrowLeft weight="regular" className="w-4 h-4 text-slate-400 group-hover:text-slate-700 transition-colors" />
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full border-[2px] border-slate-800 flex items-center justify-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-800"></span>
-                </div>
-                <span className="font-semibold text-sm text-slate-900 tracking-tight">Aegis</span>
-              </div>
+              <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto" />
             </Link>
             <button
               onClick={() => setQuoteOpen(true)}
@@ -367,7 +362,7 @@ export default function MascotasPage() {
                     <ArrowRight weight="bold" className="w-4 h-4" />
                   </a>
                   <p className="text-xs text-white/40 mt-4">
-                    Serás redirigido al portal seguro de Fetch Pet Insurance · Aegis afiliado certificado
+                    Serás redirigido al portal seguro de Fetch Pet Insurance · Maria Fernanda afiliado certificado
                   </p>
                 </>
               ) : (
@@ -450,11 +445,8 @@ export default function MascotasPage() {
           <div className="max-w-5xl mx-auto px-5 lg:px-8 py-10">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-4 h-4 rounded-full border-[2px] border-white/80 flex items-center justify-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/80"></span>
-                  </div>
-                  <span className="font-semibold text-sm tracking-tight">Aegis National Assurance</span>
+                <div className="mb-1">
+                  <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto brightness-0 invert" />
                 </div>
                 <p className="text-xs text-slate-400 font-light">
                   Seguros para la comunidad hispana · Sin SSN requerido · ITIN aceptado
@@ -475,7 +467,7 @@ export default function MascotasPage() {
             <div className="border-t border-slate-800 mt-8 pt-6">
               <p className="text-xs text-slate-500 font-light leading-relaxed">
                 Los precios mostrados son referenciales y están sujetos a aprobación. La disponibilidad de cobertura, términos y condiciones varían por estado.
-                Aegis National Assurance actúa como agente afiliado de Fetch Pet Insurance en los estados indicados. Sujeto a términos y condiciones.
+                Maria Fernanda Insurance Consulting actúa como agente afiliado de Fetch Pet Insurance en los estados indicados. Sujeto a términos y condiciones.
               </p>
             </div>
           </div>

@@ -13,11 +13,8 @@ export default function BlogLayout({ children }: { children: ReactNode }) {
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
-              <Link href="/" className="flex items-center gap-2 text-white mb-2">
-                <div className="w-4 h-4 rounded-full border-[1.8px] border-white flex items-center justify-center">
-                  <span className="w-1 h-1 rounded-full bg-white"></span>
-                </div>
-                <span className="font-medium text-sm tracking-tight">Aegis National Assurance</span>
+              <Link href="/" className="block mb-2">
+                <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto brightness-0 invert" />
               </Link>
               <p className="text-xs text-slate-500 max-w-xs leading-relaxed">
                 Seguros en español para la comunidad hispana en Estados Unidos. Sujeto a términos y condiciones.
@@ -32,7 +29,7 @@ export default function BlogLayout({ children }: { children: ReactNode }) {
             </div>
           </div>
           <div className="mt-8 pt-6 border-t border-slate-800 text-xs text-slate-600">
-            © {new Date().getFullYear()} Aegis National Assurance Group Inc. Todos los derechos reservados. · Correduría Aseguradora Autorizada
+            © {new Date().getFullYear()} Maria Fernanda Insurance Consulting. Todos los derechos reservados. · Correduría Aseguradora Autorizada
           </div>
         </div>
       </footer>

@@ -34,11 +34,11 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_US',
     url: `${BASE_URL}/seguros/mascotas`,
-    siteName: 'Aegis National Assurance',
+    siteName: 'Maria Fernanda Insurance Consulting',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Seguro de Mascotas VetDirect™ | Aegis National Assurance',
+    title: 'Seguro de Mascotas VetDirect™ | Maria Fernanda Insurance Consulting',
     description:
       'Pago directo a la clínica veterinaria. Sin SSN requerido. Acepta ITIN. Planes desde $29/mes.',
   },

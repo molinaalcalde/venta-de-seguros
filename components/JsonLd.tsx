@@ -3,7 +3,7 @@ const BASE_URL = 'https://venta-de-seguros.vercel.app';
 const insuranceAgencySchema = {
   '@context': 'https://schema.org',
   '@type': 'InsuranceAgency',
-  name: 'Aegis National Assurance',
+  name: 'Maria Fernanda Insurance Consulting',
   description:
     'Agencia de seguros bilingüe especializada en la comunidad hispana de Estados Unidos. Seguros de auto, vida, salud, mascotas y comerciales sin SSN requerido. Aceptamos ITIN. Atención 100% en español.',
   url: BASE_URL,
@@ -22,7 +22,7 @@ const insuranceAgencySchema = {
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Portafolio de Seguros Aegis',
+    name: 'Portafolio de Seguros',
     itemListElement: [
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Seguro de Auto sin SSN', description: 'Seguro de auto para inmigrantes que acepta ITIN. Sin número de seguro social requerido. Sujeto a términos y condiciones.' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Seguro de Mascotas VetDirect', description: 'Cobertura veterinaria con pago directo en clínicas asociadas. Sujeto a términos y condiciones.' } },
@@ -44,7 +44,7 @@ const faqSchema = {
       name: '¿Necesito número de seguro social para sacar un seguro de auto?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No. En Aegis National Assurance puedes cotizar y contratar tu seguro de auto sin presentar número de seguro social (SSN). Aceptamos ITIN (Número de Identificación del Contribuyente Individual) como identificación válida. Puedes asegurar tu vehículo sin importar tu situación migratoria.',
+        text: 'No. En Maria Fernanda Insurance Consulting puedes cotizar y contratar tu seguro de auto sin presentar número de seguro social (SSN). Aceptamos ITIN (Número de Identificación del Contribuyente Individual) como identificación válida. Puedes asegurar tu vehículo sin importar tu situación migratoria.',
       },
     },
     {
@@ -52,7 +52,7 @@ const faqSchema = {
       name: '¿Los inmigrantes indocumentados pueden tener seguro de auto en Estados Unidos?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Sí. Las personas indocumentadas pueden contratar seguro de auto en los 50 estados de EE.UU. La mayoría de los estados exige seguro mínimo a todos los conductores sin importar su estatus migratorio. En Aegis National Assurance aceptamos ITIN y ofrecemos cobertura para familias en todas las situaciones migratorias.',
+        text: 'Sí. Las personas indocumentadas pueden contratar seguro de auto en los 50 estados de EE.UU. La mayoría de los estados exige seguro mínimo a todos los conductores sin importar su estatus migratorio. En Maria Fernanda Insurance Consulting aceptamos ITIN y ofrecemos cobertura para familias en todas las situaciones migratorias.',
       },
     },
     {
@@ -60,7 +60,7 @@ const faqSchema = {
       name: '¿Qué es el ITIN y sirve para contratar seguros en EE.UU.?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'El ITIN (Individual Taxpayer Identification Number) es un número emitido por el IRS para personas que no califican para un SSN. Sí sirve para contratar seguros en Estados Unidos. En Aegis lo aceptamos para seguros de auto, vida, salud, dental, mascotas y comerciales.',
+        text: 'El ITIN (Individual Taxpayer Identification Number) es un número emitido por el IRS para personas que no califican para un SSN. Sí sirve para contratar seguros en Estados Unidos. En Maria Fernanda lo aceptamos para seguros de auto, vida, salud, dental, mascotas y comerciales.',
       },
     },
     {

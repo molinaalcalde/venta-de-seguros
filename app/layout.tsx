@@ -6,8 +6,8 @@ const BASE_URL = 'https://venta-de-seguros.vercel.app';
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Aegis National Assurance | Seguros en Español para la Comunidad Hispana',
-    template: '%s | Aegis National Assurance',
+    default: 'Maria Fernanda Insurance Consulting | Seguros en Español para la Comunidad Hispana',
+    template: '%s | Maria Fernanda Insurance Consulting',
   },
   description:
     'Seguros de auto, vida, salud, mascotas y comerciales para la comunidad hispana en Estados Unidos. Atención 100% en español. Cotiza online en menos de un minuto. Acepta ITIN.',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     'Medicare en español',
     'seguro de mascotas',
     'seguros comerciales hispanos',
-    'Aegis National Assurance',
+    'Maria Fernanda Insurance Consulting',
     'insurance en español',
   ],
   alternates: {
@@ -36,17 +36,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Aegis National Assurance | Seguros en Español para la Comunidad Hispana',
+    title: 'Maria Fernanda Insurance Consulting | Seguros en Español para la Comunidad Hispana',
     description:
       'Seguros de auto, vida, salud, mascotas y comerciales con atención 100% en español. Cotiza sin SSN. Acepta ITIN. Agentes bilingüe certificados.',
     type: 'website',
     locale: 'es_US',
     url: BASE_URL,
-    siteName: 'Aegis National Assurance',
+    siteName: 'Maria Fernanda Insurance Consulting',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aegis National Assurance | Seguros en Español',
+    title: 'Maria Fernanda Insurance Consulting | Seguros en Español',
     description:
       'Seguros de auto, vida, salud, mascotas y comerciales para la comunidad hispana. Cotiza online, sin SSN, atención 100% en español.',
   },
