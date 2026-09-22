@@ -1275,44 +1275,44 @@ export default function HomePage() {
             {[
               {
                 n: '01',
-                q: '¿Puedo obtener seguro sin número de seguro social (SSN)?',
-                a: 'Sí. Para cotizar solo necesitas tu nombre y correo electrónico. Los requisitos de documentación varían según el tipo de póliza y el estado donde resides. Muchos de nuestros planes aceptan ITIN como identificación válida. Nuestros asesores te guían en cada paso sin complicaciones.',
+                q: '¿Necesito número de seguro social (SSN) para sacar un seguro de auto?',
+                a: 'No. En Aegis National Assurance puedes cotizar y contratar tu seguro de auto sin presentar número de seguro social. Aceptamos ITIN (Número de Identificación del Contribuyente Individual) como identificación válida. Solo necesitas tu nombre y correo electrónico para iniciar. Tu situación migratoria no es un obstáculo.',
                 open: true,
               },
               {
                 n: '02',
-                q: '¿Puedo obtener seguro siendo inmigrante o con ITIN?',
-                a: 'Sí. Trabajamos con familias en todas las situaciones migratorias. Aceptamos ITIN y entendemos los desafíos de la comunidad hispana en EE.UU. Tu estatus migratorio no es un obstáculo para proteger a tu familia. Los requisitos específicos dependen del tipo de cobertura y el estado donde resides.',
+                q: '¿Los inmigrantes indocumentados pueden tener seguro de auto en EE.UU.?',
+                a: 'Sí. Las personas indocumentadas pueden contratar seguro de auto en los 50 estados de Estados Unidos. La mayoría de los estados exige seguro mínimo a todos los conductores, sin importar su estatus migratorio. Manejar sin seguro puede resultar en multas graves, suspensión de licencia y responsabilidad civil personal. En Aegis te cubrimos.',
               },
               {
                 n: '03',
-                q: '¿Cómo funciona la cobertura directa en clínicas veterinarias con VetDirect™?',
-                a: 'Con VetDirect™, no necesitas pagar de tu bolsillo y esperar meses de reembolso. Al presentar tu tarjeta digital Aegis en clínicas asociadas, autorizamos el pago de la factura veterinaria directamente al centro médico en tiempo real, cubriendo consultas, intervenciones y tratamientos elegibles. Sujeto a términos y condiciones.',
+                q: '¿Qué es el ITIN y sirve para contratar seguros en Estados Unidos?',
+                a: 'El ITIN (Individual Taxpayer Identification Number) es un número emitido por el IRS para personas que no califican para un SSN. Sí sirve para contratar seguros. En Aegis lo aceptamos para seguros de auto, vida, salud, dental, mascotas y comerciales. No necesitas ciudadanía ni residencia permanente para obtener cobertura.',
               },
               {
                 n: '04',
-                q: '¿Puedo unificar mi póliza de automóvil y hogar para obtener descuentos multilínea?',
-                a: 'Sí. Aegis ofrece el programa Aegis Bundle, permitiendo agrupar seguros de vehículo (incluidos eléctricos), hogar, vida y mascotas bajo un único estado de cuenta, con descuentos acumulativos en tu prima total anual. Sujeto a términos y condiciones.',
+                q: '¿Mi información personal se comparte con inmigración o el gobierno?',
+                a: 'No. Tu información personal es 100% confidencial. Nunca la compartimos con ICE, la migra ni ninguna agencia gubernamental sin orden judicial. Cumplimos con la ley HIPAA y todas las regulaciones estatales de privacidad de seguros. Tu seguridad y privacidad son nuestra prioridad absoluta.',
               },
               {
                 n: '05',
-                q: '¿En qué momento se activan los beneficios en vida (Living Benefits) de los seguros de vida?',
-                a: 'A diferencia del seguro de vida tradicional que solo indemniza tras el fallecimiento, nuestras pólizas con Living Benefits permiten acceder por anticipado a un porcentaje del capital asegurado en caso de diagnóstico de enfermedad crítica, crónica o incapacitante grave. Sujeto a términos y condiciones de la póliza.',
+                q: '¿Puedo tener seguro de vida siendo inmigrante o indocumentado?',
+                a: 'Sí. Los inmigrantes, incluyendo personas indocumentadas, residentes y titulares de visas, pueden contratar seguro de vida en EE.UU. sin SSN. Aceptamos ITIN. Nuestros planes con Living Benefits te permiten acceder al dinero mientras sigues vivo si te diagnostican una enfermedad grave. Sujeto a términos y condiciones.',
               },
               {
                 n: '06',
-                q: '¿Mi información personal es confidencial?',
-                a: 'Absolutamente. Tu información personal nunca se comparte con terceros ni con agencias gubernamentales sin tu consentimiento explícito. Utilizamos cifrado de grado bancario de 256 bits para proteger todos tus datos. Tu privacidad es nuestra prioridad.',
+                q: '¿Cuánto cuesta el seguro de auto para inmigrantes en EE.UU.?',
+                a: 'El seguro de auto comienza desde $89/mes, dependiendo del estado, el vehículo, el historial de manejo y el tipo de cobertura. Usar ITIN en vez de SSN no afecta significativamente el precio. Cotiza gratis en menos de 90 segundos y un asesor bilingüe te contacta en 15 minutos con opciones personalizadas.',
               },
               {
                 n: '07',
-                q: '¿Cómo reporto un siniestro?',
-                a: 'Puedes reportar un siniestro a través del portal digital o llamando a nuestra línea de emergencias 24/7, disponible en español. Un gestor personal de siniestros se asigna a tu caso para acompañarte en cada paso del proceso hasta la resolución. Sujeto a los términos de tu póliza.',
+                q: '¿El seguro de salud cubre a toda mi familia sin número de seguro social?',
+                a: 'Sí. Ofrecemos planes de salud individuales y familiares que aceptan ITIN. Tu cónyuge, hijos y dependientes pueden estar cubiertos sin necesidad de SSN. Nuestros asesores en español te explican qué cubre cada plan, los deducibles y los copagos antes de que firmes nada. Sujeto a términos y condiciones.',
               },
               {
                 n: '08',
-                q: '¿Qué requisitos necesita mi empresa para el seguro comercial y contra ciberataques?',
-                a: 'Realizamos una breve evaluación digital de seguridad en minutos sin interrumpir tus operaciones. Evaluamos protocolos básicos como autenticación multifactor (MFA) y respaldos en la nube, estructurando de inmediato tu paquete comercial BOP y escudo ante ransomware y filtraciones de datos. Sujeto a aprobación de suscripción.',
+                q: '¿Qué pasa si tengo un accidente de auto sin seguro siendo inmigrante?',
+                a: 'Manejar sin seguro en EE.UU. puede resultar en multas de $150 a $5,000 según el estado, suspensión de licencia, embargo del vehículo y responsabilidad civil personal por todos los daños causados. Siendo inmigrante, esto también puede complicar tu situación legal. El seguro mínimo obligatorio te protege a ti y a otros conductores.',
               },
             ].map(({ n, q, a, open }) => (
               <details key={n} className="group bg-white rounded-2xl p-6 border border-stone-200/70 shadow-sm hover:shadow-md transition-all duration-200 open:bg-sage-50/40 open:border-sage-300" open={open}>

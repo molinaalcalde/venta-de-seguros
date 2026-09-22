@@ -48,36 +48,36 @@ const HERO_VIDEOS = [
 
 const FAQ_EN = [
   {
-    q: 'Do I need a Social Security Number to get insurance?',
-    a: 'No. We accept ITIN (Individual Taxpayer Identification Number) and do not require an SSN to quote or enroll. Many of our clients have obtained coverage without an SSN.',
+    q: 'Can I get car insurance without a Social Security Number?',
+    a: 'Yes. You can get car insurance using an ITIN (Individual Taxpayer Identification Number) instead of a Social Security Number. At Aegis National Assurance, we accept ITIN for all coverage types — auto, life, health, dental, and more. No SSN is ever required to get a quote or enroll in a plan.',
   },
   {
-    q: 'Are your agents bilingual?',
-    a: 'Yes. All of our agents are bilingual (English and Spanish). You can communicate with us in whichever language makes you most comfortable.',
+    q: 'Can undocumented immigrants get car insurance in the United States?',
+    a: 'Yes. Undocumented immigrants can legally purchase car insurance in all 50 states. Most states require all drivers to carry minimum liability insurance regardless of immigration status. Driving without insurance can result in fines, license suspension, and personal financial liability for damages caused. Aegis provides coverage regardless of your immigration status.',
   },
   {
-    q: 'How long does it take to get a quote?',
-    a: 'Our online quote form takes about 90 seconds to complete. A bilingual agent will contact you within 15 minutes with your personalized options.',
+    q: 'What is ITIN insurance and how does it work?',
+    a: 'ITIN insurance refers to insurance policies available to people who use an Individual Taxpayer Identification Number (ITIN) instead of a Social Security Number. The ITIN is issued by the IRS to individuals who do not qualify for an SSN. At Aegis, we accept ITIN as valid identification for auto, life, health, pet, dental, and business insurance.',
   },
   {
-    q: 'Can I insure my work van or delivery truck?',
-    a: 'Absolutely. We offer commercial auto insurance for vans, moving trucks, pickup trucks, and fleets. Personal auto policies do not cover commercial use.',
+    q: 'Is my personal information shared with immigration authorities?',
+    a: 'No. Your personal information is 100% confidential and is never shared with ICE, immigration authorities, or any government agency without a court order. We comply with HIPAA and all state insurance privacy regulations. Your data is protected with 256-bit bank-grade encryption.',
   },
   {
-    q: 'What types of pet insurance do you offer?',
-    a: 'We offer VetDirect™ plans that pay the veterinary clinic directly — no upfront payment, no waiting weeks for reimbursement. Coverage includes consultations, surgeries, vaccinations, and medications.',
+    q: 'Can non-US citizens get life insurance in America?',
+    a: 'Yes. Non-citizens — including undocumented immigrants, DACA recipients, visa holders, and permanent residents — can obtain life insurance in the United States without an SSN. We accept ITIN as valid identification. Our plans also include Living Benefits: access to your funds while you are still alive if diagnosed with a critical illness. Subject to terms and conditions.',
   },
   {
-    q: 'Can I bundle my home and auto insurance?',
-    a: 'Yes, and it\'s highly recommended. Our Home + Auto bundle can save you up to 25%. The more coverages you add, the greater your discount.',
+    q: 'Does getting an insurance quote affect my credit score?',
+    a: 'No. Getting a quote from Aegis National Assurance does not affect your credit score. We do not require a credit check to provide you with a quote or to enroll in most plans. You can explore all your options with zero impact on your credit.',
   },
   {
-    q: 'Is my information kept private?',
-    a: 'Absolutely. Your personal information is 100% confidential. We do not share it with any government agency or immigration authority. We are governed by HIPAA and state insurance regulations.',
+    q: 'How much does car insurance cost for immigrants in the US?',
+    a: 'Car insurance for immigrants in the US typically starts from $89/month, depending on your state, vehicle type, and driving history. Using an ITIN instead of an SSN does not significantly affect your premium. We work with multiple top-rated carriers to find the most competitive rate for your situation. Get a free quote in under 90 seconds.',
   },
   {
-    q: 'How does life insurance work for my family?',
-    a: 'Life insurance provides a tax-free payment to your family if something happens to you. It can also include a living benefit — access to funds while you are still alive if you are diagnosed with a serious illness.',
+    q: 'What languages do Aegis insurance agents speak?',
+    a: 'All Aegis National Assurance agents are fully bilingual in English and Spanish. You can communicate with your agent in whichever language you prefer — we adapt to you. There are no additional fees for bilingual service. Our agents are available by phone, email, and chat.',
   },
 ];
 
@@ -140,11 +140,34 @@ export default function EnglishPage() {
             '@type': 'InsuranceAgency',
             name: 'Aegis National Assurance',
             url: 'https://venta-de-seguros.vercel.app/en',
-            description: 'Bilingual insurance agency serving the Hispanic community across the US. Auto, life, health, pet, dental, and business insurance. ITIN accepted.',
-            areaServed: 'US',
+            description: 'Bilingual insurance agency specializing in coverage for immigrants and the Hispanic community across the US. Auto, life, health, pet, dental, and business insurance. ITIN accepted. No SSN required.',
+            areaServed: { '@type': 'Country', name: 'United States' },
             availableLanguage: ['en-US', 'es-US'],
             priceRange: '$$',
             sameAs: ['https://venta-de-seguros.vercel.app'],
+            serviceType: [
+              'Car Insurance Without SSN',
+              'ITIN Insurance',
+              'Insurance for Immigrants',
+              'Bilingual Insurance Agent',
+              'Life Insurance for Non-Citizens',
+              'Health Insurance Without Social Security Number',
+            ],
+          }),
+        }}
+      />
+      {/* ── FAQ Schema (English) — targets featured snippets & AI Overviews ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQ_EN.map(({ q, a }) => ({
+              '@type': 'Question',
+              name: q,
+              acceptedAnswer: { '@type': 'Answer', text: a },
+            })),
           }),
         }}
       />
@@ -256,14 +279,14 @@ export default function EnglishPage() {
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
               <ShieldCheck className="w-3.5 h-3.5 text-white/80" />
-              <span className="text-white/80 text-xs font-medium tracking-wide uppercase">No SSN Required · ITIN Accepted</span>
+              <span className="text-white/80 text-xs font-medium tracking-wide uppercase">No SSN Required · ITIN Accepted · 100% Bilingual</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-[58px] font-normal text-white leading-tight tracking-tight mb-5">
-              Protection for<br />
-              <span className="font-editorial-italic">every family.</span>
+              Insurance without<br />
+              <span className="font-editorial-italic">SSN — ITIN accepted.</span>
             </h1>
             <p className="text-white/75 text-base sm:text-lg leading-relaxed mb-8 max-w-md">
-              Bilingual agents. No Social Security Number required. Auto, life, health, and more — all explained in plain language, in whichever language you prefer.
+              Bilingual insurance agents for immigrants and every American family. Auto, life, health, dental, and more — no Social Security Number required, no credit check to quote.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <button onClick={() => openQuote()} className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-slate-900 text-sm font-semibold rounded-full hover:bg-white/90 transition-all active:scale-95 shadow-xl">
