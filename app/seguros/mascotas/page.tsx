@@ -187,19 +187,21 @@ export default function MascotasPage() {
 
       {/* ── Navbar ──────────────────────────────────────────────────────── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm' : 'bg-white border-b border-slate-100'
+        scrolled ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm' : 'bg-transparent'
       }`}>
         <div className="max-w-5xl mx-auto px-5 lg:px-8">
-          <div className="flex items-center justify-between h-14">
+          <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center gap-2 group shrink-0">
-              <ArrowLeft weight="regular" className="w-4 h-4 text-slate-400 group-hover:text-slate-700 transition-colors" />
-              <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto" />
+              <ArrowLeft weight="regular" className={`w-4 h-4 transition-colors ${scrolled ? 'text-slate-400 group-hover:text-slate-700' : 'text-white/70 group-hover:text-white'}`} />
+              <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className={`h-8 w-auto transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`} />
             </Link>
             <div className="flex items-center gap-2">
               <LanguageSwitcher scrolled={scrolled} />
               <button
                 onClick={() => setQuoteOpen(true)}
-                className="px-4 py-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-all shadow-sm"
+                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all shadow-sm ${
+                  scrolled ? 'bg-slate-900 hover:bg-slate-800 text-white' : 'bg-white text-slate-900 hover:bg-white/90'
+                }`}
               >
                 Cotizar gratis
               </button>
@@ -208,96 +210,79 @@ export default function MascotasPage() {
         </div>
       </header>
 
-      <main className="pt-14 bg-[#fafbfa] min-h-screen">
+      <main className="bg-[#fafbfa] min-h-screen">
 
-        {/* ── Hero ─────────────────────────────────────────────────────── */}
-        <section className="relative bg-white overflow-hidden border-b border-slate-100">
-          {/* Decorative background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#e8f0e9]/80 via-white to-white pointer-events-none" />
-          {/* Decorative circles */}
-          <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[#d1e3d4]/30 pointer-events-none" />
-          <div className="absolute bottom-0 right-40 w-48 h-48 rounded-full bg-[#d1e3d4]/20 pointer-events-none" />
+        {/* ── Hero — Video full bleed ───────────────────────────────────── */}
+        <section className="relative w-full min-h-[600px] lg:min-h-[720px] flex flex-col justify-end overflow-hidden">
+          {/* Video background */}
+          <video
+            src="/videos/hero2.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+          {/* Gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/75 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/30 z-[1]" />
 
-          <div className="relative max-w-5xl mx-auto px-5 lg:px-8 py-16 md:py-24">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left — content */}
-              <div>
-                <div className="inline-flex items-center gap-2 bg-[#d1e3d4]/60 text-[#2d5a35] text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6">
-                  <PawPrint weight="duotone" className="w-4 h-4" />
-                  VetDirect™ · Pago directo a la clínica
+          {/* Hero content */}
+          <div className="relative z-10 w-full px-5 lg:px-10 pb-14 sm:pb-20">
+            <div className="max-w-5xl mx-auto flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+              {/* Scroll cue */}
+              <div className="hidden lg:flex items-center gap-3 text-white/70 text-xs font-light select-none shrink-0">
+                <div className="w-5 h-8 rounded-full border border-white/50 flex items-start justify-center pt-1.5">
+                  <span className="w-1 h-1.5 bg-white rounded-full animate-bounce" />
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-[54px] font-light text-slate-900 tracking-tight leading-[1.08] mb-5">
-                  Seguro de Mascotas{' '}
-                  <span className="font-editorial-italic text-[#3d7a47]">sin adelantar dinero</span>
+                <span className="tracking-wide">Scroll Down</span>
+              </div>
+
+              {/* Headline */}
+              <div className="max-w-2xl text-white lg:text-right">
+                <div className="flex flex-wrap gap-2 mb-5 lg:justify-end">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
+                    <PawPrint weight="duotone" className="w-3.5 h-3.5" />
+                    VetDirect™ · Pago directo a la clínica
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
+                    Sin SSN · Acepta ITIN
+                  </span>
+                </div>
+                <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-normal tracking-tight leading-[1.06] drop-shadow-sm">
+                  Seguro de <br />
+                  <span className="font-sans font-light">Mascotas</span>{' '}
+                  <span className="font-editorial-italic">sin adelantar</span>
                 </h1>
-                <p className="text-lg text-slate-600 font-light leading-relaxed mb-8">
-                  Lleva a tu perro o gato al veterinario y nosotros pagamos directamente a la clínica.
-                  Sin esperar reembolsos. Sin SSN requerido.
+                <p className="mt-4 text-white/85 text-sm sm:text-base font-light max-w-lg leading-relaxed lg:ml-auto">
+                  Lleva a tu perro o gato al veterinario y nosotros pagamos directamente a la clínica. Sin reembolsos, sin burocracia. Sin SSN requerido.
                 </p>
-
-                <div className="flex flex-wrap gap-2.5 mb-10">
-                  {['Sin SSN requerido', 'Acepta ITIN', 'Desde $29/mes', 'Atención en español'].map((b) => (
-                    <span key={b} className="text-xs font-medium text-slate-700 bg-white border border-slate-200 px-3 py-1 rounded-full shadow-sm">
-                      {b}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Geo-gated CTA */}
-                {geoLoading ? (
-                  <div className="h-12 w-56 bg-slate-100 animate-pulse rounded-full" />
-                ) : isEligibleState ? (
-                  <div className="space-y-3">
+                <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
+                  {geoLoading ? (
+                    <div className="h-11 w-52 bg-white/20 animate-pulse rounded-full" />
+                  ) : isEligibleState ? (
                     <a
                       href={FETCH_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#2d5a35] hover:bg-[#245030] text-white font-semibold text-sm transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-slate-900 font-semibold text-sm hover:bg-slate-100 transition-all shadow-lg active:scale-95"
                     >
-                      <PawPrint weight="fill" className="w-4 h-4" />
-                      Obtener seguro para mi mascota
+                      <PawPrint weight="fill" className="w-4 h-4 text-[#2d5a35]" />
+                      Obtener seguro ahora
                       <ArrowRight weight="bold" className="w-4 h-4" />
                     </a>
-                    <p className="text-xs text-slate-500 flex items-center gap-1.5">
-                      <MapPin weight="duotone" className="w-3.5 h-3.5 text-[#3d7a47]" />
-                      Disponible en {stateName} — compra directa en línea
-                    </p>
-                  </div>
-                ) : (
-                  <div className="space-y-3">
+                  ) : (
                     <button
                       onClick={() => setQuoteOpen(true)}
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-slate-900 font-semibold text-sm hover:bg-slate-100 transition-all shadow-lg active:scale-95"
                     >
-                      <PawPrint weight="fill" className="w-4 h-4" />
+                      <PawPrint weight="fill" className="w-4 h-4 text-[#2d5a35]" />
                       Cotizar Seguro de Mascotas
                       <ArrowRight weight="bold" className="w-4 h-4" />
                     </button>
-                    <p className="text-xs text-slate-500">Gratis · Sin compromiso · Respuesta en 24 horas</p>
-                  </div>
-                )}
-              </div>
-
-              {/* Right — visual */}
-              <div className="hidden lg:flex items-center justify-center">
-                <div className="relative w-72 h-72">
-                  {/* Main circle */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#2d5a35] to-[#3d7a47] flex items-center justify-center shadow-2xl">
-                    <PawPrint weight="duotone" className="w-36 h-36 text-white/80" />
-                  </div>
-                  {/* Floating badges */}
-                  <div className="absolute -top-4 -right-4 bg-white rounded-2xl px-4 py-3 shadow-lg border border-slate-100">
-                    <p className="text-xs text-slate-500">Pago directo</p>
-                    <p className="text-sm font-bold text-[#2d5a35]">VetDirect™</p>
-                  </div>
-                  <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl px-4 py-3 shadow-lg border border-slate-100">
-                    <p className="text-xs text-slate-500">Desde</p>
-                    <p className="text-sm font-bold text-slate-900">$29/mes</p>
-                  </div>
-                  <div className="absolute top-1/2 -right-8 bg-[#2d5a35] rounded-2xl px-4 py-3 shadow-lg">
-                    <p className="text-xs text-white/70">Sin SSN</p>
-                    <p className="text-sm font-bold text-white">ITIN OK ✓</p>
-                  </div>
+                  )}
+                  <span className="text-white/60 text-xs font-light">Desde $29/mes · Sin compromiso</span>
                 </div>
               </div>
             </div>
