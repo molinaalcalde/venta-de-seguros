@@ -1,10 +1,23 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { Globe } from 'lucide-react';
-import { Check } from 'lucide-react';
+import { Globe, Check } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+
+function switchToLang(pathname: string, targetLang: 'es' | 'en'): string {
+  const currentLang: 'es' | 'en' = pathname.startsWith('/en') ? 'en' : 'es';
+  if (currentLang === targetLang) return pathname;
+
+  if (pathname.startsWith('/es/') || pathname === '/es') {
+    return pathname.replace(/^\/es/, `/${targetLang}`);
+  }
+  if (pathname.startsWith('/en/') || pathname === '/en') {
+    return pathname.replace(/^\/en/, `/${targetLang}`);
+  }
+  // Sin prefijo (no debería pasar con el middleware, pero por seguridad)
+  return `/${targetLang}${pathname === '/' ? '' : pathname}`;
+}
 
 export default function LanguageSwitcher({ scrolled }: { scrolled?: boolean }) {
   const pathname = usePathname();
@@ -19,6 +32,9 @@ export default function LanguageSwitcher({ scrolled }: { scrolled?: boolean }) {
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
+
+  const esHref = switchToLang(pathname, 'es');
+  const enHref = switchToLang(pathname, 'en');
 
   return (
     <div className="relative" ref={ref}>
@@ -38,7 +54,7 @@ export default function LanguageSwitcher({ scrolled }: { scrolled?: boolean }) {
       {open && (
         <div className="absolute right-0 top-full mt-2 w-44 bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden z-50 py-1">
           <Link
-            href="/"
+            href={esHref}
             onClick={() => setOpen(false)}
             className="flex items-center gap-3 px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
           >
@@ -48,7 +64,7 @@ export default function LanguageSwitcher({ scrolled }: { scrolled?: boolean }) {
           </Link>
           <div className="mx-4 h-px bg-slate-100" />
           <Link
-            href="/en"
+            href={enHref}
             onClick={() => setOpen(false)}
             className="flex items-center gap-3 px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
           >

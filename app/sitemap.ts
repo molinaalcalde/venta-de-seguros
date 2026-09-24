@@ -14,31 +14,45 @@ const SEGUROS_PAGES = [
   { slug: 'proteccion-extra',  priority: 0.7, freq: 'monthly' as const },
 ];
 
+const LANGS = ['es', 'en'] as const;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  const segurosEntries: MetadataRoute.Sitemap = SEGUROS_PAGES.map(({ slug, priority, freq }) => ({
-    url: `${BASE_URL}/seguros/${slug}`,
+  // ── Páginas de inicio por idioma ──────────────────────────────────────────
+  const homeEntries: MetadataRoute.Sitemap = LANGS.map(lang => ({
+    url: `${BASE_URL}/${lang}`,
     lastModified: now,
-    changeFrequency: freq,
-    priority,
+    changeFrequency: 'weekly',
+    priority: lang === 'es' ? 1.0 : 0.95,
+    alternates: {
+      languages: {
+        'es-US': `${BASE_URL}/es`,
+        'en-US': `${BASE_URL}/en`,
+        'x-default': `${BASE_URL}/es`,
+      },
+    },
   }));
 
+  // ── Páginas de seguros por idioma ─────────────────────────────────────────
+  const segurosEntries: MetadataRoute.Sitemap = SEGUROS_PAGES.flatMap(({ slug, priority, freq }) =>
+    LANGS.map(lang => ({
+      url: `${BASE_URL}/${lang}/seguros/${slug}`,
+      lastModified: now,
+      changeFrequency: freq,
+      priority: lang === 'es' ? priority : priority - 0.05,
+      alternates: {
+        languages: {
+          'es-US': `${BASE_URL}/es/seguros/${slug}`,
+          'en-US': `${BASE_URL}/en/seguros/${slug}`,
+          'x-default': `${BASE_URL}/es/seguros/${slug}`,
+        },
+      },
+    }))
+  );
+
   return [
-    // ── Páginas principales ──
-    {
-      url: BASE_URL,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    {
-      url: `${BASE_URL}/en`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    // ── Páginas de detalle de seguros ──
+    ...homeEntries,
     ...segurosEntries,
   ];
 }

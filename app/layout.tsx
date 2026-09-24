@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import './globals.css';
 
 const BASE_URL = 'https://venta-de-seguros.vercel.app';
@@ -28,11 +29,11 @@ export const metadata: Metadata = {
     'insurance en español',
   ],
   alternates: {
-    canonical: BASE_URL,
+    canonical: `${BASE_URL}/es`,
     languages: {
-      'es-US': BASE_URL,
+      'es-US': `${BASE_URL}/es`,
       'en-US': `${BASE_URL}/en`,
-      'x-default': BASE_URL,
+      'x-default': `${BASE_URL}/es`,
     },
   },
   openGraph: {
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
       'Seguros de auto, vida, salud, mascotas y comerciales con atención 100% en español. Cotiza sin SSN. Acepta ITIN. Agentes bilingüe certificados.',
     type: 'website',
     locale: 'es_US',
-    url: BASE_URL,
+    url: `${BASE_URL}/es`,
     siteName: 'Maria Fernanda Insurance Consulting',
   },
   twitter: {
@@ -68,8 +69,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = headers();
+  const lang = headersList.get('x-lang') ?? 'es';
+
   return (
-    <html lang="es-US" className="scroll-smooth">
+    <html lang={lang === 'en' ? 'en-US' : 'es-US'} className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
