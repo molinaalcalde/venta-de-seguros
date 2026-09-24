@@ -28,7 +28,7 @@ const PLANS = [
     tier: '70%',
     desc: 'Opción de menor costo. Tú cubres el 30% del gasto elegible, Fetch reembolsa el 70%.',
     features: [
-      'Cualquier vet en EE.UU. o Canadá',
+      'Cualquier vet en Estados Unidos',
       'Cobertura dental completa',
       'Fee de consulta incluido',
       'Condiciones hereditarias de raza',
@@ -43,7 +43,7 @@ const PLANS = [
     tier: '80%',
     desc: 'El equilibrio ideal. Recuperas el 80% de los gastos elegibles cubiertos.',
     features: [
-      'Cualquier vet en EE.UU. o Canadá',
+      'Cualquier vet en Estados Unidos',
       'Cobertura dental completa',
       'Fee de consulta incluido',
       'Condiciones hereditarias de raza',
@@ -58,7 +58,7 @@ const PLANS = [
     tier: '90%',
     desc: 'Máxima cobertura. Fetch te reembolsa el 90% de los gastos elegibles cubiertos.',
     features: [
-      'Cualquier vet en EE.UU. o Canadá',
+      'Cualquier vet en Estados Unidos',
       'Cobertura dental completa',
       'Fee de consulta incluido',
       'Condiciones hereditarias de raza',
@@ -72,7 +72,7 @@ const PLANS = [
 
 // ── Coverage ─────────────────────────────────────────────────────────────────
 const COVERAGE = [
-  { icon: Stethoscope, label: 'Cualquier veterinario en EE.UU. o Canadá' },
+  { icon: Stethoscope, label: 'Cualquier veterinario en Estados Unidos' },
   { icon: Tooth,       label: 'Cobertura dental completa (todos los dientes adultos)' },
   { icon: FirstAidKit, label: 'Emergencias y hospitalizaciones' },
   { icon: CheckCircle, label: 'Fee de consulta médica incluido' },
@@ -122,7 +122,7 @@ const FAQ = [
   },
   {
     q: '¿Puedo ir a cualquier veterinario?',
-    a: 'Sí. Fetch no tiene red restringida. Puedes llevar a tu mascota a cualquier veterinario con licencia en Estados Unidos o Canadá, incluyendo especialistas y hospitales de emergencia.',
+    a: 'Sí. Fetch no tiene red restringida. Puedes llevar a tu mascota a cualquier veterinario con licencia en Estados Unidos, incluyendo especialistas y hospitales de emergencia. La cobertura también aplica en Canadá. No aplica fuera de EE.UU. y Canadá.',
   },
   {
     q: '¿El seguro cubre enfermedades preexistentes?',
@@ -263,7 +263,7 @@ export default function MascotasPage() {
                   <span className="font-editorial-italic">que reembolsa rápido</span>
                 </h1>
                 <p className="mt-4 text-white/85 text-sm sm:text-base font-light max-w-lg leading-relaxed lg:ml-auto">
-                  Ve a cualquier veterinario en EE.UU. o Canadá. Sube la factura al portal de Fetch y recibe tu reembolso de hasta el 90% en menos de una semana. Sin SSN requerido.
+                  Ve a cualquier veterinario en Estados Unidos. Sube la factura al portal de Fetch y recibe tu reembolso de hasta el 90% en menos de una semana. Sin SSN requerido.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
                   {geoLoading ? (
@@ -302,7 +302,7 @@ export default function MascotasPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {[
                 { value: 'Hasta 90%', label: 'De reembolso' },
-                { value: 'Cualquier', label: 'Vet en EE.UU. o Canadá' },
+                { value: 'Cualquier', label: 'Veterinario en Estados Unidos' },
                 { value: '~7 días',   label: 'Tiempo de reembolso' },
                 { value: '100%',      label: 'Confidencial' },
               ].map(({ value, label }) => (
@@ -322,7 +322,7 @@ export default function MascotasPage() {
               {
                 emoji: '🏥',
                 title: 'Cualquier Veterinario',
-                desc: 'No hay red restringida. Lleva a tu mascota a cualquier veterinario con licencia en EE.UU. o Canadá — incluyendo especialistas y emergencias.',
+                desc: 'No hay red restringida. Lleva a tu mascota a cualquier veterinario con licencia en Estados Unidos — incluyendo especialistas y emergencias.',
                 accent: 'border-t-2 border-[#3d7a47]',
               },
               {
@@ -462,7 +462,7 @@ export default function MascotasPage() {
               </h3>
               <div className="space-y-4">
                 {[
-                  { step: '1', text: 'Llevas a tu mascota a cualquier veterinario con licencia en EE.UU. o Canadá' },
+                  { step: '1', text: 'Llevas a tu mascota a cualquier veterinario con licencia en Estados Unidos' },
                   { step: '2', text: 'Pagas la factura y subes el recibo al portal de Fetch (app o web)' },
                   { step: '3', text: 'Fetch te reembolsa según tu plan en aproximadamente una semana' },
                 ].map(s => (
