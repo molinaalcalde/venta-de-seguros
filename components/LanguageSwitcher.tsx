@@ -5,7 +5,45 @@ import { Globe, Check } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
+// Mapeo bidireccional: cada URL conocida apunta a su equivalente en es/en
+const ROUTE_MAP: Record<string, { es: string; en: string }> = {
+  // Home
+  '/es':                           { es: '/es',                           en: '/en' },
+  '/en':                           { es: '/es',                           en: '/en' },
+  // Mascotas
+  '/es/seguros/mascotas':          { es: '/es/seguros/mascotas',          en: '/en/pet-insurance' },
+  '/en/pet-insurance':             { es: '/es/seguros/mascotas',          en: '/en/pet-insurance' },
+  // Auto
+  '/es/seguros/auto':              { es: '/es/seguros/auto',              en: '/en/car-insurance' },
+  '/en/car-insurance':             { es: '/es/seguros/auto',              en: '/en/car-insurance' },
+  // Vida
+  '/es/seguros/vida':              { es: '/es/seguros/vida',              en: '/en/life-insurance' },
+  '/en/life-insurance':            { es: '/es/seguros/vida',              en: '/en/life-insurance' },
+  // Salud
+  '/es/seguros/salud':             { es: '/es/seguros/salud',             en: '/en/health-insurance' },
+  '/en/health-insurance':          { es: '/es/seguros/salud',             en: '/en/health-insurance' },
+  // Dental
+  '/es/seguros/dental':            { es: '/es/seguros/dental',            en: '/en/dental-insurance' },
+  '/en/dental-insurance':          { es: '/es/seguros/dental',            en: '/en/dental-insurance' },
+  // Auto Comercial
+  '/es/seguros/auto-comercial':    { es: '/es/seguros/auto-comercial',    en: '/en/commercial-auto' },
+  '/en/commercial-auto':           { es: '/es/seguros/auto-comercial',    en: '/en/commercial-auto' },
+  // Comercial
+  '/es/seguros/comercial':         { es: '/es/seguros/comercial',         en: '/en/business-insurance' },
+  '/en/business-insurance':        { es: '/es/seguros/comercial',         en: '/en/business-insurance' },
+  // Paquete Casa + Auto
+  '/es/seguros/paquete-casa-auto': { es: '/es/seguros/paquete-casa-auto', en: '/en/home-auto-bundle' },
+  '/en/home-auto-bundle':          { es: '/es/seguros/paquete-casa-auto', en: '/en/home-auto-bundle' },
+  // Protección Extra
+  '/es/seguros/proteccion-extra':  { es: '/es/seguros/proteccion-extra',  en: '/en/extra-protection' },
+  '/en/extra-protection':          { es: '/es/seguros/proteccion-extra',  en: '/en/extra-protection' },
+};
+
 function switchToLang(pathname: string, targetLang: 'es' | 'en'): string {
+  // Buscar en el mapa directo primero
+  if (ROUTE_MAP[pathname]) return ROUTE_MAP[pathname][targetLang];
+
+  // Fallback: reemplazar prefijo de idioma si no está en el mapa
   const currentLang: 'es' | 'en' = pathname.startsWith('/en') ? 'en' : 'es';
   if (currentLang === targetLang) return pathname;
 
@@ -15,7 +53,6 @@ function switchToLang(pathname: string, targetLang: 'es' | 'en'): string {
   if (pathname.startsWith('/en/') || pathname === '/en') {
     return pathname.replace(/^\/en/, `/${targetLang}`);
   }
-  // Sin prefijo (no debería pasar con el middleware, pero por seguridad)
   return `/${targetLang}${pathname === '/' ? '' : pathname}`;
 }
 

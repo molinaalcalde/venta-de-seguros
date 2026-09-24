@@ -22,10 +22,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       ? ['pet insurance no SSN', 'pet insurance ITIN', 'pet insurance immigrants', 'fetch pet insurance', 'pet insurance reimbursement', 'dog cat insurance USA']
       : ['seguro de mascotas sin SSN', 'seguro de mascotas ITIN', 'seguro veterinario inmigrantes', 'fetch pet insurance', 'seguro mascotas reembolso', 'seguro mascotas hispanos'],
     alternates: {
-      canonical: `${BASE_URL}/${lang}/seguros/mascotas`,
+      canonical: isEn ? `${BASE_URL}/en/pet-insurance` : `${BASE_URL}/es/seguros/mascotas`,
       languages: {
         'es-US': `${BASE_URL}/es/seguros/mascotas`,
-        'en-US': `${BASE_URL}/en/seguros/mascotas`,
+        'en-US': `${BASE_URL}/en/pet-insurance`,
         'x-default': `${BASE_URL}/es/seguros/mascotas`,
       },
     },
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
         : 'Seguro de mascotas con reembolso de hasta el 90%. Sin SSN requerido. Acepta ITIN. Cualquier veterinario en EE.UU.',
       type: 'website',
       locale: isEn ? 'en_US' : 'es_US',
-      url: `${BASE_URL}/${lang}/seguros/mascotas`,
+      url: isEn ? `${BASE_URL}/en/pet-insurance` : `${BASE_URL}/es/seguros/mascotas`,
       siteName: 'Maria Fernanda Insurance Consulting',
     },
     twitter: {
