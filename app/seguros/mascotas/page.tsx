@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   PawPrint, CheckCircle, Stethoscope, FirstAidKit,
   Syringe, Pill, ArrowRight, MapPin, ArrowLeft, Star,
-  Shield, Lock, Headset, CreditCard, X, Check,
+  Shield, Lock, Headset, CreditCard, Tooth, Heart,
 } from '@phosphor-icons/react';
 import QuoteModal from '@/components/QuoteModal';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -21,63 +21,63 @@ const STATE_NAMES: Record<string, string> = {
   NV: 'Nevada', PA: 'Pensilvania', RI: 'Rhode Island', TX: 'Texas',
 };
 
-// ── Plans ────────────────────────────────────────────────────────────────────
+// ── Reimbursement tiers ───────────────────────────────────────────────────────
 const PLANS = [
   {
-    name: 'Accidente',
-    price: '29',
-    desc: 'Protección esencial para emergencias y accidentes inesperados.',
+    name: '70% Reembolso',
+    tier: '70%',
+    desc: 'Opción de menor costo. Tú cubres el 30% del gasto elegible, Fetch reembolsa el 70%.',
     features: [
-      { label: 'Emergencias y accidentes', included: true },
-      { label: 'Cirugías por accidente', included: true },
-      { label: 'Diagnósticos de laboratorio', included: true },
-      { label: 'Consultas de rutina', included: false },
-      { label: 'Vacunas preventivas', included: false },
-      { label: 'Medicamentos crónicos', included: false },
+      'Cualquier vet en EE.UU. o Canadá',
+      'Cobertura dental completa',
+      'Fee de consulta incluido',
+      'Condiciones hereditarias de raza',
+      'Emergencias y cirugías',
+      'Medicamentos recetados',
     ],
     highlight: false,
-    cta: 'Cotizar Plan Accidente',
+    cta: 'Cotizar 70%',
   },
   {
-    name: 'Completo',
-    price: '49',
-    desc: 'La opción más popular. Cubre accidentes y enfermedades completas.',
+    name: '80% Reembolso',
+    tier: '80%',
+    desc: 'El equilibrio ideal. Recuperas el 80% de los gastos elegibles cubiertos.',
     features: [
-      { label: 'Emergencias y accidentes', included: true },
-      { label: 'Cirugías y hospitalizaciones', included: true },
-      { label: 'Diagnósticos de laboratorio', included: true },
-      { label: 'Consultas de rutina', included: true },
-      { label: 'Vacunas preventivas', included: true },
-      { label: 'Medicamentos crónicos', included: false },
+      'Cualquier vet en EE.UU. o Canadá',
+      'Cobertura dental completa',
+      'Fee de consulta incluido',
+      'Condiciones hereditarias de raza',
+      'Emergencias y cirugías',
+      'Medicamentos recetados',
     ],
     highlight: true,
-    cta: 'Cotizar Plan Completo',
+    cta: 'Cotizar 80%',
   },
   {
-    name: 'Premium',
-    price: '79',
-    desc: 'Cobertura máxima. Sin sorpresas, sin límites anuales bajos.',
+    name: '90% Reembolso',
+    tier: '90%',
+    desc: 'Máxima cobertura. Fetch te reembolsa el 90% de los gastos elegibles cubiertos.',
     features: [
-      { label: 'Emergencias y accidentes', included: true },
-      { label: 'Cirugías y hospitalizaciones', included: true },
-      { label: 'Diagnósticos de laboratorio', included: true },
-      { label: 'Consultas de rutina', included: true },
-      { label: 'Vacunas preventivas', included: true },
-      { label: 'Medicamentos crónicos', included: true },
+      'Cualquier vet en EE.UU. o Canadá',
+      'Cobertura dental completa',
+      'Fee de consulta incluido',
+      'Condiciones hereditarias de raza',
+      'Emergencias y cirugías',
+      'Medicamentos recetados',
     ],
     highlight: false,
-    cta: 'Cotizar Plan Premium',
+    cta: 'Cotizar 90%',
   },
 ];
 
 // ── Coverage ─────────────────────────────────────────────────────────────────
 const COVERAGE = [
-  { icon: Stethoscope, label: 'Consultas veterinarias' },
+  { icon: Stethoscope, label: 'Cualquier veterinario en EE.UU. o Canadá' },
+  { icon: Tooth,       label: 'Cobertura dental completa (todos los dientes adultos)' },
   { icon: FirstAidKit, label: 'Emergencias y hospitalizaciones' },
-  { icon: CheckCircle, label: 'Cirugías y procedimientos' },
-  { icon: Syringe, label: 'Vacunas de rutina' },
-  { icon: Pill, label: 'Medicamentos recetados' },
-  { icon: CheckCircle, label: 'Diagnósticos y laboratorios' },
+  { icon: CheckCircle, label: 'Fee de consulta médica incluido' },
+  { icon: Heart,       label: 'Condiciones hereditarias y de raza' },
+  { icon: Pill,        label: 'Medicamentos y diagnósticos de laboratorio' },
 ];
 
 // ── Testimonials ─────────────────────────────────────────────────────────────
@@ -85,20 +85,20 @@ const TESTIMONIALS = [
   {
     name: 'Carmen R.',
     location: 'Houston, Texas',
-    text: 'Mi perro tuvo una cirugía de emergencia. Con VetDirect™ no adelanté nada — la clínica cobró directo al seguro. Sin ese plan no sé qué hubiera hecho.',
-    plan: 'Plan Completo',
+    text: 'Mi perro tuvo una cirugía de emergencia. Subí la factura al portal esa misma noche y en menos de una semana me depositaron el 80% de todo. No creía que fuera tan fácil.',
+    plan: '80% Reembolso',
   },
   {
     name: 'Andrés M.',
     location: 'Miami, Florida',
     text: 'Pensé que necesitaba SSN para asegurar a mi gata. Me dijeron que solo necesitaba ITIN y en 10 minutos tenía la póliza activa. Muy fácil.',
-    plan: 'Plan Accidente',
+    plan: '70% Reembolso',
   },
   {
     name: 'Lucía P.',
     location: 'Newark, New Jersey',
-    text: 'Tres mascotas aseguradas con el Plan Premium. El servicio en español es real — hablas con una persona, no con un menú automático.',
-    plan: 'Plan Premium',
+    text: 'Tres mascotas aseguradas con el 90% de reembolso. El servicio en español es real — hablas con una persona, no con un menú automático.',
+    plan: '90% Reembolso',
   },
 ];
 
@@ -109,20 +109,28 @@ const FAQ = [
     a: 'No. Puedes contratar el seguro de mascotas con tu ITIN. No se requiere SSN ni ciudadanía. Solo necesitas tu nombre, dirección y la información básica de tu mascota.',
   },
   {
-    q: '¿Cómo funciona VetDirect™ — el pago directo a la clínica?',
-    a: 'Con VetDirect™ pagamos directamente a la clínica veterinaria asociada. Tú llevas a tu mascota, recibes la atención, y nosotros cubrimos el costo. No necesitas adelantar dinero ni esperar semanas para un reembolso.',
+    q: '¿Cómo funciona el reembolso de Fetch?',
+    a: 'El proceso es simple: llevas a tu mascota a cualquier veterinario con licencia en EE.UU. o Canadá, pagas la factura, y luego subes el recibo al portal de Fetch. Fetch te reembolsa según el porcentaje de tu plan (70%, 80% o 90%) en aproximadamente una semana.',
+  },
+  {
+    q: '¿Cuánto tiempo tarda el reembolso?',
+    a: 'En promedio, Fetch procesa los reembolsos en menos de una semana una vez que subes la factura al portal. Los tiempos exactos pueden variar según el caso. Sujeto a términos y condiciones.',
   },
   {
     q: '¿Cuánto cuesta el seguro de mascotas?',
-    a: 'Los planes comienzan desde $29/mes para cobertura de accidentes. El precio varía según raza, edad y estado de tu mascota. Sujeto a términos y condiciones.',
+    a: 'El precio varía según la raza, edad, estado y el porcentaje de reembolso que elijas (70%, 80% o 90%). También puedes personalizar el deductible y el máximo anual para ajustar el precio a tu presupuesto. Para obtener el precio exacto para tu mascota, cotiza en línea — es gratis y sin compromiso. Sujeto a términos y condiciones.',
+  },
+  {
+    q: '¿Puedo ir a cualquier veterinario?',
+    a: 'Sí. Fetch no tiene red restringida. Puedes llevar a tu mascota a cualquier veterinario con licencia en Estados Unidos o Canadá, incluyendo especialistas y hospitales de emergencia.',
   },
   {
     q: '¿El seguro cubre enfermedades preexistentes?',
-    a: 'Las enfermedades preexistentes generalmente no están cubiertas durante los primeros 6 a 12 meses. Las condiciones nuevas y accidentes quedan cubiertos desde el inicio. Consulta con un asesor para tu caso específico.',
+    a: 'Las enfermedades preexistentes generalmente no están cubiertas. Las condiciones hereditarias de raza sí pueden estar cubiertas si no eran preexistentes al momento de contratar la póliza. Consulta los términos exactos con un asesor para tu caso específico.',
   },
   {
     q: '¿La compra directa en línea está disponible en mi estado?',
-    a: 'La compra directa en línea a través de nuestro portal afiliado Fetch está disponible en: Nueva Jersey, Florida, Iowa, Nevada, Pensilvania, Rhode Island y Texas. Para residentes de otros estados, un asesor en español te guiará.',
+    a: 'La compra directa en línea a través del portal afiliado Fetch está disponible en: Nueva Jersey, Florida, Iowa, Nevada, Pensilvania, Rhode Island y Texas. Para residentes de otros estados, un asesor en español te guiará sin costo.',
   },
   {
     q: '¿Mi información personal se comparte con el gobierno o migración?',
@@ -167,15 +175,14 @@ export default function MascotasPage() {
     },
     {
       '@context': 'https://schema.org', '@type': 'Service',
-      name: 'Seguro de Mascotas VetDirect™',
-      description: 'Seguro de mascotas con pago directo a la clínica veterinaria. Sin SSN requerido. Acepta ITIN. Planes desde $29/mes.',
+      name: 'Seguro de Mascotas — Fetch Pet Insurance',
+      description: 'Seguro de mascotas con reembolso de hasta el 90%. Sin SSN requerido. Acepta ITIN. Cualquier veterinario en EE.UU. o Canadá. Cobertura dental completa incluida.',
       provider: {
         '@type': 'InsuranceAgency',
         name: 'Maria Fernanda Insurance Consulting',
         url: 'https://venta-de-seguros.vercel.app',
       },
       areaServed: { '@type': 'Country', name: 'United States' },
-      offers: { '@type': 'Offer', price: '29', priceCurrency: 'USD' },
     },
   ];
 
@@ -244,7 +251,7 @@ export default function MascotasPage() {
                 <div className="flex flex-wrap gap-2 mb-5 lg:justify-end">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
                     <PawPrint weight="duotone" className="w-3.5 h-3.5" />
-                    VetDirect™ · Pago directo a la clínica
+                    Fetch Pet Insurance · Hasta 90% de reembolso
                   </span>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
                     Sin SSN · Acepta ITIN
@@ -253,10 +260,10 @@ export default function MascotasPage() {
                 <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-normal tracking-tight leading-[1.06] drop-shadow-sm">
                   Seguro de <br />
                   <span className="font-sans font-light">Mascotas</span>{' '}
-                  <span className="font-editorial-italic">sin adelantar</span>
+                  <span className="font-editorial-italic">que reembolsa rápido</span>
                 </h1>
                 <p className="mt-4 text-white/85 text-sm sm:text-base font-light max-w-lg leading-relaxed lg:ml-auto">
-                  Lleva a tu perro o gato al veterinario y nosotros pagamos directamente a la clínica. Sin reembolsos, sin burocracia. Sin SSN requerido.
+                  Ve a cualquier veterinario en EE.UU. o Canadá. Sube la factura al portal de Fetch y recibe tu reembolso de hasta el 90% en menos de una semana. Sin SSN requerido.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
                   {geoLoading ? (
@@ -282,7 +289,7 @@ export default function MascotasPage() {
                       <ArrowRight weight="bold" className="w-4 h-4" />
                     </button>
                   )}
-                  <span className="text-white/60 text-xs font-light">Desde $29/mes · Sin compromiso</span>
+                  <span className="text-white/60 text-xs font-light">Precio personalizable · Sin compromiso</span>
                 </div>
               </div>
             </div>
@@ -294,10 +301,10 @@ export default function MascotasPage() {
           <div className="max-w-5xl mx-auto px-5 lg:px-8 py-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {[
-                { value: '10K+', label: 'Mascotas aseguradas' },
-                { value: '4.9★', label: 'Calificación promedio' },
-                { value: '24h', label: 'Tiempo de activación' },
-                { value: '100%', label: 'Confidencial' },
+                { value: 'Hasta 90%', label: 'De reembolso' },
+                { value: 'Cualquier', label: 'Vet en EE.UU. o Canadá' },
+                { value: '~7 días',   label: 'Tiempo de reembolso' },
+                { value: '100%',      label: 'Confidencial' },
               ].map(({ value, label }) => (
                 <div key={label}>
                   <p className="text-2xl font-light text-[#2d5a35] tracking-tight">{value}</p>
@@ -314,14 +321,14 @@ export default function MascotasPage() {
             {[
               {
                 emoji: '🏥',
-                title: 'Pago Directo VetDirect™',
-                desc: 'Nosotros le pagamos directamente a la clínica. Tú no adelantas nada. No hay formularios de reembolso.',
+                title: 'Cualquier Veterinario',
+                desc: 'No hay red restringida. Lleva a tu mascota a cualquier veterinario con licencia en EE.UU. o Canadá — incluyendo especialistas y emergencias.',
                 accent: 'border-t-2 border-[#3d7a47]',
               },
               {
-                emoji: '📋',
-                title: 'Cobertura Completa',
-                desc: 'Consultas, emergencias, cirugías, vacunas, medicamentos y diagnósticos. Sujeto a términos y condiciones.',
+                emoji: '💰',
+                title: 'Hasta 90% de Reembolso',
+                desc: 'Tú eliges el porcentaje: 70%, 80% o 90% de los gastos elegibles cubiertos. También personalizas el deductible y el máximo anual. Sujeto a términos y condiciones.',
                 accent: 'border-t-2 border-[#3d7a47]',
               },
               {
@@ -346,10 +353,10 @@ export default function MascotasPage() {
             <div className="max-w-xl mb-12">
               <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-3">
                 Elige tu{' '}
-                <span className="font-editorial-italic text-[#3d7a47]">plan de cobertura</span>
+                <span className="font-editorial-italic text-[#3d7a47]">porcentaje de reembolso</span>
               </h2>
               <p className="text-sm text-slate-500 font-light">
-                Todos los planes incluyen VetDirect™. Precios desde y sujetos a términos y condiciones.
+                Todos los planes cubren lo mismo. Tú decides cuánto recuperar. El precio se ajusta según tu mascota y estado.
               </p>
             </div>
 
@@ -370,13 +377,12 @@ export default function MascotasPage() {
                   )}
                   <div className="mb-5">
                     <p className={`text-xs font-semibold uppercase tracking-widest mb-2 ${plan.highlight ? 'text-[#7db887]' : 'text-[#3d7a47]'}`}>
-                      Plan {plan.name}
+                      {plan.name}
                     </p>
                     <div className="flex items-end gap-1 mb-2">
                       <span className={`text-4xl font-light tracking-tight ${plan.highlight ? 'text-white' : 'text-slate-900'}`}>
-                        ${plan.price}
+                        {plan.tier}
                       </span>
-                      <span className={`text-sm mb-1 ${plan.highlight ? 'text-white/50' : 'text-slate-400'}`}>/mes</span>
                     </div>
                     <p className={`text-xs leading-relaxed ${plan.highlight ? 'text-white/60' : 'text-slate-500'}`}>
                       {plan.desc}
@@ -384,21 +390,17 @@ export default function MascotasPage() {
                   </div>
 
                   <ul className="space-y-2.5 flex-1 mb-7">
-                    {plan.features.map(({ label, included }) => (
-                      <li key={label} className="flex items-center gap-2.5 text-xs">
-                        {included ? (
-                          <Check weight="bold" className={`w-4 h-4 shrink-0 ${plan.highlight ? 'text-[#7db887]' : 'text-[#3d7a47]'}`} />
-                        ) : (
-                          <X weight="bold" className={`w-4 h-4 shrink-0 ${plan.highlight ? 'text-white/20' : 'text-slate-300'}`} />
-                        )}
-                        <span className={included ? (plan.highlight ? 'text-white/80' : 'text-slate-700') : (plan.highlight ? 'text-white/30' : 'text-slate-400')}>
+                    {plan.features.map((label) => (
+                      <li key={label} className="flex items-start gap-2.5 text-xs">
+                        <span className={`mt-0.5 shrink-0 ${plan.highlight ? 'text-[#7db887]' : 'text-[#3d7a47]'}`}>✓</span>
+                        <span className={plan.highlight ? 'text-white/80' : 'text-slate-700'}>
                           {label}
                         </span>
                       </li>
                     ))}
                   </ul>
 
-                  {isEligibleState && plan.name !== 'Accidente' ? (
+                  {isEligibleState ? (
                     <a
                       href={FETCH_URL}
                       target="_blank"
@@ -427,7 +429,7 @@ export default function MascotasPage() {
               ))}
             </div>
             <p className="text-xs text-slate-400 text-center mt-6">
-              *Precios referenciales. Cobertura, términos y condiciones varían según raza, edad, estado y aseguradora. Sujeto a aprobación.
+              *El precio varía según raza, edad, estado, deductible y máximo anual elegido. Sujeto a términos y condiciones de Fetch Pet Insurance.
             </p>
           </div>
         </section>
@@ -441,29 +443,28 @@ export default function MascotasPage() {
                 <span className="font-editorial-italic text-[#3d7a47]">cubierto?</span>
               </h2>
               <p className="text-slate-500 font-light text-sm leading-relaxed mb-8">
-                Cobertura integral para que tu perro o gato esté protegido en cualquier situación. Sujeto a términos y condiciones.
+                Cobertura real de Fetch Pet Insurance para tu perro o gato. Sujeto a términos y condiciones.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {COVERAGE.map(({ icon: Icon, label }) => (
                   <div key={label} className="flex items-center gap-3 bg-white rounded-xl px-4 py-3.5 border border-slate-100 shadow-sm">
                     <Icon weight="duotone" className="w-5 h-5 text-[#3d7a47] shrink-0" />
-                    <span className="text-sm text-slate-700 font-medium">{label}</span>
+                    <span className="text-sm text-slate-700 font-medium leading-snug">{label}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div className="bg-[#1a3320] rounded-3xl p-8 text-white">
-              <p className="text-xs uppercase tracking-widest text-[#7db887] font-semibold mb-4">VetDirect™</p>
+              <p className="text-xs uppercase tracking-widest text-[#7db887] font-semibold mb-4">Cómo funciona el reembolso</p>
               <h3 className="text-2xl font-light leading-tight mb-5">
-                Sin reembolsos.<br />
-                <span className="font-editorial-italic text-[#7db887]">Sin formularios.</span><br />
-                Sin esperas.
+                Simple, rápido<br />
+                <span className="font-editorial-italic text-[#7db887]">y sin burocracia.</span>
               </h3>
               <div className="space-y-4">
                 {[
-                  { step: '1', text: 'Llevas a tu mascota a la clínica asociada' },
-                  { step: '2', text: 'La clínica nos contacta directamente' },
-                  { step: '3', text: 'Nosotros pagamos. Tú te llevas a tu mascota.' },
+                  { step: '1', text: 'Llevas a tu mascota a cualquier veterinario con licencia en EE.UU. o Canadá' },
+                  { step: '2', text: 'Pagas la factura y subes el recibo al portal de Fetch (app o web)' },
+                  { step: '3', text: 'Fetch te reembolsa según tu plan en aproximadamente una semana' },
                 ].map(s => (
                   <div key={s.step} className="flex items-start gap-4">
                     <div className="w-7 h-7 rounded-full bg-[#7db887]/20 border border-[#7db887]/40 flex items-center justify-center shrink-0 text-xs font-bold text-[#7db887]">
@@ -473,7 +474,81 @@ export default function MascotasPage() {
                   </div>
                 ))}
               </div>
+              <p className="text-xs text-white/30 mt-6">Sujeto a los términos y condiciones de la póliza de Fetch Pet Insurance.</p>
             </div>
+          </div>
+        </section>
+
+        {/* ── Cómo cotizar en línea ─────────────────────────────────────── */}
+        <section className="bg-white border-y border-slate-100">
+          <div className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
+            <div className="max-w-xl mb-10">
+              <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-3">
+                Cotiza en línea{' '}
+                <span className="font-editorial-italic text-[#3d7a47]">en 5 minutos</span>
+              </h2>
+              {isEligibleState ? (
+                <p className="text-sm text-slate-500 font-light">
+                  Estás en <strong className="text-slate-700">{stateName}</strong> — puedes activar tu póliza directamente en línea, 100% digital, sin llamadas.
+                </p>
+              ) : (
+                <p className="text-sm text-slate-500 font-light">
+                  Un asesor en español te guía en todo el proceso sin costo. Sin SSN, sin burocracia.
+                </p>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  step: '01',
+                  title: 'Datos de tu mascota',
+                  desc: 'Ingresa el nombre, raza, edad y sexo de tu perro o gato. El sistema actualiza el precio en tiempo real.',
+                },
+                {
+                  step: '02',
+                  title: 'Personaliza tu plan',
+                  desc: 'Elige el porcentaje de reembolso (70%, 80% o 90%), el deductible y el máximo anual según tu presupuesto.',
+                },
+                {
+                  step: '03',
+                  title: 'Paga y activa',
+                  desc: 'Paga con tarjeta de crédito o débito. La póliza queda activa de inmediato. Recibes tu póliza por email.',
+                },
+              ].map(({ step, title, desc }) => (
+                <div key={step} className="relative bg-[#fafbfa] border border-slate-200 rounded-2xl p-7">
+                  <span className="text-5xl font-light text-slate-100 absolute top-5 right-6 select-none">{step}</span>
+                  <h3 className="font-semibold text-slate-900 text-base mb-2 relative">{title}</h3>
+                  <p className="text-sm text-slate-600 font-light leading-relaxed relative">{desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {!geoLoading && (
+              <div className="mt-8 text-center">
+                {isEligibleState ? (
+                  <a
+                    href={FETCH_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1a3320] hover:bg-[#2d5a35] text-white font-semibold text-sm transition-all shadow-md"
+                  >
+                    <PawPrint weight="fill" className="w-4 h-4" />
+                    Ir a fetchpet.com — portal afiliado
+                    <ArrowRight weight="bold" className="w-4 h-4" />
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => setQuoteOpen(true)}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1a3320] hover:bg-[#2d5a35] text-white font-semibold text-sm transition-all shadow-md"
+                  >
+                    <PawPrint weight="fill" className="w-4 h-4" />
+                    Hablar con un asesor en español
+                    <ArrowRight weight="bold" className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </section>
 
@@ -494,7 +569,7 @@ export default function MascotasPage() {
                     <span className="font-editorial-italic text-[#7db887]">{stateName}</span>
                   </h2>
                   <p className="text-white/70 font-light mb-8 text-base">
-                    Compra tu seguro de mascotas directamente en línea. Proceso 100% digital, sin llamadas.
+                    Compra tu seguro de mascotas directamente en línea en fetchpet.com. Proceso 100% digital, sin llamadas.
                   </p>
                   <a
                     href={FETCH_URL}
@@ -507,7 +582,7 @@ export default function MascotasPage() {
                     <ArrowRight weight="bold" className="w-4 h-4" />
                   </a>
                   <p className="text-xs text-white/30 mt-4">
-                    Serás redirigido al portal de Fetch Pet Insurance · Maria Fernanda afiliado certificado
+                    Serás redirigido al portal de Fetch Pet Insurance · Maria Fernanda Insurance Consulting, afiliado certificado
                   </p>
                 </>
               ) : (
@@ -597,7 +672,7 @@ export default function MascotasPage() {
             <div>
               <p className="text-sm font-semibold text-slate-800 mb-1">Disponibilidad de compra directa en línea</p>
               <p className="text-sm text-slate-600 font-light leading-relaxed">
-                La compra directa en línea está disponible en:{' '}
+                La compra directa en línea a través del portal afiliado Fetch está disponible en:{' '}
                 <strong className="font-semibold text-slate-800">Nueva Jersey, Florida, Iowa, Nevada, Pensilvania, Rhode Island y Texas.</strong>{' '}
                 Para residentes de otros estados, un asesor en español te guiará en el proceso sin costo.
               </p>
@@ -670,8 +745,8 @@ export default function MascotasPage() {
             </div>
             <div className="border-t border-slate-800 mt-8 pt-4">
               <p className="text-xs text-slate-500 font-light">
-                Los precios son referenciales. Cobertura, términos y condiciones varían por estado y sujetos a aprobación.
-                Maria Fernanda Insurance Consulting actúa como agente afiliado de Fetch Pet Insurance en los estados indicados. Sujeto a términos y condiciones.
+                Los precios son referenciales y varían según raza, edad, estado y plan elegido. Sujeto a aprobación y términos y condiciones de Fetch Pet Insurance.
+                Maria Fernanda Insurance Consulting actúa como agente afiliado de Fetch Pet Insurance en los estados indicados.
               </p>
             </div>
           </div>
