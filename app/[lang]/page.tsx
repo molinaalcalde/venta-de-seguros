@@ -140,7 +140,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
   const videoRef1 = useRef<HTMLVideoElement>(null);
   const videoRef2 = useRef<HTMLVideoElement>(null);
   const videoRefs = [videoRef0, videoRef1, videoRef2] as const;
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timerRef = useRef<number | null>(null);
 
   const goToVideo = useCallback((idx: number) => {
     setHeroIndex(idx);
@@ -194,7 +194,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
   const TIPO_LABELS = isEn ? TIPO_LABEL_EN : TIPO_LABEL;
 
   // Internal link helper
-  const l = (path: string) => `/${lang}${path}`;
+  function l(path: string) { return `/${lang}${path}`; }
 
   return (
     <>
