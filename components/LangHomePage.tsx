@@ -18,7 +18,8 @@ import {
 } from 'lucide-react';
 import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
-import QuoteModal, { type InsType, TIPO_LABEL } from '@/components/QuoteModal';
+import QuoteModal, { TIPO_LABEL } from '@/components/QuoteModal';
+import type { InsType } from '@/components/QuoteModal';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import type { ComponentType } from 'react';
 import {
@@ -183,7 +184,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
 
   // Quote modal
   const [quoteOpen, setQuoteOpen] = useState(false);
-  const [quoteType, setQuoteType] = useState<InsType | undefined>(undefined);
+  const [quoteType, setQuoteType] = useState(undefined as InsType | undefined);
 
   function openQuote(type?: InsType) {
     setQuoteType(type);
