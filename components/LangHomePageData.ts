@@ -8,7 +8,8 @@ import {
 
 export { TIPO_LABEL };
 
-export const COTIZADOR_ICONS: Record<string, unknown> = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const COTIZADOR_ICONS: Record<string, any> = {
   Auto:          PhCar,
   AutoComercial: PhTruck,
   Mascotas:      PhPaw,
