@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const BASE_URL = 'https://venta-de-seguros.vercel.app';
 
@@ -92,5 +93,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
 }
 
 export default function LangLayout({ children }: Props) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <WhatsAppButton />
+    </>
+  );
 }
