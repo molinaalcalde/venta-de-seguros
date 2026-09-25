@@ -20,6 +20,7 @@ import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
 import QuoteModal from '@/components/QuoteModal';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { Umbrella as PhUmbrella } from '@phosphor-icons/react';
 import {
   REEL_SLIDES, solutionsTabs_es, solutionsTabs_en, TAB_TO_INS, ALL_INS_TYPES,
   FAQ_ES, FAQ_EN, HERO_VIDEOS, TIPO_LABEL, TIPO_LABEL_EN, COTIZADOR_ICONS,
@@ -131,7 +132,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className={`h-10 w-auto transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`} />
             </a>
             <nav aria-label={isEn ? 'Main navigation' : 'Navegación principal'} className="hidden lg:flex items-center gap-7">
-              {isEn ? [
+              {(isEn ? [
                 { label: 'Coverage', href: '#coberturas-destacadas' },
                 { label: 'Why Us', href: '#por-que-aegis' },
                 { label: 'Blog', href: '/blog' },
