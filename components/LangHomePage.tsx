@@ -47,7 +47,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
   const videoRef1 = useRef<HTMLVideoElement | null>(null);
   const videoRef2 = useRef<HTMLVideoElement | null>(null);
   const videoRefs = [videoRef0, videoRef1, videoRef2];
-  const timerRef = useRef<number | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const goToVideo = useCallback((idx: number) => {
     setHeroIndex(idx);
