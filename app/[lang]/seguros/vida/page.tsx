@@ -53,7 +53,7 @@ const config: InsurancePageConfig = {
   ctaItalic: 'hoy mismo',
   ctaSubtitle: 'Sin SSN. Living Benefits incluidos. Un asesor en español te guía en todo el proceso.',
   ctaButton: 'Cotizar Seguro de Vida',
-  theme: 'green',
+  theme: 'emerald',
   schema: { description: 'Seguro de vida para inmigrantes sin SSN. Acepta ITIN. Living Benefits incluidos. Beneficiarios en cualquier país. Desde $45/mes.', price: '45' },
 };
 
