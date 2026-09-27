@@ -7,6 +7,7 @@ import {
   Shield, Lock, Headset, CreditCard,
 } from '@phosphor-icons/react';
 import QuoteModal, { type InsType } from '@/components/QuoteModal';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 /* ─── Theme map (all classes literal so Tailwind JIT includes them) ─── */
 const THEMES = {
@@ -133,12 +134,15 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
               <ArrowLeft weight="regular" className="w-4 h-4 text-slate-400 group-hover:text-slate-700 transition-colors" />
               <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto" />
             </Link>
-            <button
-              onClick={() => setQuoteOpen(true)}
-              className="px-4 py-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-all shadow-sm"
-            >
-              Cotizar gratis
-            </button>
+            <div className="flex items-center gap-3">
+              <LanguageSwitcher scrolled={scrolled} />
+              <button
+                onClick={() => setQuoteOpen(true)}
+                className="px-4 py-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-all shadow-sm"
+              >
+                Cotizar gratis
+              </button>
+            </div>
           </div>
         </div>
       </header>
