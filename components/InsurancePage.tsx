@@ -237,6 +237,17 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
                 ni ninguna agencia gubernamental sin orden judicial. Cumplimos con todas las leyes
                 estatales de privacidad de seguros.
               </p>
+              {/* CTA 1 — after eligibility */}
+              <div className="mt-6 pt-5 border-t border-slate-100">
+                <button
+                  onClick={() => setQuoteOpen(true)}
+                  className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl ${t.stepBg} text-white text-sm font-semibold transition-all hover:opacity-90 hover:-translate-y-0.5 shadow-sm`}
+                >
+                  {config.ctaButton}
+                  <ArrowRight weight="bold" className="w-4 h-4" />
+                </button>
+                <p className="text-[11px] text-slate-400 text-center mt-2">{config.priceFrom} · Sin compromiso</p>
+              </div>
             </div>
           </div>
         </section>
@@ -282,7 +293,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
               Así de{' '}
               <span className={`font-editorial-italic ${t.iconText}`}>sencillo</span>
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12">
               {config.steps.map((s, i) => (
                 <div key={i}>
                   <div className={`w-10 h-10 rounded-full ${t.stepBg} text-white text-sm font-bold flex items-center justify-center mb-4`}>
@@ -292,6 +303,20 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
                   <p className="text-sm text-slate-600 font-light leading-relaxed">{s.desc}</p>
                 </div>
               ))}
+            </div>
+            {/* CTA 2 — after steps */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 rounded-2xl px-7 py-5 border border-slate-100">
+              <div>
+                <p className="font-semibold text-slate-900 text-sm">¿Todo claro? Empieza ahora — tarda menos de 5 minutos.</p>
+                <p className="text-xs text-slate-500 mt-0.5">{config.priceFrom} · Sin SSN · Sin compromiso</p>
+              </div>
+              <button
+                onClick={() => setQuoteOpen(true)}
+                className={`shrink-0 flex items-center gap-2 px-6 py-3 rounded-full ${t.stepBg} text-white text-sm font-semibold transition-all hover:opacity-90`}
+              >
+                {config.ctaButton}
+                <ArrowRight weight="bold" className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </section>
@@ -344,6 +369,19 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
               ))}
             </div>
             <p className="text-xs text-slate-400 mt-5">*Los nombres han sido cambiados para proteger la privacidad de nuestros clientes.</p>
+
+            {/* CTA 3 — after testimonials */}
+            <div className="mt-10 text-center">
+              <p className="text-slate-500 text-sm mb-4">Únete a más de 200 familias que ya están protegidas.</p>
+              <button
+                onClick={() => setQuoteOpen(true)}
+                className={`inline-flex items-center gap-2 px-8 py-4 rounded-full ${t.stepBg} text-white font-bold text-sm transition-all hover:opacity-90 hover:-translate-y-0.5 shadow-lg`}
+              >
+                {config.ctaButton}
+                <ArrowRight weight="bold" className="w-4 h-4" />
+              </button>
+              <p className="text-[11px] text-slate-400 mt-3">{config.priceFrom} · Sin compromiso</p>
+            </div>
           </div>
         </section>
 
@@ -438,6 +476,21 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
           </div>
         </footer>
       </main>
+
+      {/* ── Sticky mobile bottom bar ─────────────────────────────── */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-sm border-t border-slate-200 px-5 py-3 flex items-center justify-between shadow-[0_-4px_24px_rgba(0,0,0,0.08)]">
+        <div>
+          <p className="text-xs font-bold text-slate-900">{config.priceFrom}</p>
+          <p className="text-[10px] text-slate-500">Sin compromiso · Sin SSN</p>
+        </div>
+        <button
+          onClick={() => setQuoteOpen(true)}
+          className={`flex items-center gap-1.5 px-5 py-2.5 rounded-full ${t.stepBg} text-white text-xs font-bold shadow-sm`}
+        >
+          {config.ctaButton}
+          <ArrowRight weight="bold" className="w-3.5 h-3.5" />
+        </button>
+      </div>
 
       <QuoteModal open={quoteOpen} onClose={() => setQuoteOpen(false)} initialType={config.quoteType} />
     </>

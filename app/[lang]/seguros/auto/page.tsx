@@ -8,11 +8,11 @@ const configEs: InsurancePageConfig = {
   badge: 'Sin SSN · ITIN · Pasaporte · Matrícula Consular',
   heroLine1: 'Seguro de Auto',
   heroItalic: 'sin SSN — protege a tu familia hoy',
-  heroSubtitle: 'La ley exige seguro a todos los conductores en USA, sin importar el estatus migratorio. Si algo pasa manejando sin seguro, la deuda puede perseguirte por años — el costo promedio de un accidente con lesiones es $28,278. No necesitas SSN. Tu información nunca llega al gobierno.',
+  heroSubtitle: 'La ley exige seguro a todos los conductores, sin importar tu estatus. Un accidente sin seguro puede costarte $28,278. No necesitas SSN — tu información es 100% confidencial.',
   trustBadges: ['Sin SSN requerido', 'Desde $89/mes', 'Info 100% confidencial', 'Asesor en español'],
   priceFrom: 'Desde $89/mes',
   eligibilityTitle: 'Sí puedes asegurarte aunque...',
-  eligibilityText: 'Llevamos años ayudando a familias latinas que creían que no podían asegurarse. Manejar sin seguro en Florida, California o Texas — donde 1 de cada 5 conductores tampoco tiene seguro — puede costarte desde una multa de $1,000 hasta responsabilidad personal ilimitada si hay un accidente con heridos.',
+  eligibilityText: 'Llevamos años ayudando a familias latinas que creían no poder asegurarse. En Florida, Texas y California 1 de cada 5 conductores no tiene seguro — y la multa mínima es $1,000.',
   eligibilityItems: [
     'No tengas número de seguro social (SSN) — aceptamos ITIN, pasaporte y matrícula consular',
     'Seas inmigrante recién llegado, tengas DACA o estatus pendiente',
@@ -23,18 +23,18 @@ const configEs: InsurancePageConfig = {
   features: [
     {
       icon: IdentificationCard,
-      title: 'Sin SSN — y Más Barato de Lo Que Crees',
-      desc: 'Cotizas y contratas con lo que tienes: ITIN, pasaporte, matrícula consular o licencia extranjera. Sin burocracia, sin rechazo por estatus. Dato que pocos conocen: los conductores en vecindarios latinos pagan hasta 30% más por el mismo riesgo según ProPublica. Como agentes independientes, comparamos entre múltiples aseguradoras para que no pagues de más.',
+      title: 'Sin SSN — y más barato de lo que crees',
+      desc: 'Cotizas con ITIN, pasaporte o matrícula consular. Sin burocracia. Los conductores en vecindarios latinos pagan hasta 30% más por el mismo riesgo (ProPublica). Como agentes independientes, comparamos aseguradoras para que no pagues de más.',
     },
     {
       icon: House,
-      title: 'Tu Primer Auto en EE.UU. — Lo Que el Dealer No Te Explicó',
-      desc: 'Si financiaste el carro, el banco exige full coverage — no es opcional. El "minimum liability" que ofrece el dealer solo cubre a la otra persona, no a tu auto. Tu historial de manejo de México o Guatemala no se transfiere: en EE.UU. empiezas desde cero y eso sube la prima. Te explicamos exactamente qué necesitas según tu situación — sin que tengas que descubrirlo en un accidente.',
+      title: 'Primer auto en EE.UU. — lo que el dealer no te dijo',
+      desc: 'Si financiaste el carro, el banco exige full coverage, no es opcional. El minimum liability solo cubre a la otra persona. Tu historial de manejo de otro país no se transfiere — empiezas desde cero. Te decimos exactamente qué necesitas antes de que lo descubras en un accidente.',
     },
     {
       icon: TrendUp,
-      title: '¿Tu Prima Subió? Te Decimos Por Qué y Cómo Bajarla',
-      desc: 'Las primas de auto subieron 14% en 2023 — el mayor aumento en 50 años. La razón real: los autos modernos tienen sensores y cámaras que cuestan $2,800 reparar (antes $300). Nadie te lo explica. Nosotros sí. Y como agentes independientes, comparamos múltiples aseguradoras para conseguirte el mejor precio por la misma cobertura. Conductores que cambian ahorran en promedio $400-$900 al año.',
+      title: '¿Tu prima subió? Te decimos por qué — y cómo bajarla',
+      desc: 'Las primas subieron 14% en 2023, el mayor aumento en 50 años. La razón: sensores y cámaras que cuestan $2,800 reparar (antes $300). Comparamos múltiples aseguradoras. Conductores que cambian ahorran $400–$900/año.',
     },
   ],
   coverageItems: [
@@ -49,16 +49,16 @@ const configEs: InsurancePageConfig = {
   ],
   steps: [
     {
-      title: 'Cuéntanos tu situación — sin SSN, sin revisión de crédito',
-      desc: 'Información básica sobre tu auto y los documentos que tienes. Gratis, sin compromiso. En español desde el primer momento.',
+      title: 'Cuéntanos tu situación',
+      desc: 'Info básica sobre tu auto y los documentos que tienes. Gratis, sin compromiso, en español.',
     },
     {
-      title: 'Comparamos entre múltiples aseguradoras',
-      desc: 'Como agentes independientes, no trabajamos para una sola compañía. Buscamos la mejor cobertura al menor precio para tu situación específica — con ITIN, pasaporte o matrícula consular.',
+      title: 'Comparamos múltiples aseguradoras',
+      desc: 'No trabajamos para una sola compañía. Buscamos la mejor cobertura al menor precio para tu situación.',
     },
     {
-      title: 'Tu tarjeta de seguro llega hoy mismo',
-      desc: 'En la mayoría de los casos, la tarjeta digital llega por email el mismo día. Puedes manejar legal — y protegido — desde hoy.',
+      title: 'Tu tarjeta llega hoy mismo',
+      desc: 'La tarjeta digital llega por email el mismo día en la mayoría de los casos. Manejás legal desde hoy.',
     },
   ],
   testimonials: [
@@ -131,7 +131,7 @@ const configEn: InsurancePageConfig = {
   badge: 'Independent Agent · Compare Multiple Carriers · No Loyalty Tax',
   heroLine1: 'Car Insurance',
   heroItalic: 'that actually works for you — not for the insurer',
-  heroSubtitle: 'The national average for full coverage is $2,098/year — and rates just hit a 47-year high. Most drivers paid the increase without questioning it. We\'re an independent agent: we compare multiple carriers, explain exactly what you\'re paying for, and find you the best rate for your situation. No loyalty to any one insurer.',
+  heroSubtitle: 'Rates just hit a 47-year high — $2,098/year average. Most drivers paid the increase without questioning it. We\'re an independent agent: we compare multiple carriers and find you the best rate. No loyalty to any one insurer.',
   trustBadges: ['Independent agent', 'Multiple carriers compared', 'No loyalty tax', 'Rate review in 5 min'],
   priceFrom: 'From $89/mo',
   eligibilityTitle: 'Which situation sounds like yours?',
@@ -146,18 +146,18 @@ const configEn: InsurancePageConfig = {
   features: [
     {
       icon: TrendUp,
-      title: 'Your Premium Went Up. Here\'s Every Real Reason — and What To Do.',
-      desc: 'Rates are at a 47-year high and rising. The reasons your insurer won\'t explain in plain English: modern vehicles have sensors and cameras that cost $2,800 to repair vs. $300 in 2015; auto parts inflation hit 30-40% since 2020; post-pandemic accident rates spiked; and $40 billion in annual insurance fraud gets distributed across all policyholders. None of this is your fault — but comparing rates can recover most of the increase. Drivers who shop around save an average of $900 per year.',
+      title: 'Your premium went up. Here\'s why — and what you can do.',
+      desc: 'Modern vehicles have sensors that cost $2,800 to repair vs. $300 in 2015. Parts inflation hit 30-40% since 2020. None of this is your fault — but comparing rates can recover most of the increase. Drivers who shop around save an average of $900/year.',
     },
     {
       icon: Warning,
-      title: '"Full Coverage" Is Not a Legal Term. Most Drivers Learn This After a Claim.',
-      desc: 'No insurance contract in the US uses the words "full coverage." What people usually mean: Liability (protects others — required by law), Collision (your car in accidents), and Comprehensive (theft, weather, vandalism). What almost no standard policy covers: mechanical breakdown, personal belongings in your car, the gap between your loan balance and your car\'s actual value, rental reimbursement while yours is repaired, or roadside assistance. These gaps cost people thousands every year.',
+      title: '"Full coverage" is not a legal term. Most drivers learn this after a claim.',
+      desc: 'It typically combines Liability, Collision, and Comprehensive. What it rarely covers: mechanical breakdown, personal belongings, the gap between your loan and car\'s value, or rental reimbursement. Most people discover these gaps when they file a claim.',
     },
     {
       icon: ArrowsLeftRight,
-      title: 'First Car? Here\'s What Dealers and State DMVs Don\'t Tell You.',
-      desc: 'State minimum coverage protects others — not you or your vehicle. If you financed your car, your lender requires full coverage, not just liability. A claim under $1,500 may cost more in future premium increases than paying out of pocket. And if your car is worth less than you owe, gap insurance could save you thousands if it\'s totaled. Most first-time buyers get this wrong. We walk you through exactly what you need — and what you don\'t — before you sign anything.',
+      title: 'First car? Here\'s what dealers don\'t tell you.',
+      desc: 'State minimum protects others — not you. If you financed, your lender requires full coverage. If you owe more than the car is worth, gap insurance is critical. Most first-time buyers get this wrong. We walk you through exactly what you need before you sign.',
     },
   ],
   coverageItems: [
@@ -172,16 +172,16 @@ const configEn: InsurancePageConfig = {
   ],
   steps: [
     {
-      title: 'Tell us your situation — 5 minutes, no commitment',
-      desc: 'First car or rate review — both work. Current policy details if you have them, or just your vehicle info. No credit check required to get a quote.',
+      title: 'Tell us your situation — 5 min, no commitment',
+      desc: 'First car or rate review. Vehicle info or current policy. No credit check to quote.',
     },
     {
-      title: 'We compare across multiple carriers simultaneously',
-      desc: 'As an independent agent, we access multiple insurance companies at once — not just one. No loyalty, no hidden agenda. We find the best coverage at the best price for your exact situation.',
+      title: 'We compare multiple carriers at once',
+      desc: 'Independent agent — no loyalty to any one insurer. Best coverage, best price for your situation.',
     },
     {
-      title: 'You see exactly what you\'re getting before you commit',
-      desc: 'We break down every coverage, every deductible, every gap in plain language. Keep your current policy, upgrade it, or switch. Your decision, no pressure. Most new cards arrive the same day.',
+      title: 'You see everything before you commit',
+      desc: 'Every coverage, every gap, in plain English. Keep, upgrade, or switch. No pressure. Cards arrive same day.',
     },
   ],
   testimonials: [
