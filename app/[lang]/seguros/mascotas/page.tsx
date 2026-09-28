@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   PawPrint, CheckCircle, Stethoscope, FirstAidKit,
   Syringe, Pill, ArrowRight, MapPin, ArrowLeft, Star,
-  Shield, Lock, Headset, CreditCard, Tooth, Heart,
+  Shield, Lock, Headset, CreditCard, Tooth, Heart, CurrencyDollar,
 } from '@phosphor-icons/react';
 import QuoteModal from '@/components/QuoteModal';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -128,9 +128,9 @@ const CONTENT = {
       { value: '100%', label: 'Confidencial' },
     ],
     features: [
-      { emoji: '🏥', title: 'Cualquier Veterinario', desc: 'No hay red restringida. Lleva a tu mascota a cualquier veterinario con licencia en Estados Unidos — incluyendo especialistas y emergencias.' },
-      { emoji: '💰', title: 'Hasta 90% de Reembolso', desc: 'Tú eliges el porcentaje: 70%, 80% o 90% de los gastos elegibles cubiertos. También personalizas el deductible y el máximo anual. Sujeto a términos y condiciones.' },
-      { emoji: '🔒', title: 'Privacidad Garantizada', desc: 'Tu información es 100% confidencial. Nunca la compartimos con migración ni ninguna agencia del gobierno.' },
+      { icon: Stethoscope, title: 'Cualquier Veterinario', desc: 'No hay red restringida. Lleva a tu mascota a cualquier veterinario con licencia en Estados Unidos — incluyendo especialistas y emergencias.' },
+      { icon: CurrencyDollar, title: 'Hasta 90% de Reembolso', desc: 'Tú eliges el porcentaje: 70%, 80% o 90% de los gastos elegibles cubiertos. También personalizas el deductible y el máximo anual. Sujeto a términos y condiciones.' },
+      { icon: Lock, title: 'Privacidad Garantizada', desc: 'Tu información es 100% confidencial. Nunca la compartimos con migración ni ninguna agencia del gobierno.' },
     ],
     quoteBtnEligible: 'Ir a fetchpet.com — portal afiliado',
     quoteBtnNotEligible: 'Hablar con un asesor en español',
@@ -240,9 +240,9 @@ const CONTENT = {
       { value: '100%', label: 'Confidential' },
     ],
     features: [
-      { emoji: '🏥', title: 'Any Veterinarian', desc: 'No restricted network. Take your pet to any licensed vet in the United States — including specialists and emergency hospitals.' },
-      { emoji: '💰', title: 'Up to 90% Reimbursement', desc: 'You choose the percentage: 70%, 80%, or 90% of covered eligible expenses. Also customize deductible and annual maximum. Subject to terms and conditions.' },
-      { emoji: '🔒', title: 'Privacy Guaranteed', desc: 'Your information is 100% confidential. We never share it with immigration or any government agency.' },
+      { icon: Stethoscope, title: 'Any Veterinarian', desc: 'No restricted network. Take your pet to any licensed vet in the United States — including specialists and emergency hospitals.' },
+      { icon: CurrencyDollar, title: 'Up to 90% Reimbursement', desc: 'You choose the percentage: 70%, 80%, or 90% of covered eligible expenses. Also customize deductible and annual maximum. Subject to terms and conditions.' },
+      { icon: Lock, title: 'Privacy Guaranteed', desc: 'Your information is 100% confidential. We never share it with immigration or any government agency.' },
     ],
     quoteBtnEligible: 'Go to fetchpet.com — affiliate portal',
     quoteBtnNotEligible: 'Talk to a bilingual advisor',
@@ -385,13 +385,16 @@ export default function MascotasLangPage({ params }: { params: { lang: string } 
         {/* ── 3 Features ── */}
         <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {c.features.map((f) => (
+            {c.features.map((f) => {
+              const Icon = f.icon;
+              return (
               <div key={f.title} className="bg-white rounded-2xl p-7 border border-slate-200/70 shadow-sm border-t-2 border-t-[#3d7a47]">
-                <div className="text-3xl mb-4">{f.emoji}</div>
+                <Icon size={28} weight="light" className="text-[#3d7a47] mb-4" />
                 <h3 className="font-semibold text-slate-900 text-base mb-2">{f.title}</h3>
                 <p className="text-sm text-slate-600 font-light leading-relaxed">{f.desc}</p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
