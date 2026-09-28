@@ -29,12 +29,12 @@ const configEs: InsurancePageConfig = {
     {
       icon: Bank,
       title: 'Una Barrera Legal Entre Tus Activos y Quien te Demanda',
-      desc: 'Sin Protección Extra, una demanda exitosa puede resultar en embargo de cuentas bancarias, propiedades o activos del negocio. Este seguro pone una barrera legal entre lo que tenés y quien te demanda. Los abogados del otro lado lo saben — por eso demandan por cifras enormes.',
+      desc: 'Sin Protección Extra, una demanda exitosa puede resultar en embargo de cuentas bancarias, propiedades o activos del negocio. Este seguro pone una barrera legal entre lo que tienes y quien te demanda. Los abogados del otro lado lo saben — por eso demandan por cifras enormes.',
     },
     {
       icon: CurrencyDollar,
       title: 'Menos de $1 al Día por $1 Millón de Protección',
-      desc: 'Es uno de los seguros con mejor relación precio-cobertura del mercado. Por menos de $1 al día obtenés $1 millón de protección adicional sobre tu seguro de auto y hogar. Para aumentar a $2, $3 o $5 millones, el costo adicional es mínimo.',
+      desc: 'Es uno de los seguros con mejor relación precio-cobertura del mercado. Por menos de $1 al día obtienes $1 millón de protección adicional sobre tu seguro de auto y hogar. Para aumentar a $2, $3 o $5 millones, el costo adicional es mínimo.',
     },
   ],
   coverageItems: [

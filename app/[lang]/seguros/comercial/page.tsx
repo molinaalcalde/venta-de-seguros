@@ -29,20 +29,20 @@ const configEs: InsurancePageConfig = {
     },
     {
       icon: Certificate,
-      title: 'Sin COI, perdés el local o el contrato',
-      desc: 'El Certificado de Seguro (COI) es lo primero que te exige un landlord, un cliente corporativo o un contratista general. Sin él, no trabajás. Lo emitimos en menos de 24 horas para que no pierdas ninguna oportunidad.',
+      title: 'Sin COI, pierdes el local o el contrato',
+      desc: 'El Certificado de Seguro (COI) es lo primero que te exige un landlord, un cliente corporativo o un contratista general. Sin él, no trabajas. Lo emitimos en menos de 24 horas para que no pierdas ninguna oportunidad.',
     },
     {
       icon: ShieldCheck,
       title: 'BOP: todo cubierto, un solo pago',
-      desc: 'La póliza BOP combina Responsabilidad Civil y protección de propiedad (local, equipo, inventario) en un paquete. También cubre pérdida de ingresos si tenés que cerrar temporalmente. Más cobertura, menos precio que contratarlo por separado.',
+      desc: 'La póliza BOP combina Responsabilidad Civil y protección de propiedad (local, equipo, inventario) en un paquete. También cubre pérdida de ingresos si tienes que cerrar temporalmente. Más cobertura, menos precio que contratarlo por separado.',
     },
   ],
   coverageItems: [
     'Responsabilidad Civil General (GL) — desde $19/mes',
     'Protección de propiedad — local, equipo e inventario',
     'Póliza BOP (GL + Propiedad combinados)',
-    'Interrupción del negocio — cubre ingresos si cerrás temporalmente',
+    'Interrupción del negocio — cubre ingresos si cierras temporalmente',
     'Compensación laboral (Workers Comp) — obligatoria con empleados',
     'Responsabilidad de productos',
     'Equipos y maquinaria especializada',
@@ -51,7 +51,7 @@ const configEs: InsurancePageConfig = {
   steps: [
     {
       title: 'Cuéntanos sobre tu negocio',
-      desc: 'Tipo de negocio, ubicación y empleados. Sin SSN — usá tu ITIN o EIN. Gratis, sin compromiso.',
+      desc: 'Tipo de negocio, ubicación y empleados. Sin SSN — usa tu ITIN o EIN. Gratis, sin compromiso.',
     },
     {
       title: 'Cotización por industria, no genérica',
@@ -86,7 +86,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Qué seguro mínimo necesita mi negocio?',
-      a: 'La Responsabilidad Civil General (GL) desde $19/mes — cubre lesiones y daños a clientes o terceros. Si tenés local o inventario, sumá protección de propiedad (o el BOP que combina ambos). Con empleados, Workers Comp es obligatoria por ley.',
+      a: 'La Responsabilidad Civil General (GL) desde $19/mes — cubre lesiones y daños a clientes o terceros. Si tienes local o inventario, agrega protección de propiedad (o el BOP que combina ambos). Con empleados, Workers Comp es obligatoria por ley.',
     },
     {
       q: '¿Puedo asegurar mi negocio con ITIN en lugar de SSN?',
@@ -94,11 +94,11 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Qué es el COI y por qué me lo exigen?',
-      a: 'El Certificado de Seguro prueba que tenés seguro activo con los límites requeridos. Landlords, clientes corporativos y contratistas lo exigen antes de dejarte trabajar. Lo emitimos en menos de 24 horas.',
+      a: 'El Certificado de Seguro prueba que tienes seguro activo con los límites requeridos. Landlords, clientes corporativos y contratistas lo exigen antes de dejarte trabajar. Lo emitimos en menos de 24 horas.',
     },
     {
       q: '¿Mi seguro de hogar cubre mi negocio?',
-      a: 'No. Las pólizas de hogar excluyen explícitamente la actividad comercial. Si trabajás desde casa, recibís clientes o guardás inventario, necesitás cobertura comercial por separado.',
+      a: 'No. Las pólizas de hogar excluyen explícitamente la actividad comercial. Si trabajas desde casa, recibes clientes o guardas inventario, necesitas cobertura comercial por separado.',
     },
     {
       q: '¿Mi información se comparte con el gobierno o migración?',

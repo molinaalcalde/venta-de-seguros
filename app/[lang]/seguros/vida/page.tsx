@@ -11,7 +11,7 @@ const configEs: InsurancePageConfig = {
   heroSubtitle: 'En 2024, los latinos enviaron $161 mil millones a sus familias en América Latina. Si algo te pasa, ese ingreso desaparece. Tu mamá en México, tus hijos en Guatemala — no reciben nada. Desde $15/mes y sin SSN, tu familia queda protegida aunque no estés. Y si te diagnostican algo grave, puedes usar el dinero mientras sigues vivo.',
   trustBadges: ['Sin SSN requerido', 'Desde $15/mes', 'Living Benefits incluidos', 'Beneficiarios en cualquier país'],
   priceFrom: 'Desde $15/mes',
-  eligibilityTitle: 'Sí podés asegurarte aunque...',
+  eligibilityTitle: 'Sí puedes asegurarte aunque...',
   eligibilityText: 'No importa tu estatus migratorio. Cuanto antes lo haces, más barato — una persona sana de 25 años paga menos de $16/mes por $250,000 de cobertura durante 20 años. Si esperas a estar enfermo, puede ser tarde.',
   eligibilityItems: [
     'No tengas número de seguro social (SSN)',

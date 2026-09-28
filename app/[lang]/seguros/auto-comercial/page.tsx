@@ -24,17 +24,17 @@ const configEs: InsurancePageConfig = {
     {
       icon: WarningDiamond,
       title: 'Las 3 Fases del Rideshare — y Cuándo Estás Desprotegido',
-      desc: 'Fase 0 (app apagada): tu seguro personal cubre normalmente. Fase 1 (app encendida, esperando pedido): tu seguro personal puede RECHAZAR el reclamo — Uber/Lyft solo ofrecen $50,000/persona y $25,000 en daños a propiedad, sin cobertura para tu auto. Fase 2-3 (en viaje activo): Uber/Lyft cubren hasta $1 millón de liability — pero la colisión de tu propio auto tiene un deducible de $2,500 y solo aplica si vos ya tenés esa cobertura. El seguro comercial cierra todos esos huecos.',
+      desc: 'Fase 0 (app apagada): tu seguro personal cubre normalmente. Fase 1 (app encendida, esperando pedido): tu seguro personal puede RECHAZAR el reclamo — Uber/Lyft solo ofrecen $50,000/persona y $25,000 en daños a propiedad, sin cobertura para tu auto. Fase 2-3 (en viaje activo): Uber/Lyft cubren hasta $1 millón de liability — pero la colisión de tu propio auto tiene un deducible de $2,500 y solo aplica si tú ya tienes esa cobertura. El seguro comercial cierra todos esos huecos.',
     },
     {
       icon: Certificate,
       title: 'COI en 24 Horas para No Perder Ningún Contrato',
-      desc: 'Contratistas generales, edificios corporativos y clientes grandes exigen un Certificado de Seguro (COI) antes de dejarte entrar a trabajar. Sin COI, perdés el contrato ese mismo día. Lo emitimos en menos de 24 horas de que tu póliza esté activa.',
+      desc: 'Contratistas generales, edificios corporativos y clientes grandes exigen un Certificado de Seguro (COI) antes de dejarte entrar a trabajar. Sin COI, pierdes el contrato ese mismo día. Lo emitimos en menos de 24 horas de que tu póliza esté activa.',
     },
     {
       icon: Users,
       title: 'Tu Flota Completa — Empleados Incluidos',
-      desc: 'Asegurá 2, 5 o 20 vehículos en una sola póliza. Agregá conductores adicionales y empleados. Una sola póliza de flota es más económica y más simple de administrar que pólizas individuales por vehículo.',
+      desc: 'Asegura 2, 5 o 20 vehículos en una sola póliza. Agrega conductores adicionales y empleados. Una sola póliza de flota es más económica y más simple de administrar que pólizas individuales por vehículo.',
     },
   ],
   coverageItems: [
@@ -93,11 +93,11 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Puedo contratar seguro comercial con ITIN?',
-      a: 'Sí. Aceptamos ITIN para contratar seguros de auto comerciales. Si el seguro va a nombre de tu negocio, también podés usar el EIN del negocio en lugar del SSN personal.',
+      a: 'Sí. Aceptamos ITIN para contratar seguros de auto comerciales. Si el seguro va a nombre de tu negocio, también puedes usar el EIN del negocio en lugar del SSN personal.',
     },
     {
       q: '¿Qué es un COI y por qué me lo exigen?',
-      a: 'Un COI (Certificate of Insurance) prueba que tenés seguro activo con los límites requeridos. Contratistas generales, propietarios de edificios y clientes corporativos lo exigen antes de dejarte trabajar en su propiedad. Sin COI, perdés contratos importantes. Lo emitimos en menos de 24 horas.',
+      a: 'Un COI (Certificate of Insurance) prueba que tienes seguro activo con los límites requeridos. Contratistas generales, propietarios de edificios y clientes corporativos lo exigen antes de dejarte trabajar en su propiedad. Sin COI, pierdes contratos importantes. Lo emitimos en menos de 24 horas.',
     },
     {
       q: '¿Puedo asegurar múltiples vehículos en una sola póliza?',

@@ -54,11 +54,11 @@ const configEs: InsurancePageConfig = {
     },
     {
       title: 'Te explicamos todas tus opciones en español',
-      desc: 'Planes privados, ACA, Medicaid y programas estatales. Tu asesora te dice cuál aplica para vos, cuánto cuesta y qué cubre — sin tecnicismos ni letra pequeña.',
+      desc: 'Planes privados, ACA, Medicaid y programas estatales. Tu asesora te dice cuál aplica para ti, cuánto cuesta y qué cubre — sin tecnicismos ni letra pequeña.',
     },
     {
       title: 'Inscripción guiada de principio a fin',
-      desc: 'Te acompañamos en todo el proceso hasta que tenés tu tarjeta activa. Sin formularios confusos, sin errores que retrasen tu cobertura.',
+      desc: 'Te acompañamos en todo el proceso hasta que tienes tu tarjeta activa. Sin formularios confusos, sin errores que retrasen tu cobertura.',
     },
   ],
   testimonials: [
@@ -93,15 +93,15 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Cuánto cuesta el seguro médico con ITIN?',
-      a: 'Los planes privados comienzan desde $199/mes para un adulto. Si calificás para subsidios del ACA por nivel de ingresos, podés pagar significativamente menos. El precio varía según edad, estado, cantidad de personas y nivel de cobertura. Te damos el precio real según tu situación.',
+      a: 'Los planes privados comienzan desde $199/mes para un adulto. Si calificas para subsidios del ACA por nivel de ingresos, puedes pagar significativamente menos. El precio varía según edad, estado, cantidad de personas y nivel de cobertura. Te damos el precio real según tu situación.',
     },
     {
       q: '¿Cuándo puedo inscribirme?',
-      a: 'Para el ACA, el período de inscripción abierta (Open Enrollment) es de noviembre a enero. Para planes privados podés inscribirte en cualquier momento del año. Si tuviste un evento de vida — nacimiento, pérdida de trabajo, mudanza, divorcio — podés calificar para inscripción especial fuera del período normal.',
+      a: 'Para el ACA, el período de inscripción abierta (Open Enrollment) es de noviembre a enero. Para planes privados puedes inscribirte en cualquier momento del año. Si tuviste un evento de vida — nacimiento, pérdida de trabajo, mudanza, divorcio — puedes calificar para inscripción especial fuera del período normal.',
     },
     {
       q: '¿El plan puede cubrir a toda mi familia?',
-      a: 'Sí. Ofrecemos planes familiares que cubren cónyuge e hijos en una sola póliza. Tus hijos pueden estar cubiertos aunque tengan diferente estatus que vos. Los hijos nacidos en USA (ciudadanos americanos) pueden calificar para CHIP independientemente de tu estatus.',
+      a: 'Sí. Ofrecemos planes familiares que cubren cónyuge e hijos en una sola póliza. Tus hijos pueden estar cubiertos aunque tengan diferente estatus que tú. Los hijos nacidos en USA (ciudadanos americanos) pueden calificar para CHIP independientemente de tu estatus.',
     },
     {
       q: '¿Los medicamentos recetados están cubiertos?',

@@ -23,8 +23,8 @@ const configEs: InsurancePageConfig = {
   features: [
     {
       icon: Heart,
-      title: 'Llevás a tus hijos — pero aguantás vos el dolor',
-      desc: 'El 73% de latinos no va al dentista — y los adultos se ponen últimos por cuidar a la familia. Pero no podés cuidarlos si estás sufriendo. Los planes familiares cubren a todos desde $45/mes. Vos también entrás.',
+      title: 'Llevas a tus hijos — pero aguantas tú el dolor',
+      desc: 'El 73% de latinos no va al dentista — y los adultos se ponen últimos por cuidar a la familia. Pero no puedes cuidarlos si estás sufriendo. Los planes familiares cubren a todos desde $45/mes. Tú también entras.',
     },
     {
       icon: CurrencyDollar,
@@ -34,7 +34,7 @@ const configEs: InsurancePageConfig = {
     {
       icon: Tooth,
       title: 'Sin espera: tus limpiezas cuestan $0 desde el día 1',
-      desc: 'La limpieza, revisión y rayos X no tienen período de espera en la mayoría de planes. Activás hoy — usás esta semana. Los tratamientos mayores pueden tener espera de 6 meses, por eso conviene entrar antes de que aparezca el problema.',
+      desc: 'La limpieza, revisión y rayos X no tienen período de espera en la mayoría de planes. Activas hoy — usas esta semana. Los tratamientos mayores pueden tener espera de 6 meses, por eso conviene entrar antes de que aparezca el problema.',
     },
   ],
   coverageItems: [
@@ -49,15 +49,15 @@ const configEs: InsurancePageConfig = {
   ],
   steps: [
     {
-      title: 'Elegí tu plan en minutos',
-      desc: 'Individual desde $19/mes o familiar desde $45/mes. Sin SSN — usá tu ITIN. Tu asesora te explica cada nivel sin presiones.',
+      title: 'Elige tu plan en minutos',
+      desc: 'Individual desde $19/mes o familiar desde $45/mes. Sin SSN — usa tu ITIN. Tu asesora te explica cada nivel sin presiones.',
     },
     {
       title: 'Preventivo activo desde el día 1',
-      desc: 'Limpiezas y revisiones desde que activás la póliza. Sin espera, sin trámites adicionales.',
+      desc: 'Limpiezas y revisiones desde que activas la póliza. Sin espera, sin trámites adicionales.',
     },
     {
-      title: 'Andá al dentista y mostrá tu tarjeta',
+      title: 'Ve al dentista y muestra tu tarjeta',
       desc: 'Cualquier dentista de la red. Las limpiezas cuestan $0. Solo el copago acordado en tratamientos.',
     },
   ],
@@ -85,11 +85,11 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Qué significa que no hay período de espera en preventivo?',
-      a: 'Podés usar la limpieza, revisión y rayos X desde el primer día que activás tu plan — sin esperar semanas ni meses. Los tratamientos mayores como coronas o canales de raíz sí pueden tener espera de 6–12 meses según el plan. Por eso conviene entrar antes de necesitarlos.',
+      a: 'Puedes usar la limpieza, revisión y rayos X desde el primer día que activas tu plan — sin esperar semanas ni meses. Los tratamientos mayores como coronas o canales de raíz sí pueden tener espera de 6–12 meses según el plan. Por eso conviene entrar antes de necesitarlos.',
     },
     {
       q: '¿Cuál es la diferencia entre plan HMO y PPO dental?',
-      a: 'HMO: copagos fijos, sin deducible, más económico — pero tenés que usar dentistas de la red. PPO: más libertad para elegir dentista, tiene deducible anual y límite de cobertura de $1,000–$2,000/año. El HMO es ideal si querés previsibilidad de costos; el PPO si querés flexibilidad.',
+      a: 'HMO: copagos fijos, sin deducible, más económico — pero tienes que usar dentistas de la red. PPO: más libertad para elegir dentista, tiene deducible anual y límite de cobertura de $1,000–$2,000/año. El HMO es ideal si quieres previsibilidad de costos; el PPO si quieres flexibilidad.',
     },
     {
       q: '¿Necesito SSN para tener seguro dental?',
