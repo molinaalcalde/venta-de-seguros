@@ -97,7 +97,7 @@ export const FAQ_EN = [
 
 export const HERO_VIDEOS = [
   { src: '/videos/hero1.mp4', startTime: 2 },
-  { src: '/videos/hero2.mp4', startTime: 10 },
+  { src: '/videos/hero2-desktop.mp4', startTime: 10 },
   { src: '/videos/hero3.mp4', startTime: 0 },
 ];
 

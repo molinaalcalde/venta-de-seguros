@@ -202,12 +202,25 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
 
       {/* ── Hero — Full Bleed ── */}
       <div className="relative w-full min-h-[680px] lg:min-h-[860px] flex flex-col justify-between overflow-hidden">
-        {HERO_VIDEOS.map((v, i) => (
-          <video key={v.src} ref={videoRefs[i]} src={v.src} muted playsInline loop preload="auto"
-            onLoadedMetadata={() => { const el = videoRefs[i].current; if (el) el.currentTime = v.startTime; }}
-            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${i === heroIndex ? 'opacity-100' : 'opacity-0'}`}
-          />
-        ))}
+        {/* Slot 0 */}
+        <video ref={videoRefs[0]} src={HERO_VIDEOS[0].src} muted playsInline loop preload="auto"
+          onLoadedMetadata={() => { const el = videoRefs[0].current; if (el) el.currentTime = HERO_VIDEOS[0].startTime; }}
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${heroIndex === 0 ? 'opacity-100' : 'opacity-0'}`}
+        />
+        {/* Slot 1 — desktop */}
+        <video ref={videoRefs[1]} src="/videos/hero2-desktop.mp4" muted playsInline loop preload="auto"
+          onLoadedMetadata={() => { const el = videoRefs[1].current; if (el) el.currentTime = HERO_VIDEOS[1].startTime; }}
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 hidden md:block ${heroIndex === 1 ? 'opacity-100' : 'opacity-0'}`}
+        />
+        {/* Slot 1 — mobile */}
+        <video src="/videos/hero2-mobile.mp4" autoPlay muted playsInline loop preload="auto"
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 md:hidden ${heroIndex === 1 ? 'opacity-100' : 'opacity-0'}`}
+        />
+        {/* Slot 2 */}
+        <video ref={videoRefs[2]} src={HERO_VIDEOS[2].src} muted playsInline loop preload="auto"
+          onLoadedMetadata={() => { const el = videoRefs[2].current; if (el) el.currentTime = HERO_VIDEOS[2].startTime; }}
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/15 to-black/70 z-[1]"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50 z-[1]"></div>
         <div className="h-16 relative z-10" />
@@ -392,7 +405,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Mascotas */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/hero2.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video src="/videos/hero2-desktop.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Plans from $29/mo' : 'Planes desde $29/mes'}</span>
               </div>

@@ -327,7 +327,10 @@ export default function MascotasLangPage({ params }: { params: { lang: string } 
 
         {/* ── Hero ── */}
         <section className="relative w-full min-h-[600px] lg:min-h-[720px] flex flex-col justify-end overflow-hidden">
-          <video src="/videos/hero2.mp4" autoPlay muted loop playsInline preload="auto" className="absolute inset-0 w-full h-full object-cover object-center" />
+          {/* Desktop */}
+          <video src="/videos/hero2-desktop.mp4" autoPlay muted loop playsInline preload="auto" className="absolute inset-0 w-full h-full object-cover object-center hidden md:block" />
+          {/* Mobile */}
+          <video src="/videos/hero2-mobile.mp4" autoPlay muted loop playsInline preload="auto" className="absolute inset-0 w-full h-full object-cover object-center md:hidden" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/75 z-[1]" />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/30 z-[1]" />
           <div className="relative z-10 w-full px-5 lg:px-10 pb-14 sm:pb-20">
