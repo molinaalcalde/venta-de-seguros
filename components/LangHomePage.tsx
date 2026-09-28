@@ -35,11 +35,28 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
   // Navigation
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = ['soluciones', 'coberturas-destacadas', 'por-que-aegis', 'faq'];
+    const observers: IntersectionObserver[] = [];
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        { threshold: 0.25 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   // ── Video Hero Carousel ──
@@ -134,19 +151,35 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             </a>
             <nav aria-label={isEn ? 'Main navigation' : 'Navegación principal'} className="hidden lg:flex items-center gap-7">
               {(isEn ? [
-                { label: 'Coverage', href: '#coberturas-destacadas' },
-                { label: 'Why Us', href: '#por-que-aegis' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'FAQ', href: '#faq' },
+                { label: 'Coverage', href: '#coberturas-destacadas', sectionId: 'coberturas-destacadas' },
+                { label: 'Why Us', href: '#por-que-aegis', sectionId: 'por-que-aegis' },
+                { label: 'Blog', href: '/blog', sectionId: '' },
+                { label: 'FAQ', href: '#faq', sectionId: 'faq' },
               ] : [
-                { label: 'Soluciones', href: '#soluciones' },
-                { label: 'Coberturas', href: '#coberturas-destacadas' },
-                { label: 'Por qué Nosotros', href: '#por-que-aegis' },
-                { label: 'Blog', href: '/blog' },
-                { label: 'FAQ', href: '#faq' },
-              ]).map(({ label, href }) => (
-                <a key={label} href={href} className={`text-[13px] font-medium transition-all duration-200 ${scrolled ? 'text-slate-600 hover:text-slate-900' : 'text-white/80 hover:text-white'}`}>{label}</a>
-              ))}
+                { label: 'Soluciones', href: '#soluciones', sectionId: 'soluciones' },
+                { label: 'Coberturas', href: '#coberturas-destacadas', sectionId: 'coberturas-destacadas' },
+                { label: 'Por qué Nosotros', href: '#por-que-aegis', sectionId: 'por-que-aegis' },
+                { label: 'Blog', href: '/blog', sectionId: '' },
+                { label: 'FAQ', href: '#faq', sectionId: 'faq' },
+              ]).map(({ label, href, sectionId }) => {
+                const isActive = sectionId && activeSection === sectionId;
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    className={`relative text-[13px] font-medium transition-all duration-200 pb-0.5 ${
+                      isActive
+                        ? scrolled ? 'text-slate-900' : 'text-white'
+                        : scrolled ? 'text-slate-600 hover:text-slate-900' : 'text-white/70 hover:text-white'
+                    }`}
+                  >
+                    {label}
+                    {isActive && (
+                      <span className={`absolute bottom-0 left-0 right-0 h-[1.5px] rounded-full ${scrolled ? 'bg-slate-900' : 'bg-white'}`} />
+                    )}
+                  </a>
+                );
+              })}
             </nav>
             <div className="flex items-center gap-2">
               <LanguageSwitcher scrolled={scrolled} />
