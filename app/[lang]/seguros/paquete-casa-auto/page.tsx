@@ -1,3 +1,4 @@
+'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
 import { House, PiggyBank, Key, Phone } from '@phosphor-icons/react';
 

@@ -1,3 +1,4 @@
+'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
 import { Truck, WarningDiamond, Certificate, Users } from '@phosphor-icons/react';
 

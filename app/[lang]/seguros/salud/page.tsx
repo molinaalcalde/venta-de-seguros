@@ -1,3 +1,4 @@
+'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
 import { Hospital, Lock, FirstAid, Pill } from '@phosphor-icons/react';
 

@@ -1,3 +1,4 @@
+'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
 import { Tooth, CurrencyDollar, Users } from '@phosphor-icons/react';
 

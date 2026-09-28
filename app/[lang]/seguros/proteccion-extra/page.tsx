@@ -1,3 +1,4 @@
+'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
 import { Umbrella, Bank, CurrencyDollar } from '@phosphor-icons/react';
 

@@ -1,3 +1,4 @@
+'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
 import { Buildings, Scales, ShieldCheck, Certificate } from '@phosphor-icons/react';
 
