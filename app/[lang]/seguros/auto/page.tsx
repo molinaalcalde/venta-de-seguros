@@ -1,8 +1,10 @@
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
+import { Car, IdentificationCard, ShieldCheck, Headset } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Auto',
-  badge: '🚗 Sin SSN · ITIN · Pasaporte · Matrícula Consular',
+  badgeIcon: Car,
+  badge: 'Sin SSN · ITIN · Pasaporte · Matrícula Consular',
   heroLine1: 'Seguro de Auto',
   heroItalic: 'para toda tu familia — sin importar tus documentos',
   heroSubtitle: 'La ley exige seguro a TODOS los conductores en USA, sin importar el estatus migratorio. No necesitás SSN. Aceptamos ITIN, pasaporte, matrícula consular y licencia extranjera. Tu información es 100% confidencial — nunca se comparte con el gobierno.',
@@ -19,17 +21,17 @@ const configEs: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '📋',
+      icon: IdentificationCard,
       title: 'Sin SSN — ITIN, Pasaporte y Matrícula Consular Aceptados',
       desc: 'Cotizás y contratás con lo que tenés: ITIN, pasaporte mexicano o centroamericano, matrícula consular o licencia extranjera. Sin burocracia, sin rechazo por estatus. Familias que cambian a nosotros ahorran en promedio $400–$900 al año.',
     },
     {
-      emoji: '🛡️',
+      icon: ShieldCheck,
       title: 'El "Full Coverage" No Es Lo Que Crees — Te Lo Explicamos',
       desc: '"Full coverage" no es un producto real — es la combinación de tres coberturas: Liability (obligatoria, protege a otros si los chocás), Collision (daños a tu auto en accidentes) y Comprehensive (robo, granizo, vandalismo). También existe UM/UIM: te protege cuando el otro conductor no tiene seguro — algo muy común en algunos estados donde más del 20% conduce sin seguro.',
     },
     {
-      emoji: '📞',
+      icon: Headset,
       title: 'Cuando Tenés un Accidente, Hablás con una Persona Real',
       desc: 'Ningún menú automático, ningún bot, ningún call center en inglés. Cuando más lo necesitás, un asesor que habla tu idioma te acompaña paso a paso: contacta a la otra parte, gestiona el reclamo y te explica qué hacer. Sin que vos tengas que lidiar con el inglés.',
     },
@@ -122,7 +124,8 @@ const configEs: InsurancePageConfig = {
 
 const configEn: InsurancePageConfig = {
   quoteType: 'Auto',
-  badge: '🚗 No SSN Required · ITIN · Passport · Consular ID',
+  badgeIcon: Car,
+  badge: 'No SSN Required · ITIN · Passport · Consular ID',
   heroLine1: 'Car Insurance',
   heroItalic: 'for your family — no matter your documents',
   heroSubtitle: 'The law requires insurance for every driver in the US — regardless of immigration status. No SSN needed. We accept ITIN, passport, consular ID, and foreign licenses. Your information is 100% private — never shared with the government.',
@@ -139,17 +142,17 @@ const configEn: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '📋',
+      icon: IdentificationCard,
       title: 'No SSN — ITIN, Passport & Consular ID Accepted',
       desc: 'Get covered with what you have: ITIN, Mexican or Central American passport, consular ID, or foreign license. No rejections based on immigration status. Families who switch to us save an average of $400–$900 per year.',
     },
     {
-      emoji: '🛡️',
+      icon: ShieldCheck,
       title: '"Full Coverage" Doesn\'t Mean What You Think',
       desc: '"Full coverage" isn\'t an actual product — it\'s a combination of three coverages: Liability (required by law — protects others), Collision (your vehicle in accidents), and Comprehensive (theft, hail, fire, vandalism). Add UM/UIM coverage to protect yourself when the other driver has no insurance — over 20% of drivers in some states are uninsured.',
     },
     {
-      emoji: '📞',
+      icon: Headset,
       title: 'A Real Person Answers When You Need Help',
       desc: 'No automated menus, no robots, no English-only call centers. When you have an accident, a bilingual agent guides you step by step: contacts the other party, manages your claim, and explains every decision. In Spanish or English — your choice.',
     },

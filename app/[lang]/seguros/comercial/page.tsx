@@ -1,8 +1,10 @@
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
+import { Buildings, Scales, ShieldCheck, Certificate } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Comercial',
-  badge: '🏢 BOP · GL · Workers Comp · Sin SSN · COI en 24hs',
+  badgeIcon: Buildings,
+  badge: 'BOP · GL · Workers Comp · Sin SSN · COI en 24hs',
   heroLine1: 'Seguro para tu Negocio',
   heroItalic: 'protege lo que construiste con tanto esfuerzo',
   heroSubtitle: 'Un cliente se resbala en tu local. Te demandan por $80,000. ¿Podés pagar de tu bolsillo? Sin seguro comercial, una sola demanda puede cerrar lo que tardaste años en construir. Desde $19/mes. Sin SSN — aceptamos ITIN y EIN.',
@@ -19,17 +21,17 @@ const configEs: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '⚖️',
+      icon: Scales,
       title: 'Si Te Demandan, el Seguro Paga los Abogados — Aunque No Ganen',
       desc: 'Un cliente se lastima en tu negocio, alguien te acusa de dañar su propiedad, un empleado dice que lo discriminaste. Los honorarios de abogado solos pueden costarte $10,000–$50,000 solo para defenderte. La Responsabilidad Civil General (GL) cubre los gastos legales y la indemnización — aunque la demanda no prospere.',
     },
     {
-      emoji: '🛡️',
+      icon: ShieldCheck,
       title: 'Póliza BOP — Todo en Uno, Más Económico que por Separado',
       desc: 'La póliza BOP (Business Owner\'s Policy) combina Responsabilidad Civil General y protección de propiedad en un solo paquete — más cobertura a menor precio que contratarlos por separado. También cubrimos equipos, inventario y pérdida de ingresos si tenés que cerrar temporalmente por un siniestro.',
     },
     {
-      emoji: '📋',
+      icon: Certificate,
       title: 'COI en 24 Horas — No Perdés Ningún Trabajo',
       desc: 'El Certificado de Seguro (COI) es el documento que te exigen landlords, contratistas generales y clientes corporativos antes de dejarte entrar a trabajar. Sin él perdés contratos. Lo emitimos en menos de 24 horas de que tu póliza está activa.',
     },
@@ -118,7 +120,8 @@ const configEs: InsurancePageConfig = {
 
 const configEn: InsurancePageConfig = {
   quoteType: 'Comercial',
-  badge: '🏢 BOP · GL · Workers Comp · No SSN · COI in 24hrs',
+  badgeIcon: Buildings,
+  badge: 'BOP · GL · Workers Comp · No SSN · COI in 24hrs',
   heroLine1: 'Business Insurance',
   heroItalic: 'protect everything you\'ve built',
   heroSubtitle: 'A customer slips in your store. They sue you for $80,000. Can you pay that out of pocket? Without commercial insurance, one lawsuit can shut down what took you years to build. From $19/mo. No SSN — we accept ITIN and EIN.',
@@ -135,17 +138,17 @@ const configEn: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '⚖️',
+      icon: Scales,
       title: 'If You\'re Sued, Insurance Pays the Lawyers — Win or Lose',
       desc: 'A customer gets injured in your business, someone accuses you of damaging their property, an employee files a complaint. Legal fees alone can run $10,000–$50,000 just to defend yourself. General Liability (GL) covers legal costs and settlements — even if the lawsuit doesn\'t succeed.',
     },
     {
-      emoji: '🛡️',
+      icon: ShieldCheck,
       title: 'BOP Policy — Everything in One, Cheaper Than Buying Separate',
       desc: 'A Business Owner\'s Policy (BOP) combines General Liability and property protection in one package — more coverage at a lower price than buying them separately. We also cover equipment, inventory, and lost income if you\'re forced to close temporarily due to a covered event.',
     },
     {
-      emoji: '📋',
+      icon: Certificate,
       title: 'COI in 24 Hours — Never Miss a Job',
       desc: 'A Certificate of Insurance (COI) is the document landlords, general contractors, and corporate clients require before letting you work. Without it, you lose contracts. We issue it in less than 24 hours of your policy going active.',
     },

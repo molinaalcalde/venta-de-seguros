@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {
   ArrowLeft, ArrowRight, CheckCircle, Star,
   Shield, Lock, Headset, CreditCard,
+  type Icon,
 } from '@phosphor-icons/react';
 import QuoteModal, { type InsType } from '@/components/QuoteModal';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -67,7 +68,8 @@ export interface InsurancePageConfig {
   eligibilityTitle: string;
   eligibilityText: string;
   eligibilityItems: string[];
-  features: { emoji: string; title: string; desc: string }[];
+  badgeIcon?: Icon;
+  features: { icon: Icon; title: string; desc: string }[];
   coverageItems: string[];
   steps: { title: string; desc: string }[];
   testimonials: { name: string; location: string; text: string }[];
@@ -155,6 +157,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
           <div className="relative max-w-5xl mx-auto px-5 lg:px-8 py-16 md:py-24">
             <div className="max-w-2xl">
               <div className={`inline-flex items-center gap-2 ${t.badgeBg} ${t.badgeText} text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6`}>
+                {config.badgeIcon && <config.badgeIcon weight="bold" className="w-3.5 h-3.5 shrink-0" />}
                 {config.badge}
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-900 tracking-tight leading-[1.1] mb-5">
@@ -222,7 +225,9 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-100">
               {config.features.map((f) => (
                 <div key={f.title} className="px-6 py-8 md:py-6 first:pl-0 last:pr-0">
-                  <div className="text-3xl mb-4">{f.emoji}</div>
+                  <div className={`w-11 h-11 rounded-xl ${t.badgeBg} flex items-center justify-center mb-5`}>
+                    <f.icon weight="duotone" className={`w-6 h-6 ${t.iconText}`} />
+                  </div>
                   <h3 className="font-semibold text-slate-900 text-base mb-2">{f.title}</h3>
                   <p className="text-sm text-slate-600 font-light leading-relaxed">{f.desc}</p>
                 </div>

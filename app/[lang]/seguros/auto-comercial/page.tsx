@@ -1,8 +1,10 @@
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
+import { Truck, WarningDiamond, Certificate, Users } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'AutoComercial',
-  badge: '🚛 Uber · Lyft · DoorDash · Delivery · Sin SSN',
+  badgeIcon: Truck,
+  badge: 'Uber · Lyft · DoorDash · Delivery · Sin SSN',
   heroLine1: 'Seguro de Auto Comercial',
   heroItalic: 'porque tu seguro personal no te cubre cuando trabajás',
   heroSubtitle: 'Estás manejando para DoorDash y tenés un accidente. Tu aseguradora personal revisa el reclamo y lo rechaza: "uso comercial no cubierto". Eso significa que pagás los daños de tu bolsillo — el otro conductor, los daños de tu auto, los gastos médicos. El seguro comercial cierra ese hueco. Sin SSN requerido.',
@@ -19,17 +21,17 @@ const configEs: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '⚠️',
+      icon: WarningDiamond,
       title: 'Las 3 Fases del Rideshare — y Cuándo Estás Desprotegido',
       desc: 'Fase 0 (app apagada): tu seguro personal cubre normalmente. Fase 1 (app encendida, esperando pedido): tu seguro personal puede RECHAZAR el reclamo — Uber/Lyft solo ofrecen $50,000/persona y $25,000 en daños a propiedad, sin cobertura para tu auto. Fase 2-3 (en viaje activo): Uber/Lyft cubren hasta $1 millón de liability — pero la colisión de tu propio auto tiene un deducible de $2,500 y solo aplica si vos ya tenés esa cobertura. El seguro comercial cierra todos esos huecos.',
     },
     {
-      emoji: '📋',
+      icon: Certificate,
       title: 'COI en 24 Horas para No Perder Ningún Contrato',
       desc: 'Contratistas generales, edificios corporativos y clientes grandes exigen un Certificado de Seguro (COI) antes de dejarte entrar a trabajar. Sin COI, perdés el contrato ese mismo día. Lo emitimos en menos de 24 horas de que tu póliza esté activa.',
     },
     {
-      emoji: '👥',
+      icon: Users,
       title: 'Tu Flota Completa — Empleados Incluidos',
       desc: 'Asegurá 2, 5 o 20 vehículos en una sola póliza. Agregá conductores adicionales y empleados. Una sola póliza de flota es más económica y más simple de administrar que pólizas individuales por vehículo.',
     },
@@ -118,7 +120,8 @@ const configEs: InsurancePageConfig = {
 
 const configEn: InsurancePageConfig = {
   quoteType: 'AutoComercial',
-  badge: '🚛 Uber · Lyft · DoorDash · Delivery · No SSN',
+  badgeIcon: Truck,
+  badge: 'Uber · Lyft · DoorDash · Delivery · No SSN',
   heroLine1: 'Commercial Auto Insurance',
   heroItalic: 'because your personal insurance won\'t cover you while working',
   heroSubtitle: 'You\'re driving for DoorDash and have an accident. Your personal insurer reviews the claim and denies it: "commercial use not covered." That means you pay out of pocket — the other driver\'s damages, your car repairs, medical bills. Commercial insurance closes that gap. No SSN required.',
@@ -135,17 +138,17 @@ const configEn: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '⚠️',
+      icon: WarningDiamond,
       title: 'The 3 Rideshare Phases — and When You\'re Unprotected',
       desc: 'Period 0 (app off): your personal insurance covers you normally. Period 1 (app on, waiting for a request): your personal insurer may DENY the claim — Uber/Lyft only offer $50K/person and $25K in property damage, with no coverage for your own vehicle. Periods 2-3 (active trip or with passenger): Uber/Lyft cover up to $1 million in liability — but collision coverage for your vehicle has a $2,500 deductible and only applies if you already carry it. Commercial insurance closes all those gaps.',
     },
     {
-      emoji: '📋',
+      icon: Certificate,
       title: 'COI in 24 Hours — Never Lose a Job',
       desc: 'General contractors, corporate buildings, and large clients require a Certificate of Insurance (COI) before letting you work on their property. Without a COI, you lose the contract on the spot. We issue it in less than 24 hours of your policy going active.',
     },
     {
-      emoji: '👥',
+      icon: Users,
       title: 'Your Full Fleet — Employees Included',
       desc: 'Insure 2, 5, or 20 vehicles under one policy. Add additional drivers and employees. A single fleet policy is more affordable and simpler to manage than individual policies per vehicle.',
     },

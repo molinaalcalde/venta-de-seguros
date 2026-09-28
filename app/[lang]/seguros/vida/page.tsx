@@ -1,8 +1,10 @@
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
+import { Heart, CurrencyDollar, Globe, Lock } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Vida',
-  badge: '❤️ Sin SSN · Living Benefits · Desde $15/mes',
+  badgeIcon: Heart,
+  badge: 'Sin SSN · Living Benefits · Desde $15/mes',
   heroLine1: 'Seguro de Vida',
   heroItalic: 'que también te protege mientras seguís vivo',
   heroSubtitle: 'Si algo te pasara hoy, ¿tu familia podría pagar la renta el mes que viene? Con o sin SSN, desde $15/mes — menos que Spotify y Netflix juntos. Y si te diagnostican una enfermedad grave, podés usar el dinero mientras seguís vivo. Sin esperar a morir.',
@@ -19,17 +21,17 @@ const configEs: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '💰',
+      icon: CurrencyDollar,
       title: 'Living Benefits — El Dinero lo Usás Vos, No Solo tu Familia',
       desc: 'Si te diagnostican una enfermedad crítica (infarto, cáncer, derrame), crónica (no podés hacer actividades básicas solo) o terminal (menos de 24 meses de vida), podés acceder a parte del beneficio MIENTRAS SEGUÍS VIVO. No tenés que morir para que tu familia lo use. Ese dinero paga tratamientos, deudas o lo que necesites.',
     },
     {
-      emoji: '🌍',
+      icon: Globe,
       title: 'Tu Mamá en México Puede Ser Tu Beneficiaria',
       desc: 'Podés designar a cualquier familiar en cualquier parte del mundo como beneficiario — tu mamá en México, tus hijos en Guatemala, tu pareja en Colombia. No es necesario que vivan en USA ni que tengan documentos americanos. El dinero les llega a ellos cuando más lo necesitan.',
     },
     {
-      emoji: '🔒',
+      icon: Lock,
       title: 'Desde $15/mes — El Precio Que Pagás Hoy No Sube',
       desc: 'Una persona sana de 30 años puede tener $250,000 de cobertura por menos de $20/mes durante 20 años. El precio que fijás al contratar se mantiene toda la vigencia de la póliza — no sube con tu edad ni con cambios en tu salud. Esperás un año: pagas más para siempre.',
     },
@@ -118,7 +120,8 @@ const configEs: InsurancePageConfig = {
 
 const configEn: InsurancePageConfig = {
   quoteType: 'Vida',
-  badge: '❤️ No SSN · Living Benefits · From $15/mo',
+  badgeIcon: Heart,
+  badge: 'No SSN · Living Benefits · From $15/mo',
   heroLine1: 'Life Insurance',
   heroItalic: 'that protects you while you\'re still alive',
   heroSubtitle: 'If something happened to you today, could your family cover next month\'s rent? No SSN needed. From $15/month — less than your streaming subscriptions. And if you\'re diagnosed with a serious illness, you can access the money while you\'re still living. No need to wait.',
@@ -135,17 +138,17 @@ const configEn: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '💰',
+      icon: CurrencyDollar,
       title: 'Living Benefits — You Use the Money, Not Just Your Family',
       desc: 'If you\'re diagnosed with a critical illness (heart attack, cancer, stroke), chronic condition (unable to perform daily activities alone), or terminal illness (less than 24 months to live), you can access part of the benefit WHILE STILL ALIVE. You don\'t have to die first. Use the money for treatments, debt, or whatever your family needs.',
     },
     {
-      emoji: '🌍',
+      icon: Globe,
       title: 'Your Mom in Mexico Can Be Your Beneficiary',
       desc: 'You can name any family member anywhere in the world as your beneficiary — your mom in Mexico, your kids in Guatemala, your partner in Colombia. They don\'t need US documents or to live in the US. The money reaches them when they need it most.',
     },
     {
-      emoji: '🔒',
+      icon: Lock,
       title: 'From $15/mo — Your Rate Never Goes Up',
       desc: 'A healthy 30-year-old can get $250,000 in coverage for under $20/month for 20 years. The price you lock in today stays the same for the life of your policy — it doesn\'t go up with age or health changes. Wait a year, and you pay more forever.',
     },

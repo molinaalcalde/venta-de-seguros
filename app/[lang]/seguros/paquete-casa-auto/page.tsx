@@ -1,8 +1,10 @@
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
+import { House, PiggyBank, Key, Phone } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Paquete',
-  badge: '🏠 Bundle Casa + Auto · Ahorrá hasta 25%',
+  badgeIcon: House,
+  badge: 'Bundle Casa + Auto · Ahorrá hasta 25%',
   heroLine1: 'Paquete Casa + Auto',
   heroItalic: 'más protección, menos dinero',
   heroSubtitle: 'Combinar tu seguro de hogar (o renters) con el de auto puede ahorrarte $400–$900 al año. Y algo que mucha gente no sabe: el seguro del landlord NO cubre tus pertenencias — si hay un robo o incendio, todo lo tuyo desaparece sin seguro de renters. Sin SSN requerido.',
@@ -19,17 +21,17 @@ const configEs: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '💰',
+      icon: PiggyBank,
       title: '$400 a $900 Menos al Año — En Ambas Primas',
       desc: 'Al combinar seguro de hogar y auto en un bundle, recibís descuento en las dos pólizas. Las familias que hacen este cambio ahorran entre $400 y $900 al año. Es el mismo seguro, la misma cobertura — solo que más barato por tenerlos juntos.',
     },
     {
-      emoji: '🔑',
+      icon: Key,
       title: 'El Seguro del Landlord No Cubre Tus Cosas — Nunca',
       desc: 'El seguro del landlord cubre la estructura del edificio — las paredes, el techo, la plomería. No cubre tu ropa, tus electrodomésticos, tu laptop, tus muebles, ni nada que sea tuyo. Si hay un incendio, un robo o una inundación, perdés todo lo tuyo. El seguro de renters cubre exactamente eso, más responsabilidad civil si alguien se lastima en tu hogar.',
     },
     {
-      emoji: '📞',
+      icon: Phone,
       title: 'Un Solo Punto de Contacto para Todo',
       desc: 'Un asesor para ambas pólizas. Cuando tenés una pregunta, un accidente o un siniestro, llamás a un solo número y te atendemos en español. Sin tener que explicar tu situación a diferentes compañías.',
     },
@@ -118,7 +120,8 @@ const configEs: InsurancePageConfig = {
 
 const configEn: InsurancePageConfig = {
   quoteType: 'Paquete',
-  badge: '🏠 Bundle Home + Auto · Save Up to 25%',
+  badgeIcon: House,
+  badge: 'Bundle Home + Auto · Save Up to 25%',
   heroLine1: 'Home + Auto Bundle',
   heroItalic: 'more protection, less money',
   heroSubtitle: 'Bundling your home (or renters) insurance with auto can save you $400–$900 a year. And something most people don\'t know: your landlord\'s insurance does NOT cover your belongings — if there\'s a theft or fire, everything you own is gone without renters insurance. No SSN required.',
@@ -135,17 +138,17 @@ const configEn: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '💰',
+      icon: PiggyBank,
       title: '$400–$900 Less Per Year — On Both Premiums',
       desc: 'When you combine home and auto insurance in a bundle, you get a discount on both policies. Families who make this switch save between $400 and $900 per year. Same insurance, same coverage — just cheaper because they\'re together.',
     },
     {
-      emoji: '🔑',
+      icon: Key,
       title: 'Your Landlord\'s Insurance Never Covers Your Stuff — Ever',
       desc: 'Your landlord\'s policy covers the building structure — walls, roof, plumbing. It never covers your clothes, appliances, laptop, furniture, or anything you own. If there\'s a fire, theft, or water damage, everything of yours is gone. Renters insurance covers exactly that, plus liability if someone gets injured in your home.',
     },
     {
-      emoji: '📞',
+      icon: Phone,
       title: 'One Contact for Everything',
       desc: 'One agent for both policies. When you have a question, an accident, or a claim, you call one number. No explaining your situation to different companies in different languages.',
     },

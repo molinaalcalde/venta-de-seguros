@@ -1,8 +1,10 @@
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
+import { Umbrella, Bank, CurrencyDollar } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Umbrella',
-  badge: '☂️ Desde $19/mes · $1 Millón de Cobertura Extra',
+  badgeIcon: Umbrella,
+  badge: 'Desde $19/mes · $1 Millón de Cobertura Extra',
   heroLine1: 'Protección Extra',
   heroItalic: 'cuando tu seguro regular no alcanza',
   heroSubtitle: 'Tu auto tiene $300,000 de cobertura. El accidente costó $600,000. La diferencia — $300,000 — sale de tus ahorros, tu casa, tu negocio. La Protección Extra (Umbrella) cierra esa brecha por menos de $1 al día. Sin SSN requerido.',
@@ -19,17 +21,17 @@ const configEs: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '☂️',
+      icon: Umbrella,
       title: 'El Escenario Real: $300K No Alcanza',
       desc: 'Tu seguro de auto cubre $300,000. Un accidente grave genera $600,000 en daños médicos, legales y de propiedad. La diferencia de $300,000 no la paga nadie más — sale de tus cuentas, tus ahorros o tu casa. La Protección Extra entra exactamente en ese momento y paga esa diferencia.',
     },
     {
-      emoji: '🏦',
+      icon: Bank,
       title: 'Una Barrera Legal Entre Tus Activos y Quien te Demanda',
       desc: 'Sin Protección Extra, una demanda exitosa puede resultar en embargo de cuentas bancarias, propiedades o activos del negocio. Este seguro pone una barrera legal entre lo que tenés y quien te demanda. Los abogados del otro lado lo saben — por eso demandan por cifras enormes.',
     },
     {
-      emoji: '💰',
+      icon: CurrencyDollar,
       title: 'Menos de $1 al Día por $1 Millón de Protección',
       desc: 'Es uno de los seguros con mejor relación precio-cobertura del mercado. Por menos de $1 al día obtenés $1 millón de protección adicional sobre tu seguro de auto y hogar. Para aumentar a $2, $3 o $5 millones, el costo adicional es mínimo.',
     },
@@ -118,7 +120,8 @@ const configEs: InsurancePageConfig = {
 
 const configEn: InsurancePageConfig = {
   quoteType: 'Umbrella',
-  badge: '☂️ From $19/mo · $1 Million in Extra Coverage',
+  badgeIcon: Umbrella,
+  badge: 'From $19/mo · $1 Million in Extra Coverage',
   heroLine1: 'Umbrella Insurance',
   heroItalic: 'for when your regular policy isn\'t enough',
   heroSubtitle: 'Your auto policy covers $300,000. The accident caused $600,000 in damages. The remaining $300,000 comes from your savings, your home, your business. Umbrella insurance closes that gap for less than $1 a day. No SSN required.',
@@ -135,17 +138,17 @@ const configEn: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '☂️',
+      icon: Umbrella,
       title: 'The Real Scenario: $300K Isn\'t Enough',
       desc: 'Your auto policy covers $300,000. A serious accident generates $600,000 in medical, legal, and property damages. The remaining $300,000 isn\'t covered by anyone else — it comes from your accounts, savings, or home equity. Umbrella insurance steps in exactly at that moment and pays the difference.',
     },
     {
-      emoji: '🏦',
+      icon: Bank,
       title: 'A Legal Barrier Between Your Assets and Those Who Sue You',
       desc: 'Without umbrella insurance, a successful lawsuit can result in bank account garnishment, forced property sales, or seizure of business assets. This policy creates a legal barrier between what you have and those who sue you. Opposing attorneys know this — that\'s why they sue for enormous amounts.',
     },
     {
-      emoji: '💰',
+      icon: CurrencyDollar,
       title: 'Less Than $1 a Day for $1 Million in Protection',
       desc: 'This is one of the best value-for-money insurance products available. For less than $1 per day, you get $1 million in additional protection on top of your auto and home insurance. Increasing to $2M, $3M, or $5M costs very little extra compared to the protection it provides.',
     },

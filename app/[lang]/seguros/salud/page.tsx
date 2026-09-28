@@ -1,8 +1,10 @@
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
+import { Hospital, Lock, FirstAid, Pill } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Salud',
-  badge: '🏥 Planes con ITIN · Cualquier Estatus · Desde $199/mes',
+  badgeIcon: Hospital,
+  badge: 'Planes con ITIN · Cualquier Estatus · Desde $199/mes',
   heroLine1: 'Seguro de Salud',
   heroItalic: 'sin importar tu estatus migratorio',
   heroSubtitle: 'Una visita al médico sin seguro: $300. Una emergencia: $10,000 o más. Tu información es 100% confidencial — nunca se comparte con ICE, migración ni ningún gobierno. Hay opciones para casi todas las situaciones migratorias. Desde $199/mes.',
@@ -19,17 +21,17 @@ const configEs: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '🔒',
+      icon: Lock,
       title: 'Tu Información Nunca Llega a Migración — Jamás',
       desc: 'Muchas familias evitan buscar atención médica por miedo. Pero tu información de salud está protegida por HIPAA — una ley federal que prohíbe compartirla con ICE o cualquier agencia sin una orden judicial específica. Buscar cobertura de salud no es un riesgo migratorio.',
     },
     {
-      emoji: '👨‍⚕️',
+      icon: FirstAid,
       title: 'Opciones Reales para Cada Situación Migratoria',
       desc: 'Indocumentados, DACA, visa temporal, residentes y ciudadanos — cada situación tiene opciones diferentes. En California, Illinois y Nueva York existen programas que cubren sin importar el estatus. Para el resto, hay planes privados con ITIN disponibles en todos los estados.',
     },
     {
-      emoji: '💊',
+      icon: Pill,
       title: 'Médico, Especialistas, Medicamentos y Emergencias',
       desc: 'Consultas con médico de familia, especialistas, hospitalizaciones y emergencias — todo dentro de tu red de cobertura. La mayoría de planes incluye medicamentos recetados, laboratorios, rayos X y servicios preventivos anuales como chequeos y vacunas.',
     },
@@ -118,7 +120,8 @@ const configEs: InsurancePageConfig = {
 
 const configEn: InsurancePageConfig = {
   quoteType: 'Salud',
-  badge: '🏥 ITIN Accepted · Any Status · From $199/mo',
+  badgeIcon: Hospital,
+  badge: 'ITIN Accepted · Any Status · From $199/mo',
   heroLine1: 'Health Insurance',
   heroItalic: 'regardless of your immigration status',
   heroSubtitle: 'One doctor visit without insurance: $300. One ER visit: $10,000+. Your information is 100% private — never shared with ICE, immigration, or any government agency. Options exist for nearly every immigration status. From $199/month.',
@@ -135,17 +138,17 @@ const configEn: InsurancePageConfig = {
   ],
   features: [
     {
-      emoji: '🔒',
+      icon: Lock,
       title: 'Your Information Never Reaches Immigration — Ever',
       desc: 'Many families avoid healthcare out of fear. But your health information is protected by HIPAA — a federal law that prohibits sharing it with ICE or any agency without a specific court order. Seeking health coverage is not an immigration risk.',
     },
     {
-      emoji: '👨‍⚕️',
+      icon: FirstAid,
       title: 'Real Options for Every Immigration Status',
       desc: 'Undocumented, DACA, temporary visa, permanent resident, or citizen — every situation has different options. In California, Illinois, and New York, there are programs that cover everyone regardless of status. For other states, private ITIN plans are available nationwide.',
     },
     {
-      emoji: '💊',
+      icon: Pill,
       title: 'Doctors, Specialists, Medications & Emergencies',
       desc: 'Primary care visits, specialists, hospitalizations, and emergency care — all within your coverage network. Most plans include prescription medications, labs, imaging, and annual preventive services like checkups and vaccines.',
     },
