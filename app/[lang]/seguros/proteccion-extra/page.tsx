@@ -8,18 +8,18 @@ const configEs: InsurancePageConfig = {
   badgeIcon: Umbrella,
   badge: 'Desde $19/mes · $1 Millón de Cobertura Extra',
   heroLine1: 'Protección Extra',
-  heroItalic: 'cuando tu seguro regular no alcanza',
+  heroItalic: 'cuando $300K no alcanzan',
   heroSubtitle: 'Tu auto tiene $300,000 de cobertura. El accidente costó $600,000. La diferencia — $300,000 — sale de tus ahorros, tu casa, tu negocio. La Protección Extra (Umbrella) cierra esa brecha por menos de $1 al día. Sin SSN requerido.',
-  trustBadges: ['Desde $19/mes', '$1M–$5M de cobertura', 'Protegé tus ahorros', 'Sin SSN requerido'],
+  trustBadges: ['Desde $19/mes', '$1M–$5M de cobertura', 'Protege tus ahorros', 'Sin SSN requerido'],
   priceFrom: 'Desde $19/mes',
   eligibilityTitle: '¿Quién necesita Protección Extra?',
-  eligibilityText: 'Si tenés ahorros, propiedades, un negocio o activos que construiste con esfuerzo, la Protección Extra es tu última línea de defensa. Una sola demanda exitosa puede resultar en embargo de cuentas bancarias o propiedades — a menos que tengas este seguro.',
+  eligibilityText: 'Si tienes ahorros, propiedades, un negocio o activos que construiste con esfuerzo, la Protección Extra es tu última línea de defensa. Una sola demanda exitosa puede resultar en embargo de cuentas bancarias o propiedades — a menos que tengas este seguro.',
   eligibilityItems: [
-    'Tenés seguro de auto activo (requisito previo)',
-    'Tenés ahorros, propiedades o cuentas que proteger',
+    'Tienes seguro de auto activo (requisito previo)',
+    'Tienes ahorros, propiedades o cuentas que proteger',
     'Sos dueño de casa, condo o negocio',
-    'Tenés mascotas (especialmente razas grandes)',
-    'Tenés hijos adolescentes que manejan',
+    'Tienes mascotas (especialmente razas grandes)',
+    'Tienes hijos adolescentes que manejan',
   ],
   features: [
     {
@@ -30,12 +30,12 @@ const configEs: InsurancePageConfig = {
     {
       icon: Bank,
       title: 'Una Barrera Legal Entre Tus Activos y Quien te Demanda',
-      desc: 'Sin Protección Extra, una demanda exitosa puede resultar en embargo de cuentas bancarias, propiedades o activos del negocio. Este seguro pone una barrera legal entre lo que tenés y quien te demanda. Los abogados del otro lado lo saben — por eso demandan por cifras enormes.',
+      desc: 'Sin Protección Extra, una demanda exitosa puede resultar en embargo de cuentas bancarias, propiedades o activos del negocio. Este seguro pone una barrera legal entre lo que tienes y quien te demanda. Los abogados del otro lado lo saben — por eso demandan por cifras enormes.',
     },
     {
       icon: CurrencyDollar,
       title: 'Menos de $1 al Día por $1 Millón de Protección',
-      desc: 'Es uno de los seguros con mejor relación precio-cobertura del mercado. Por menos de $1 al día obtenés $1 millón de protección adicional sobre tu seguro de auto y hogar. Para aumentar a $2, $3 o $5 millones, el costo adicional es mínimo.',
+      desc: 'Es uno de los seguros con mejor relación precio-cobertura del mercado. Por menos de $1 al día obtienes $1 millón de protección adicional sobre tu seguro de auto y hogar. Para aumentar a $2, $3 o $5 millones, el costo adicional es mínimo.',
     },
   ],
   coverageItems: [
@@ -50,12 +50,12 @@ const configEs: InsurancePageConfig = {
   ],
   steps: [
     {
-      title: 'Confirmá que tenés seguro base activo',
+      title: 'Confirma que tienes seguro base activo',
       desc: 'Necesitás tener activo al menos un seguro de auto o de hogar. La Protección Extra es una capa adicional encima de tu cobertura existente.',
     },
     {
       title: 'Elegimos juntos el límite correcto',
-      desc: 'Tu asesora te ayuda a elegir entre $1M, $2M, $3M o $5M según el valor total de tus activos. Cuánto más tenés para proteger, más alto el límite recomendado.',
+      desc: 'Tu asesora te ayuda a elegir entre $1M, $2M, $3M o $5M según el valor total de tus activos. Cuánto más tienes para proteger, más alto el límite recomendado.',
     },
     {
       title: 'Tu paraguas queda activo',
@@ -82,11 +82,11 @@ const configEs: InsurancePageConfig = {
   faq: [
     {
       q: '¿Qué es la Protección Extra (Umbrella Insurance)?',
-      a: 'La Protección Extra es una cobertura adicional que se activa cuando los límites de tu seguro de auto o casa se agotan. Ejemplo concreto: tenés un accidente que causa $600,000 en daños, pero tu seguro de auto solo cubre $300,000. La Protección Extra paga los $300,000 restantes — protegiendo tus ahorros, propiedades y activos de un embargo.',
+      a: 'La Protección Extra es una cobertura adicional que se activa cuando los límites de tu seguro de auto o casa se agotan. Ejemplo concreto: tienes un accidente que causa $600,000 en daños, pero tu seguro de auto solo cubre $300,000. La Protección Extra paga los $300,000 restantes — protegiendo tus ahorros, propiedades y activos de un embargo.',
     },
     {
       q: '¿Cuándo necesito Protección Extra?',
-      a: 'La necesitás si tenés ahorros, propiedades, inversiones o activos que podrían ser embargados en una demanda. También si tenés: perros de razas grandes, piscina en tu casa, hijos adolescentes que manejan, o si sos dueño de negocio. Una persona sin activos tiene poco que perder en una demanda. Una persona con ahorros y propiedades tiene todo que perder.',
+      a: 'La necesitas si tienes ahorros, propiedades, inversiones o activos que podrían ser embargados en una demanda. También si tienes: perros de razas grandes, piscina en tu casa, hijos adolescentes que manejan, o si eres dueño de negocio. Una persona sin activos tiene poco que perder en una demanda. Una persona con ahorros y propiedades tiene todo que perder.',
     },
     {
       q: '¿Cuánto cuesta la Protección Extra?',
@@ -98,11 +98,11 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿La Protección Extra cubre incidentes con mascotas?',
-      a: 'Sí. Si tu perro u otra mascota causa daño o lesión a un tercero y la demanda supera los límites de tu seguro de hogar, la Protección Extra puede cubrir la responsabilidad civil adicional. Especialmente importante si tenés razas con historial de demandas como Pit Bull, Rottweiler o Pastor Alemán.',
+      a: 'Sí. Si tu perro u otra mascota causa daño o lesión a un tercero y la demanda supera los límites de tu seguro de hogar, la Protección Extra puede cubrir la responsabilidad civil adicional. Especialmente importante si tienes razas con historial de demandas como Pit Bull, Rottweiler o Pastor Alemán.',
     },
     {
       q: '¿Qué pasa si me demandan por más de $1 millón?',
-      a: 'Podés contratar Protección Extra con límites de $2 millones, $3 millones o hasta $5 millones de cobertura adicional. El costo adicional por aumentar el límite es mínimo comparado con la protección. Te recomendamos ajustar el límite según el valor total de tus activos.',
+      a: 'Puedes contratar Protección Extra con límites de $2 millones, $3 millones o hasta $5 millones de cobertura adicional. El costo adicional por aumentar el límite es mínimo comparado con la protección. Te recomendamos ajustar el límite según el valor total de tus activos.',
     },
     {
       q: '¿Puedo contratar Protección Extra sin SSN?',
@@ -125,7 +125,7 @@ const configEn: InsurancePageConfig = {
   badgeIcon: Umbrella,
   badge: 'From $19/mo · $1 Million in Extra Coverage',
   heroLine1: 'Umbrella Insurance',
-  heroItalic: 'for when your regular policy isn\'t enough',
+  heroItalic: 'when $300K isn'''t enough',
   heroSubtitle: 'Your auto policy covers $300,000. The accident caused $600,000 in damages. The remaining $300,000 comes from your savings, your home, your business. Umbrella insurance closes that gap for less than $1 a day. No SSN required.',
   trustBadges: ['From $19/mo', '$1M–$5M coverage', 'Protect your assets', 'No SSN required'],
   priceFrom: 'From $19/mo',

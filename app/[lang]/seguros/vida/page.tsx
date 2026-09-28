@@ -8,12 +8,12 @@ const configEs: InsurancePageConfig = {
   badgeIcon: Heart,
   badge: 'Sin SSN · Living Benefits · Desde $15/mes',
   heroLine1: 'Seguro de Vida',
-  heroItalic: 'que también te protege mientras seguís vivo',
-  heroSubtitle: 'Si algo te pasara hoy, ¿tu familia podría pagar la renta el mes que viene? Con o sin SSN, desde $15/mes — menos que Spotify y Netflix juntos. Y si te diagnostican una enfermedad grave, podés usar el dinero mientras seguís vivo. Sin esperar a morir.',
+  heroItalic: 'el dinero lo usas vivo — no solo tu familia',
+  heroSubtitle: 'Si algo te pasara hoy, ¿tu familia podría pagar la renta el mes que viene? Con o sin SSN, desde $15/mes — menos que Spotify y Netflix juntos. Y si te diagnostican una enfermedad grave, puedes usar el dinero mientras sigues vivo. Sin esperar a morir.',
   trustBadges: ['Sin SSN requerido', 'Desde $15/mes', 'Living Benefits incluidos', 'Beneficiarios en cualquier país'],
   priceFrom: 'Desde $15/mes',
-  eligibilityTitle: 'Sí podés asegurarte aunque...',
-  eligibilityText: 'No importa tu estatus migratorio. Cuanto antes lo hacés, más barato — una persona sana de 25 años paga menos de $16/mes por $250,000 de cobertura durante 20 años. Si esperás a estar enfermo, puede ser tarde.',
+  eligibilityTitle: 'Sí puedes asegurarte aunque...',
+  eligibilityText: 'No importa tu estatus migratorio. Cuanto antes lo haces, más barato — una persona sana de 25 años paga menos de $16/mes por $250,000 de cobertura durante 20 años. Si esperas a estar enfermo, puede ser tarde.',
   eligibilityItems: [
     'No tengas número de seguro social (SSN)',
     'Seas inmigrante reciente, con DACA o visa temporal',
@@ -25,12 +25,12 @@ const configEs: InsurancePageConfig = {
     {
       icon: CurrencyDollar,
       title: 'Living Benefits — El Dinero lo Usás Vos, No Solo tu Familia',
-      desc: 'Si te diagnostican una enfermedad crítica (infarto, cáncer, derrame), crónica (no podés hacer actividades básicas solo) o terminal (menos de 24 meses de vida), podés acceder a parte del beneficio MIENTRAS SEGUÍS VIVO. No tenés que morir para que tu familia lo use. Ese dinero paga tratamientos, deudas o lo que necesites.',
+      desc: 'Si te diagnostican una enfermedad crítica (infarto, cáncer, derrame), crónica (no puedes hacer actividades básicas solo) o terminal (menos de 24 meses de vida), puedes acceder a parte del beneficio MIENTRAS SIGUES VIVO. No tienes que morir para que tu familia lo use. Ese dinero paga tratamientos, deudas o lo que necesites.',
     },
     {
       icon: Globe,
       title: 'Tu Mamá en México Puede Ser Tu Beneficiaria',
-      desc: 'Podés designar a cualquier familiar en cualquier parte del mundo como beneficiario — tu mamá en México, tus hijos en Guatemala, tu pareja en Colombia. No es necesario que vivan en USA ni que tengan documentos americanos. El dinero les llega a ellos cuando más lo necesitan.',
+      desc: 'Puedes designar a cualquier familiar en cualquier parte del mundo como beneficiario — tu mamá en México, tus hijos en Guatemala, tu pareja en Colombia. No es necesario que vivan en USA ni que tengan documentos americanos. El dinero les llega a ellos cuando más lo necesitan.',
     },
     {
       icon: Lock,
@@ -59,7 +59,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       title: 'Póliza activa en 1 a 3 días hábiles',
-      desc: 'Recibís tu documentación por email y podés designar beneficiarios en cualquier país. Tu familia queda protegida esta semana.',
+      desc: 'Recibís tu documentación por email y puedes designar beneficiarios en cualquier país. Tu familia queda protegida esta semana.',
     },
   ],
   testimonials: [
@@ -71,7 +71,7 @@ const configEs: InsurancePageConfig = {
     {
       name: 'Jorge L.',
       location: 'Chicago, Illinois',
-      text: 'Los Living Benefits me convencieron. No solo protejo a mi familia si muero — si me diagnostican algo grave, puedo usar el dinero para el tratamiento. Eso vale mucho cuando no tenés familia aquí.',
+      text: 'Los Living Benefits me convencieron. No solo protejo a mi familia si muero — si me diagnostican algo grave, puedo usar el dinero para el tratamiento. Eso vale mucho cuando no tienes familia aquí.',
     },
     {
       name: 'Ana P.',
@@ -82,34 +82,34 @@ const configEs: InsurancePageConfig = {
   faq: [
     {
       q: '¿Puedo tener seguro de vida sin SSN?',
-      a: 'Sí. No necesitás SSN para contratar seguro de vida en EE.UU. Aceptamos ITIN como identificación válida. Inmigrantes, personas con DACA, visa temporal y estatus pendiente pueden contratar seguro de vida sin SSN.',
+      a: 'Sí. No necesitas SSN para contratar seguro de vida en EE.UU. Aceptamos ITIN como identificación válida. Inmigrantes, personas con DACA, visa temporal y estatus pendiente pueden contratar seguro de vida sin SSN.',
     },
     {
       q: '¿Qué son los Living Benefits y cómo funcionan?',
-      a: 'Los Living Benefits te permiten acceder a parte del beneficio de tu seguro de vida MIENTRAS SEGUÍS VIVO si te diagnostican: enfermedad terminal (menos de 24 meses de vida), enfermedad crítica (infarto, cáncer, derrame cerebral) o enfermedad crónica (cuando no podés realizar actividades básicas diarias solo). El dinero lo usás para lo que necesitás — tratamientos, deudas, gastos del hogar. Lo que se adelanta se descuenta del beneficio final.',
+      a: 'Los Living Benefits te permiten acceder a parte del beneficio de tu seguro de vida MIENTRAS SIGUES VIVO si te diagnostican: enfermedad terminal (menos de 24 meses de vida), enfermedad crítica (infarto, cáncer, derrame cerebral) o enfermedad crónica (cuando no puedes realizar actividades básicas diarias solo). El dinero lo usas para lo que necesitas — tratamientos, deudas, gastos del hogar. Lo que se adelanta se descuenta del beneficio final.',
     },
     {
       q: '¿Cuánto cuesta el seguro de vida para inmigrantes?',
-      a: 'Los planes a término comienzan desde $15/mes para personas jóvenes y sanas — menos que Spotify y Netflix juntos. Una mujer sana de 25 años puede tener $250,000 de cobertura por menos de $16/mes durante 20 años. El precio varía según edad, salud y tipo de cobertura. Cuanto antes contratás, más barato para siempre.',
+      a: 'Los planes a término comienzan desde $15/mes para personas jóvenes y sanas — menos que Spotify y Netflix juntos. Una mujer sana de 25 años puede tener $250,000 de cobertura por menos de $16/mes durante 20 años. El precio varía según edad, salud y tipo de cobertura. Cuanto antes contratas, más barato para siempre.',
     },
     {
       q: '¿Mi familia en otro país puede cobrar el seguro?',
-      a: 'Sí. Podés designar como beneficiarios a familiares que vivan en México, Guatemala, Honduras, Colombia o cualquier país del mundo. No es necesario que tengan documentos americanos ni que vivan en USA. El dinero les llega a ellos cuando lo necesitan.',
+      a: 'Sí. Puedes designar como beneficiarios a familiares que vivan en México, Guatemala, Honduras, Colombia o cualquier país del mundo. No es necesario que tengan documentos americanos ni que vivan en USA. El dinero les llega a ellos cuando lo necesitan.',
     },
     {
       q: '¿Cuál es la diferencia entre seguro a término y permanente?',
-      a: 'El seguro a término (Term Life) cubre por un período definido (10, 20 o 30 años) y es el más económico. Ideal para proteger a tu familia mientras los hijos crecen o tenés deudas importantes. El seguro permanente (Whole Life) dura toda tu vida, no vence y acumula valor en efectivo que podés usar como préstamo. Cuesta más pero no tiene fecha de vencimiento.',
+      a: 'El seguro a término (Term Life) cubre por un período definido (10, 20 o 30 años) y es el más económico. Ideal para proteger a tu familia mientras los hijos crecen o tienes deudas importantes. El seguro permanente (Whole Life) dura toda tu vida, no vence y acumula valor en efectivo que puedes usar como préstamo. Cuesta más pero no tiene fecha de vencimiento.',
     },
     {
       q: '¿Necesito examen médico para contratar?',
-      a: 'No siempre. Muchos planes se aprueban sin examen médico — solo con preguntas básicas de salud. Los planes sin examen son especialmente útiles si tenés condiciones preexistentes. Los planes con examen ofrecen primas más bajas. Tu asesora te indica cuál aplica para tu situación.',
+      a: 'No siempre. Muchos planes se aprueban sin examen médico — solo con preguntas básicas de salud. Los planes sin examen son especialmente útiles si tienes condiciones preexistentes. Los planes con examen ofrecen primas más bajas. Tu asesora te indica cuál aplica para tu situación.',
     },
     {
       q: '¿Mi información se comparte con migración?',
       a: 'No. Tu información es 100% confidencial. Nunca la compartimos con ICE ni ninguna agencia gubernamental sin orden judicial. Lo que compartís con nosotros para contratar tu póliza es estrictamente privado.',
     },
   ],
-  ctaTitle: 'Protegé a tu familia',
+  ctaTitle: 'Protege a tu familia',
   ctaItalic: 'hoy mismo',
   ctaSubtitle: 'Sin SSN. Living Benefits incluidos. Tu asesora en español te guía sin presiones.',
   ctaButton: 'Ver mi precio gratis',
@@ -125,7 +125,7 @@ const configEn: InsurancePageConfig = {
   badgeIcon: Heart,
   badge: 'No SSN · Living Benefits · From $15/mo',
   heroLine1: 'Life Insurance',
-  heroItalic: 'that protects you while you\'re still alive',
+  heroItalic: 'your money — while you are still alive',
   heroSubtitle: 'If something happened to you today, could your family cover next month\'s rent? No SSN needed. From $15/month — less than your streaming subscriptions. And if you\'re diagnosed with a serious illness, you can access the money while you\'re still living. No need to wait.',
   trustBadges: ['No SSN required', 'From $15/mo', 'Living Benefits included', 'Beneficiaries in any country'],
   priceFrom: 'From $15/mo',

@@ -8,12 +8,12 @@ const configEs: InsurancePageConfig = {
   badgeIcon: Truck,
   badge: 'Uber · Lyft · DoorDash · Delivery · Sin SSN',
   heroLine1: 'Seguro de Auto Comercial',
-  heroItalic: 'porque tu seguro personal no te cubre cuando trabajás',
-  heroSubtitle: 'Estás manejando para DoorDash y tenés un accidente. Tu aseguradora personal revisa el reclamo y lo rechaza: "uso comercial no cubierto". Eso significa que pagás los daños de tu bolsillo — el otro conductor, los daños de tu auto, los gastos médicos. El seguro comercial cierra ese hueco. Sin SSN requerido.',
+  heroItalic: 'DoorDash no cubre tu carro — este sí',
+  heroSubtitle: 'Estás manejando para DoorDash y tienes un accidente. Tu aseguradora personal revisa el reclamo y lo rechaza: "uso comercial no cubierto". Eso significa que pagas los daños de tu bolsillo — el otro conductor, los daños de tu auto, los gastos médicos. El seguro comercial cierra ese hueco. Sin SSN requerido.',
   trustBadges: ['Sin SSN — ITIN o EIN', 'Desde $110/mes', 'COI en 24 horas', 'Uber · Lyft · DoorDash'],
   priceFrom: 'Desde $110/mes',
   eligibilityTitle: '¿Usás tu vehículo para trabajar? Necesitás seguro comercial',
-  eligibilityText: 'Casi todos los contratos de seguro personal incluyen una cláusula de exclusión por uso comercial. Si tenés un accidente mientras trabajás, tu seguro personal puede negarle el reclamo. Muchos conductores lo aprenden en el peor momento.',
+  eligibilityText: 'Casi todos los contratos de seguro personal incluyen una cláusula de exclusión por uso comercial. Si tienes un accidente mientras trabajas, tu seguro personal puede negarle el reclamo. Muchos conductores lo aprenden en el peor momento.',
   eligibilityItems: [
     'Conductores de Uber, Lyft, HopSkipDrive y plataformas de rideshare',
     'Delivery: DoorDash, Instacart, Uber Eats, Amazon Flex, restaurantes',
@@ -25,12 +25,12 @@ const configEs: InsurancePageConfig = {
     {
       icon: WarningDiamond,
       title: 'Las 3 Fases del Rideshare — y Cuándo Estás Desprotegido',
-      desc: 'Fase 0 (app apagada): tu seguro personal cubre normalmente. Fase 1 (app encendida, esperando pedido): tu seguro personal puede RECHAZAR el reclamo — Uber/Lyft solo ofrecen $50,000/persona y $25,000 en daños a propiedad, sin cobertura para tu auto. Fase 2-3 (en viaje activo): Uber/Lyft cubren hasta $1 millón de liability — pero la colisión de tu propio auto tiene un deducible de $2,500 y solo aplica si vos ya tenés esa cobertura. El seguro comercial cierra todos esos huecos.',
+      desc: 'Fase 0 (app apagada): tu seguro personal cubre normalmente. Fase 1 (app encendida, esperando pedido): tu seguro personal puede RECHAZAR el reclamo — Uber/Lyft solo ofrecen $50,000/persona y $25,000 en daños a propiedad, sin cobertura para tu auto. Fase 2-3 (en viaje activo): Uber/Lyft cubren hasta $1 millón de liability — pero la colisión de tu propio auto tiene un deducible de $2,500 y solo aplica si tú ya tienes esa cobertura. El seguro comercial cierra todos eeres huecos.',
     },
     {
       icon: Certificate,
       title: 'COI en 24 Horas para No Perder Ningún Contrato',
-      desc: 'Contratistas generales, edificios corporativos y clientes grandes exigen un Certificado de Seguro (COI) antes de dejarte entrar a trabajar. Sin COI, perdés el contrato ese mismo día. Lo emitimos en menos de 24 horas de que tu póliza esté activa.',
+      desc: 'Contratistas generales, edificios corporativos y clientes grandes exigen un Certificado de Seguro (COI) antes de dejarte entrar a trabajar. Sin COI, pierdes el contrato ese mismo día. Lo emitimos en menos de 24 horas de que tu póliza esté activa.',
     },
     {
       icon: Users,
@@ -59,7 +59,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       title: 'Póliza activa y COI disponible en 24 horas',
-      desc: 'Podés presentar el Certificado de Seguro a clientes y contratistas de inmediato. Sin esperas.',
+      desc: 'Puedes presentar el Certificado de Seguro a clientes y contratistas de inmediato. Sin esperas.',
     },
   ],
   testimonials: [
@@ -82,7 +82,7 @@ const configEs: InsurancePageConfig = {
   faq: [
     {
       q: '¿Por qué mi seguro personal no me cubre cuando trabajo con Uber o DoorDash?',
-      a: 'Los contratos de seguro personal incluyen una cláusula de "exclusión por uso comercial". Cuando abrís la app de Uber, Lyft o DoorDash, tu vehículo pasa a ser un instrumento de trabajo. Si tenés un accidente en ese momento, tu aseguradora puede revisar los registros de la app y rechazar el reclamo por "uso comercial no declarado". El seguro comercial cubre explícitamente ese uso.',
+      a: 'Los contratos de seguro personal incluyen una cláusula de "exclusión por uso comercial". Cuando abres la app de Uber, Lyft o DoorDash, tu vehículo pasa a ser un instrumento de trabajo. Si tienes un accidente en ese momento, tu aseguradora puede revisar los registros de la app y rechazar el reclamo por "uso comercial no declarado". El seguro comercial cubre explícitamente ese uso.',
     },
     {
       q: '¿Qué cubre Uber y Lyft exactamente durante las 3 fases?',
@@ -90,15 +90,15 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿DoorDash, Instacart o Amazon Flex me cubren si tengo un accidente?',
-      a: 'La respuesta corta: ninguna cubre tu vehículo. DoorDash cubre daños a terceros durante entregas activas, pero NO cubre daños a tu propio auto. Instacart directamente no provee ningún seguro de auto — sos 100% responsable. Amazon Flex ofrece $1 millón de liability durante bloques activos, pero tampoco cubre tu vehículo. Si tu carro queda inutilizado por un accidente, perdés tu herramienta de trabajo. Solo un seguro comercial propio cubre tu auto.',
+      a: 'La respuesta corta: ninguna cubre tu vehículo. DoorDash cubre daños a terceros durante entregas activas, pero NO cubre daños a tu propio auto. Instacart directamente no provee ningún seguro de auto — eres 100% responsable. Amazon Flex ofrece $1 millón de liability durante bloques activos, pero tampoco cubre tu vehículo. Si tu carro queda inutilizado por un accidente, pierdes tu herramienta de trabajo. Solo un seguro comercial propio cubre tu auto.',
     },
     {
       q: '¿Puedo contratar seguro comercial con ITIN?',
-      a: 'Sí. Aceptamos ITIN para contratar seguros de auto comerciales. Si el seguro va a nombre de tu negocio, también podés usar el EIN del negocio en lugar del SSN personal.',
+      a: 'Sí. Aceptamos ITIN para contratar seguros de auto comerciales. Si el seguro va a nombre de tu negocio, también puedes usar el EIN del negocio en lugar del SSN personal.',
     },
     {
       q: '¿Qué es un COI y por qué me lo exigen?',
-      a: 'Un COI (Certificate of Insurance) prueba que tenés seguro activo con los límites requeridos. Contratistas generales, propietarios de edificios y clientes corporativos lo exigen antes de dejarte trabajar en su propiedad. Sin COI, perdés contratos importantes. Lo emitimos en menos de 24 horas.',
+      a: 'Un COI (Certificate of Insurance) prueba que tienes seguro activo con los límites requeridos. Contratistas generales, propietarios de edificios y clientes corporativos lo exigen antes de dejarte trabajar en su propiedad. Sin COI, pierdes contratos importantes. Lo emitimos en menos de 24 horas.',
     },
     {
       q: '¿Puedo asegurar múltiples vehículos en una sola póliza?',
@@ -125,7 +125,7 @@ const configEn: InsurancePageConfig = {
   badgeIcon: Truck,
   badge: 'Uber · Lyft · DoorDash · Delivery · No SSN',
   heroLine1: 'Commercial Auto Insurance',
-  heroItalic: 'because your personal insurance won\'t cover you while working',
+  heroItalic: 'DoorDash doesn'''t cover your car — this does',
   heroSubtitle: 'You\'re driving for DoorDash and have an accident. Your personal insurer reviews the claim and denies it: "commercial use not covered." That means you pay out of pocket — the other driver\'s damages, your car repairs, medical bills. Commercial insurance closes that gap. No SSN required.',
   trustBadges: ['No SSN — ITIN or EIN', 'From $110/mo', 'COI in 24 hours', 'Uber · Lyft · DoorDash'],
   priceFrom: 'From $110/mo',

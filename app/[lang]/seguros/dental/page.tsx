@@ -8,7 +8,7 @@ const configEs: InsurancePageConfig = {
   badgeIcon: Tooth,
   badge: 'Desde $19/mes · Limpiezas al 100% · Sin SSN',
   heroLine1: 'Seguro Dental',
-  heroItalic: 'para que el dolor de muela no arruine tus finanzas',
+  heroItalic: 'antes de que duela — y cueste $2,000',
   heroSubtitle: 'Una corona sin seguro: $2,000. Con seguro PPO: menos de $700. Un canal de raíz: $1,500 sin seguro. Las limpiezas cuestan $0 desde el día 1. Y cuando el diente duele, ya es tarde para lo barato — la prevención cuesta 5 veces menos que el tratamiento. Sin SSN requerido.',
   trustBadges: ['Sin SSN requerido', 'Desde $19/mes', 'Limpiezas al 100%', 'Sin espera en preventivo'],
   priceFrom: 'Desde $19/mes',
@@ -25,12 +25,12 @@ const configEs: InsurancePageConfig = {
     {
       icon: Tooth,
       title: '2 Limpiezas al Año Cubiertas al 100% — Desde el Día 1',
-      desc: 'La limpieza profesional, revisión y rayos X no tienen período de espera y están cubiertos al 100% desde que activás la póliza. Una limpieza sin seguro cuesta $150–$300. Dos limpiezas al año ya equivalen a $300–$600 en ahorros — más que el costo anual del plan en muchos casos.',
+      desc: 'La limpieza profesional, revisión y rayos X no tienen período de espera y están cubiertos al 100% desde que activas la póliza. Una limpieza sin seguro cuesta $150–$300. Dos limpiezas al año ya equivalen a $300–$600 en ahorros — más que el costo anual del plan en muchos casos.',
     },
     {
       icon: CurrencyDollar,
       title: 'Corona: $2,000 Sin Seguro → $700 Con PPO',
-      desc: 'Ejemplo real: una corona puede costar $2,000 o más sin seguro. Con un plan PPO, tu copago cae a menos de $700. Un canal de raíz en un molar: entre $1,000 y $1,800 sin seguro, la mitad con el 50% cubierto. Un implante dental completo: $3,000–$6,000 sin seguro — más caro que el seguro familiar de 5 años. El problema es que cuando duele, ya no podés elegir lo barato.',
+      desc: 'Ejemplo real: una corona puede costar $2,000 o más sin seguro. Con un plan PPO, tu copago cae a menos de $700. Un canal de raíz en un molar: entre $1,000 y $1,800 sin seguro, la mitad con el 50% cubierto. Un implante dental completo: $3,000–$6,000 sin seguro — más caro que el seguro familiar de 5 años. El problema es que cuando duele, ya no puedes elegir lo barato.',
     },
     {
       icon: Users,
@@ -50,7 +50,7 @@ const configEs: InsurancePageConfig = {
   ],
   steps: [
     {
-      title: 'Elegí tu plan — individual o familiar',
+      title: 'Elige tu plan — individual o familiar',
       desc: 'Planes desde $19/mes para una persona. Planes familiares desde $45/mes. Tu asesora te explica qué cubre cada nivel.',
     },
     {
@@ -86,15 +86,15 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Cuál es la diferencia entre plan HMO y PPO dental?',
-      a: 'El plan HMO dental tiene copagos fijos y predecibles, sin deducible anual — sabés exactamente cuánto vas a pagar en cada visita. Tenés que elegir un dentista de la red y no salirte. El plan PPO dental tiene más libertad para elegir cualquier dentista, pero tiene deducible anual y un límite de cobertura típico de $1,000–$2,000 por año. El HMO es más económico; el PPO da más flexibilidad.',
+      a: 'El plan HMO dental tiene copagos fijos y predecibles, sin deducible anual — sabes exactamente cuánto vas a pagar en cada visita. Tienes que elegir un dentista de la red y no salirte. El plan PPO dental tiene más libertad para elegir cualquier dentista, pero tiene deducible anual y un límite de cobertura típico de $1,000–$2,000 por año. El HMO es más económico; el PPO da más flexibilidad.',
     },
     {
       q: '¿Hay períodos de espera en el seguro dental?',
-      a: 'Los servicios preventivos — limpieza, revisión y rayos X — no tienen período de espera en la mayoría de planes: los usás desde el primer día. Los empastes pueden tener espera de 3–6 meses. Los tratamientos mayores como coronas y endodoncias pueden tener espera de 6–12 meses dependiendo del plan. Por eso es importante tener el seguro antes de que aparezca el problema, no después.',
+      a: 'Los servicios preventivos — limpieza, revisión y rayos X — no tienen período de espera en la mayoría de planes: los usas desde el primer día. Los empastes pueden tener espera de 3–6 meses. Los tratamientos mayores como coronas y endodoncias pueden tener espera de 6–12 meses dependiendo del plan. Por eso es importante tener el seguro antes de que aparezca el problema, no después.',
     },
     {
       q: '¿Necesito SSN para tener seguro dental?',
-      a: 'No. Podés contratar seguro dental con tu ITIN como identificación. No se requiere SSN ni historial de crédito en USA.',
+      a: 'No. Puedes contratar seguro dental con tu ITIN como identificación. No se requiere SSN ni historial de crédito en USA.',
     },
     {
       q: '¿El seguro dental cubre la ortodoncia para mis hijos?',
@@ -106,7 +106,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿El plan cubre implantes dentales?',
-      a: 'Los implantes son tratamientos mayores cubiertos en algunos planes premium al 50%. Muchos planes básicos no los incluyen. Si necesitás implantes, consultá los detalles antes de contratar. Sin seguro, un implante puede costar $3,000–$5,000 por diente.',
+      a: 'Los implantes son tratamientos mayores cubiertos en algunos planes premium al 50%. Muchos planes básicos no los incluyen. Si necesitas implantes, consultá los detalles antes de contratar. Sin seguro, un implante puede costar $3,000–$5,000 por diente.',
     },
   ],
   ctaTitle: 'Tu sonrisa merece',
@@ -125,7 +125,7 @@ const configEn: InsurancePageConfig = {
   badgeIcon: Tooth,
   badge: 'From $19/mo · 100% Covered Cleanings · No SSN',
   heroLine1: 'Dental Insurance',
-  heroItalic: 'so a toothache doesn\'t wreck your finances',
+  heroItalic: 'a $2,000 crown. Or $19/month to prevent it.',
   heroSubtitle: 'A crown without insurance: $2,000. With a PPO plan: under $700. A root canal: $1,500 without coverage. Cleanings cost $0 from day one. And once it hurts, the cheap option is already gone — prevention costs 5x less than treatment. No SSN required.',
   trustBadges: ['No SSN required', 'From $19/mo', '100% covered cleanings', 'No waiting period on preventive'],
   priceFrom: 'From $19/mo',

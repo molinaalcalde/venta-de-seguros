@@ -8,12 +8,12 @@ const configEs: InsurancePageConfig = {
   badgeIcon: Car,
   badge: 'Sin SSN · ITIN · Pasaporte · Matrícula Consular',
   heroLine1: 'Seguro de Auto',
-  heroItalic: 'sin SSN — dejá de manejar sin seguro',
+  heroItalic: 'sin SSN — deja de manejar sin seguro',
   heroVideo: '/videos/hero3.mp4',
-  heroSubtitle: 'La ley exige seguro a TODOS los conductores en USA, sin importar el estatus migratorio. No necesitás SSN. Aceptamos ITIN, pasaporte, matrícula consular y licencia extranjera. Tu información es 100% confidencial — nunca se comparte con el gobierno.',
+  heroSubtitle: 'La ley exige seguro a TODOS los conductores en USA, sin importar el estatus migratorio. No necesitas SSN. Aceptamos ITIN, pasaporte, matrícula consular y licencia extranjera. Tu información es 100% confidencial — nunca se comparte con el gobierno.',
   trustBadges: ['Sin SSN requerido', 'Desde $89/mes', 'Info confidencial', 'Asesor en español'],
   priceFrom: 'Desde $89/mes',
-  eligibilityTitle: 'Sí podés asegurarte aunque...',
+  eligibilityTitle: 'Sí puedes asegurarte aunque...',
   eligibilityText: 'No importa tu situación migratoria. Manejar sin seguro puede costarte multas de $500 a $5,000, suspensión de licencia y responsabilidad personal ilimitada. Con o sin SSN, te ayudamos a cumplir la ley.',
   eligibilityItems: [
     'No tengas número de seguro social (SSN)',
@@ -26,7 +26,7 @@ const configEs: InsurancePageConfig = {
     {
       icon: IdentificationCard,
       title: 'Sin SSN — ITIN, Pasaporte y Matrícula Consular Aceptados',
-      desc: 'Cotizás y contratás con lo que tenés: ITIN, pasaporte mexicano o centroamericano, matrícula consular o licencia extranjera. Sin burocracia, sin rechazo por estatus. Familias que cambian a nosotros ahorran en promedio $400–$900 al año.',
+      desc: 'Cotizas y contratas con lo que tienes: ITIN, pasaporte mexicano o centroamericano, matrícula consular o licencia extranjera. Sin burocracia, sin rechazo por estatus. Familias que cambian a nosotros ahorran en promedio $400–$900 al año.',
     },
     {
       icon: ShieldCheck,
@@ -35,8 +35,8 @@ const configEs: InsurancePageConfig = {
     },
     {
       icon: Headset,
-      title: 'Cuando Tenés un Accidente, Hablás con una Persona Real',
-      desc: 'Ningún menú automático, ningún bot, ningún call center en inglés. Cuando más lo necesitás, un asesor que habla tu idioma te acompaña paso a paso: contacta a la otra parte, gestiona el reclamo y te explica qué hacer. Sin que vos tengas que lidiar con el inglés.',
+      title: 'Cuando Tienes un Accidente, Hablás con una Persona Real',
+      desc: 'Ningún menú automático, ningún bot, ningún call center en inglés. Cuando más lo necesitas, un asesor que habla tu idioma te acompaña paso a paso: contacta a la otra parte, gestiona el reclamo y te explica qué hacer. Sin que tú tengas que lidiar con el inglés.',
     },
   ],
   coverageItems: [
@@ -56,11 +56,11 @@ const configEs: InsurancePageConfig = {
     },
     {
       title: 'Tu asesora en español arma tus opciones',
-      desc: 'Te explicamos la diferencia entre liability, collision y comprehensive sin tecnicismos. Vos elegís según tu presupuesto — sin presiones.',
+      desc: 'Te explicamos la diferencia entre liability, collision y comprehensive sin tecnicismos. Tú eliges según tu presupuesto — sin presiones.',
     },
     {
       title: 'Tu tarjeta de seguro llega hoy mismo',
-      desc: 'En la mayoría de los casos, la tarjeta digital llega por email el mismo día. Podés manejar legal desde hoy.',
+      desc: 'En la mayoría de los casos, la tarjeta digital llega por email el mismo día. Puedes manejar legal desde hoy.',
     },
   ],
   testimonials: [
@@ -72,7 +72,7 @@ const configEs: InsurancePageConfig = {
     {
       name: 'Sandra R.',
       location: 'Dallas, Texas',
-      text: 'Tengo licencia mexicana y nunca me rechazaron. El servicio en español es real — hablás con una persona, no con un menú automático. Eso vale mucho cuando tenés un problema en la carretera.',
+      text: 'Tengo licencia mexicana y nunca me rechazaron. El servicio en español es real — hablas con una persona, no con un menú automático. Eso vale mucho cuando tienes un problema en la carretera.',
     },
     {
       name: 'Marcos V.',
@@ -83,7 +83,7 @@ const configEs: InsurancePageConfig = {
   faq: [
     {
       q: '¿Puedo tener seguro de auto sin número de seguro social (SSN)?',
-      a: 'Sí. No necesitás SSN para contratar seguro de auto en ningún estado de EE.UU. Aceptamos ITIN, pasaporte, matrícula consular o licencia extranjera como identificación válida. Tu estatus migratorio no es un obstáculo — la ley exige seguro a todos los conductores por igual.',
+      a: 'Sí. No necesitas SSN para contratar seguro de auto en ningún estado de EE.UU. Aceptamos ITIN, pasaporte, matrícula consular o licencia extranjera como identificación válida. Tu estatus migratorio no es un obstáculo — la ley exige seguro a todos los conductores por igual.',
     },
     {
       q: '¿Mi información personal se comparte con ICE o migración?',
@@ -95,7 +95,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Qué pasa si el otro conductor no tiene seguro?',
-      a: 'En muchos estados, más del 20% de los conductores maneja sin seguro. Si te chocan y el culpable no tiene seguro, podés quedarte sin cobrar a menos que tengas cobertura UM/UIM (Uninsured/Underinsured Motorist). Esta cobertura adicional es una de las más recomendadas — especialmente en estados con alta tasa de conductores sin seguro como Florida, Michigan y California.',
+      a: 'En muchos estados, más del 20% de los conductores maneja sin seguro. Si te chocan y el culpable no tiene seguro, puedes quedarte sin cobrar a menos que tengas cobertura UM/UIM (Uninsured/Underinsured Motorist). Esta cobertura adicional es una de las más recomendadas — especialmente en estados con alta tasa de conductores sin seguro como Florida, Michigan y California.',
     },
     {
       q: '¿Cuánto cuesta el seguro de auto sin SSN?',
@@ -107,7 +107,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Qué documentos necesito para contratar seguro de auto?',
-      a: 'Generalmente: identificación (ITIN, pasaporte, matrícula consular o licencia extranjera), información del vehículo (placas, VIN, año y modelo) y una dirección postal en USA. No se requiere SSN ni revisión de crédito para cotizar ni en la mayoría de los casos para contratar.',
+      a: 'Generalmente: identificación (ITIN, pasaporte, matrícula consular o licencia extranjera), información del vehículo (placas, VIN, año y modelo) y una dirección postal en USA. No se requiere SSN ni revisión de crédito para cotizar ni en la mayoría de los caeres para contratar.',
     },
     {
       q: '¿Puedo contratar seguro si tengo accidentes previos o infracciones?',

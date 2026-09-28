@@ -8,12 +8,12 @@ const configEs: InsurancePageConfig = {
   badgeIcon: Hospital,
   badge: 'Planes con ITIN · Cualquier Estatus · Desde $199/mes',
   heroLine1: 'Seguro de Salud',
-  heroItalic: 'sin importar tu estatus migratorio',
+  heroItalic: 'tu información nunca llega a migración',
   heroSubtitle: 'Una visita al médico sin seguro: $300. Una emergencia: $10,000 o más. Tu información es 100% confidencial — nunca se comparte con ICE, migración ni ningún gobierno. Hay opciones para casi todas las situaciones migratorias. Desde $199/mes.',
   trustBadges: ['Info confidencial — no ICE', 'Sin SSN requerido', 'Acepta ITIN', 'Desde $199/mes'],
   priceFrom: 'Desde $199/mes',
   eligibilityTitle: 'Tu privacidad es lo primero',
-  eligibilityText: 'Entendemos el miedo a compartir información de salud. Tu historial médico está protegido por ley (HIPAA) y nunca se comparte con migración, ICE ni ninguna agencia gubernamental. Lo que hablás con nosotros es estrictamente confidencial.',
+  eligibilityText: 'Entendemos el miedo a compartir información de salud. Tu historial médico está protegido por ley (HIPAA) y nunca se comparte con migración, ICE ni ninguna agencia gubernamental. Lo que hablas con nosotros es estrictamente confidencial.',
   eligibilityItems: [
     'Planes privados con ITIN — cualquier estatus migratorio',
     'ACA/Marketplace para residentes permanentes y ciudadanos',
@@ -51,7 +51,7 @@ const configEs: InsurancePageConfig = {
   steps: [
     {
       title: 'Cuéntanos tu situación — sin juicios, en confianza',
-      desc: 'Estatus migratorio, tamaño de familia e ingresos aproximados. Todo completamente confidencial. Nunca compartimos tu información con el gobierno.',
+      desc: 'Estatus migratorio, tamaño de familia e ingreeres aproximados. Todo completamente confidencial. Nunca compartimos tu información con el gobierno.',
     },
     {
       title: 'Te explicamos todas tus opciones en español',
@@ -59,7 +59,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       title: 'Inscripción guiada de principio a fin',
-      desc: 'Te acompañamos en todo el proceso hasta que tenés tu tarjeta activa. Sin formularios confusos, sin errores que retrasen tu cobertura.',
+      desc: 'Te acompañamos en todo el proceso hasta que tienes tu tarjeta activa. Sin formularios confusos, sin errores que retrasen tu cobertura.',
     },
   ],
   testimonials: [
@@ -90,11 +90,11 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Cuánto cuesta el seguro médico con ITIN?',
-      a: 'Los planes privados comienzan desde $199/mes para un adulto. Si calificás para subsidios del ACA por nivel de ingresos, podés pagar significativamente menos. El precio varía según edad, estado, cantidad de personas y nivel de cobertura. Te damos el precio real según tu situación.',
+      a: 'Los planes privados comienzan desde $199/mes para un adulto. Si calificas para subsidios del ACA por nivel de ingresos, puedes pagar significativamente menos. El precio varía según edad, estado, cantidad de personas y nivel de cobertura. Te damos el precio real según tu situación.',
     },
     {
       q: '¿Cuándo puedo inscribirme?',
-      a: 'Para el ACA, el período de inscripción abierta (Open Enrollment) es de noviembre a enero. Para planes privados podés inscribirte en cualquier momento del año. Si tuviste un evento de vida — nacimiento, pérdida de trabajo, mudanza, divorcio — podés calificar para inscripción especial fuera del período normal.',
+      a: 'Para el ACA, el período de inscripción abierta (Open Enrollment) es de noviembre a enero. Para planes privados puedes inscribirte en cualquier momento del año. Si tuviste un evento de vida — nacimiento, pérdida de trabajo, mudanza, divorcio — puedes calificar para inscripción especial fuera del período normal.',
     },
     {
       q: '¿El plan puede cubrir a toda mi familia?',
@@ -125,7 +125,7 @@ const configEn: InsurancePageConfig = {
   badgeIcon: Hospital,
   badge: 'ITIN Accepted · Any Status · From $199/mo',
   heroLine1: 'Health Insurance',
-  heroItalic: 'regardless of your immigration status',
+  heroItalic: 'your information never reaches immigration',
   heroSubtitle: 'One doctor visit without insurance: $300. One ER visit: $10,000+. Your information is 100% private — never shared with ICE, immigration, or any government agency. Options exist for nearly every immigration status. From $199/month.',
   trustBadges: ['100% private — no ICE', 'No SSN required', 'ITIN accepted', 'From $199/mo'],
   priceFrom: 'From $199/mo',

@@ -8,12 +8,12 @@ const configEs: InsurancePageConfig = {
   badgeIcon: House,
   badge: 'Bundle Casa + Auto · Ahorrá hasta 25%',
   heroLine1: 'Paquete Casa + Auto',
-  heroItalic: 'más protección, menos dinero',
+  heroItalic: 'el landlord no cubre tus cosas — nunca',
   heroSubtitle: 'Combinar tu seguro de hogar (o renters) con el de auto puede ahorrarte $400–$900 al año. Y algo que mucha gente no sabe: el seguro del landlord NO cubre tus pertenencias — si hay un robo o incendio, todo lo tuyo desaparece sin seguro de renters. Sin SSN requerido.',
   trustBadges: ['Ahorrá hasta 25%', 'Sin SSN requerido', 'Para renters y homeowners', 'Un solo asesor'],
   priceFrom: 'Bundle desde $130/mes',
-  eligibilityTitle: '¿Rentás o sos dueño? Los dos califican',
-  eligibilityText: 'No necesitás ser dueño de casa para el descuento de bundle. Si rentás un apartamento, el seguro de renters protege TUS pertenencias — no las paredes del landlord — y combinado con el de auto te da el mismo descuento que a los dueños de casa.',
+  eligibilityTitle: '¿Rentás o eres dueño? Los dos califican',
+  eligibilityText: 'No necesitas ser dueño de casa para el descuento de bundle. Si rentas un apartamento, el seguro de renters protege TUS pertenencias — no las paredes del landlord — y combinado con el de auto te da el mismo descuento que a los dueños de casa.',
   eligibilityItems: [
     'Inquilinos (renters) — protegé tus cosas aunque no seas dueño',
     'Dueños de casa o condo (homeowners)',
@@ -25,17 +25,17 @@ const configEs: InsurancePageConfig = {
     {
       icon: PiggyBank,
       title: '$400 a $900 Menos al Año — En Ambas Primas',
-      desc: 'Al combinar seguro de hogar y auto en un bundle, recibís descuento en las dos pólizas. Las familias que hacen este cambio ahorran entre $400 y $900 al año. Es el mismo seguro, la misma cobertura — solo que más barato por tenerlos juntos.',
+      desc: 'Al combinar seguro de hogar y auto en un bundle, recibes descuento en las dos pólizas. Las familias que hacen este cambio ahorran entre $400 y $900 al año. Es el mismo seguro, la misma cobertura — solo que más barato por tenerlos juntos.',
     },
     {
       icon: Key,
       title: 'El Seguro del Landlord No Cubre Tus Cosas — Nunca',
-      desc: 'El seguro del landlord cubre la estructura del edificio — las paredes, el techo, la plomería. No cubre tu ropa, tus electrodomésticos, tu laptop, tus muebles, ni nada que sea tuyo. Si hay un incendio, un robo o una inundación, perdés todo lo tuyo. El seguro de renters cubre exactamente eso, más responsabilidad civil si alguien se lastima en tu hogar.',
+      desc: 'El seguro del landlord cubre la estructura del edificio — las paredes, el techo, la plomería. No cubre tu ropa, tus electrodomésticos, tu laptop, tus muebles, ni nada que sea tuyo. Si hay un incendio, un robo o una inundación, pierdes todo lo tuyo. El seguro de renters cubre exactamente eso, más responsabilidad civil si alguien se lastima en tu hogar.',
     },
     {
       icon: Phone,
       title: 'Un Solo Punto de Contacto para Todo',
-      desc: 'Un asesor para ambas pólizas. Cuando tenés una pregunta, un accidente o un siniestro, llamás a un solo número y te atendemos en español. Sin tener que explicar tu situación a diferentes compañías.',
+      desc: 'Un asesor para ambas pólizas. Cuando tienes una pregunta, un accidente o un siniestro, llamás a un solo número y te atendemos en español. Sin tener que explicar tu situación a diferentes compañías.',
     },
   ],
   coverageItems: [
@@ -51,11 +51,11 @@ const configEs: InsurancePageConfig = {
   steps: [
     {
       title: 'Cuéntanos sobre tu hogar y vehículo',
-      desc: '¿Rentás o sos dueño? ¿Cuántos vehículos? Sin SSN para cotizar. Proceso rápido y completamente confidencial.',
+      desc: '¿Rentás o eres dueño? ¿Cuántos vehículos? Sin SSN para cotizar. Proceso rápido y completamente confidencial.',
     },
     {
       title: 'Tu asesora diseña tu paquete personalizado',
-      desc: 'Combinamos las coberturas de hogar y auto más convenientes para tu situación, presupuesto y estado donde vivís.',
+      desc: 'Combinamos las coberturas de hogar y auto más convenientes para tu situación, presupuesto y estado donde vives.',
     },
     {
       title: 'Ahorrá desde el primer mes',
@@ -82,11 +82,11 @@ const configEs: InsurancePageConfig = {
   faq: [
     {
       q: '¿El seguro del landlord no cubre mis pertenencias?',
-      a: 'Correcto — nunca. El seguro del landlord (propietario del edificio) cubre la estructura: paredes, techo, plomería, sistemas eléctricos. No cubre absolutamente nada de lo que es tuyo: ropa, electrónicos, muebles, joyas, electrodomésticos. Si hay un robo, incendio o daño por agua, perdés todo lo tuyo sin seguro de renters.',
+      a: 'Correcto — nunca. El seguro del landlord (propietario del edificio) cubre la estructura: paredes, techo, plomería, sistemas eléctricos. No cubre absolutamente nada de lo que es tuyo: ropa, electrónicos, muebles, joyas, electrodomésticos. Si hay un robo, incendio o daño por agua, pierdes todo lo tuyo sin seguro de renters.',
     },
     {
       q: '¿Puedo combinar seguro de casa y auto si soy inquilino (renter)?',
-      a: 'Sí. El seguro de renters cubre tus pertenencias personales y te da responsabilidad civil. Podés combinarlo con tu seguro de auto para obtener el descuento de bundle exactamente igual que un dueño de casa. No necesitás ser propietario para aprovechar el ahorro.',
+      a: 'Sí. El seguro de renters cubre tus pertenencias personales y te da responsabilidad civil. Puedes combinarlo con tu seguro de auto para obtener el descuento de bundle exactamente igual que un dueño de casa. No necesitas ser propietario para aprovechar el ahorro.',
     },
     {
       q: '¿Cuánto ahorro combinando los seguros en bundle?',
@@ -94,7 +94,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Qué cubre el seguro de renters exactamente?',
-      a: 'El seguro de renters cubre: tus pertenencias personales (ropa, electrónicos, muebles, joyas) ante robo, incendio, daños; responsabilidad civil si alguien se lastima en tu hogar y te demanda; gastos de hotel o alojamiento temporal si tu apartamento queda inhabitable por un siniestro cubierto. El monto de cobertura lo elegís vos según el valor de tus cosas.',
+      a: 'El seguro de renters cubre: tus pertenencias personales (ropa, electrónicos, muebles, joyas) ante robo, incendio, daños; responsabilidad civil si alguien se lastima en tu hogar y te demanda; gastos de hotel o alojamiento temporal si tu apartamento queda inhabitable por un siniestro cubierto. El monto de cobertura lo eliges tú según el valor de tus cosas.',
     },
     {
       q: '¿Necesito SSN para asegurar mi casa o apartamento?',
@@ -106,12 +106,12 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿El seguro de hogar cubre daños por huracán, tornado o inundación?',
-      a: 'Depende del estado y el plan. Los daños por viento (huracanes, tornados) generalmente están cubiertos en las pólizas estándar. Los daños por inundación generalmente NO están incluidos y requieren una póliza separada (NFIP o privada). En Florida, los huracanes pueden tener un deducible especial. Te explicamos qué cubre tu póliza según dónde vivís.',
+      a: 'Depende del estado y el plan. Los daños por viento (huracanes, tornados) generalmente están cubiertos en las pólizas estándar. Los daños por inundación generalmente NO están incluidos y requieren una póliza separada (NFIP o privada). En Florida, los huracanes pueden tener un deducible especial. Te explicamos qué cubre tu póliza según dónde vives.',
     },
   ],
-  ctaTitle: 'Protegé tu hogar y tu auto',
+  ctaTitle: 'Protege tu hogar y tu auto',
   ctaItalic: 'con un solo plan',
-  ctaSubtitle: 'Combiná y ahorrá hasta 25%. Sin SSN. Sin complicaciones.',
+  ctaSubtitle: 'Combina y ahorrá hasta 25%. Sin SSN. Sin complicaciones.',
   ctaButton: 'Ver mi precio gratis',
   theme: 'violet',
   schema: {
@@ -125,7 +125,7 @@ const configEn: InsurancePageConfig = {
   badgeIcon: House,
   badge: 'Bundle Home + Auto · Save Up to 25%',
   heroLine1: 'Home + Auto Bundle',
-  heroItalic: 'more protection, less money',
+  heroItalic: 'your landlord'''s insurance never covers your stuff',
   heroSubtitle: 'Bundling your home (or renters) insurance with auto can save you $400–$900 a year. And something most people don\'t know: your landlord\'s insurance does NOT cover your belongings — if there\'s a theft or fire, everything you own is gone without renters insurance. No SSN required.',
   trustBadges: ['Save up to 25%', 'No SSN required', 'Renters & homeowners', 'One single agent'],
   priceFrom: 'Bundle from $130/mo',
