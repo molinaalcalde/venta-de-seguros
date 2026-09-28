@@ -54,7 +54,7 @@ const config: InsurancePageConfig = {
   ctaTitle: 'Protege lo que',
   ctaItalic: 'construiste',
   ctaSubtitle: 'Seguro comercial desde $19/mes. COI en 24 horas. Sin SSN — acepta EIN e ITIN.',
-  ctaButton: 'Cotizar Seguro Comercial',
+  ctaButton: 'Ver mi precio gratis',
   theme: 'purple',
   schema: { description: 'Seguro comercial para pequeños negocios hispanos en USA. Sin SSN, acepta ITIN y EIN. BOP, responsabilidad civil, Workers Comp y protección de propiedad. Restaurantes, salones, contratistas y más. Desde $19/mes.', price: '19' },
 };

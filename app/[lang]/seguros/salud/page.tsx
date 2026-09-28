@@ -54,7 +54,7 @@ const config: InsurancePageConfig = {
   ctaTitle: 'La salud de tu familia',
   ctaItalic: 'no puede esperar',
   ctaSubtitle: 'Planes desde $199/mes con o sin SSN. Un asesor en español te guía sin prisa.',
-  ctaButton: 'Ver Planes de Salud',
+  ctaButton: 'Ver mis opciones gratis',
   theme: 'blue',
   schema: { description: 'Seguro de salud para inmigrantes latinos sin SSN en USA. Acepta ITIN. Planes individuales y familiares desde $199/mes. ACA, planes privados y programas estatales. Atención 100% en español.', price: '199' },
 };

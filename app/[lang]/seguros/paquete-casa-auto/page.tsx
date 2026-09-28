@@ -53,7 +53,7 @@ const config: InsurancePageConfig = {
   ctaTitle: 'Protege tu hogar y tu auto',
   ctaItalic: 'con un solo plan',
   ctaSubtitle: 'Combina y ahorra hasta 25%. Sin SSN. Sin complicaciones.',
-  ctaButton: 'Armar mi Paquete',
+  ctaButton: 'Ver mi precio gratis',
   theme: 'violet',
   schema: { description: 'Paquete seguro de casa y auto para latinos en USA. Sin SSN, acepta ITIN. Ahorra hasta 25% combinando. Para renters y homeowners. Bundle desde $130/mes.', price: '130' },
 };

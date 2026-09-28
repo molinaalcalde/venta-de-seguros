@@ -5,7 +5,7 @@ const config: InsurancePageConfig = {
   badge: '🚗 Sin SSN · ITIN Aceptado · Desde $89/mes',
   heroLine1: 'Seguro de Auto',
   heroItalic: 'para latinos en USA — con o sin SSN',
-  heroSubtitle: 'La ley exige seguro a todos los conductores, sin importar tu estatus migratorio. Aceptamos ITIN, pasaporte, matrícula consular y licencia extranjera. Cotización gratis en 90 segundos.',
+  heroSubtitle: 'La ley exige seguro a todos los conductores, sin importar tu estatus migratorio. Aceptamos ITIN, pasaporte, matrícula consular y licencia extranjera. Cotización gratis, sin compromiso y sin SSN. Tu asesora en español te contacta hoy mismo.',
   trustBadges: ['Sin SSN requerido', 'Acepta ITIN', 'Desde $89/mes', 'Asistencia 24/7 en español'],
   priceFrom: 'Desde $89/mes',
   eligibilityTitle: 'Sí puedes asegurarte aunque...',
@@ -33,7 +33,7 @@ const config: InsurancePageConfig = {
     'Auto de reemplazo mientras te reparan el tuyo',
   ],
   steps: [
-    { title: 'Cotiza gratis en 90 segundos', desc: 'Responde unas preguntas básicas online o llama directamente. Sin SSN, sin revisión de crédito para cotizar.' },
+    { title: 'Completa el formulario — gratis y sin SSN', desc: 'Responde unas preguntas básicas sobre tu vehículo y situación. Sin SSN, sin revisión de crédito, sin compromiso.' },
     { title: 'Un asesor te explica cada opción', desc: 'Te explicamos en español la diferencia entre liability, collision y comprehensive — sin prisa, sin presión. Tú decides.' },
     { title: 'Recibe tu tarjeta de seguro hoy', desc: 'En la mayoría de los casos, tu tarjeta de seguro llega por correo electrónico el mismo día. Puedes manejar legal desde hoy.' },
   ],
@@ -55,9 +55,9 @@ const config: InsurancePageConfig = {
   ctaTitle: 'Maneja tranquilo',
   ctaItalic: 'desde hoy mismo',
   ctaSubtitle: 'Sin SSN. Sin revisión de crédito. Un asesor en español te guía en todo el proceso.',
-  ctaButton: 'Cotizar Seguro de Auto',
+  ctaButton: 'Ver mi precio gratis',
   theme: 'blue',
-  schema: { description: 'Seguro de auto para latinos e inmigrantes sin SSN en USA. Acepta ITIN, pasaporte y matrícula consular. Desde $89/mes. Atención 100% en español. Cotización gratis en 90 segundos.', price: '89' },
+  schema: { description: 'Seguro de auto para latinos e inmigrantes sin SSN en USA. Acepta ITIN, pasaporte, matrícula consular y licencia extranjera. Desde $89/mes. Atención 100% en español. Cotización gratis sin compromiso.', price: '89' },
 };
 
 export default function AutoPage() {

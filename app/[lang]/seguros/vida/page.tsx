@@ -33,7 +33,7 @@ const config: InsurancePageConfig = {
     'Valor en efectivo acumulado (cash value)',
   ],
   steps: [
-    { title: 'Cotiza en 90 segundos — sin examen médico', desc: 'Responde unas preguntas básicas sobre tu edad y salud. Sin SSN requerido. Muchos planes aprueban sin examen médico.' },
+    { title: 'Completa el formulario — sin SSN, sin examen médico', desc: 'Responde unas preguntas básicas sobre tu edad y salud. Sin SSN requerido. Muchos planes aprueban sin examen médico.' },
     { title: 'Elegimos juntos el plan correcto', desc: 'Te explicamos en español la diferencia entre vida a término y vida permanente, y cuáles incluyen Living Benefits. Tú decides según tu presupuesto.' },
     { title: 'Póliza activa en días', desc: 'La mayoría de pólizas se activan en 1–3 días hábiles. Recibes tu documentación por correo electrónico y puedes designar beneficiarios en cualquier país.' },
   ],
@@ -54,7 +54,7 @@ const config: InsurancePageConfig = {
   ctaTitle: 'Protege a tu familia',
   ctaItalic: 'hoy mismo',
   ctaSubtitle: 'Sin SSN. Living Benefits incluidos. Un asesor en español te guía sin presiones.',
-  ctaButton: 'Cotizar Seguro de Vida',
+  ctaButton: 'Ver mi precio gratis',
   theme: 'emerald',
   schema: { description: 'Seguro de vida para inmigrantes latinos sin SSN en USA. Acepta ITIN. Living Benefits incluidos. Beneficiarios en cualquier país. Desde $15/mes. Sin examen médico en muchos planes.', price: '15' },
 };

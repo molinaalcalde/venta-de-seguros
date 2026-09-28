@@ -54,7 +54,7 @@ const config: InsurancePageConfig = {
   ctaTitle: 'La última línea de',
   ctaItalic: 'defensa',
   ctaSubtitle: 'Desde $19/mes por $1 millón de cobertura adicional. Protege lo que has construido.',
-  ctaButton: 'Añadir Protección Extra',
+  ctaButton: 'Ver mi precio gratis',
   theme: 'slate',
   schema: { description: 'Protección Extra (Umbrella Insurance) para latinos en USA. Desde $1 millón de cobertura adicional sobre seguro de auto y hogar. Protege ahorros y propiedades ante demandas. Sin SSN. Desde $19/mes.', price: '19' },
 };
