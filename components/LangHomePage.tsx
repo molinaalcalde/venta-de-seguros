@@ -282,13 +282,16 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
       </div>
 
       {/* ── Trust Stats Bar ── */}
-      <div className="bg-slate-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10">
-            {(isEn ? TRUST_STATS_EN : TRUST_STATS_ES).map(({ value, label }) => (
-              <div key={label} className="flex flex-col items-center justify-center py-5 px-4 text-center">
-                <span className="text-2xl sm:text-3xl font-semibold tracking-tight">{value}</span>
-                <span className="text-[11px] text-slate-300 mt-0.5 font-light">{label}</span>
+      <div className="relative z-10 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.10)] border-b border-slate-100">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4">
+            {(isEn ? TRUST_STATS_EN : TRUST_STATS_ES).map(({ value, label }, i) => (
+              <div
+                key={label}
+                className={`flex flex-col items-center justify-center py-7 px-6 text-center ${i % 2 === 0 ? 'border-r border-slate-100' : ''} ${i < 2 ? 'border-b border-slate-100 lg:border-b-0' : ''} lg:border-r lg:last:border-r-0`}
+              >
+                <span className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">{value}</span>
+                <span className="text-[11px] text-slate-500 mt-1.5 font-medium uppercase tracking-widest">{label}</span>
               </div>
             ))}
           </div>
