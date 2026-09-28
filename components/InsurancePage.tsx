@@ -80,6 +80,7 @@ export interface InsurancePageConfig {
   ctaButton: string;
   theme: ThemeKey;
   heroVideo?: string;
+  heroVideoMobile?: string;
   schema: { description: string; price?: string };
 }
 
@@ -156,11 +157,20 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
         <section className="relative border-b border-slate-100 overflow-hidden">
           {config.heroVideo ? (
             <>
+              {/* Desktop video */}
               <video
                 src={config.heroVideo}
                 autoPlay muted loop playsInline
-                className="absolute inset-0 w-full h-full object-cover"
+                className={`absolute inset-0 w-full h-full object-cover ${config.heroVideoMobile ? 'hidden md:block' : ''}`}
               />
+              {/* Mobile video (vertical) */}
+              {config.heroVideoMobile && (
+                <video
+                  src={config.heroVideoMobile}
+                  autoPlay muted loop playsInline
+                  className="absolute inset-0 w-full h-full object-cover md:hidden"
+                />
+              )}
               <div className="absolute inset-0 bg-black/55" />
             </>
           ) : (

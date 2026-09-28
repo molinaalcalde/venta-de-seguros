@@ -118,6 +118,7 @@ const configEs: InsurancePageConfig = {
   ctaButton: 'Ver mi precio gratis',
   theme: 'blue',
   heroVideo: '/videos/hero-auto.mp4',
+  heroVideoMobile: '/videos/hero-auto-mobile.mp4',
   schema: {
     description: 'Seguro de auto para latinos e inmigrantes sin SSN en USA. Acepta ITIN, pasaporte, matrícula consular y licencia extranjera. Desde $89/mes. Atención 100% en español. Información confidencial.',
     price: '89',
@@ -240,6 +241,7 @@ const configEn: InsurancePageConfig = {
   ctaButton: 'Review my coverage — free',
   theme: 'blue',
   heroVideo: '/videos/hero-auto.mp4',
+  heroVideoMobile: '/videos/hero-auto-mobile.mp4',
   schema: {
     description: 'Independent car insurance agent — compare multiple carriers, understand full coverage, gap insurance, and why your premium went up. Rate review in 5 minutes. From $89/mo.',
     price: '89',

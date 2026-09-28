@@ -216,10 +216,14 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
         <video src="/videos/hero2-mobile.mp4" autoPlay muted playsInline loop preload="auto"
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 md:hidden ${heroIndex === 1 ? 'opacity-100' : 'opacity-0'}`}
         />
-        {/* Slot 2 */}
+        {/* Slot 2 — desktop */}
         <video ref={videoRefs[2]} src={HERO_VIDEOS[2].src} muted playsInline loop preload="auto"
           onLoadedMetadata={() => { const el = videoRefs[2].current; if (el) el.currentTime = HERO_VIDEOS[2].startTime; }}
-          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 hidden md:block ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
+        />
+        {/* Slot 2 — mobile (vertical) */}
+        <video src="/videos/hero-auto-mobile.mp4" autoPlay muted playsInline loop preload="auto"
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 md:hidden ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/15 to-black/70 z-[1]"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50 z-[1]"></div>
