@@ -108,6 +108,7 @@ const configEs: InsurancePageConfig = {
   ctaItalic: 'no puede esperar más',
   ctaSubtitle: 'Desde $19/mes. Sin SSN. Limpiezas al 100% desde el primer día. En español.',
   ctaButton: 'Ver mi precio gratis',
+  heroVideo: '/videos/hero-dental.mp4',
   theme: 'cyan',
   schema: {
     description: 'Seguro dental para latinos e inmigrantes sin SSN en USA. ITIN aceptado. Sin espera en servicios preventivos. Limpiezas al 100%. Planes individuales desde $19/mes y familiares. Coronas, canales de raíz y ortodoncia.',
@@ -222,6 +223,7 @@ const configEn: InsurancePageConfig = {
   ctaItalic: 'actually covers you',
   ctaSubtitle: 'Honest comparison. No upsell. From $19/mo. Preventive care active from day one.',
   ctaButton: 'Compare my options — free',
+  heroVideo: '/videos/hero-dental.mp4',
   theme: 'cyan',
   schema: {
     description: 'Individual and family dental insurance plans from $19/mo. No waiting period on preventive care. Compare HMO and PPO plans. Cleanings, fillings, crowns, root canals, and implants. Independent agent.',
