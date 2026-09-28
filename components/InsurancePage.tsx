@@ -383,7 +383,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
         </section>
 
         {/* ── Footer ───────────────────────────────────────────────── */}
-        <footer className="bg-[#0f1a12] text-white">
+        <footer className="bg-black text-white">
           <div className="max-w-5xl mx-auto px-5 lg:px-8 py-10">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8">
               <div>
@@ -419,7 +419,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
                 </div>
               </div>
             </div>
-            <div className="border-t border-slate-800 mt-8 pt-4">
+            <div className="border-t border-white/10 mt-8 pt-4">
               <p className="text-xs text-slate-500 font-light">
                 Los precios son referenciales. Cobertura, términos y condiciones varían por estado y sujetos a aprobación.
                 Maria Fernanda Insurance Consulting es un agente de seguros con licencia.
