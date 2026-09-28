@@ -51,7 +51,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
       if (!el) return;
       const obs = new IntersectionObserver(
         ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
-        { threshold: 0.25 }
+        { rootMargin: '-10% 0px -80% 0px', threshold: 0 }
       );
       obs.observe(el);
       observers.push(obs);
