@@ -1,3 +1,5 @@
+'use client';
+
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
 import { Heart, CurrencyDollar, Globe, Lock } from '@phosphor-icons/react';
 
