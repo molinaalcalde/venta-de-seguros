@@ -1,3 +1,4 @@
+'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
 import { Car, IdentificationCard, ShieldCheck, Headset } from '@phosphor-icons/react';
 
