@@ -129,29 +129,42 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* ── Navbar ──────────────────────────────────────────────────── */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm' : 'bg-white/60 backdrop-blur-sm border-b border-slate-100/60'
-      }`}>
-        <div className="max-w-5xl mx-auto px-5 lg:px-8">
-          <div className="flex items-center justify-between h-14">
-            <Link href="/" className="flex items-center gap-2 group">
-              <ArrowLeft weight="regular" className="w-4 h-4 text-slate-400 group-hover:text-slate-700 transition-colors" />
-              <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto" />
-            </Link>
-            <div className="flex items-center gap-3">
-              <LanguageSwitcher scrolled={scrolled} />
-              <button
-                onClick={() => setQuoteOpen(true)}
-                className="px-4 py-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-all shadow-sm"
-              >
-                Cotizar gratis
-              </button>
+      {(() => {
+        const navTransparent = !!config.heroVideo && !scrolled;
+        return (
+          <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+            scrolled
+              ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm'
+              : config.heroVideo
+                ? 'bg-transparent border-b border-transparent'
+                : 'bg-white/70 backdrop-blur-sm border-b border-slate-100/60'
+          }`}>
+            <div className="max-w-5xl mx-auto px-5 lg:px-8">
+              <div className="flex items-center justify-between h-14">
+                <Link href="/" className="flex items-center gap-2 group">
+                  <ArrowLeft weight="regular" className={`w-4 h-4 transition-colors ${navTransparent ? 'text-white/70 group-hover:text-white' : 'text-slate-400 group-hover:text-slate-700'}`} />
+                  <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className={`h-8 w-auto transition-all duration-300 ${navTransparent ? 'brightness-0 invert' : ''}`} />
+                </Link>
+                <div className="flex items-center gap-3">
+                  <LanguageSwitcher scrolled={!navTransparent} />
+                  <button
+                    onClick={() => setQuoteOpen(true)}
+                    className={`px-4 py-2 rounded-full text-xs font-semibold transition-all shadow-sm ${
+                      navTransparent
+                        ? 'bg-white/15 hover:bg-white/25 text-white border border-white/30 backdrop-blur-sm'
+                        : 'bg-slate-900 hover:bg-slate-800 text-white'
+                    }`}
+                  >
+                    Cotizar gratis
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </header>
+          </header>
+        );
+      })()}
 
-      <main className="pt-14 bg-[#fafbfa] min-h-screen">
+      <main className={`${config.heroVideo ? '' : 'pt-14'} bg-[#fafbfa] min-h-screen`}>
 
         {/* ── Hero ──────────────────────────────────────────────────── */}
         <section className="relative border-b border-slate-100 overflow-hidden">
@@ -176,7 +189,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
           ) : (
             <div className={`absolute inset-0 bg-gradient-to-br ${t.heroBg} via-white to-white pointer-events-none`} />
           )}
-          <div className="relative max-w-5xl mx-auto px-5 lg:px-8 py-16 md:py-24">
+          <div className={`relative max-w-5xl mx-auto px-5 lg:px-8 py-16 md:py-24 ${config.heroVideo ? 'pt-24 md:pt-32' : ''}`}>
             <div className="max-w-2xl">
               <div className={`inline-flex items-center gap-2 ${config.heroVideo ? 'bg-white/15 text-white border border-white/20' : `${t.badgeBg} ${t.badgeText}`} text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6 backdrop-blur-sm`}>
                 {config.badgeIcon && <config.badgeIcon weight="bold" className="w-3.5 h-3.5 shrink-0" />}
