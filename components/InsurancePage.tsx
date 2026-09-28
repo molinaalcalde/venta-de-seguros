@@ -63,6 +63,7 @@ export interface InsurancePageConfig {
   heroLine1: string;
   heroItalic: string;
   heroSubtitle: string;
+  heroVideo?: string;
   trustBadges: string[];
   priceFrom: string;
   eligibilityTitle: string;
@@ -88,6 +89,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
   const [openFaq, setOpenFaq]       = useState<number | null>(null);
   const [scrolled, setScrolled]     = useState(false);
   const t = THEMES[config.theme];
+  const hasVideo = !!config.heroVideo;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -128,19 +130,31 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
 
       {/* ── Navbar ──────────────────────────────────────────────────── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm' : 'bg-white border-b border-slate-100'
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm'
+          : hasVideo
+            ? 'bg-transparent'
+            : 'bg-white border-b border-slate-100'
       }`}>
         <div className="max-w-5xl mx-auto px-5 lg:px-8">
           <div className="flex items-center justify-between h-14">
             <Link href="/" className="flex items-center gap-2 group">
-              <ArrowLeft weight="regular" className="w-4 h-4 text-slate-400 group-hover:text-slate-700 transition-colors" />
-              <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto" />
+              <ArrowLeft weight="regular" className={`w-4 h-4 transition-colors ${hasVideo && !scrolled ? 'text-white/70 group-hover:text-white' : 'text-slate-400 group-hover:text-slate-700'}`} />
+              <img
+                src="/logo.png"
+                alt="Maria Fernanda Insurance Consulting"
+                className={`h-8 w-auto transition-all duration-300 ${hasVideo && !scrolled ? 'brightness-0 invert' : ''}`}
+              />
             </Link>
             <div className="flex items-center gap-3">
-              <LanguageSwitcher scrolled={scrolled} />
+              <LanguageSwitcher scrolled={hasVideo ? scrolled : true} />
               <button
                 onClick={() => setQuoteOpen(true)}
-                className="px-4 py-2 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-all shadow-sm"
+                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all shadow-sm ${
+                  hasVideo && !scrolled
+                    ? 'bg-white text-slate-900 hover:bg-white/90'
+                    : 'bg-slate-900 hover:bg-slate-800 text-white'
+                }`}
               >
                 Cotizar gratis
               </button>
@@ -149,44 +163,89 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
         </div>
       </header>
 
-      <main className="pt-14 bg-[#fafbfa] min-h-screen">
+      <main className={`${hasVideo ? '' : 'pt-14'} bg-[#fafbfa] min-h-screen`}>
 
         {/* ── Hero ──────────────────────────────────────────────────── */}
-        <section className="relative bg-white border-b border-slate-100 overflow-hidden">
-          <div className={`absolute inset-0 bg-gradient-to-br ${t.heroBg} via-white to-white pointer-events-none`} />
-          <div className="relative max-w-5xl mx-auto px-5 lg:px-8 py-16 md:py-24">
-            <div className="max-w-2xl">
-              <div className={`inline-flex items-center gap-2 ${t.badgeBg} ${t.badgeText} text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6`}>
-                {config.badgeIcon && <config.badgeIcon weight="bold" className="w-3.5 h-3.5 shrink-0" />}
-                {config.badge}
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-900 tracking-tight leading-[1.1] mb-5">
-                {config.heroLine1}{' '}
-                <span className={`font-editorial-italic ${t.iconText}`}>{config.heroItalic}</span>
-              </h1>
-              <p className="text-lg md:text-xl text-slate-600 font-light leading-relaxed mb-8">
-                {config.heroSubtitle}
-              </p>
-              <div className="flex flex-wrap gap-3 mb-10">
-                {config.trustBadges.map((b) => (
-                  <span key={b} className="text-xs font-medium text-slate-700 bg-white border border-slate-200 px-3 py-1 rounded-full shadow-sm">
-                    {b}
-                  </span>
-                ))}
-              </div>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                <button
-                  onClick={() => setQuoteOpen(true)}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-                >
-                  {config.ctaButton}
-                  <ArrowRight weight="bold" className="w-4 h-4" />
-                </button>
-                <span className="text-xs text-slate-500">{config.priceFrom} · Sin compromiso</span>
+        {hasVideo ? (
+          /* ── Video Hero ── */
+          <section className="relative overflow-hidden min-h-[580px] md:min-h-[700px] flex items-end">
+            <video
+              src={config.heroVideo}
+              autoPlay muted loop playsInline
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/80" />
+            <div className="relative z-10 w-full max-w-5xl mx-auto px-5 lg:px-8 pb-14 md:pb-20 pt-28">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-2 bg-white/15 border border-white/30 backdrop-blur-sm text-white text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6">
+                  {config.badgeIcon && <config.badgeIcon weight="bold" className="w-3.5 h-3.5 shrink-0" />}
+                  {config.badge}
+                </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-[1.1] mb-5">
+                  {config.heroLine1}{' '}
+                  <span className="font-editorial-italic text-white/90">{config.heroItalic}</span>
+                </h1>
+                <p className="text-base md:text-lg text-white/85 font-light leading-relaxed mb-8">
+                  {config.heroSubtitle}
+                </p>
+                <div className="flex flex-wrap gap-2.5 mb-10">
+                  {config.trustBadges.map((b) => (
+                    <span key={b} className="text-xs font-medium text-white bg-white/15 border border-white/25 backdrop-blur-sm px-3 py-1 rounded-full">
+                      {b}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <button
+                    onClick={() => setQuoteOpen(true)}
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-100 text-slate-900 font-semibold text-sm transition-all shadow-lg hover:-translate-y-0.5"
+                  >
+                    {config.ctaButton}
+                    <ArrowRight weight="bold" className="w-4 h-4" />
+                  </button>
+                  <span className="text-xs text-white/60">{config.priceFrom} · Sin compromiso</span>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ) : (
+          /* ── Standard Hero ── */
+          <section className="relative bg-white border-b border-slate-100 overflow-hidden">
+            <div className={`absolute inset-0 bg-gradient-to-br ${t.heroBg} via-white to-white pointer-events-none`} />
+            <div className="relative max-w-5xl mx-auto px-5 lg:px-8 py-16 md:py-24">
+              <div className="max-w-2xl">
+                <div className={`inline-flex items-center gap-2 ${t.badgeBg} ${t.badgeText} text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6`}>
+                  {config.badgeIcon && <config.badgeIcon weight="bold" className="w-3.5 h-3.5 shrink-0" />}
+                  {config.badge}
+                </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-900 tracking-tight leading-[1.1] mb-5">
+                  {config.heroLine1}{' '}
+                  <span className={`font-editorial-italic ${t.iconText}`}>{config.heroItalic}</span>
+                </h1>
+                <p className="text-lg md:text-xl text-slate-600 font-light leading-relaxed mb-8">
+                  {config.heroSubtitle}
+                </p>
+                <div className="flex flex-wrap gap-3 mb-10">
+                  {config.trustBadges.map((b) => (
+                    <span key={b} className="text-xs font-medium text-slate-700 bg-white border border-slate-200 px-3 py-1 rounded-full shadow-sm">
+                      {b}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <button
+                    onClick={() => setQuoteOpen(true)}
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                  >
+                    {config.ctaButton}
+                    <ArrowRight weight="bold" className="w-4 h-4" />
+                  </button>
+                  <span className="text-xs text-slate-500">{config.priceFrom} · Sin compromiso</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ── Eligibility ──────────────────────────────────────────── */}
         <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
