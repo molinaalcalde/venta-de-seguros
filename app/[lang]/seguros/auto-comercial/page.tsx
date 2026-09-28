@@ -21,7 +21,7 @@ const configEs: InsurancePageConfig = {
     {
       emoji: '⚠️',
       title: 'Las 3 Fases del Rideshare — y Cuándo Estás Desprotegido',
-      desc: 'Fase 0 (app apagada): tu seguro personal cubre. Fase 1 (app activa, esperando pedido): tu seguro personal puede rechazar el reclamo — Uber/Lyft ofrecen cobertura limitada de $50,000 por lesiones y $25,000 por daños a propiedad, pero muchas veces no alcanza. Fase 2-3 (en viaje activo): Uber/Lyft cubren hasta $1 millón. El seguro comercial cierra el hueco de la Fase 1.',
+      desc: 'Fase 0 (app apagada): tu seguro personal cubre normalmente. Fase 1 (app encendida, esperando pedido): tu seguro personal puede RECHAZAR el reclamo — Uber/Lyft solo ofrecen $50,000/persona y $25,000 en daños a propiedad, sin cobertura para tu auto. Fase 2-3 (en viaje activo): Uber/Lyft cubren hasta $1 millón de liability — pero la colisión de tu propio auto tiene un deducible de $2,500 y solo aplica si vos ya tenés esa cobertura. El seguro comercial cierra todos esos huecos.',
     },
     {
       emoji: '📋',
@@ -86,7 +86,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿DoorDash, Instacart o Amazon Flex me cubren si tengo un accidente?',
-      a: 'DoorDash ofrece cobertura de hasta $1 millón durante entregas activas, pero tiene exclusiones importantes. Instacart tiene cobertura muy limitada. Amazon Flex ofrece seguro para algunos accidentes pero con topes bajos y exclusiones. Ninguna de estas apps reemplaza un seguro comercial propio que te dé cobertura completa y continua.',
+      a: 'La respuesta corta: ninguna cubre tu vehículo. DoorDash cubre daños a terceros durante entregas activas, pero NO cubre daños a tu propio auto. Instacart directamente no provee ningún seguro de auto — sos 100% responsable. Amazon Flex ofrece $1 millón de liability durante bloques activos, pero tampoco cubre tu vehículo. Si tu carro queda inutilizado por un accidente, perdés tu herramienta de trabajo. Solo un seguro comercial propio cubre tu auto.',
     },
     {
       q: '¿Puedo contratar seguro comercial con ITIN?',
@@ -137,7 +137,7 @@ const configEn: InsurancePageConfig = {
     {
       emoji: '⚠️',
       title: 'The 3 Rideshare Phases — and When You\'re Unprotected',
-      desc: 'Period 0 (app off): your personal insurance covers you. Period 1 (app on, waiting for a request): your personal insurer may deny the claim — Uber/Lyft only offer limited coverage of $50K per injury and $25K property damage. Period 2-3 (active trip with passenger): Uber/Lyft cover up to $1 million. Commercial insurance closes the gap in Period 1.',
+      desc: 'Period 0 (app off): your personal insurance covers you normally. Period 1 (app on, waiting for a request): your personal insurer may DENY the claim — Uber/Lyft only offer $50K/person and $25K in property damage, with no coverage for your own vehicle. Periods 2-3 (active trip or with passenger): Uber/Lyft cover up to $1 million in liability — but collision coverage for your vehicle has a $2,500 deductible and only applies if you already carry it. Commercial insurance closes all those gaps.',
     },
     {
       emoji: '📋',
@@ -202,7 +202,7 @@ const configEn: InsurancePageConfig = {
     },
     {
       q: 'Do DoorDash, Instacart, or Amazon Flex cover me if I have an accident?',
-      a: 'DoorDash offers up to $1 million during active deliveries, but has significant exclusions. Instacart has very limited coverage. Amazon Flex covers some accidents but with low caps and exclusions. None of these apps replace a personal commercial insurance policy that gives you full, continuous coverage.',
+      a: 'Short answer: none of them cover your vehicle. DoorDash covers third-party damages during active deliveries, but does NOT cover damage to your own car. Instacart provides zero auto insurance — you\'re 100% responsible. Amazon Flex offers $1 million in liability during active delivery blocks, but also doesn\'t cover your vehicle. If your car is put out of service by an accident, you lose your work tool. Only your own commercial policy covers your vehicle.',
     },
     {
       q: 'Can I get commercial auto insurance with an ITIN?',

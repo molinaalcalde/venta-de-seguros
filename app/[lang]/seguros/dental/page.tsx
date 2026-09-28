@@ -5,7 +5,7 @@ const configEs: InsurancePageConfig = {
   badge: '🦷 Desde $19/mes · Limpiezas al 100% · Sin SSN',
   heroLine1: 'Seguro Dental',
   heroItalic: 'para que el dolor de muela no arruine tus finanzas',
-  heroSubtitle: 'Sin seguro dental: $200 la limpieza, $1,500 el canal de raíz, $1,500 la corona. Con un plan desde $19/mes, las limpiezas cuestan $0 desde el primer día. Dos limpiezas al año ya cubren el costo del plan. Sin SSN requerido.',
+  heroSubtitle: 'Una corona sin seguro: $2,000. Con seguro PPO: menos de $700. Un canal de raíz: $1,500 sin seguro. Las limpiezas cuestan $0 desde el día 1. Y cuando el diente duele, ya es tarde para lo barato — la prevención cuesta 5 veces menos que el tratamiento. Sin SSN requerido.',
   trustBadges: ['Sin SSN requerido', 'Desde $19/mes', 'Limpiezas al 100%', 'Sin espera en preventivo'],
   priceFrom: 'Desde $19/mes',
   eligibilityTitle: '¿Cómo funciona el sistema dental en USA?',
@@ -25,8 +25,8 @@ const configEs: InsurancePageConfig = {
     },
     {
       emoji: '🦷',
-      title: 'Canal de Raíz: $1,500 Sin Seguro → $750 Con Seguro',
-      desc: 'Un tratamiento de conducto (root canal) sin seguro puede costar entre $1,000 y $1,800. Con un plan que cubre el 50% del tratamiento mayor, pagás la mitad. Una corona sin seguro: $1,200–$1,800. Con el 50% cubierto, tu copago baja a $600–$900. La diferencia es enorme cuando ya estás en el dentista con dolor.',
+      title: 'Corona: $2,000 Sin Seguro → $700 Con PPO',
+      desc: 'Ejemplo real: una corona puede costar $2,000 o más sin seguro. Con un plan PPO, tu copago cae a menos de $700. Un canal de raíz en un molar: entre $1,000 y $1,800 sin seguro, la mitad con el 50% cubierto. Un implante dental completo: $3,000–$6,000 sin seguro — más caro que el seguro familiar de 5 años. El problema es que cuando duele, ya no podés elegir lo barato.',
     },
     {
       emoji: '👨‍👩‍👧',
@@ -121,7 +121,7 @@ const configEn: InsurancePageConfig = {
   badge: '🦷 From $19/mo · 100% Covered Cleanings · No SSN',
   heroLine1: 'Dental Insurance',
   heroItalic: 'so a toothache doesn\'t wreck your finances',
-  heroSubtitle: 'Without dental insurance: $200 for a cleaning, $1,500 for a root canal, $1,500 for a crown. With a plan from $19/mo, cleanings cost $0 from day one. Two cleanings a year already cover the cost of the plan. No SSN required.',
+  heroSubtitle: 'A crown without insurance: $2,000. With a PPO plan: under $700. A root canal: $1,500 without coverage. Cleanings cost $0 from day one. And once it hurts, the cheap option is already gone — prevention costs 5x less than treatment. No SSN required.',
   trustBadges: ['No SSN required', 'From $19/mo', '100% covered cleanings', 'No waiting period on preventive'],
   priceFrom: 'From $19/mo',
   eligibilityTitle: 'How does dental insurance work in the US?',
@@ -141,8 +141,8 @@ const configEn: InsurancePageConfig = {
     },
     {
       emoji: '🦷',
-      title: 'Root Canal: $1,500 Without Insurance → $750 With Insurance',
-      desc: 'A root canal without insurance can cost $1,000–$1,800. With a plan covering 50% of major treatment, you pay half. A crown without insurance: $1,200–$1,800. With 50% coverage, your copay drops to $600–$900. The difference is enormous when you\'re already in the chair with a toothache.',
+      title: 'Crown: $2,000 Without Insurance → $700 With PPO',
+      desc: 'Real example: a crown can cost $2,000 or more without insurance. With a PPO plan, your copay drops to under $700. A molar root canal: $1,000–$1,800 without insurance, half that with 50% coverage. A full dental implant: $3,000–$6,000 without insurance — more expensive than a family dental plan for 5 years. The problem is that once it hurts, the affordable option is already gone.',
     },
     {
       emoji: '👨‍👩‍👧',
