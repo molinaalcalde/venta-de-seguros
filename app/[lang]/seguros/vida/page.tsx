@@ -1,64 +1,234 @@
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
 
-const config: InsurancePageConfig = {
+const configEs: InsurancePageConfig = {
   quoteType: 'Vida',
   badge: '❤️ Sin SSN · Living Benefits · Desde $15/mes',
   heroLine1: 'Seguro de Vida',
-  heroItalic: 'para inmigrantes y familias latinas en USA',
-  heroSubtitle: 'Si algo te pasara, ¿tu familia podría pagar la renta, la comida y las deudas? El seguro de vida garantiza que la respuesta sea sí. Sin SSN requerido. Desde $15/mes. Con Living Benefits: puedes usar el dinero mientras sigues vivo si te enfermas gravemente.',
-  trustBadges: ['Sin SSN requerido', 'Acepta ITIN', 'Desde $15/mes', 'Living Benefits incluidos'],
+  heroItalic: 'que también te protege mientras seguís vivo',
+  heroSubtitle: 'Si algo te pasara hoy, ¿tu familia podría pagar la renta el mes que viene? Con o sin SSN, desde $15/mes — menos que Spotify y Netflix juntos. Y si te diagnostican una enfermedad grave, podés usar el dinero mientras seguís vivo. Sin esperar a morir.',
+  trustBadges: ['Sin SSN requerido', 'Desde $15/mes', 'Living Benefits incluidos', 'Beneficiarios en cualquier país'],
   priceFrom: 'Desde $15/mes',
-  eligibilityTitle: 'Sí puedes asegurarte aunque...',
-  eligibilityText: 'No importa tu estatus migratorio. Inmigrantes, personas con DACA, visa temporal o estatus pendiente pueden contratar seguro de vida en USA sin SSN. Cuanto antes lo haces, más barato — si esperas a estar enfermo, puede ser tarde.',
+  eligibilityTitle: 'Sí podés asegurarte aunque...',
+  eligibilityText: 'No importa tu estatus migratorio. Cuanto antes lo hacés, más barato — una persona sana de 25 años paga menos de $16/mes por $250,000 de cobertura durante 20 años. Si esperás a estar enfermo, puede ser tarde.',
   eligibilityItems: [
     'No tengas número de seguro social (SSN)',
-    'Seas inmigrante reciente, residente o ciudadano',
-    'Tengas visa temporal, DACA o estatus pendiente',
+    'Seas inmigrante reciente, con DACA o visa temporal',
     'Tus beneficiarios vivan en México, Centroamérica u otro país',
     'No tengas historial de crédito en USA',
+    'Tengas condiciones de salud preexistentes (hay planes sin examen)',
   ],
   features: [
-    { emoji: '💰', title: 'Living Benefits — El Dinero lo Usas Tú, No Solo tu Familia', desc: 'Si te diagnostican una enfermedad crítica (infarto, cáncer, derrame), crónica o terminal, puedes acceder a parte del beneficio MIENTRAS SIGUES VIVO. No tienes que morir para que tu familia lo use. Ese dinero paga tratamientos, deudas o lo que necesites.' },
-    { emoji: '🌍', title: 'Tus Beneficiarios Pueden Vivir en Otro País', desc: 'Puedes designar a tu mamá en México, a tus hijos en Guatemala o a cualquier familiar en cualquier parte del mundo como beneficiario de tu póliza. No es necesario que vivan en USA.' },
-    { emoji: '🔒', title: 'Sin SSN — Solo ITIN o Pasaporte', desc: 'Cotiza y contrata con tu ITIN o pasaporte. Sin historial de crédito en USA, sin examen médico en muchos planes. El precio que pagas hoy se mantiene — no sube por tu edad ni por cambios en tu salud.' },
+    {
+      emoji: '💰',
+      title: 'Living Benefits — El Dinero lo Usás Vos, No Solo tu Familia',
+      desc: 'Si te diagnostican una enfermedad crítica (infarto, cáncer, derrame), crónica (no podés hacer actividades básicas solo) o terminal (menos de 24 meses de vida), podés acceder a parte del beneficio MIENTRAS SEGUÍS VIVO. No tenés que morir para que tu familia lo use. Ese dinero paga tratamientos, deudas o lo que necesites.',
+    },
+    {
+      emoji: '🌍',
+      title: 'Tu Mamá en México Puede Ser Tu Beneficiaria',
+      desc: 'Podés designar a cualquier familiar en cualquier parte del mundo como beneficiario — tu mamá en México, tus hijos en Guatemala, tu pareja en Colombia. No es necesario que vivan en USA ni que tengan documentos americanos. El dinero les llega a ellos cuando más lo necesitan.',
+    },
+    {
+      emoji: '🔒',
+      title: 'Desde $15/mes — El Precio Que Pagás Hoy No Sube',
+      desc: 'Una persona sana de 30 años puede tener $250,000 de cobertura por menos de $20/mes durante 20 años. El precio que fijás al contratar se mantiene toda la vigencia de la póliza — no sube con tu edad ni con cambios en tu salud. Esperás un año: pagas más para siempre.',
+    },
   ],
   coverageItems: [
-    'Beneficio por fallecimiento (Death Benefit)',
-    'Living Benefits — enfermedad crítica y crónica',
-    'Acceso al dinero en vida si te enfermas',
+    'Beneficio por fallecimiento (Death Benefit) para tu familia',
+    'Living Benefits — enfermedad crítica: infarto, cáncer, derrame',
+    'Living Benefits — enfermedad crónica: incapacidad para actividades diarias',
+    'Living Benefits — enfermedad terminal: menos de 24 meses de vida',
     'Beneficiarios en cualquier país del mundo',
-    'Vida a término (Term Life) — la más económica',
+    'Vida a término (Term Life) — la opción más económica',
     'Vida permanente con valor en efectivo (Whole Life)',
     'Sin examen médico en muchos planes',
-    'Valor en efectivo acumulado (cash value)',
   ],
   steps: [
-    { title: 'Completa el formulario — sin SSN, sin examen médico', desc: 'Responde unas preguntas básicas sobre tu edad y salud. Sin SSN requerido. Muchos planes aprueban sin examen médico.' },
-    { title: 'Elegimos juntos el plan correcto', desc: 'Te explicamos en español la diferencia entre vida a término y vida permanente, y cuáles incluyen Living Benefits. Tú decides según tu presupuesto.' },
-    { title: 'Póliza activa en días', desc: 'La mayoría de pólizas se activan en 1–3 días hábiles. Recibes tu documentación por correo electrónico y puedes designar beneficiarios en cualquier país.' },
+    {
+      title: 'Completa el formulario — sin SSN, sin examen médico',
+      desc: 'Respondé preguntas básicas sobre tu edad y salud. Sin SSN requerido. Muchos planes aprueban sin examen médico.',
+    },
+    {
+      title: 'Tu asesora te explica término vs permanente',
+      desc: 'La diferencia entre Vida a Término y Vida Permanente en palabras simples. Te ayudamos a elegir según tu presupuesto y las necesidades de tu familia.',
+    },
+    {
+      title: 'Póliza activa en 1 a 3 días hábiles',
+      desc: 'Recibís tu documentación por email y podés designar beneficiarios en cualquier país. Tu familia queda protegida esta semana.',
+    },
   ],
   testimonials: [
-    { name: 'Rosa M.', location: 'Houston, Texas', text: 'Siempre creí que no podía tener seguro de vida sin SSN. En 20 minutos tenía cotización con mi ITIN. Lo mejor: puedo poner a mi mamá en México como beneficiaria. Eso no lo esperaba.' },
-    { name: 'Jorge L.', location: 'Chicago, Illinois', text: 'Los Living Benefits me convencieron. No solo protejo a mi familia si muero — si me diagnostican algo grave, puedo usar el dinero para el tratamiento. Eso vale mucho cuando no tienes familia aquí.' },
-    { name: 'Ana P.', location: 'Phoenix, Arizona', text: 'Mi esposo tiene DACA y pensábamos que era imposible. La asesora nos explicó todo en español y lo tramitamos ese mismo día. Muy profesionales y sin presiones para comprar más de lo que necesitamos.' },
+    {
+      name: 'Rosa M.',
+      location: 'Houston, Texas',
+      text: 'Siempre creí que no podía tener seguro de vida sin SSN. En minutos tenía cotización con mi ITIN. Lo mejor: puse a mi mamá en México como beneficiaria. Eso no lo esperaba.',
+    },
+    {
+      name: 'Jorge L.',
+      location: 'Chicago, Illinois',
+      text: 'Los Living Benefits me convencieron. No solo protejo a mi familia si muero — si me diagnostican algo grave, puedo usar el dinero para el tratamiento. Eso vale mucho cuando no tenés familia aquí.',
+    },
+    {
+      name: 'Ana P.',
+      location: 'Phoenix, Arizona',
+      text: 'Mi esposo tiene DACA y pensábamos que era imposible. La asesora nos explicó todo en español y lo tramitamos ese mismo día. Muy profesionales y sin presiones para comprar más de lo que necesitamos.',
+    },
   ],
   faq: [
-    { q: '¿Puedo tener seguro de vida sin número de seguro social?', a: 'Sí. No necesitas SSN para contratar seguro de vida en EE.UU. Aceptamos ITIN como identificación válida. Inmigrantes, personas con DACA, visa temporal y estatus pendiente pueden contratar seguro de vida sin SSN.' },
-    { q: '¿Mi información se comparte con migración o el gobierno?', a: 'No. Tu información es 100% confidencial. Nunca la compartimos con ICE ni ninguna agencia gubernamental sin orden judicial. Cumplimos con HIPAA y todas las regulaciones de privacidad. Lo que compartes aquí es solo tuyo.' },
-    { q: '¿Qué son los Living Benefits y cómo funcionan?', a: 'Los Living Benefits te permiten acceder a parte del beneficio de tu seguro de vida MIENTRAS SIGUES VIVO si te diagnostican: una enfermedad terminal (menos de 2 años de vida), una enfermedad crítica (infarto, cáncer, derrame) o una enfermedad crónica (cuando no puedes realizar actividades básicas diarias). El dinero lo usas para lo que necesites — tratamientos, deudas, viajes. Lo que se adelanta se descuenta del beneficio final.' },
-    { q: '¿Cuánto cuesta el seguro de vida para inmigrantes?', a: 'Los planes a término (Term Life) comienzan desde $15/mes para personas jóvenes y sanas — menos que Spotify y Netflix juntos. Para una mujer de 25 años con buena salud, $250,000 de cobertura puede costar menos de $16/mes por 20 años. El precio varía según edad, salud y tipo de cobertura. Cuanto antes contratas, más barato. Sujeto a términos y condiciones.' },
-    { q: '¿Puede mi familia en otro país cobrar el seguro?', a: 'Sí. Puedes designar como beneficiarios a familiares que vivan en México, Centroamérica, Sudamérica o cualquier país del mundo. No es necesario que tus beneficiarios vivan en USA ni tengan documentos americanos.' },
-    { q: '¿Cuál es la diferencia entre seguro de vida a término y permanente?', a: 'El seguro a término (Term Life) cubre por un período definido (10, 20 o 30 años) y es el más económico. Es ideal para proteger a tu familia mientras los hijos crecen o tienes deudas importantes. El seguro permanente (Whole Life) dura toda tu vida y acumula valor en efectivo que puedes usar como préstamo o retiro. Cuesta más pero nunca vence.' },
-    { q: '¿Necesito examen médico para contratar seguro de vida?', a: 'No siempre. Muchos planes aprueban sin examen médico — solo con preguntas básicas de salud. Los planes sin examen son especialmente útiles si tienes condiciones preexistentes. Los planes con examen médico generalmente ofrecen primas más bajas.' },
+    {
+      q: '¿Puedo tener seguro de vida sin SSN?',
+      a: 'Sí. No necesitás SSN para contratar seguro de vida en EE.UU. Aceptamos ITIN como identificación válida. Inmigrantes, personas con DACA, visa temporal y estatus pendiente pueden contratar seguro de vida sin SSN.',
+    },
+    {
+      q: '¿Qué son los Living Benefits y cómo funcionan?',
+      a: 'Los Living Benefits te permiten acceder a parte del beneficio de tu seguro de vida MIENTRAS SEGUÍS VIVO si te diagnostican: enfermedad terminal (menos de 24 meses de vida), enfermedad crítica (infarto, cáncer, derrame cerebral) o enfermedad crónica (cuando no podés realizar actividades básicas diarias solo). El dinero lo usás para lo que necesitás — tratamientos, deudas, gastos del hogar. Lo que se adelanta se descuenta del beneficio final.',
+    },
+    {
+      q: '¿Cuánto cuesta el seguro de vida para inmigrantes?',
+      a: 'Los planes a término comienzan desde $15/mes para personas jóvenes y sanas — menos que Spotify y Netflix juntos. Una mujer sana de 25 años puede tener $250,000 de cobertura por menos de $16/mes durante 20 años. El precio varía según edad, salud y tipo de cobertura. Cuanto antes contratás, más barato para siempre.',
+    },
+    {
+      q: '¿Mi familia en otro país puede cobrar el seguro?',
+      a: 'Sí. Podés designar como beneficiarios a familiares que vivan en México, Guatemala, Honduras, Colombia o cualquier país del mundo. No es necesario que tengan documentos americanos ni que vivan en USA. El dinero les llega a ellos cuando lo necesitan.',
+    },
+    {
+      q: '¿Cuál es la diferencia entre seguro a término y permanente?',
+      a: 'El seguro a término (Term Life) cubre por un período definido (10, 20 o 30 años) y es el más económico. Ideal para proteger a tu familia mientras los hijos crecen o tenés deudas importantes. El seguro permanente (Whole Life) dura toda tu vida, no vence y acumula valor en efectivo que podés usar como préstamo. Cuesta más pero no tiene fecha de vencimiento.',
+    },
+    {
+      q: '¿Necesito examen médico para contratar?',
+      a: 'No siempre. Muchos planes se aprueban sin examen médico — solo con preguntas básicas de salud. Los planes sin examen son especialmente útiles si tenés condiciones preexistentes. Los planes con examen ofrecen primas más bajas. Tu asesora te indica cuál aplica para tu situación.',
+    },
+    {
+      q: '¿Mi información se comparte con migración?',
+      a: 'No. Tu información es 100% confidencial. Nunca la compartimos con ICE ni ninguna agencia gubernamental sin orden judicial. Lo que compartís con nosotros para contratar tu póliza es estrictamente privado.',
+    },
   ],
-  ctaTitle: 'Protege a tu familia',
+  ctaTitle: 'Protegé a tu familia',
   ctaItalic: 'hoy mismo',
-  ctaSubtitle: 'Sin SSN. Living Benefits incluidos. Un asesor en español te guía sin presiones.',
+  ctaSubtitle: 'Sin SSN. Living Benefits incluidos. Tu asesora en español te guía sin presiones.',
   ctaButton: 'Ver mi precio gratis',
   theme: 'emerald',
-  schema: { description: 'Seguro de vida para inmigrantes latinos sin SSN en USA. Acepta ITIN. Living Benefits incluidos. Beneficiarios en cualquier país. Desde $15/mes. Sin examen médico en muchos planes.', price: '15' },
+  schema: {
+    description: 'Seguro de vida para inmigrantes latinos sin SSN en USA. Acepta ITIN. Living Benefits incluidos. Beneficiarios en cualquier país. Desde $15/mes. Sin examen médico en muchos planes.',
+    price: '15',
+  },
 };
 
-export default function VidaPage() {
+const configEn: InsurancePageConfig = {
+  quoteType: 'Vida',
+  badge: '❤️ No SSN · Living Benefits · From $15/mo',
+  heroLine1: 'Life Insurance',
+  heroItalic: 'that protects you while you\'re still alive',
+  heroSubtitle: 'If something happened to you today, could your family cover next month\'s rent? No SSN needed. From $15/month — less than your streaming subscriptions. And if you\'re diagnosed with a serious illness, you can access the money while you\'re still living. No need to wait.',
+  trustBadges: ['No SSN required', 'From $15/mo', 'Living Benefits included', 'Beneficiaries in any country'],
+  priceFrom: 'From $15/mo',
+  eligibilityTitle: 'You can get covered even if...',
+  eligibilityText: 'Immigration status doesn\'t matter. The earlier you get covered, the cheaper it is — a healthy 25-year-old pays under $16/month for $250,000 in coverage for 20 years. Waiting until you\'re sick may be too late.',
+  eligibilityItems: [
+    'You don\'t have a Social Security Number (SSN)',
+    'You\'re a recent immigrant, DACA recipient, or have a temporary visa',
+    'Your beneficiaries live in Mexico, Central America, or any other country',
+    'You have no US credit history',
+    'You have pre-existing health conditions (no-exam plans available)',
+  ],
+  features: [
+    {
+      emoji: '💰',
+      title: 'Living Benefits — You Use the Money, Not Just Your Family',
+      desc: 'If you\'re diagnosed with a critical illness (heart attack, cancer, stroke), chronic condition (unable to perform daily activities alone), or terminal illness (less than 24 months to live), you can access part of the benefit WHILE STILL ALIVE. You don\'t have to die first. Use the money for treatments, debt, or whatever your family needs.',
+    },
+    {
+      emoji: '🌍',
+      title: 'Your Mom in Mexico Can Be Your Beneficiary',
+      desc: 'You can name any family member anywhere in the world as your beneficiary — your mom in Mexico, your kids in Guatemala, your partner in Colombia. They don\'t need US documents or to live in the US. The money reaches them when they need it most.',
+    },
+    {
+      emoji: '🔒',
+      title: 'From $15/mo — Your Rate Never Goes Up',
+      desc: 'A healthy 30-year-old can get $250,000 in coverage for under $20/month for 20 years. The price you lock in today stays the same for the life of your policy — it doesn\'t go up with age or health changes. Wait a year, and you pay more forever.',
+    },
+  ],
+  coverageItems: [
+    'Death Benefit for your family',
+    'Living Benefits — critical illness: heart attack, cancer, stroke',
+    'Living Benefits — chronic illness: unable to perform daily activities',
+    'Living Benefits — terminal illness: less than 24 months to live',
+    'Beneficiaries in any country worldwide',
+    'Term Life — most affordable option',
+    'Whole Life with cash value accumulation',
+    'No medical exam required on many plans',
+  ],
+  steps: [
+    {
+      title: 'Fill out the form — no SSN, no medical exam required',
+      desc: 'Answer basic questions about your age and health. No SSN required. Many plans approve without a medical exam.',
+    },
+    {
+      title: 'Your agent explains term vs. permanent life insurance',
+      desc: 'We break down Term vs. Whole Life in plain language. You choose what fits your budget and your family\'s needs — no pressure.',
+    },
+    {
+      title: 'Policy active in 1–3 business days',
+      desc: 'Receive your documents by email and name beneficiaries in any country. Your family is protected this week.',
+    },
+  ],
+  testimonials: [
+    {
+      name: 'Rosa M.',
+      location: 'Houston, Texas',
+      text: 'I always thought I couldn\'t get life insurance without an SSN. In minutes I had a quote with my ITIN. Best part: I named my mom in Mexico as beneficiary. I didn\'t expect that to be possible.',
+    },
+    {
+      name: 'Jorge L.',
+      location: 'Chicago, Illinois',
+      text: 'The Living Benefits sold me. I\'m not just protecting my family if I die — if I get seriously ill, I can use the money for treatment. That means a lot when you don\'t have family nearby.',
+    },
+    {
+      name: 'Ana P.',
+      location: 'Phoenix, Arizona',
+      text: 'My husband has DACA and we thought it was impossible. The agent explained everything in Spanish and we handled it that same day. Very professional, no pressure to buy more than we needed.',
+    },
+  ],
+  faq: [
+    {
+      q: 'Can I get life insurance without an SSN?',
+      a: 'Yes. You don\'t need an SSN to get life insurance in the US. We accept ITIN as valid identification. Immigrants, DACA recipients, temporary visa holders, and those with pending status can all get life insurance without an SSN.',
+    },
+    {
+      q: 'What are Living Benefits and how do they work?',
+      a: 'Living Benefits let you access part of your life insurance benefit WHILE STILL ALIVE if you\'re diagnosed with: a terminal illness (less than 24 months to live), a critical illness (heart attack, cancer, stroke), or a chronic illness (unable to perform basic daily activities on your own). The money is yours to use however you need — treatments, bills, family expenses. Whatever is advanced is deducted from the final benefit.',
+    },
+    {
+      q: 'How much does life insurance cost without an SSN?',
+      a: 'Term life insurance starts at $15/month for young, healthy individuals — less than most streaming subscriptions combined. A healthy 25-year-old woman can get $250,000 in coverage for under $16/month for 20 years. Price depends on age, health, and coverage type. The earlier you get covered, the lower your rate stays forever.',
+    },
+    {
+      q: 'Can my family in another country collect the benefit?',
+      a: 'Yes. You can name beneficiaries living in Mexico, Guatemala, Honduras, Colombia, or any country in the world. They don\'t need US documents or to live in the US. The money reaches them when they need it.',
+    },
+    {
+      q: 'What\'s the difference between term and whole life insurance?',
+      a: 'Term life covers you for a set period (10, 20, or 30 years) and is the most affordable option. Best for protecting your family while kids are growing up or you have significant debt. Whole life lasts your entire lifetime, never expires, and builds cash value you can borrow against. It costs more but has no expiration date.',
+    },
+    {
+      q: 'Do I need a medical exam to apply?',
+      a: 'Not always. Many plans are approved without a medical exam — just basic health questions. No-exam plans are especially useful if you have pre-existing conditions. Plans that require exams typically offer lower premiums. Your agent will tell you which option fits your situation.',
+    },
+  ],
+  ctaTitle: 'Protect your family',
+  ctaItalic: 'starting today',
+  ctaSubtitle: 'No SSN. Living Benefits included. A bilingual agent guides you — no pressure.',
+  ctaButton: 'See my free quote',
+  theme: 'emerald',
+  schema: {
+    description: 'Life insurance for Latino immigrants without SSN in the USA. Accepts ITIN. Living Benefits included. Beneficiaries in any country. From $15/mo. No medical exam on many plans.',
+    price: '15',
+  },
+};
+
+export default function VidaPage({ params }: { params: { lang: string } }) {
+  const config = params.lang === 'en' ? configEn : configEs;
   return <InsurancePage config={config} />;
 }
