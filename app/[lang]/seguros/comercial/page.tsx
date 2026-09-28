@@ -1,5 +1,3 @@
-'use client';
-
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
 import { Buildings, Scales, ShieldCheck, Certificate } from '@phosphor-icons/react';
 
@@ -9,7 +7,7 @@ const configEs: InsurancePageConfig = {
   badge: 'BOP · GL · Workers Comp · Sin SSN · COI en 24hs',
   heroLine1: 'Seguro para tu Negocio',
   heroItalic: 'una demanda puede cerrar lo que construiste',
-  heroSubtitle: 'Un cliente se resbala en tu local. Te demandan por $80,000. ¿Puedes pagar de tu bolsillo? Sin seguro comercial, una sola demanda puede cerrar lo que tardaste años en construir. Desde $19/mes. Sin SSN — aceptamos ITIN y EIN.',
+  heroSubtitle: 'Un cliente se resbala en tu local. Te demandan por $80,000. ¿Podés pagar de tu bolsillo? Sin seguro comercial, una sola demanda puede cerrar lo que tardaste años en construir. Desde $19/mes. Sin SSN — aceptamos ITIN y EIN.',
   trustBadges: ['Sin SSN — ITIN o EIN', 'Desde $19/mes', 'COI en 24 horas', 'Asesor en español'],
   priceFrom: 'Desde $19/mes',
   eligibilityTitle: 'Para negocios hispanos de todos los tamaños',
@@ -30,19 +28,19 @@ const configEs: InsurancePageConfig = {
     {
       icon: ShieldCheck,
       title: 'Póliza BOP — Todo en Uno, Más Económico que por Separado',
-      desc: 'La póliza BOP (Business Owner\'s Policy) combina Responsabilidad Civil General y protección de propiedad en un solo paquete — más cobertura a menor precio que contratarlos por separado. También cubrimos equipos, inventario y pérdida de ingreeres si tienes que cerrar temporalmente por un siniestro.',
+      desc: 'La póliza BOP (Business Owner\'s Policy) combina Responsabilidad Civil General y protección de propiedad en un solo paquete — más cobertura a menor precio que contratarlos por separado. También cubrimos equipos, inventario y pérdida de ingresos si tenés que cerrar temporalmente por un siniestro.',
     },
     {
       icon: Certificate,
       title: 'COI en 24 Horas — No Perdés Ningún Trabajo',
-      desc: 'El Certificado de Seguro (COI) es el documento que te exigen landlords, contratistas generales y clientes corporativos antes de dejarte entrar a trabajar. Sin él pierdes contratos. Lo emitimos en menos de 24 horas de que tu póliza está activa.',
+      desc: 'El Certificado de Seguro (COI) es el documento que te exigen landlords, contratistas generales y clientes corporativos antes de dejarte entrar a trabajar. Sin él perdés contratos. Lo emitimos en menos de 24 horas de que tu póliza está activa.',
     },
   ],
   coverageItems: [
     'Responsabilidad Civil General (GL) — desde $19/mes',
     'Protección de propiedad comercial — local, equipo e inventario',
     'Póliza BOP (GL + Propiedad combinados)',
-    'Interrupción del negocio — cubre ingreeres si tienes que cerrar',
+    'Interrupción del negocio — cubre ingresos si tenés que cerrar',
     'Compensación laboral (Workers Comp) — obligatoria con empleados',
     'Responsabilidad de productos',
     'Equipos y maquinaria especializada',
@@ -51,7 +49,7 @@ const configEs: InsurancePageConfig = {
   steps: [
     {
       title: 'Cuéntanos sobre tu negocio — sin SSN',
-      desc: 'Tipo de negocio, ubicación, número de empleados y actividad principal. Puedes usar tu EIN o ITIN.',
+      desc: 'Tipo de negocio, ubicación, número de empleados y actividad principal. Podés usar tu EIN o ITIN.',
     },
     {
       title: 'Cotización ajustada a tu industria, no genérica',
@@ -86,7 +84,11 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Por qué mi seguro de hogar no cubre mi negocio?',
-      a: 'Las pólizas de hogar excluyen explícitamente actividades comerciales. Si trabajas desde casa y recibes clientes, guardás inventario o usas equipos de trabajo, tu seguro personal no cubre daños ni responsabilidades relacionadas con tu negocio. Necesitás una cobertura comercial por separado.',
+      a: 'Las pólizas de hogar excluyen explícitamente actividades comerciales. Si trabajas desde casa y recibes clientes, guardas inventario o usas equipos de trabajo, tu seguro personal no cubre daños ni responsabilidades relacionadas con tu negocio. Necesitas una cobertura comercial por separado.',
+    },
+    {
+      q: '¿Tener LLC me protege si me demandan?',
+      a: 'No directamente. Tener una LLC protege tus activos personales de las deudas del negocio — pero no te protege si te demandan por negligencia o daños causados por tu negocio. Si un cliente se lastima y te demanda, la LLC no paga nada — tienes que pagar de las cuentas del negocio. Sin seguro comercial, eso puede vaciar tu negocio y forzar el cierre. El seguro GL es lo que realmente te protege.',
     },
     {
       q: '¿Puedo asegurar mi negocio con ITIN en lugar de SSN?',
@@ -98,7 +100,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿El seguro cubre si un empleado se lastima trabajando?',
-      a: 'Sí, con la cobertura de Compensación Laboral (Workers Compensation). Es obligatoria en casi todos los estados si tienes empleados. Cubre gastos médicos, salarios perdidos y beneficios por incapacidad si un empleado se lastima en el trabajo. Sin ella, el dueño es responsable personal de todos eeres costos.',
+      a: 'Sí, con la cobertura de Compensación Laboral (Workers Compensation). Es obligatoria en casi todos los estados si tienes empleados. Cubre gastos médicos, salarios perdidos y beneficios por incapacidad si un empleado se lastima en el trabajo. Sin ella, el dueño es responsable personal de todos esos costos.',
     },
     {
       q: '¿Qué es una póliza BOP y cuánto cuesta?',
@@ -125,7 +127,7 @@ const configEn: InsurancePageConfig = {
   badgeIcon: Buildings,
   badge: 'BOP · GL · Workers Comp · No SSN · COI in 24hrs',
   heroLine1: 'Business Insurance',
-  heroItalic: 'one lawsuit can close what you built in years',
+  heroItalic: 'protect everything you\'ve built',
   heroSubtitle: 'A customer slips in your store. They sue you for $80,000. Can you pay that out of pocket? Without commercial insurance, one lawsuit can shut down what took you years to build. From $19/mo. No SSN — we accept ITIN and EIN.',
   trustBadges: ['No SSN — ITIN or EIN', 'From $19/mo', 'COI in 24 hours', 'Bilingual agents'],
   priceFrom: 'From $19/mo',

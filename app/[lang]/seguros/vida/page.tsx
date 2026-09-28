@@ -1,5 +1,3 @@
-'use client';
-
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
 import { Heart, CurrencyDollar, Globe, Lock } from '@phosphor-icons/react';
 
@@ -9,10 +7,10 @@ const configEs: InsurancePageConfig = {
   badge: 'Sin SSN · Living Benefits · Desde $15/mes',
   heroLine1: 'Seguro de Vida',
   heroItalic: 'el dinero lo usas vivo — no solo tu familia',
-  heroSubtitle: 'Si algo te pasara hoy, ¿tu familia podría pagar la renta el mes que viene? Con o sin SSN, desde $15/mes — menos que Spotify y Netflix juntos. Y si te diagnostican una enfermedad grave, puedes usar el dinero mientras sigues vivo. Sin esperar a morir.',
+  heroSubtitle: 'En 2024, los latinos enviaron $161 mil millones a sus familias en América Latina. Si algo te pasa, ese ingreso desaparece. Tu mamá en México, tus hijos en Guatemala — no reciben nada. Desde $15/mes y sin SSN, tu familia queda protegida aunque no estés. Y si te diagnostican algo grave, puedes usar el dinero mientras sigues vivo.',
   trustBadges: ['Sin SSN requerido', 'Desde $15/mes', 'Living Benefits incluidos', 'Beneficiarios en cualquier país'],
   priceFrom: 'Desde $15/mes',
-  eligibilityTitle: 'Sí puedes asegurarte aunque...',
+  eligibilityTitle: 'Sí podés asegurarte aunque...',
   eligibilityText: 'No importa tu estatus migratorio. Cuanto antes lo haces, más barato — una persona sana de 25 años paga menos de $16/mes por $250,000 de cobertura durante 20 años. Si esperas a estar enfermo, puede ser tarde.',
   eligibilityItems: [
     'No tengas número de seguro social (SSN)',
@@ -24,7 +22,7 @@ const configEs: InsurancePageConfig = {
   features: [
     {
       icon: CurrencyDollar,
-      title: 'Living Benefits — El Dinero lo Usás Vos, No Solo tu Familia',
+      title: 'Living Benefits — El Dinero lo Usas Tú, No Solo tu Familia',
       desc: 'Si te diagnostican una enfermedad crítica (infarto, cáncer, derrame), crónica (no puedes hacer actividades básicas solo) o terminal (menos de 24 meses de vida), puedes acceder a parte del beneficio MIENTRAS SIGUES VIVO. No tienes que morir para que tu familia lo use. Ese dinero paga tratamientos, deudas o lo que necesites.',
     },
     {
@@ -34,8 +32,8 @@ const configEs: InsurancePageConfig = {
     },
     {
       icon: Lock,
-      title: 'Desde $15/mes — El Precio Que Pagás Hoy No Sube',
-      desc: 'Una persona sana de 30 años puede tener $250,000 de cobertura por menos de $20/mes durante 20 años. El precio que fijás al contratar se mantiene toda la vigencia de la póliza — no sube con tu edad ni con cambios en tu salud. Esperás un año: pagas más para siempre.',
+      title: 'Desde $15/mes — El Precio Que Fijas Hoy No Sube',
+      desc: 'Una persona sana de 30 años puede tener $250,000 de cobertura por menos de $20/mes durante 20 años. El precio que fijas al contratar se mantiene toda la vigencia de la póliza — no sube con tu edad ni con cambios en tu salud. Esperas un año: pagas más para siempre.',
     },
   ],
   coverageItems: [
@@ -51,7 +49,7 @@ const configEs: InsurancePageConfig = {
   steps: [
     {
       title: 'Completa el formulario — sin SSN, sin examen médico',
-      desc: 'Respondé preguntas básicas sobre tu edad y salud. Sin SSN requerido. Muchos planes aprueban sin examen médico.',
+      desc: 'Responde preguntas básicas sobre tu edad y salud. Sin SSN requerido. Muchos planes aprueban sin examen médico.',
     },
     {
       title: 'Tu asesora te explica término vs permanente',
@@ -59,7 +57,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       title: 'Póliza activa en 1 a 3 días hábiles',
-      desc: 'Recibís tu documentación por email y puedes designar beneficiarios en cualquier país. Tu familia queda protegida esta semana.',
+      desc: 'Recibes tu documentación por email y puedes designar beneficiarios en cualquier país. Tu familia queda protegida esta semana.',
     },
   ],
   testimonials: [
@@ -106,7 +104,7 @@ const configEs: InsurancePageConfig = {
     },
     {
       q: '¿Mi información se comparte con migración?',
-      a: 'No. Tu información es 100% confidencial. Nunca la compartimos con ICE ni ninguna agencia gubernamental sin orden judicial. Lo que compartís con nosotros para contratar tu póliza es estrictamente privado.',
+      a: 'No. Tu información es 100% confidencial. Nunca la compartimos con ICE ni ninguna agencia gubernamental sin orden judicial. Lo que compartes con nosotros para contratar tu póliza es estrictamente privado.',
     },
   ],
   ctaTitle: 'Protege a tu familia',
@@ -125,7 +123,7 @@ const configEn: InsurancePageConfig = {
   badgeIcon: Heart,
   badge: 'No SSN · Living Benefits · From $15/mo',
   heroLine1: 'Life Insurance',
-  heroItalic: 'your money — while you are still alive',
+  heroItalic: 'that protects you while you\'re still alive',
   heroSubtitle: 'If something happened to you today, could your family cover next month\'s rent? No SSN needed. From $15/month — less than your streaming subscriptions. And if you\'re diagnosed with a serious illness, you can access the money while you\'re still living. No need to wait.',
   trustBadges: ['No SSN required', 'From $15/mo', 'Living Benefits included', 'Beneficiaries in any country'],
   priceFrom: 'From $15/mo',
