@@ -622,30 +622,6 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </div>
               </div>
             </div>
-
-            {/* Card – Protección Extra / Umbrella */}
-            <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-              <div className="relative h-52 w-full overflow-hidden bg-gradient-to-br from-violet-900 to-violet-600 flex items-center justify-center">
-                <PhUmbrella weight="duotone" className="w-28 h-28 text-white/10" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $19/mo' : 'Desde $19/mes'}</span>
-              </div>
-              <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
-                <div className="space-y-3">
-                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Umbrella Coverage' : 'Protección Extra'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Average jury award for bodily injury: $1,479,368 (III). Your policy caps at $300K. That gap comes out of your savings, your home, your wages — unless you have umbrella. From $19/mo. Subject to terms and conditions.' : 'Tu seguro cubre $300K. Si la demanda es de $800K, pueden embargarte hasta el 25% del salario. La Protección Extra cierra esa brecha — desde $19/mes. Sujeto a términos y condiciones.'}</p>
-                  <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['$1M–$5M in additional liability coverage', 'Covers teen drivers, pools, dogs & social host', '$19/mo — most cost-effective protection available'] : ['Desde $1M de cobertura adicional', 'Cubre autos, hogar y responsabilidad civil', 'Protege salario y ahorros ante demandas civiles']).map(b => (
-                      <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <Link href={l('/seguros/proteccion-extra')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Umbrella', 'card_umbrella')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Add Umbrella Coverage' : 'Añadir Protección Extra'} <span className="text-sm">→</span></button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
