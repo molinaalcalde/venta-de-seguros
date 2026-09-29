@@ -43,3 +43,38 @@ import { supabase } from '@/lib/supabase'
 - Use the publishable Supabase client for server-side writes
 - Add decorative UI elements not explicitly requested
 - Make coverage promises without qualifiers
+
+## Metodología de trabajo (LOOP)
+1. Leer `/memory/` antes de tocar cualquier archivo
+2. Proponer copy → esperar aprobación → implementar
+3. Una página a la vez
+4. Responder siempre en español a la usuaria
+
+## Reglas absolutas de contenido
+- NO: estatus migratorio, DACA, ICE, indocumentados, sin papeles
+- NO: SSN/ITIN más de una vez por página (solo badge del hero)
+- NO: cifras exactas sin fuente verificable
+- NO: guiones em (—) en copy
+- NO: "protege a tu familia" ni frases genéricas
+- NO: "solo tu nombre y correo para empezar" — es falso
+- NO: testimoniales donde cliente compró algo que Maria Fernanda no vende (vende SEGUROS, no autos)
+- CTAs aprobados: "Cotizar gratis" / "Cotizar ahora" — NO "Ver mi precio gratis"
+
+## Sobre el negocio
+- Agente INDEPENDIENTE: compara 10-40+ aseguradoras
+- Vende seguros, NO autos ni propiedades
+- Opera en múltiples estados (NJ es referencia legal, no límite)
+- Diferenciadores: comparación + revisión anual + acompañamiento en reclamos
+
+## Datos de mercado verificados
+- Latinos pagan $849/año vs $705 blancos — Insurance Journal 2024
+- 55% hispanos tiene seguro de auto vs 80% general — Claritas 2024
+- 48% americanos recibió aumento de prima sin explicación — JD Power 2025
+- 51% no confía en su aseguradora — McKinsey
+- Q3 2024: record histórico de comparación — LexisNexis
+
+## Progreso de páginas
+- [x] auto (ES + EN) — completado
+- [ ] salud — alta prioridad
+- [ ] vida, dental, comercial, auto-comercial, paquete, proteccion-extra, mascotas
+- [ ] homepage (LangHomePageData.ts)
