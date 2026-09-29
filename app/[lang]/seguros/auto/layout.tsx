@@ -6,10 +6,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   const canonical = isEn ? `${BASE}/en/car-insurance` : `${BASE}/es/seguros/auto`;
   return {
     metadataBase: new URL(BASE),
-    title: isEn ? 'Car Insurance Without SSN | ITIN Accepted' : 'Seguro de Auto sin SSN | ITIN Aceptado',
+    title: isEn ? 'Car Insurance | Compare Multiple Carriers · Bilingual Service' : 'Seguro de Auto | Comparamos Varias Aseguradoras · Atención en Español',
     description: isEn
-      ? 'Car insurance for immigrants without Social Security Number. ITIN, passport, and consular ID accepted. 100% bilingual service. No SSN required.'
-      : 'Seguro de auto para inmigrantes sin número de seguro social. Aceptamos ITIN, pasaporte y matrícula consular. Atención 100% en español. Sin SSN requerido.',
+      ? 'Independent car insurance agent. Compare multiple carriers, understand your coverage, and get the right policy at the right price. Bilingual service. From $89/mo.'
+      : 'Compara seguros de auto entre múltiples aseguradoras. Atención en español. Aceptamos ITIN y pasaporte. Desde $89/mes. Un asesor bilingüe te llama en 24 horas.',
     alternates: {
       canonical,
       languages: {
@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       },
     },
     openGraph: {
-      title: isEn ? 'Car Insurance Without SSN | Maria Fernanda' : 'Seguro de Auto sin SSN | Maria Fernanda',
-      description: isEn ? 'ITIN accepted. No SSN required.' : 'Acepta ITIN. Sin SSN.',
+      title: isEn ? 'Car Insurance | Maria Fernanda Insurance' : 'Seguro de Auto | Maria Fernanda Insurance',
+      description: isEn ? 'Compare multiple carriers. Bilingual service. From $89/mo.' : 'Comparamos varias aseguradoras. Atención en español. Desde $89/mes.',
       url: canonical,
       siteName: 'Maria Fernanda Insurance Consulting',
       locale: isEn ? 'en_US' : 'es_US',
