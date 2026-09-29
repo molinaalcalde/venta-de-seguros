@@ -122,7 +122,7 @@ export const MARIA_BIO_ES = {
   bio: 'Entiendo de primera mano lo que significa construir una vida en un país nuevo. Por eso me convertí en agente de seguros: para que tu familia tenga la protección que merece, sin barreras de idioma, sin letra chica y sin importar tu estatus migratorio.',
   quote: '"Porque proteger a tu familia no debería depender de tener un número de seguro social."',
   cta: 'Hablar con María Fernanda',
-  ctaHref: 'https://wa.me/19082280973?text=Hola%20Mar%C3%ADa%20Fernanda%2C%20vi%20su%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20cotizar%20un%20seguro.',
+  ctaHref: 'https://wa.me/19082280973?text=Hola%20Mar%C3%ADa%20Fernanda%20%F0%9F%91%8B%20Vi%20su%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20cotizar%20un%20seguro%20para%20mi%20familia.%20%C2%BFTiene%20un%20momento%20para%20orientarme%3F%20Gracias',
 };
 
 export const MARIA_BIO_EN = {
@@ -132,5 +132,5 @@ export const MARIA_BIO_EN = {
   bio: "I understand firsthand what it means to build a life in a new country. That's why I became an insurance agent: so your family can have the protection it deserves — no language barriers, no fine print, and no matter your immigration status.",
   quote: '"Because protecting your family shouldn\'t depend on having a Social Security Number."',
   cta: 'Talk to María Fernanda',
-  ctaHref: 'https://wa.me/19082280973?text=Hi%20Mar%C3%ADa%20Fernanda%2C%20I%20saw%20your%20website%20and%20would%20like%20to%20get%20an%20insurance%20quote.',
+  ctaHref: "https://wa.me/19082280973?text=Hi%20Mar%C3%ADa%20Fernanda%20%F0%9F%91%8B%20I%20found%20your%20website%20and%20I'd%20like%20to%20explore%20insurance%20options%20for%20my%20family.%20When%20can%20we%20talk%3F",
 };
