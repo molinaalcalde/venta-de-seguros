@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import {
   Search, Trash2, ChevronRight, X, Phone, Mail, MessageCircle,
   Users, TrendingUp, UserCheck, Star, Download, RefreshCw, Calendar, FileText,
+  MapPin, Clock, ShieldCheck, Zap, Filter, BarChart2,
 } from 'lucide-react';
 
 /* ─── Types ─────────────────────────────────────────────────────────────── */
@@ -17,6 +18,13 @@ interface Lead {
   estado: string;
   notas: string | null;
   created_at: string;
+  zip_code: string | null;
+  estado_us: string | null;
+  ciudad: string | null;
+  timeline: string | null;
+  tiene_seguro: string | null;
+  lead_score: number | null;
+  detalles: string | null;
 }
 
 const ESTADOS = ['Todos', 'Nuevo', 'Contactado', 'Calificado', 'Cerrado'];
@@ -156,7 +164,54 @@ function DetailPanel({ lead, onClose, onUpdate, onDelete }: {
           <Row icon={<Calendar className="w-3.5 h-3.5" />} label="Registrado" value={fmtDate(lead.created_at)} />
           <Row icon={<FileText className="w-3.5 h-3.5" />} label="Tipo de seguro" value={lead.tipo_seguro ?? '—'} />
           <Row icon={<Star className="w-3.5 h-3.5" />} label="Nivel" value={lead.nivel_proteccion ?? '—'} />
+          {(lead.ciudad || lead.estado_us) && (
+            <Row icon={<MapPin className="w-3.5 h-3.5" />} label="Ubicación" value={[lead.ciudad, lead.estado_us].filter(Boolean).join(', ')} />
+          )}
+          {lead.zip_code && (
+            <Row icon={<MapPin className="w-3.5 h-3.5" />} label="ZIP" value={lead.zip_code} />
+          )}
+          {lead.timeline && (
+            <Row icon={<Clock className="w-3.5 h-3.5" />} label="¿Cuándo necesita?" value={lead.timeline} />
+          )}
+          {lead.tiene_seguro && (
+            <Row icon={<ShieldCheck className="w-3.5 h-3.5" />} label="¿Tiene seguro?" value={lead.tiene_seguro} />
+          )}
         </div>
+
+        {/* Lead Score */}
+        {lead.lead_score !== null && (
+          <div className="px-5 py-4 border-b border-slate-100">
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Lead Score</p>
+            <div className="flex items-center gap-3">
+              <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div
+                  className={`h-full rounded-full transition-all ${
+                    lead.lead_score >= 70 ? 'bg-emerald-500' :
+                    lead.lead_score >= 40 ? 'bg-amber-400' : 'bg-red-400'
+                  }`}
+                  style={{ width: `${Math.min(lead.lead_score, 100)}%` }}
+                />
+              </div>
+              <span className={`text-sm font-bold w-8 text-right ${
+                lead.lead_score >= 70 ? 'text-emerald-600' :
+                lead.lead_score >= 40 ? 'text-amber-600' : 'text-red-500'
+              }`}>
+                {lead.lead_score}
+              </span>
+            </div>
+            <p className="text-xs text-slate-400 mt-1">
+              {lead.lead_score >= 70 ? 'Alta prioridad' : lead.lead_score >= 40 ? 'Prioridad media' : 'Prioridad baja'}
+            </p>
+          </div>
+        )}
+
+        {/* Detalles */}
+        {lead.detalles && (
+          <div className="px-5 py-4 border-b border-slate-100">
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Detalles del formulario</p>
+            <p className="text-xs text-slate-600 leading-relaxed bg-slate-50 rounded-xl px-3 py-2">{lead.detalles}</p>
+          </div>
+        )}
 
         {/* Estado */}
         <div className="px-5 py-4 border-b border-slate-100">
@@ -253,6 +308,7 @@ export default function LeadsPage() {
   const [filterEstado, setFilterEstado] = useState('Todos');
   const [selected, setSelected] = useState<Lead | null>(null);
   const [refreshing, setRefreshing] = useState(false);
+  const [filterTipo, setFilterTipo] = useState('Todos');
 
   async function fetchLeads() {
     try {
@@ -294,12 +350,20 @@ export default function LeadsPage() {
   }, []);
 
   /* Stats */
-  const stats = useMemo(() => ({
-    total:      leads.length,
-    nuevo:      leads.filter(l => l.estado === 'Nuevo').length,
-    contactado: leads.filter(l => l.estado === 'Contactado').length,
-    calificado: leads.filter(l => l.estado === 'Calificado').length,
-  }), [leads]);
+  const stats = useMemo(() => {
+    const total      = leads.length;
+    const nuevo      = leads.filter(l => l.estado === 'Nuevo').length;
+    const contactado = leads.filter(l => l.estado === 'Contactado').length;
+    const calificado = leads.filter(l => l.estado === 'Calificado').length;
+    const conversion = total > 0 ? Math.round((calificado / total) * 100) : 0;
+    return { total, nuevo, contactado, calificado, conversion };
+  }, [leads]);
+
+  /* Tipos únicos para filtro */
+  const tiposUnicos = useMemo(() => {
+    const tipos = leads.map(l => l.tipo_seguro).filter(Boolean) as string[];
+    return ['Todos', ...Array.from(new Set(tipos)).sort()];
+  }, [leads]);
 
   /* Filtered list */
   const filtered = useMemo(() => {
@@ -310,11 +374,11 @@ export default function LeadsPage() {
         l.nombre.toLowerCase().includes(q) ||
         l.email.toLowerCase().includes(q) ||
         (l.telefono ?? '').includes(q);
-      const matchEstado =
-        filterEstado === 'Todos' || l.estado === filterEstado;
-      return matchSearch && matchEstado;
+      const matchEstado = filterEstado === 'Todos' || l.estado === filterEstado;
+      const matchTipo   = filterTipo === 'Todos' || l.tipo_seguro === filterTipo;
+      return matchSearch && matchEstado && matchTipo;
     });
-  }, [leads, search, filterEstado]);
+  }, [leads, search, filterEstado, filterTipo]);
 
   /* CSV export */
   function exportCSV() {
@@ -379,48 +443,79 @@ export default function LeadsPage() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
-            <StatCard label="Total leads"  value={stats.total}      icon={Users}       color="bg-slate-100 text-slate-600" />
-            <StatCard label="Nuevos"       value={stats.nuevo}      icon={TrendingUp}  color="bg-blue-100 text-blue-600" />
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 mb-5">
+            <StatCard label="Total leads"  value={stats.total}      icon={Users}         color="bg-slate-100 text-slate-600" />
+            <StatCard label="Nuevos"       value={stats.nuevo}      icon={TrendingUp}    color="bg-blue-100 text-blue-600" />
             <StatCard label="Contactados"  value={stats.contactado} icon={MessageCircle} color="bg-amber-100 text-amber-600" />
-            <StatCard label="Calificados"  value={stats.calificado} icon={UserCheck}   color="bg-emerald-100 text-emerald-600" />
+            <StatCard label="Calificados"  value={stats.calificado} icon={UserCheck}     color="bg-emerald-100 text-emerald-600" />
+            <div className="bg-white rounded-2xl border border-slate-200 p-5 flex items-center gap-4">
+              <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 bg-violet-100 text-violet-600">
+                <BarChart2 className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-slate-800 leading-none">{stats.conversion}%</p>
+                <p className="text-xs text-slate-500 mt-0.5">Tasa conversión</p>
+              </div>
+            </div>
           </div>
 
           {/* Search + filters */}
-          <div className="flex flex-col sm:flex-row gap-3">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input
-                type="text"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                placeholder="Buscar por nombre, email o teléfono…"
-                className="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-slate-400"
-              />
-              {search && (
-                <button
-                  onClick={() => setSearch('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              )}
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input
+                  type="text"
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
+                  placeholder="Buscar por nombre, email o teléfono…"
+                  className="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-slate-400"
+                />
+                {search && (
+                  <button
+                    onClick={() => setSearch('')}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
+              </div>
+              <div className="flex gap-1.5 flex-wrap items-center">
+                <span className="text-xs text-slate-400 font-medium hidden sm:block">Estado:</span>
+                {ESTADOS.map(e => (
+                  <button
+                    key={e}
+                    onClick={() => setFilterEstado(e)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all whitespace-nowrap ${
+                      filterEstado === e
+                        ? 'bg-slate-800 text-white'
+                        : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    {e}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="flex gap-1.5 flex-wrap">
-              {ESTADOS.map(e => (
-                <button
-                  key={e}
-                  onClick={() => setFilterEstado(e)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all whitespace-nowrap ${
-                    filterEstado === e
-                      ? 'bg-slate-800 text-white'
-                      : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
-                  }`}
-                >
-                  {e}
-                </button>
-              ))}
-            </div>
+            {tiposUnicos.length > 1 && (
+              <div className="flex gap-1.5 flex-wrap items-center">
+                <Filter className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <span className="text-xs text-slate-400 font-medium">Seguro:</span>
+                {tiposUnicos.map(t => (
+                  <button
+                    key={t}
+                    onClick={() => setFilterTipo(t)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all whitespace-nowrap ${
+                      filterTipo === t
+                        ? 'bg-violet-700 text-white'
+                        : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
