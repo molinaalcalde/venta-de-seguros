@@ -288,19 +288,19 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
                   <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
-                  {isEn ? 'No SSN · ITIN Accepted' : 'Acepta ITIN · Sin SSN'}
+                  {isEn ? 'ITIN accepted with participating carriers' : 'Acepta ITIN · Sin SSN'}
                 </span>
               </div>
               <h1 className="text-[40px] sm:text-5xl md:text-6xl lg:text-[76px] font-normal tracking-tight leading-[1.08] drop-shadow-sm">
                 {isEn ? (
-                  <>Insurance without<br /><span className="font-sans font-light">SSN —</span>{' '}<span className="font-editorial-italic font-normal">ITIN accepted.</span></>
+                  <>Insurance options<br /><span className="font-sans font-light">available</span>{' '}<span className="font-editorial-italic font-normal">without an SSN</span></>
                 ) : (
                   <>Protegiendo <br /><span className="font-sans font-light">lo que más</span>{' '}<span className="font-editorial-italic font-normal">Valoras</span></>
                 )}
               </h1>
               <p className="mt-4 text-white/90 text-sm sm:text-base font-light max-w-xl leading-relaxed lg:ml-auto">
                 {isEn
-                  ? 'Bilingual insurance agents for immigrants and every American family. Auto, life, health, dental, and more — no Social Security Number required, no credit check to quote.'
+                  ? 'Bilingual insurance guidance for individuals, families and businesses. Auto, Home, Life, Health and Commercial Insurance. ITIN accepted with participating carriers. No credit check to quote.'
                   : 'Seguros de auto, vida, salud y mascotas para tu familia. Agentes bilingüe que entienden tu comunidad, sin importar tu estatus migratorio.'}
               </p>
               <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
@@ -434,7 +434,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Auto */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/hero3.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
+                <video src="/videos/hero3.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $89/mo' : 'Desde $75/mes'}</span>
               </div>
@@ -458,7 +458,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Mascotas */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/hero2-desktop.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
+                <video src="/videos/hero2-desktop.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Plans from $29/mo' : 'Planes desde $29/mes'}</span>
               </div>
@@ -482,7 +482,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Vida */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/vida.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
+                <video src="/videos/vida.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Coverage from $500k' : 'Coberturas desde $500k'}</span>
               </div>
@@ -506,7 +506,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Comercial */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/comercial-negocio.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
+                <video src="/videos/comercial-negocio.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'SMBs & Enterprises' : 'PyMEs y Corporativos'}</span>
               </div>
@@ -530,7 +530,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Auto Comercial */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/comercial.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
+                <video src="/videos/comercial.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $110/mo' : 'Desde $110/mes'}</span>
               </div>
@@ -554,7 +554,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Salud */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/salud.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
+                <video src="/videos/salud.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $199/mo' : 'Desde $199/mes'}</span>
               </div>
@@ -578,7 +578,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Dental */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/dental.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
+                <video src="/videos/dental.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $19/mo' : 'Desde $19/mes'}</span>
               </div>
@@ -602,7 +602,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Paquete */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/paquete.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
+                <video src="/videos/paquete.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Save up to 25%' : 'Hasta 25% de ahorro'}</span>
               </div>
@@ -822,7 +822,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {isEn ? <>Ready to protect<br /><span className="font-editorial-italic font-normal text-sage-200">everything you&apos;ve built?</span></> : <>Tu familia merece estar{' '}<span className="font-editorial-italic font-normal text-sage-200">protegida hoy</span></>}
           </h2>
           <p className="text-sm sm:text-base text-sage-100/90 max-w-2xl mx-auto leading-relaxed font-light">
-            {isEn ? 'Fill out the form and a bilingual specialist will contact you within 24 hours — no pressure, no fine print, no SSN required.' : 'Completá el formulario y un asesor en español te contacta en 24 horas — sin presiones, sin letra chica.'}
+            {isEn ? 'Fill out the form and a bilingual specialist will contact you within 24 hours. No pressure, no fine print, no SSN required.' : 'Completá el formulario y un asesor en español te contacta en 24 horas. Sin presiones, sin letra chica.'}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
             <button onClick={() => openQuote(undefined, 'final_cta')} className="px-8 py-3.5 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-sage-50 transition-all shadow-xl active:scale-95 flex items-center gap-2 group">
