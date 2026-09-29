@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseAdmin } from '@/lib/supabase';
+import { getSupabaseAdmin } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,7 +15,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (estado !== undefined) updates.estado = estado;
   if (notas !== undefined) updates.notas = notas;
 
-  const { data, error } = await supabaseAdmin
+  const { data, error } = await getSupabaseAdmin()
     .from('leads')
     .update(updates)
     .eq('id', params.id)
@@ -29,7 +29,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
 }
 
 export async function DELETE(_req: NextRequest, { params }: Params) {
-  const { error } = await supabaseAdmin
+  const { error } = await getSupabaseAdmin()
     .from('leads')
     .delete()
     .eq('id', params.id);

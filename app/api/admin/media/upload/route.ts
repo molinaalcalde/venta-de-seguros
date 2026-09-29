@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseAdmin } from '@/lib/supabase';
+import { getSupabaseAdmin } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,14 +27,15 @@ export async function POST(req: NextRequest) {
   const safeName = `${Date.now()}-${base}.${ext}`;
 
   const buffer = await file.arrayBuffer();
+  const admin = getSupabaseAdmin();
 
-  const { error } = await supabaseAdmin.storage
+  const { error } = await admin.storage
     .from(BUCKET)
     .upload(safeName, buffer, { contentType: file.type, upsert: false });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-  const publicUrl = supabaseAdmin.storage.from(BUCKET).getPublicUrl(safeName).data.publicUrl;
+  const publicUrl = admin.storage.from(BUCKET).getPublicUrl(safeName).data.publicUrl;
 
   return NextResponse.json({ name: safeName, url: publicUrl }, { status: 201 });
 }
