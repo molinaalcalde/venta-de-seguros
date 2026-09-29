@@ -117,14 +117,14 @@ const CONTENT = {
     heroTitle: 'Seguro de',
     heroTitleSpan: 'Mascotas',
     heroItalic: 'que reembolsa rápido',
-    heroDesc: 'Ve a cualquier veterinario en Estados Unidos. Sube la factura al portal y recibe tu reembolso de hasta el 90% en menos de una semana. Sin SSN requerido.',
+    heroDesc: 'Ve a cualquier veterinario en Estados Unidos. Sube la factura al portal y recibe tu reembolso de hasta el 90% en menos de una semana.',
     heroCTAEligible: 'Obtener seguro ahora',
     heroCTANotEligible: 'Cotizar Seguro de Mascotas',
     heroSubtext: 'Precio personalizable · Sin compromiso',
     statsBar: [
       { value: 'Hasta 90%', label: 'De reembolso' },
       { value: 'Cualquier', label: 'Veterinario en Estados Unidos' },
-      { value: '~7 días', label: 'Tiempo de reembolso' },
+      { value: 'Rápido', label: 'Reembolso en días' },
       { value: '100%', label: 'Confidencial' },
     ],
     features: [
@@ -229,14 +229,14 @@ const CONTENT = {
     heroTitle: 'Pet Insurance that',
     heroTitleSpan: '',
     heroItalic: 'reimburses fast',
-    heroDesc: 'Visit any vet in the United States. Upload the invoice to the portal and receive your reimbursement of up to 90% in less than a week. No SSN required.',
+    heroDesc: 'Visit any vet in the United States. Upload the invoice to the portal and receive your reimbursement of up to 90% in less than a week.',
     heroCTAEligible: 'Get my insurance now',
     heroCTANotEligible: 'Get a Pet Insurance Quote',
     heroSubtext: 'Customizable price · No commitment',
     statsBar: [
       { value: 'Up to 90%', label: 'Reimbursement' },
       { value: 'Any', label: 'Vet in the USA' },
-      { value: '~7 days', label: 'Reimbursement time' },
+      { value: 'Fast', label: 'Reimbursement' },
       { value: '100%', label: 'Confidential' },
     ],
     features: [
@@ -269,9 +269,9 @@ export default function MascotasLangPage({ params }: { params: { lang: string } 
   const [scrolled, setScrolled]     = useState(false);
 
   useEffect(() => {
-    fetch('https://ipapi.co/json/')
+    fetch('https://ip-api.com/json/?fields=regionCode')
       .then(r => r.json())
-      .then(d => { if (d.region_code) setUserState(d.region_code); })
+      .then(d => { if (d.regionCode) setUserState(d.regionCode); })
       .catch(() => {})
       .finally(() => setGeoLoading(false));
   }, []);
