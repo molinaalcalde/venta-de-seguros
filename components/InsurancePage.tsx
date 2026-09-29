@@ -225,42 +225,39 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
 
         {/* ── Eligibility ──────────────────────────────────────────── */}
         <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-4">
-                {config.eligibilityTitle}
-              </h2>
-              <p className="text-slate-600 font-light text-sm leading-relaxed mb-6">{config.eligibilityText}</p>
-              <ul className="space-y-3">
-                {config.eligibilityItems.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
-                    <CheckCircle weight="duotone" className={`w-5 h-5 ${t.iconText} shrink-0 mt-0.5`} />
-                    <span className="text-sm text-slate-700 font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
+          <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-3">
+            {config.eligibilityTitle}
+          </h2>
+          <p className="text-slate-600 font-light text-sm leading-relaxed mb-8 max-w-lg">{config.eligibilityText}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
+            {/* Situation cards — 2/3 width */}
+            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {config.eligibilityItems.map((item, i) => (
+                <div key={i} className="bg-white rounded-2xl px-5 py-4 border border-slate-100 shadow-sm flex items-start gap-3">
+                  <span className={`text-xs font-bold ${t.iconText} shrink-0 mt-0.5 tabular-nums`}>{String(i + 1).padStart(2, '0')}</span>
+                  <span className="text-sm text-slate-700 font-medium leading-snug">{item}</span>
+                </div>
+              ))}
             </div>
+            {/* CTA card — 1/3 width */}
             <div className={`rounded-2xl p-7 border ${t.accentBorder} bg-white shadow-sm`}>
-              <div className="flex items-center gap-3 mb-4">
-                <Lock weight="duotone" className={`w-6 h-6 ${t.iconText}`} />
-                <span className="font-semibold text-slate-900 text-sm">Tu privacidad, garantizada</span>
-              </div>
-              <p className="text-sm text-slate-600 font-light leading-relaxed">
-                Tu información personal es 100% confidencial. Nunca la compartimos con ICE, la migra
-                ni ninguna agencia gubernamental sin orden judicial. Cumplimos con todas las leyes
-                estatales de privacidad de seguros.
+              <p className="font-semibold text-slate-900 text-sm mb-2">¿Te identificas con alguna?</p>
+              <p className="text-xs text-slate-500 font-light leading-relaxed mb-5">
+                Un asesor bilingüe revisa tu situación y te explica tus opciones — sin presiones, sin compromiso.
               </p>
-              {/* CTA 1 — after eligibility */}
-              <div className="mt-6 pt-5 border-t border-slate-100">
-                <button
-                  onClick={() => setQuoteOpen(true)}
-                  className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl ${t.stepBg} text-white text-sm font-semibold transition-all hover:opacity-90 hover:-translate-y-0.5 shadow-sm`}
-                >
-                  {config.ctaButton}
-                  <ArrowRight weight="bold" className="w-4 h-4" />
-                </button>
-                <p className="text-[11px] text-slate-400 text-center mt-2">{config.priceFrom} · Sin compromiso</p>
+              <div className="border-t border-slate-100 pt-4 mb-5">
+                <p className="text-xs text-slate-500 font-light leading-relaxed">
+                  Y cada año revisamos tu póliza. Si encontramos algo mejor para tu situación, te avisamos.
+                </p>
               </div>
+              <button
+                onClick={() => setQuoteOpen(true)}
+                className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl ${t.stepBg} text-white text-sm font-semibold transition-all hover:opacity-90 hover:-translate-y-0.5 shadow-sm`}
+              >
+                {config.ctaButton}
+                <ArrowRight weight="bold" className="w-4 h-4" />
+              </button>
+              <p className="text-[11px] text-slate-400 text-center mt-2">{config.priceFrom} · Sin compromiso</p>
             </div>
           </div>
         </section>
@@ -321,7 +318,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 rounded-2xl px-7 py-5 border border-slate-100">
               <div>
                 <p className="font-semibold text-slate-900 text-sm">¿Todo claro? Empieza ahora — tarda menos de 5 minutos.</p>
-                <p className="text-xs text-slate-500 mt-0.5">{config.priceFrom} · Sin SSN · Sin compromiso</p>
+                <p className="text-xs text-slate-500 mt-0.5">{config.priceFrom} · Sin compromiso · Sin revisión de crédito</p>
               </div>
               <button
                 onClick={() => setQuoteOpen(true)}
@@ -342,10 +339,10 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
             {[
-              { icon: Shield,   title: 'Sin SSN',        desc: 'Aceptamos ITIN y pasaporte como identificación válida.' },
-              { icon: Lock,     title: '100% Privado',   desc: 'Tu información nunca se comparte con migración ni el gobierno.' },
-              { icon: Headset,  title: 'Todo en Español',desc: 'Agentes reales que hablan tu idioma, listos para ayudarte.' },
-              { icon: CreditCard, title: 'Sin Sorpresas', desc: 'Tarifas claras, sin letra pequeña, sin cobros ocultos.' },
+              { icon: Shield,     title: 'Comparamos por ti',        desc: 'No trabajamos para una sola compañía. Buscamos la mejor cobertura al precio más justo para tu situación.' },
+              { icon: Headset,    title: 'Atención en español',      desc: 'Agentes reales que te explican todo en español — desde la cotización hasta el momento de usar tu seguro.' },
+              { icon: CreditCard, title: 'Sin historial de crédito', desc: 'No necesitas historial crediticio para cotizar. Solo tu nombre y correo para empezar.' },
+              { icon: Lock,       title: 'Sin sorpresas',            desc: 'Tarifas claras, sin letra chica. Sabes exactamente qué compraste antes de firmar.' },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-sm">
                 <Icon weight="duotone" className={`w-6 h-6 ${t.iconText} mb-3`} />
@@ -451,7 +448,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
                 <div className="mb-1.5">
                   <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto brightness-0 invert" />
                 </div>
-                <p className="text-xs text-slate-400 font-light mb-4">Seguros para la comunidad hispana · Sin SSN · ITIN aceptado</p>
+                <p className="text-xs text-slate-400 font-light mb-4">Seguros para familias y negocios hispanos · Atención en español · ITIN aceptado</p>
                 <button
                   onClick={() => setQuoteOpen(true)}
                   className="px-4 py-2 rounded-full bg-white hover:bg-slate-100 text-slate-900 text-xs font-semibold transition-all"
@@ -501,7 +498,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-sm border-t border-slate-200 px-5 py-3 flex items-center justify-between shadow-[0_-4px_24px_rgba(0,0,0,0.08)]">
         <div>
           <p className="text-xs font-bold text-slate-900">{config.priceFrom}</p>
-          <p className="text-[10px] text-slate-500">Sin compromiso · Sin SSN</p>
+          <p className="text-[10px] text-slate-500">Sin compromiso · Sin revisión de crédito</p>
         </div>
         <button
           onClick={() => setQuoteOpen(true)}
