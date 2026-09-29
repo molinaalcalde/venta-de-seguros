@@ -674,9 +674,8 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Photo / Avatar */}
             <div className="flex justify-center lg:justify-end order-2 lg:order-1">
               <div className="relative">
-                <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-[32px] bg-gradient-to-br from-[#cddece] to-[#a8c8aa] flex items-center justify-center shadow-xl overflow-hidden">
-                  {/* Replace with <img src="/maria-fernanda.jpg" alt="María Fernanda" className="w-full h-full object-cover" /> when photo is available */}
-                  <span className="text-7xl sm:text-8xl font-light text-[#3d6b42] select-none">MF</span>
+                <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-[32px] shadow-xl overflow-hidden">
+                  <img src="/maria-fernanda.jpg" alt="María Fernanda" className="w-full h-full object-cover object-top" />
                 </div>
                 {/* Floating badge */}
                 <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl px-4 py-3 shadow-lg border border-stone-200/70 flex items-center gap-2">
