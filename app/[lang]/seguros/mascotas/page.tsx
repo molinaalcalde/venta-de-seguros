@@ -130,7 +130,7 @@ const CONTENT = {
     features: [
       { icon: Stethoscope, title: 'Cualquier Veterinario', desc: 'No hay red restringida. Lleva a tu mascota a cualquier veterinario con licencia en Estados Unidos — incluyendo especialistas y emergencias.' },
       { icon: CurrencyDollar, title: 'Hasta 90% de Reembolso', desc: 'Tú eliges el porcentaje: 70%, 80% o 90% de los gastos elegibles cubiertos. También personalizas el deductible y el máximo anual. Sujeto a términos y condiciones.' },
-      { icon: Lock, title: 'Privacidad Garantizada', desc: 'Tu información es 100% confidencial. Nunca la compartimos con migración ni ninguna agencia del gobierno.' },
+      { icon: Lock, title: 'Tu Privacidad Importa', desc: 'Tu información personal se mantiene segura y se usa únicamente para gestionar tu cobertura. Cumplimos con todas las leyes de privacidad aplicables. Tus datos nunca se venden ni se comparten sin tu consentimiento.' },
     ],
     quoteBtnEligible: 'Ir a fetchpet.com — portal afiliado',
     quoteBtnNotEligible: 'Hablar con un asesor en español',
@@ -242,7 +242,7 @@ const CONTENT = {
     features: [
       { icon: Stethoscope, title: 'Any Veterinarian', desc: 'No restricted network. Take your pet to any licensed vet in the United States — including specialists and emergency hospitals.' },
       { icon: CurrencyDollar, title: 'Up to 90% Reimbursement', desc: 'You choose the percentage: 70%, 80%, or 90% of covered eligible expenses. Also customize deductible and annual maximum. Subject to terms and conditions.' },
-      { icon: Lock, title: 'Privacy Guaranteed', desc: 'Your information is 100% confidential. We never share it with immigration or any government agency.' },
+      { icon: Lock, title: 'Your Privacy Matters', desc: 'Your personal information is kept secure and used only to help you get covered. We comply with all applicable privacy laws. Your data is never sold or shared without your consent.' },
     ],
     quoteBtnEligible: 'Go to fetchpet.com — affiliate portal',
     quoteBtnNotEligible: 'Talk to a bilingual advisor',
