@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
+import Image from 'next/image';
 import QuoteModal from '@/components/QuoteModal';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { Umbrella as PhUmbrella } from '@phosphor-icons/react';
@@ -147,7 +148,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
         <div className="max-w-[1720px] mx-auto px-6 lg:px-10">
           <div className="flex items-center justify-between h-16">
             <a className="shrink-0" href={`/${lang}`}>
-              <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className={`h-10 w-auto transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`} />
+              <Image src="/logo.png" alt="Maria Fernanda Insurance Consulting" width={160} height={40} className={`h-10 w-auto transition-all duration-300 ${scrolled ? '' : 'brightness-0 invert'}`} />
             </a>
             <nav aria-label={isEn ? 'Main navigation' : 'Navegación principal'} className="hidden lg:flex items-center gap-7">
               {(isEn ? [
@@ -186,7 +187,10 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <button onClick={() => openQuote()} className={`hidden lg:flex items-center gap-2 px-5 py-2 text-[13px] font-semibold rounded-full transition-all duration-200 active:scale-95 ${scrolled ? 'bg-slate-900 text-white hover:bg-slate-700' : 'bg-white text-slate-900 hover:bg-white/90 shadow-lg'}`}>
                 {isEn ? 'Get a Quote' : 'Cotizar Ahora'}
               </button>
-              <button className="lg:hidden flex flex-col gap-[5px] p-2 transition-all" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={isEn ? 'Open menu' : 'Abrir menú'}>
+              <button onClick={() => openQuote()} className={`lg:hidden flex items-center px-4 py-2 min-h-[44px] text-xs font-semibold rounded-full transition-all duration-200 active:scale-95 ${scrolled ? 'bg-slate-900 text-white' : 'bg-white text-slate-900 shadow-lg'}`}>
+                {isEn ? 'Quote' : 'Cotizar'}
+              </button>
+              <button className="lg:hidden flex flex-col gap-[5px] p-3 min-h-[44px] min-w-[44px] items-center justify-center transition-all" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={isEn ? 'Open menu' : 'Abrir menú'}>
                 <span className={`block w-5 h-[1.5px] transition-all duration-300 ${scrolled ? 'bg-slate-900' : 'bg-white'} ${mobileMenuOpen ? 'rotate-45 translate-y-[6.5px]' : ''}`}></span>
                 <span className={`block w-5 h-[1.5px] transition-all duration-300 ${scrolled ? 'bg-slate-900' : 'bg-white'} ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
                 <span className={`block w-5 h-[1.5px] transition-all duration-300 ${scrolled ? 'bg-slate-900' : 'bg-white'} ${mobileMenuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''}`}></span>
@@ -203,7 +207,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
           <div className="absolute top-0 right-0 h-full w-72 bg-white shadow-2xl flex flex-col">
             <div className="flex items-center justify-between px-6 h-16 border-b border-slate-100">
               <span className="font-medium text-slate-900">{isEn ? 'Menu' : 'Menú'}</span>
-              <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-slate-500 hover:text-slate-900">
+              <button onClick={() => setMobileMenuOpen(false)} className="p-3 min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-500 hover:text-slate-900">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
@@ -236,26 +240,26 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
       {/* ── Hero — Full Bleed ── */}
       <div className="relative w-full min-h-[680px] lg:min-h-[860px] flex flex-col justify-between overflow-hidden">
         {/* Slot 0 */}
-        <video ref={videoRefs[0]} src={HERO_VIDEOS[0].src} muted playsInline loop preload="auto"
+        <video ref={videoRefs[0]} src={HERO_VIDEOS[0].src} muted playsInline loop preload="metadata"
           onLoadedMetadata={() => { const el = videoRefs[0].current; if (el) el.currentTime = HERO_VIDEOS[0].startTime; }}
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${heroIndex === 0 ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Slot 1 — desktop */}
-        <video ref={videoRefs[1]} src="/videos/hero2-desktop.mp4" muted playsInline loop preload="auto"
+        <video ref={videoRefs[1]} src="/videos/hero2-desktop.mp4" muted playsInline loop preload="metadata"
           onLoadedMetadata={() => { const el = videoRefs[1].current; if (el) el.currentTime = HERO_VIDEOS[1].startTime; }}
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 hidden md:block ${heroIndex === 1 ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Slot 1 — mobile */}
-        <video src="/videos/hero2-mobile.mp4" autoPlay muted playsInline loop preload="auto"
+        <video src="/videos/hero2-mobile.mp4" muted playsInline loop preload="metadata"
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 md:hidden ${heroIndex === 1 ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Slot 2 — desktop */}
-        <video ref={videoRefs[2]} src={HERO_VIDEOS[2].src} muted playsInline loop preload="auto"
+        <video ref={videoRefs[2]} src={HERO_VIDEOS[2].src} muted playsInline loop preload="metadata"
           onLoadedMetadata={() => { const el = videoRefs[2].current; if (el) el.currentTime = HERO_VIDEOS[2].startTime; }}
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 hidden md:block ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Slot 2 — mobile (vertical) */}
-        <video src="/videos/hero-auto-mobile.mp4" autoPlay muted playsInline loop preload="auto"
+        <video src="/videos/hero-auto-mobile.mp4" muted playsInline loop preload="metadata"
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 md:hidden ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/15 to-black/70 z-[1]"></div>
@@ -280,7 +284,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   {isEn ? 'No SSN · ITIN Accepted' : 'Acepta ITIN · Sin SSN'}
                 </span>
               </div>
-              <h1 className="text-5xl sm:text-6xl lg:text-[76px] font-normal tracking-tight leading-[1.08] drop-shadow-sm">
+              <h1 className="text-[40px] sm:text-5xl md:text-6xl lg:text-[76px] font-normal tracking-tight leading-[1.08] drop-shadow-sm">
                 {isEn ? (
                   <>Insurance without<br /><span className="font-sans font-light">SSN —</span>{' '}<span className="font-editorial-italic font-normal">ITIN accepted.</span></>
                 ) : (
@@ -293,7 +297,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   : 'Seguros de auto, vida, salud y mascotas para tu familia. Agentes bilingüe que entienden tu comunidad, sin importar tu estatus migratorio.'}
               </p>
               <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
-                <button onClick={() => openQuote()} className="px-6 py-3 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-slate-100 transition-all shadow-lg active:scale-95 flex items-center gap-2">
+                <button onClick={() => openQuote()} className="px-6 py-3.5 rounded-full bg-white text-slate-900 font-semibold text-sm hover:bg-slate-100 transition-all shadow-lg active:scale-95 flex items-center gap-2 min-h-[44px]">
                   <span>{isEn ? 'Get My Free Quote' : 'Iniciar Cotización Inmediata'}</span>
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </button>
@@ -307,7 +311,9 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
           <div className="flex items-center gap-4 lg:justify-end">
             <div className="flex items-center gap-2">
               {HERO_VIDEOS.map((_, i) => (
-                <button key={i} onClick={() => goToVideo(i)} aria-label={`Video ${i + 1}`} className={`rounded-full transition-all duration-300 ${i === heroIndex ? 'w-6 h-2 bg-white' : 'w-2 h-2 bg-white/40 hover:bg-white/70'}`} />
+                <button key={i} onClick={() => goToVideo(i)} aria-label={`Video ${i + 1}`} className="inline-flex items-center justify-center w-11 h-11">
+                  <span className={`rounded-full transition-all duration-300 ${i === heroIndex ? 'w-6 h-2 bg-white' : 'w-2 h-2 bg-white/40 hover:bg-white/70'}`} />
+                </button>
               ))}
             </div>
             <button onClick={goNext} aria-label={isEn ? 'Next video' : 'Siguiente video'} className="flex items-center gap-1.5 text-white/80 hover:text-white text-xs font-light transition-all border border-white/30 hover:border-white/60 rounded-full px-3 py-1.5 backdrop-blur-sm">
@@ -328,7 +334,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 className={`flex flex-col items-center justify-center py-7 px-6 text-center ${i % 2 === 0 ? 'border-r border-slate-100' : ''} ${i < 2 ? 'border-b border-slate-100 lg:border-b-0' : ''} lg:border-r lg:last:border-r-0`}
               >
                 <span className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">{value}</span>
-                <span className="text-[11px] text-slate-500 mt-1.5 font-medium uppercase tracking-widest">{label}</span>
+                <span className="text-xs text-slate-500 mt-1.5 font-medium uppercase tracking-widest">{label}</span>
               </div>
             ))}
           </div>
@@ -421,23 +427,23 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Auto */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/hero3.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video src="/videos/hero3.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $89/mo' : 'Desde $75/mes'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Car Insurance' : 'Seguro de Auto'}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Your car is your independence. We cover accidents, theft, and liability — with 24/7 roadside assistance handled in English or Spanish. No SSN needed to get a quote. Subject to terms and conditions.' : 'Tu auto es tu independencia. Cubrimos accidentes, robo, daños a terceros y asistencia en carretera. Si tienes un accidente, te atendemos en español desde el primer momento. Sujeto a términos y condiciones.'}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Your car is your independence. We cover accidents, theft, and liability — with 24/7 roadside assistance handled in English or Spanish. No SSN needed to get a quote. Subject to terms and conditions.' : 'Tu auto es tu independencia. Cubrimos accidentes, robo, daños a terceros y asistencia en carretera. Si tienes un accidente, te atendemos en español desde el primer momento. Sujeto a términos y condiciones.'}</p>
+                  <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['Collision, theft, and liability coverage', '24/7 roadside assistance in English & Spanish', 'No SSN required to quote'] : ['Cobertura de colisión, robo y daños a terceros', 'Asistencia en carretera 24/7 atendida en español', 'Sin SSN requerido para cotizar']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <Link href={l('/seguros/auto')} className="px-4 py-2.5 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Auto')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">{isEn ? 'Get Auto Quote' : 'Ver Cobertura Auto'} <span className="text-sm">→</span></button>
+                  <Link href={l('/seguros/auto')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
+                  <button onClick={() => openQuote('Auto')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Get Auto Quote' : 'Ver Cobertura Auto'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -445,23 +451,23 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Mascotas */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/hero2-desktop.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video src="/videos/hero2-desktop.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Plans from $29/mo' : 'Planes desde $29/mes'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Pet Insurance' : 'Seguro de Mascotas'}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Take your pet to any licensed vet in the U.S. — no restricted network. You pay the bill and get up to 90% back within a week. One surgery can cost $8,000 without insurance. Subject to terms and conditions.' : 'Lleva a tu mascota a cualquier veterinario con licencia en EE.UU. — sin red restringida. Pagas la factura y recibes hasta el 90% de reembolso en menos de una semana. Una cirugía puede costarte $8,000 sin seguro. Sujeto a términos y condiciones.'}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Take your pet to any licensed vet in the U.S. — no restricted network. You pay the bill and get up to 90% back within a week. One surgery can cost $8,000 without insurance. Subject to terms and conditions.' : 'Lleva a tu mascota a cualquier veterinario con licencia en EE.UU. — sin red restringida. Pagas la factura y recibes hasta el 90% de reembolso en menos de una semana. Una cirugía puede costarte $8,000 sin seguro. Sujeto a términos y condiciones.'}</p>
+                  <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['Up to 90% reimbursement — within a week', 'Covers check-ups, surgeries, vaccines & meds', 'Any licensed vet in the U.S. or Canada'] : ['Hasta el 90% de reembolso — en menos de una semana', 'Cubre consultas, cirugías, vacunas y medicamentos', 'Cualquier veterinario con licencia en EE.UU. o Canadá']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <Link href={l('/seguros/mascotas')} className="px-4 py-2.5 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Mascotas')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">{isEn ? 'Quote Pet Insurance' : 'Cotizar Mascotas'} <span className="text-sm">→</span></button>
+                  <Link href={l('/seguros/mascotas')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
+                  <button onClick={() => openQuote('Mascotas')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Pet Insurance' : 'Cotizar Mascotas'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -469,23 +475,23 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Vida */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/vida.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video src="/videos/vida.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Coverage from $500k' : 'Coberturas desde $500k'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Life Insurance' : 'Seguro de Vida'}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Most people overestimate the cost by 5x. A healthy 30-year-old pays $30/month for $500K in coverage. And your employer\'s plan disappears the day you change jobs. Subject to terms and conditions.' : 'Solo el 43% de los latinos en USA tiene seguro de vida. La mayoría cree que cuesta miles — empieza en $30/mes. Lo que dejas a tu familia no tiene precio. Lo que cuesta protegerlos, sí. Sujeto a términos y condiciones.'}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Most people overestimate the cost by 5x. A healthy 30-year-old pays $30/month for $500K in coverage. And your employer\'s plan disappears the day you change jobs. Subject to terms and conditions.' : 'Solo el 43% de los latinos en USA tiene seguro de vida. La mayoría cree que cuesta miles — empieza en $30/mes. Lo que dejas a tu familia no tiene precio. Lo que cuesta protegerlos, sí. Sujeto a términos y condiciones.'}</p>
+                  <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['$30/mo for $500K coverage (healthy 30-yr-old)', 'Living benefits — access cash during serious illness', 'Portable — doesn\'t end when your job does'] : ['Desde $30/mes para familias jóvenes', 'Living Benefits: acceso al dinero ante enfermedad grave', 'Sin SSN, acepta ITIN']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <Link href={l('/seguros/vida')} className="px-4 py-2.5 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Vida')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">{isEn ? 'Explore Life Insurance' : 'Explorar Vida'} <span className="text-sm">→</span></button>
+                  <Link href={l('/seguros/vida')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
+                  <button onClick={() => openQuote('Vida')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Explore Life Insurance' : 'Explorar Vida'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -493,23 +499,23 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Comercial */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/comercial-negocio.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video src="/videos/comercial-negocio.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'SMBs & Enterprises' : 'PyMEs y Corporativos'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Business Insurance' : 'Seguro Comercial'}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">{isEn ? '44% of small businesses face a significant legal claim this year (SBA). One incident — slip, fire, or lawsuit — and you\'re personally liable. Subject to terms and conditions.' : 'El 30% de los negocios enfrenta al menos una demanda civil. Sin seguro comercial, pagas con tu cuenta personal — no con la del negocio. Sujeto a términos y condiciones.'}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? '44% of small businesses face a significant legal claim this year (SBA). One incident — slip, fire, or lawsuit — and you\'re personally liable. Subject to terms and conditions.' : 'El 30% de los negocios enfrenta al menos una demanda civil. Sin seguro comercial, pagas con tu cuenta personal — no con la del negocio. Sujeto a términos y condiciones.'}</p>
+                  <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['Property, equipment & inventory coverage', 'General liability + workers\' comp', 'Independent agent compares carriers for your industry'] : ['Local, equipos e inventario cubiertos', 'Responsabilidad civil si alguien se lastima', 'Cobertura sin historial empresarial previo requerido']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <Link href={l('/seguros/comercial')} className="px-4 py-2.5 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Comercial')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">{isEn ? 'Protect My Business' : 'Proteger Empresa'} <span className="text-sm">→</span></button>
+                  <Link href={l('/seguros/comercial')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
+                  <button onClick={() => openQuote('Comercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Protect My Business' : 'Proteger Empresa'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -517,23 +523,23 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Auto Comercial */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/comercial.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video src="/videos/comercial.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $110/mo' : 'Desde $110/mes'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Commercial Auto Insurance' : 'Auto Comercial'}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Your employee ran a business errand in their personal car and had an accident. Their insurer denied it — commercial use exclusion. Now your business is being sued. That gap has a name: HNOA. Subject to terms and conditions.' : 'Aceptaste el pedido. Tuviste un accidente. La aseguradora revisó el GPS: "uso comercial — reclamo denegado." Tu seguro personal no cubre tu trabajo. Este sí. Sujeto a términos y condiciones.'}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Your employee ran a business errand in their personal car and had an accident. Their insurer denied it — commercial use exclusion. Now your business is being sued. That gap has a name: HNOA. Subject to terms and conditions.' : 'Aceptaste el pedido. Tuviste un accidente. La aseguradora revisó el GPS: "uso comercial — reclamo denegado." Tu seguro personal no cubre tu trabajo. Este sí. Sujeto a términos y condiciones.'}</p>
+                  <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['Hired & Non-Owned Auto (HNOA) closes the gap', 'Gig drivers, cargo vans, work trucks & fleets', 'Business liability for employee vehicle incidents'] : ['Cubre Uber/Lyft/DoorDash + vans y pickups de trabajo', 'Sin SSN para cotizar', 'Conductores adicionales incluidos']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <Link href={l('/seguros/auto-comercial')} className="px-4 py-2.5 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('AutoComercial')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">{isEn ? 'Quote Commercial Auto' : 'Cotizar Flota'} <span className="text-sm">→</span></button>
+                  <Link href={l('/seguros/auto-comercial')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
+                  <button onClick={() => openQuote('AutoComercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Commercial Auto' : 'Cotizar Flota'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -541,23 +547,23 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Salud */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/salud.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video src="/videos/salud.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $199/mo' : 'Desde $199/mes'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Health Insurance' : 'Seguro de Salud'}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'One hospital stay averages $20,000. 79 million Americans carry medical debt — 2 in 5 working-age adults struggle to pay their bills (Commonwealth Fund). One plan changes that. Subject to terms and conditions.' : 'HIPAA — ley federal — prohíbe compartir tu información médica con migración. El 29% de familias inmigrantes evitó el médico en 2025 por miedo (KFF). Atenderte no afecta tu estatus. Sujeto a términos y condiciones.'}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'One hospital stay averages $20,000. 79 million Americans carry medical debt — 2 in 5 working-age adults struggle to pay their bills (Commonwealth Fund). One plan changes that. Subject to terms and conditions.' : 'HIPAA — ley federal — prohíbe compartir tu información médica con migración. El 29% de familias inmigrantes evitó el médico en 2025 por miedo (KFF). Atenderte no afecta tu estatus. Sujeto a términos y condiciones.'}</p>
+                  <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['Individual, family & employee group plans', 'No SSN or credit history required', 'Side-by-side plan comparison — no pressure'] : ['HIPAA: tu info médica no se comparte con migración', 'Sin SSN, acepta ITIN', 'Cubre familia completa desde $199/mes']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <Link href={l('/seguros/salud')} className="px-4 py-2.5 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Salud')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">{isEn ? 'View Health Plans' : 'Ver Planes de Salud'} <span className="text-sm">→</span></button>
+                  <Link href={l('/seguros/salud')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
+                  <button onClick={() => openQuote('Salud')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'View Health Plans' : 'Ver Planes de Salud'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -565,23 +571,23 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Dental */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/dental.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video src="/videos/dental.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $19/mo' : 'Desde $19/mes'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Dental Insurance' : 'Seguro Dental'}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">{isEn ? '1 in 3 adults skipped dental care last year because of cost. One root canal without coverage: $1,500. One implant: $3,500. Plans from $19/month cover cleanings to major procedures. Subject to terms and conditions.' : 'El 74% de adultos hispanos evita el dentista por el costo. Una endodoncia sin seguro: $1,500. Un implante: $3,500. Con plan desde $19/mes — cubierto. Sujeto a términos y condiciones.'}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? '1 in 3 adults skipped dental care last year because of cost. One root canal without coverage: $1,500. One implant: $3,500. Plans from $19/month cover cleanings to major procedures. Subject to terms and conditions.' : 'El 74% de adultos hispanos evita el dentista por el costo. Una endodoncia sin seguro: $1,500. Un implante: $3,500. Con plan desde $19/mes — cubierto. Sujeto a términos y condiciones.'}</p>
+                  <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['Preventive cleanings — no waiting period', 'Major treatments with low deductible', 'Whole family on one plan'] : ['Limpieza preventiva incluida, sin período de espera', 'Tratamientos mayores con deducible bajo', 'Toda la familia en un solo plan']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <Link href={l('/seguros/dental')} className="px-4 py-2.5 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Dental')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">{isEn ? 'Quote Dental' : 'Cotizar Dental'} <span className="text-sm">→</span></button>
+                  <Link href={l('/seguros/dental')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
+                  <button onClick={() => openQuote('Dental')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Dental' : 'Cotizar Dental'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -589,23 +595,23 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Paquete */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/paquete.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
+                <video src="/videos/paquete.mp4" muted loop playsInline preload="none" className="w-full h-full object-cover" onMouseEnter={e => e.currentTarget.play()} onMouseLeave={e => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Save up to 25%' : 'Hasta 25% de ahorro'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Home + Auto Bundle' : 'Paquete Casa + Auto'}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Home premiums rose 24% between 2021–2024. Bundling is the only move that cuts both policies at once — $466 to $1,184/yr in documented savings. Subject to terms and conditions.' : 'El landlord cubre las paredes. Tus cosas, no. El 71% de los renters latinos no tiene cobertura para sus pertenencias. Combina renters + auto y ahorra hasta $1,184/año. Sujeto a términos y condiciones.'}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Home premiums rose 24% between 2021–2024. Bundling is the only move that cuts both policies at once — $466 to $1,184/yr in documented savings. Subject to terms and conditions.' : 'El landlord cubre las paredes. Tus cosas, no. El 71% de los renters latinos no tiene cobertura para sus pertenencias. Combina renters + auto y ahorra hasta $1,184/año. Sujeto a términos y condiciones.'}</p>
+                  <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['$466–$1,184/yr savings (2026 carrier data)', 'Checks rebuild gap — not just the premium', 'Zero gap in coverage during transition'] : ['Renters + auto: hasta $1,184/año de ahorro real', 'Cubre ropa, laptop y muebles — no solo las paredes', 'Sin SSN, acepta ITIN']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <Link href={l('/seguros/paquete-casa-auto')} className="px-4 py-2.5 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Paquete')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">{isEn ? 'Build My Bundle' : 'Armar mi Paquete'} <span className="text-sm">→</span></button>
+                  <Link href={l('/seguros/paquete-casa-auto')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
+                  <button onClick={() => openQuote('Paquete')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Build My Bundle' : 'Armar mi Paquete'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -620,16 +626,16 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Umbrella Coverage' : 'Protección Extra'}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Average jury award for bodily injury: $1,479,368 (III). Your policy caps at $300K. That gap comes out of your savings, your home, your wages — unless you have umbrella. From $19/mo. Subject to terms and conditions.' : 'Tu seguro cubre $300K. Si la demanda es de $800K, pueden embargarte hasta el 25% del salario. La Protección Extra cierra esa brecha — desde $19/mes. Sujeto a términos y condiciones.'}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 pt-2">
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Average jury award for bodily injury: $1,479,368 (III). Your policy caps at $300K. That gap comes out of your savings, your home, your wages — unless you have umbrella. From $19/mo. Subject to terms and conditions.' : 'Tu seguro cubre $300K. Si la demanda es de $800K, pueden embargarte hasta el 25% del salario. La Protección Extra cierra esa brecha — desde $19/mes. Sujeto a términos y condiciones.'}</p>
+                  <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['$1M–$5M in additional liability coverage', 'Covers teen drivers, pools, dogs & social host', '$19/mo — most cost-effective protection available'] : ['Desde $1M de cobertura adicional', 'Cubre autos, hogar y responsabilidad civil', 'Protege salario y ahorros ante demandas civiles']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <Link href={l('/seguros/proteccion-extra')} className="px-4 py-2.5 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Umbrella')} className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm">{isEn ? 'Add Umbrella Coverage' : 'Añadir Protección Extra'} <span className="text-sm">→</span></button>
+                  <Link href={l('/seguros/proteccion-extra')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
+                  <button onClick={() => openQuote('Umbrella')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Add Umbrella Coverage' : 'Añadir Protección Extra'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -674,8 +680,8 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Photo / Avatar */}
             <div className="flex justify-center lg:justify-end order-2 lg:order-1">
               <div className="relative">
-                <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-[32px] shadow-xl overflow-hidden">
-                  <img src="/maria-fernanda.jpg" alt="María Fernanda" className="w-full h-full object-cover object-top" />
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-[32px] shadow-xl overflow-hidden">
+                  <Image src="/maria-fernanda.jpg" alt="María Fernanda" fill className="object-cover object-top" />
                 </div>
                 {/* Floating badge */}
                 <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl px-4 py-3 shadow-lg border border-stone-200/70 flex items-center gap-2">
@@ -743,7 +749,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 {isEn ? 'Choose your coverage, answer a few quick questions, and a bilingual specialist will contact you within 15 minutes.' : 'Elige tu seguro, responde unas preguntas rápidas y un asesor bilingüe te contacta en 15 minutos.'}
               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
               {ALL_INS_TYPES.map(tipo => {
                 const Icon = COTIZADOR_ICONS[tipo];
                 return (
@@ -788,7 +794,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   </span>
                   <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-open:rotate-45 transition-transform duration-200 text-lg font-light leading-none shrink-0">+</span>
                 </summary>
-                <p className="text-xs sm:text-sm text-slate-600 mt-4 pl-10 leading-relaxed">{a}</p>
+                <p className="text-sm text-slate-600 mt-4 pl-10 leading-relaxed">{a}</p>
               </details>
             ))}
           </div>
@@ -822,9 +828,9 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
       {/* ── Footer ── */}
       <footer className="bg-black text-slate-300 pt-20 pb-12 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-10 pb-16 border-b border-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/10">
             <div className="md:col-span-2 space-y-4">
-              <div className="text-white"><img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-10 w-auto brightness-0 invert" /></div>
+              <div className="text-white"><Image src="/logo.png" alt="Maria Fernanda Insurance Consulting" width={160} height={40} className="h-10 w-auto brightness-0 invert" /></div>
               <p className="text-xs text-slate-400 max-w-sm leading-relaxed font-light">{isEn ? 'Bilingual insurance agency for the Hispanic community and immigrant families across the United States.' : 'Seguridad generacional, protección de vehículos y mascotas, y resguardo patrimonial integral.'}</p>
               <div className="text-xs text-slate-500 pt-1">Correduría Aseguradora Autorizada • Miembro NAIC #892110 • Calificación AM Best A+ Superior</div>
               {/* ── Social ── */}
