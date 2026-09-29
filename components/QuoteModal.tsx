@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback, type ComponentType } from 'react';
+import { pushGTMEvent } from '@/lib/gtm';
 import {
   X, CaretLeft, Check, CircleNotch, Car, Truck, PawPrint, Heart,
   Stethoscope, Tooth, Package, Buildings, Umbrella, MapPin,
@@ -422,6 +423,14 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
         }),
       });
       if (!res.ok) { const d = await res.json(); setSubmitErr(d.error ?? 'Error al enviar. Intenta de nuevo.'); return; }
+      pushGTMEvent({
+        event: 'quote_submitted',
+        insurance_type: data.tipo_seguro,
+        quote_path: data.quote_path,
+        estado_us: data.estado_us || 'unknown',
+        timeline: data.timeline,
+        lead_score: calcScore(data),
+      });
       await fade(() => setSuccess(true));
     } catch { setSubmitErr('Error de conexión. Intenta de nuevo.'); }
     finally { setSubmitting(false); }

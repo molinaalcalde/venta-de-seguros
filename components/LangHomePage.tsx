@@ -28,6 +28,7 @@ import {
   TRUST_STATS_ES, TRUST_STATS_EN, MARIA_BIO_ES, MARIA_BIO_EN,
 } from '@/components/LangHomePageData';
 import type { InsType } from '@/components/QuoteModal';
+import { pushGTMEvent } from '@/lib/gtm';
 
 export default function LangHomePage({ params }: { params: { lang: string } }) {
   const { lang } = params;
@@ -111,9 +112,15 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
   const [quoteOpen, setQuoteOpen] = useState(false);
   const [quoteType, setQuoteType] = useState<InsType | undefined>(undefined);
 
-  const openQuote = (insType?: InsType) => {
+  const openQuote = (insType?: InsType, source = 'generic') => {
     setQuoteType(insType);
     setQuoteOpen(true);
+    pushGTMEvent({
+      event: 'quote_modal_open',
+      insurance_type: insType ?? 'general',
+      page_lang: lang,
+      source,
+    });
   };
 
   const faqItems = isEn ? FAQ_EN : FAQ_ES;
@@ -184,10 +191,10 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             </nav>
             <div className="flex items-center gap-2">
               <LanguageSwitcher scrolled={scrolled} />
-              <button onClick={() => openQuote()} className={`hidden lg:flex items-center gap-2 px-5 py-2 text-[13px] font-semibold rounded-full transition-all duration-200 active:scale-95 ${scrolled ? 'bg-slate-900 text-white hover:bg-slate-700' : 'bg-white text-slate-900 hover:bg-white/90 shadow-lg'}`}>
+              <button onClick={() => openQuote(undefined, 'desktop_nav')} className={`hidden lg:flex items-center gap-2 px-5 py-2 text-[13px] font-semibold rounded-full transition-all duration-200 active:scale-95 ${scrolled ? 'bg-slate-900 text-white hover:bg-slate-700' : 'bg-white text-slate-900 hover:bg-white/90 shadow-lg'}`}>
                 {isEn ? 'Get a Quote' : 'Cotizar Ahora'}
               </button>
-              <button onClick={() => openQuote()} className={`lg:hidden flex items-center px-4 py-2 min-h-[44px] text-xs font-semibold rounded-full transition-all duration-200 active:scale-95 ${scrolled ? 'bg-slate-900 text-white' : 'bg-white text-slate-900 shadow-lg'}`}>
+              <button onClick={() => openQuote(undefined, 'mobile_nav')} className={`lg:hidden flex items-center px-4 py-2 min-h-[44px] text-xs font-semibold rounded-full transition-all duration-200 active:scale-95 ${scrolled ? 'bg-slate-900 text-white' : 'bg-white text-slate-900 shadow-lg'}`}>
                 {isEn ? 'Quote' : 'Cotizar'}
               </button>
               <button className="lg:hidden flex flex-col gap-[5px] p-3 min-h-[44px] min-w-[44px] items-center justify-center transition-all" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={isEn ? 'Open menu' : 'Abrir menú'}>
@@ -228,10 +235,10 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               ))}
             </nav>
             <div className="px-6 pb-8">
-              <a href="#cotizador" onClick={() => setMobileMenuOpen(false)} className="w-full py-3.5 rounded-xl bg-slate-900 text-white text-sm font-semibold text-center flex items-center justify-center gap-2 hover:bg-slate-800 transition-all">
+              <button onClick={() => { setMobileMenuOpen(false); openQuote(undefined, 'mobile_menu'); }} className="w-full py-3.5 rounded-xl bg-slate-900 text-white text-sm font-semibold text-center flex items-center justify-center gap-2 hover:bg-slate-800 transition-all">
                 {isEn ? 'Get a Free Quote' : 'Cotizar Ahora'}
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -297,7 +304,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   : 'Seguros de auto, vida, salud y mascotas para tu familia. Agentes bilingüe que entienden tu comunidad, sin importar tu estatus migratorio.'}
               </p>
               <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
-                <button onClick={() => openQuote()} className="px-6 py-3.5 rounded-full bg-white text-slate-900 font-semibold text-sm hover:bg-slate-100 transition-all shadow-lg active:scale-95 flex items-center gap-2 min-h-[44px]">
+                <button onClick={() => openQuote(undefined, 'hero')} className="px-6 py-3.5 rounded-full bg-white text-slate-900 font-semibold text-sm hover:bg-slate-100 transition-all shadow-lg active:scale-95 flex items-center gap-2 min-h-[44px]">
                   <span>{isEn ? 'Get My Free Quote' : 'Iniciar Cotización Inmediata'}</span>
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </button>
@@ -371,14 +378,14 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   <p className="text-xs text-slate-700 mt-2 font-light leading-relaxed">{activeTabData.description}</p>
                 </div>
                 <div className="pt-6">
-                  <button onClick={() => openQuote(TAB_TO_INS[activeTab])} className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-900 hover:underline">
+                  <button onClick={() => openQuote(TAB_TO_INS[activeTab], 'solutions_tab')} className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-900 hover:underline">
                     <span>{activeTabData.cta}</span><ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </button>
                 </div>
               </div>
               <div className="md:col-span-3 bg-[#f0f6f0]/90 rounded-2xl p-7 lg:p-8 flex flex-col justify-between min-h-[280px] border border-white/60">
                 <div className="flex justify-end">
-                  <button onClick={() => openQuote(TAB_TO_INS[activeTab])} className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-800 hover:scale-110 hover:text-black transition-all shadow-sm" title={isEn ? 'Get Quote' : 'Calcular Prima'}>
+                  <button onClick={() => openQuote(TAB_TO_INS[activeTab], 'solutions_tab')} className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-800 hover:scale-110 hover:text-black transition-all shadow-sm" title={isEn ? 'Get Quote' : 'Calcular Prima'}>
                     <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
                   </button>
                 </div>
@@ -443,7 +450,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/auto')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Auto')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Get Auto Quote' : 'Ver Cobertura Auto'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('Auto', 'card_auto')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Get Auto Quote' : 'Ver Cobertura Auto'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -467,7 +474,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/mascotas')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Mascotas')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Pet Insurance' : 'Cotizar Mascotas'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('Mascotas', 'card_mascotas')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Pet Insurance' : 'Cotizar Mascotas'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -491,7 +498,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/vida')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Vida')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Explore Life Insurance' : 'Explorar Vida'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('Vida', 'card_vida')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Explore Life Insurance' : 'Explorar Vida'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -515,7 +522,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/comercial')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Comercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Protect My Business' : 'Proteger Empresa'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('Comercial', 'card_comercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Protect My Business' : 'Proteger Empresa'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -539,7 +546,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/auto-comercial')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('AutoComercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Commercial Auto' : 'Cotizar Flota'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('AutoComercial', 'card_auto_comercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Commercial Auto' : 'Cotizar Flota'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -563,7 +570,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/salud')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Salud')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'View Health Plans' : 'Ver Planes de Salud'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('Salud', 'card_salud')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'View Health Plans' : 'Ver Planes de Salud'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -587,7 +594,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/dental')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Dental')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Dental' : 'Cotizar Dental'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('Dental', 'card_dental')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Dental' : 'Cotizar Dental'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -611,7 +618,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/paquete-casa-auto')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Paquete')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Build My Bundle' : 'Armar mi Paquete'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('Paquete', 'card_paquete')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Build My Bundle' : 'Armar mi Paquete'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -635,7 +642,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/proteccion-extra')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Umbrella')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Add Umbrella Coverage' : 'Añadir Protección Extra'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('Umbrella', 'card_umbrella')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Add Umbrella Coverage' : 'Añadir Protección Extra'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -720,6 +727,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   href={(isEn ? MARIA_BIO_EN : MARIA_BIO_ES).ctaHref}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => pushGTMEvent({ event: 'whatsapp_click', source: 'bio_section', page_lang: lang })}
                   className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#25D366] text-white text-sm font-semibold hover:bg-[#1eb857] transition-all shadow-md active:scale-95"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-4 h-4" aria-hidden="true">
@@ -727,7 +735,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   </svg>
                   {(isEn ? MARIA_BIO_EN : MARIA_BIO_ES).cta}
                 </a>
-                <button onClick={() => openQuote()} className="text-sm font-medium text-slate-700 hover:text-slate-900 underline underline-offset-4 transition-colors">
+                <button onClick={() => openQuote(undefined, 'bio_section')} className="text-sm font-medium text-slate-700 hover:text-slate-900 underline underline-offset-4 transition-colors">
                   {isEn ? 'Or get a free quote' : 'O cotizá gratis'}
                 </button>
               </div>
@@ -760,7 +768,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 );
               })}
             </div>
-            <button onClick={() => openQuote()} className="w-full py-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold transition-all shadow-md active:scale-95 flex items-center justify-center gap-2">
+            <button onClick={() => openQuote(undefined, 'cotizador')} className="w-full py-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold transition-all shadow-md active:scale-95 flex items-center justify-center gap-2">
               <span>{isEn ? 'Get My Free Quote Now' : 'Iniciar mi cotización gratis'}</span>
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </button>
@@ -817,7 +825,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {isEn ? 'Fill out the form and a bilingual specialist will contact you within 24 hours — no pressure, no fine print, no SSN required.' : 'Completá el formulario y un asesor en español te contacta en 24 horas — sin presiones, sin letra chica.'}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
-            <button onClick={() => openQuote()} className="px-8 py-3.5 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-sage-50 transition-all shadow-xl active:scale-95 flex items-center gap-2 group">
+            <button onClick={() => openQuote(undefined, 'final_cta')} className="px-8 py-3.5 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-sage-50 transition-all shadow-xl active:scale-95 flex items-center gap-2 group">
               <span>{isEn ? 'Get My Free Quote' : 'Iniciar Cotización Inmediata'}</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-slate-900" aria-hidden="true" />
             </button>
