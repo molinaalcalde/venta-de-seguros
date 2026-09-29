@@ -75,8 +75,8 @@ const ADAPTIVE: Record<InsType, { q1: string; opts1: string[]; key1: string; q2:
   Mascotas: {
     q1: '¿Qué tipo de mascota tienes?', key1: 'mascota_tipo',
     opts1: ['🐕 Perro', '🐈 Gato', '🐾 Otra mascota'],
-    q2: '¿Cuántos años tiene tu mascota?', key2: 'mascota_edad',
-    opts2: ['🐣 Cachorro (menos de 1 año)', '🐩 Joven (1–5 años)', '🐕 Adulto (5–10 años)', '🦮 Senior (más de 10 años)'],
+    q2: '¿Cuál es la raza de tu mascota?', key2: 'mascota_raza',
+    opts2: ['🐕 Mestizo / Sin raza pura', '🦮 Labrador Retriever', '🐕 Golden Retriever', '🐕 French Bulldog', '🐩 Poodle / Caniche', '🐕 Chihuahua', '🐕 Pastor Alemán', '🐈 Gato doméstico', '🐾 Otra raza'],
   },
   Vida: {
     q1: '¿En qué rango de edad estás?', key1: 'edad_rango',
@@ -123,6 +123,10 @@ type ExtraField =
   | { type: 'address'; key: string; label: string; required: boolean };
 
 const PATH_B_FIELDS: Partial<Record<InsType, ExtraField[]>> = {
+  Mascotas: [
+    { type: 'chips', key: 'mascota_edad', label: '¿Cuántos años tiene tu mascota?', required: true,
+      options: ['🐣 Cachorro (menos de 1 año)', '🐩 Joven (1–5 años)', '🐕 Adulto (5–10 años)', '🦮 Senior (más de 10 años)'] },
+  ],
   Auto: [
     { type: 'vin',     key: 'vin',             label: 'Número VIN del vehículo',              required: true },
     { type: 'date',    key: 'fecha_nacimiento', label: 'Tu fecha de nacimiento',               required: true },
