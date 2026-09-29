@@ -340,9 +340,9 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
             {[
               { icon: Shield,     title: 'Comparamos por ti',        desc: 'No trabajamos para una sola compañía. Buscamos la mejor cobertura al precio más justo para tu situación.' },
-              { icon: Headset,    title: 'Atención en español',      desc: 'Agentes reales que te explican todo en español — desde la cotización hasta el momento de usar tu seguro.' },
-              { icon: CreditCard, title: 'Sin historial de crédito', desc: 'No necesitas historial crediticio para cotizar. Solo tu nombre y correo para empezar.' },
-              { icon: Lock,       title: 'Sin sorpresas',            desc: 'Tarifas claras, sin letra chica. Sabes exactamente qué compraste antes de firmar.' },
+              { icon: Headset,    title: 'Atención en español',      desc: 'Agentes reales que te explican todo en español, desde la cotización hasta el momento de usar tu seguro.' },
+              { icon: Lock,       title: 'Sin costo para ti',        desc: 'La comisión la paga la aseguradora. Pagas exactamente lo mismo que si fueras directo, pero con alguien que compara por ti.' },
+              { icon: CreditCard, title: 'Revisión anual incluida',  desc: 'Cada 12 meses revisamos tu póliza. Si tu carrier subió el precio o encontramos algo mejor, te avisamos. Sin que tengas que hacer nada.' },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-sm">
                 <Icon weight="duotone" className={`w-6 h-6 ${t.iconText} mb-3`} />
