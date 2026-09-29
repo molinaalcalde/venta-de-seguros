@@ -440,17 +440,17 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
-                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Auto Insurance' : 'Seguro de Auto'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Coverage that fits your life and your budget. We help you compare auto insurance options from multiple carriers and explain your coverage clearly in English or Spanish.' : 'Tu auto es tu independencia. Cubrimos accidentes, robo, daños a terceros y asistencia en carretera. Si tienes un accidente, te atendemos en español desde el primer momento. Sujeto a términos y condiciones.'}</p>
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Car Insurance' : 'Seguro de Auto'}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Rates hit a 47-year high. Most drivers pay the increase without ever shopping around. We compare 10+ carriers for your exact situation in 5 minutes — and check back every year.' : 'La mayoría paga el aumento de su seguro sin cuestionar. Comparamos 10+ aseguradoras por ti en 5 minutos y revisamos tu póliza cada año. Sin costo para ti.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['Liability, collision and comprehensive coverage', 'Multiple carrier options compared for you', 'Bilingual service in English and Spanish', 'Options may be available without an SSN'] : ['Cobertura de colisión, robo y daños a terceros', 'Asistencia en carretera 24/7 atendida en español', 'Sin SSN requerido para cotizar']).map(b => (
+                    {(isEn ? ['We shop 10+ carriers so you don\'t have to', 'Annual rate review, every 12 months', 'Someone in your corner when you file a claim', 'No credit check, no commitment'] : ['Comparamos 10+ aseguradoras por ti', 'Revisión anual de tu póliza incluida', 'Atención en español en todo el proceso', 'ITIN y licencia extranjera aceptados']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/auto')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Auto', 'card_auto')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Get Auto Quote' : 'Ver Cobertura Auto'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('Auto', 'card_auto')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Check my rate — free' : 'Cotizar gratis'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
