@@ -5,8 +5,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   const isEn = params.lang === 'en';
   return {
     metadataBase: new URL(BASE),
-    title: isEn ? 'Home + Auto Insurance Bundle | Save up to $1,184/yr · ITIN Accepted' : 'Seguro de Casa y Auto en Paquete | ITIN aceptado · Ahorra hasta $1,184/año',
-    description: isEn ? 'Bundle home and auto insurance with one independent agent. Save up to 25% — $466 to $1,184 per year. ITIN accepted. Renters and homeowners. Free comparison.' : 'Seguro de hogar para inquilinos desde $15/mes combinado con tu auto. Un solo agente para todo. Comparamos 10+ aseguradoras. ITIN aceptado. Ahorra hasta $1,184 al año. Cotización gratis.',
+    title: isEn ? 'Home + Auto Insurance Bundle | Save $466-$1,184/yr · Independent Agent' : 'Seguro de Casa y Auto en Paquete | ITIN aceptado · Ahorra hasta $1,184/año',
+    description: isEn ? 'Bundle home and auto insurance with one independent agent who compares 10+ carriers. Save $466 to $1,184 per year. Renters qualify too. Annual review included. Free quote.' : 'Seguro de hogar para inquilinos desde $15/mes combinado con tu auto. Un solo agente para todo. Comparamos 10+ aseguradoras. ITIN aceptado. Ahorra hasta $1,184 al año. Cotización gratis.',
     alternates: { canonical: isEn ? `${BASE}/en/home-auto-bundle` : `${BASE}/es/seguros/paquete-casa-auto`, languages: { 'es-US': `${BASE}/es/seguros/paquete-casa-auto`, 'en-US': `${BASE}/en/home-auto-bundle`, 'x-default': `${BASE}/es/seguros/paquete-casa-auto` } },
     openGraph: { title: isEn ? 'Home + Auto Bundle for Hispanics | Maria Fernanda' : 'Paquete Seguro Casa + Auto para Hispanos | Maria Fernanda', description: isEn ? 'Bundle and save up to 25%. No SSN. ITIN accepted.' : 'Combina y ahorra hasta 25%. Sin SSN. ITIN aceptado.', url: isEn ? `${BASE}/en/home-auto-bundle` : `${BASE}/es/seguros/paquete-casa-auto`, siteName: 'Maria Fernanda Insurance Consulting', locale: isEn ? 'en_US' : 'es_US', type: 'website' },
     robots: { index: true, follow: true },
