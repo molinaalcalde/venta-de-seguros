@@ -489,16 +489,16 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Life Insurance' : 'Seguro de Vida'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'More affordable than most people expect. A healthy 30-year-old can get $500,000 in coverage for around $30 a month. We compare term and permanent life options from multiple carriers.' : 'Solo el 43% de los latinos en USA tiene seguro de vida. La mayoría cree que cuesta miles — empieza en $30/mes. Lo que dejas a tu familia no tiene precio. Lo que cuesta protegerlos, sí. Sujeto a términos y condiciones.'}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'More affordable than most people expect. A healthy 30-year-old can get $500,000 in coverage for around $30 a month. We compare term and permanent life options from multiple carriers. Subject to terms and conditions.' : 'El 72% de los latinos calcula el precio cinco veces más caro de lo que es (LIMRA). Una persona sana de 30 años paga alrededor de $30/mes por $500,000 de cobertura. Y si te enferman antes, puedes usar el dinero mientras sigues vivo. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['Term and permanent life options available', 'Living benefits available on qualifying policies', 'Coverage stays with you even if you change jobs', 'Licensed agent explains your options in plain English'] : ['Desde $30/mes para familias jóvenes', 'Living Benefits: acceso al dinero ante enfermedad grave', 'Sin SSN, acepta ITIN']).map(b => (
+                    {(isEn ? ['Term and permanent life options available', 'Living benefits available on qualifying policies', 'Coverage stays with you even if you change jobs', 'Licensed agent explains your options in plain English'] : ['Term y permanente: te explicamos cuál te conviene', 'Living Benefits: el dinero lo usas tú si te enferman', 'Beneficiarios en cualquier país del mundo', 'ITIN aceptado, sin examen médico en muchos planes']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/vida')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Vida', 'card_vida')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Explore Life Insurance' : 'Explorar Vida'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('Vida', 'card_vida')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Explore Life Insurance →' : 'Cotizar gratis →'}</button>
                 </div>
               </div>
             </div>
