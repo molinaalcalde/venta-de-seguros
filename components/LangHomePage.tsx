@@ -484,7 +484,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/vida.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Coverage from $500k' : 'Coberturas desde $500k'}</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Up to $300k, no medical exam' : 'Hasta $300k sin examen médico'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
