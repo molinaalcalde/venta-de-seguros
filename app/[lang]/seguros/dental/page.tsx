@@ -7,8 +7,8 @@ const configEs: InsurancePageConfig = {
   badgeIcon: Tooth,
   badge: 'ITIN aceptado · Sin espera en preventivo · Desde $19/mes · Cotización gratis',
   heroLine1: 'Seguro Dental',
-  heroItalic: 'cruzar la frontera no debería ser tu plan dental',
-  heroSubtitle: 'Más de un millón de personas cruzan a México cada año para atenderse. No por gusto. Porque en USA los costos sin seguro son altos y el sistema es difícil de navegar sin ayuda. Una limpieza sin seguro cuesta $200. Con el plan correcto cuesta $0. Un canal de raíz sin seguro cuesta $1,400. Con 6 meses de plan pagado, $114. Comparamos las opciones disponibles para encontrar el que funciona para tu situación.',
+  heroItalic: 'en USA el seguro dental cubre más cuando no te duele nada',
+  heroSubtitle: 'En México vas al dentista cuando duele. En USA el sistema funciona al revés: las limpiezas, revisión y rayos X cuestan $0 con el plan desde el primer día. Una corona o canal de raíz tienen períodos de espera de 6 a 12 meses. Quienes entran cuando ya tienen el problema esperan. Quienes entran antes tienen todo cubierto cuando lo necesitan. Comparamos los planes disponibles para encontrar el correcto antes de que llegue el dolor.',
   trustBadges: ['ITIN aceptado', 'Sin espera en preventivo', 'Limpiezas al 100%', 'Desde $19/mes'],
   priceFrom: 'Desde $19/mes',
   eligibilityTitle: 'Para quién es este seguro',
@@ -18,23 +18,23 @@ const configEs: InsurancePageConfig = {
     'Familias con hijos que necesitan limpiezas y revisiones regulares',
     'Quienes tienen ITIN y nunca supieron que podían tener seguro dental aquí',
     'Personas que fueron al dentista sin seguro y recibieron una factura inesperada',
-    'Quienes tienen seguro pero no saben si el plan cubre lo que realmente necesitan',
+    'Quienes llevan años sin ir y no saben por dónde empezar',
   ],
   features: [
+    {
+      icon: Warning,
+      title: 'Cada minuto, dos hispanos van a urgencias por dolor de muela.',
+      desc: 'Una sala de emergencias cobra entre $1,500 y $3,000 por una visita por dolor dental. No arreglan el diente, solo dan analgésicos. El canal de raíz que con el seguro cuesta entre $150 y $280 termina en una visita de urgencias de $2,000 más el procedimiento después. Con el plan correcto, una emergencia dental va al dentista, no a urgencias.',
+    },
+    {
+      icon: Tooth,
+      title: 'Si tienes diabetes, lo que pasa en tu boca afecta directamente tu azúcar.',
+      desc: 'Los hispanos tienen 80% más probabilidad de tener diabetes tipo 2 que los blancos no hispanos. La relación entre enfermedad de encías y diabetes es bidireccional: la periodontitis dificulta el control del azúcar y la diabetes empeora la enfermedad dental. Los hispanos con diabetes tienen casi el triple de pérdida dental que los no diabéticos. Dos limpiezas al año no son cosmética, son parte del manejo de tu salud.',
+    },
     {
       icon: CurrencyDollar,
       title: 'Tu plan tiene un límite anual. Una corona ya lo consume.',
       desc: 'La mayoría de planes dentales cubre hasta $1,500 al año. Una corona cuesta entre $800 y $2,500. Un canal de raíz entre $700 y $1,800. Si necesitas los dos en el mismo año, el seguro deja de pagar antes de terminar el tratamiento. Comparamos planes por límite anual, período de espera y cobertura real, no solo por precio mensual. El plan más barato es casi siempre el que sale más caro.',
-    },
-    {
-      icon: Warning,
-      title: 'Si compras cuando ya tienes dolor, llegaste demasiado tarde.',
-      desc: 'Los planes dentales tienen períodos de espera de 6 a 12 meses para coronas y canales de raíz. Si contratas con el problema ya presente, el plan no cubre ese tratamiento hasta que pase ese tiempo. Las limpiezas, revisión y rayos X no tienen período de espera en la mayoría de planes. Empieza hoy y el preventivo cubre desde el primer día.',
-    },
-    {
-      icon: Tooth,
-      title: 'Dos limpiezas al año cuestan $0. Ignorarlas cuesta $1,400.',
-      desc: 'La enfermedad periodontal no tratada está ligada a enfermedades cardiovasculares, diabetes tipo 2 y deterioro cognitivo según investigaciones de Harvard Medical School. Una limpieza sin seguro cuesta entre $75 y $200. Con el plan cuesta $0. Con dos limpiezas anuales incluidas, el plan se paga solo antes de usar cualquier otro beneficio.',
     },
   ],
   coverageItems: [
@@ -75,7 +75,7 @@ const configEs: InsurancePageConfig = {
     {
       name: 'Rosa V.',
       location: 'Orlando, Florida',
-      text: 'No sabía que podía tener seguro dental con ITIN. Mi asesora me explicó todo en español, cómo funciona, qué cubre, qué no. Eso no lo encontré en ningún otro lado.',
+      text: 'Llevaba años sin ir al dentista porque no entendía cómo funcionaba el seguro aquí. En México ibas y pagabas. Aquí no sabía qué preguntar ni cómo empezar. Mi asesora me explicó todo en español, qué cubre cada plan y qué no, sin presión. Por primera vez alguien me lo explicó sin querer venderme una sola compañía.',
     },
   ],
   faq: [
@@ -84,12 +84,12 @@ const configEs: InsurancePageConfig = {
       a: 'Limpieza y revisión entre $150 y $300. Empaste entre $200 y $300 por diente. Canal de raíz entre $700 y $1,500. Corona entre $1,000 y $2,500. Implante entre $3,000 y $6,000. Con un plan desde $19 al mes, las limpiezas cuestan $0 y los tratamientos bajan entre un 50% y un 80%.',
     },
     {
-      q: '¿Qué es el límite anual y por qué importa?',
-      a: 'El límite anual es el máximo que tu seguro dental paga en un año. La mayoría de planes tiene un límite de entre $1,000 y $2,000. Una corona cuesta entre $800 y $2,500. Un canal de raíz entre $700 y $1,800. Si necesitas ambos en el mismo año, el seguro puede dejar de pagar antes de terminar el tratamiento. Por eso comparamos planes por límite anual antes de recomendarte uno.',
+      q: '¿Por qué el seguro dental en USA cubre más cuando no te duele nada?',
+      a: 'En USA el seguro dental está diseñado para el cuidado preventivo: las limpiezas, revisión y rayos X tienen cobertura desde el primer día sin período de espera. Los tratamientos mayores como coronas o canales de raíz tienen esperas de 6 a 12 meses. El sistema premia a quienes entran antes del problema. Si contratas cuando ya tienes dolor, el plan no cubre ese tratamiento de inmediato.',
     },
     {
-      q: '¿Qué significa que no hay período de espera en preventivo?',
-      a: 'Las limpiezas, revisión y rayos X puedes usarlos desde el primer día que activas tu plan. Los tratamientos mayores como coronas o canales de raíz tienen espera de 6 a 12 meses según el plan. Por eso conviene entrar antes de necesitarlos. Hay planes que eliminan el período de espera en tratamientos mayores. Te indicamos cuáles aplican en tu estado.',
+      q: '¿Tiene sentido el seguro dental si puedo ir al dentista en México?',
+      a: 'Para quien vive cerca de la frontera, el turismo dental puede ser una opción. Pero para quien vive en Florida, Nueva York, Nueva Jersey o Illinois, un viaje a Los Algodones significa combustible, hotel, tiempo perdido y sin seguimiento local si hay complicaciones. Con un plan desde $19 al mes, la limpieza preventiva cuesta $0 y el dentista está a 15 minutos de tu casa. Calculamos cuál opción tiene más sentido para tu situación específica.',
     },
     {
       q: '¿Cuál es la diferencia entre plan HMO y PPO dental?',
@@ -112,9 +112,9 @@ const configEs: InsurancePageConfig = {
       a: 'Si contratas directo con Delta Dental o Cigna, solo ves sus planes. Un agente independiente compara entre 10 y más aseguradoras, revisa el límite anual, los períodos de espera y si tu dentista actual está en la red. El precio que pagas es el mismo. La diferencia es que alguien revisa que el plan realmente cubra lo que necesitas antes de que firmes.',
     },
   ],
-  ctaTitle: 'Tu dentista te está esperando',
-  ctaItalic: 'el plan que se paga solo desde el primer mes',
-  ctaSubtitle: 'ITIN aceptado. Desde $19/mes. Limpiezas al 100% sin período de espera. Cotización gratis.',
+  ctaTitle: 'No importa cuánto tiempo llevas sin ir.',
+  ctaItalic: 'el plan cubre desde la primera visita',
+  ctaSubtitle: 'Sin juicios, sin preguntas. ITIN aceptado. Desde $19/mes. Cotización gratis.',
   ctaButton: 'Cotizar gratis',
   heroVideo: '/videos/hero-dental.mp4',
   theme: 'cyan',
