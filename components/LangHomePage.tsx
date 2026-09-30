@@ -512,17 +512,17 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
-                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Business Insurance' : 'Seguro Comercial'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'One incident can cost more than your annual revenue. We help small business owners compare commercial insurance options including general liability, property and workers\' comp.' : 'El 30% de los negocios enfrenta al menos una demanda civil. Sin seguro comercial, pagas con tu cuenta personal — no con la del negocio. Sujeto a términos y condiciones.'}</p>
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Business Insurance' : 'Seguro de Negocio'}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'One defended lawsuit costs $75,000+ on average, even when you win. We compare multiple carriers for your specific industry so you know exactly what you\'re covered for. Sujeto a términos y condiciones.' : 'Una demanda puede vaciarte las cuentas, aunque tengas LLC. Comparamos múltiples aseguradoras para proteger tu negocio por lo que realmente vale, en español, desde el primer día. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['General liability and commercial property coverage', 'Workers\' compensation options available', 'Independent agent compares carriers for your industry', 'Bilingual support in English and Spanish'] : ['Local, equipos e inventario cubiertos', 'Responsabilidad civil si alguien se lastima', 'Cobertura sin historial empresarial previo requerido']).map(b => (
+                    {(isEn ? ['GL, BOP, Workers Comp compared across carriers', 'COI issued in under 24 hours', 'Coverage for every industry — restaurants to contractors', 'ITIN accepted, bilingual support'] : ['Responsabilidad Civil (GL) desde $19/mes', 'COI en menos de 24 horas para landlords y contratos', 'ITIN o EIN aceptados', 'Workers Comp cuando contratas tu primer empleado']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/comercial')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Comercial', 'card_comercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Protect My Business' : 'Proteger Empresa'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('Comercial', 'card_comercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Protect My Business →' : 'Cotizar gratis →'}</button>
                 </div>
               </div>
             </div>

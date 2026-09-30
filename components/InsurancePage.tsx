@@ -71,6 +71,7 @@ export interface InsurancePageConfig {
   badgeIcon?: Icon;
   features: { icon: Icon; title: string; desc: string }[];
   coverageItems: string[];
+  industrySections?: { emoji: string; industry: string; highlight: string; coverages: string[] }[];
   steps: { title: string; desc: string }[];
   testimonials: { name: string; location: string; text: string }[];
   faq: { q: string; a: string }[];
@@ -295,6 +296,34 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
             ))}
           </div>
         </section>
+
+        {/* ── Industry sections (optional) ────────────────────────── */}
+        {config.industrySections && config.industrySections.length > 0 && (
+          <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
+            <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-2">
+              Cobertura por{' '}
+              <span className={`font-editorial-italic ${t.iconText}`}>tipo de negocio</span>
+            </h2>
+            <p className="text-slate-500 font-light text-sm mb-10">Cada industria tiene riesgos distintos. Tu póliza debe reflejar los tuyos.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {config.industrySections.map((ind) => (
+                <div key={ind.industry} className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                  <div className="text-3xl mb-3">{ind.emoji}</div>
+                  <h3 className="font-semibold text-slate-900 mb-1">{ind.industry}</h3>
+                  <p className={`text-xs font-medium mb-4 ${t.iconText}`}>{ind.highlight}</p>
+                  <ul className="space-y-2">
+                    {ind.coverages.map((c) => (
+                      <li key={c} className="flex items-start gap-2 text-xs text-slate-600">
+                        <CheckCircle weight="duotone" className={`w-3.5 h-3.5 ${t.iconText} shrink-0 mt-0.5`} />
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* ── How it works ─────────────────────────────────────────── */}
         <section className="bg-white border-y border-slate-100">
