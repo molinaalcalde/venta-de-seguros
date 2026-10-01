@@ -61,15 +61,18 @@ export const solutionsTabs_es = [
 ];
 
 export const solutionsTabs_en = [
-  { label: 'Car Insurance', category: 'Road Protection', title: 'Your car, your work, your freedom — covered without an SSN', description: 'No SSN needed to quote. Driving without insurance in most states: fines up to $5,000, license suspension, and personal financial liability for all damages. From $89/mo, with ITIN or passport. Subject to terms and conditions.', cta: 'See my auto price', price: 'From $89', priceLabel: 'Reference rate · subject to approval' },
-  { label: 'Pet Insurance', category: "Your Pet's Health", title: '1 in 3 pets will need emergency care — are you covered?', description: "Take your pet to any licensed vet in the U.S. — no restricted network. You pay the bill and get up to 90% back within a week. One surgery can cost $8,000 without insurance. Subject to terms and conditions.", cta: 'See pet insurance price', price: 'From $29', priceLabel: 'Reference rate · subject to approval' },
-  { label: 'Life Insurance', category: 'Protection for Your Family', title: "You use the money while alive — not just your family after you're gone", description: 'Living Benefits: if diagnosed with a heart attack, cancer, or serious illness, you can access the money while still alive. No SSN, no medical exam on many plans, beneficiaries in any country. From $15/mo. Subject to terms and conditions.', cta: 'See life insurance price', price: 'From $15', priceLabel: 'Reference rate · subject to approval' },
+  { label: 'Car Insurance', category: 'Road Protection', title: 'Car insurance premiums rose 30% in two years. Drivers who compared saved a median $461 last year.', description: 'No SSN needed to quote. Driving without insurance in most states: fines up to $5,000, license suspension, and personal financial liability for all damages. From $89/mo, with ITIN or passport. Subject to terms and conditions.', cta: 'See my auto price', price: 'From $89', priceLabel: 'Reference rate · subject to approval' },
+  { label: 'Life Insurance', category: 'Protection for Your Family', title: '72% of Americans overestimate the cost of life insurance. Most base their estimate on a guess, not the real price.', description: 'Living Benefits: if diagnosed with a heart attack, cancer, or serious illness, you can access the money while still alive. No SSN, no medical exam on many plans, beneficiaries in any country. From $15/mo. Subject to terms and conditions.', cta: 'See life insurance price', price: 'From $15', priceLabel: 'Reference rate · subject to approval' },
+  { label: 'Health Insurance', category: 'Your Health, Your Priority', title: "1 in 4 Americans with health insurance still can't afford to use it. A plan is not the same as being covered.", description: 'The median employer health plan deductible is now $2,750. Most people find this out when they need care. We compare marketplace, employer supplement, and individual plans to find what fits your situation and budget. From $199/mo. Subject to terms and conditions.', cta: 'View health plans', price: 'From $199', priceLabel: 'Reference rate · subject to approval' },
+  { label: 'Pet Insurance', category: "Your Pet's Health", title: '38% of pet owners cannot cover an emergency vet visit without going into debt. Fewer than 4% have pet insurance.', description: "Take your pet to any licensed vet in the U.S. — no restricted network. You pay the bill and get up to 90% back within a week. One surgery can cost $8,000 without insurance. Subject to terms and conditions.", cta: 'See pet insurance price', price: 'From $29', priceLabel: 'Reference rate · subject to approval' },
   { label: 'Business Insurance', category: 'Protection for Your Business', title: 'A customer slips in your store → $80,000 lawsuit. Can you cover it?', description: 'Without business insurance, one lawsuit can shut down what took you years to build. BOP, general liability, Workers Comp. COI in 24 hours. EIN and ITIN accepted. From $19/mo. Subject to terms and conditions.', cta: 'Get business insurance quote', price: 'From $19', priceLabel: 'Reference rate · subject to approval' },
-  { label: 'Health Insurance', category: 'Your Health, Your Priority', title: 'Your information NEVER reaches immigration. Plans with ITIN, any status.', description: 'Protected by HIPAA — we never share your information with immigration authorities. One ER visit without insurance: $10,000+. Individual and family plans with ITIN, from $199/mo. Bilingual agents. Subject to terms and conditions.', cta: 'View health plans', price: 'From $199', priceLabel: 'Reference rate · subject to approval' },
   { label: 'Umbrella Coverage', category: 'Asset Protection', title: 'Your policy covers $300K. The accident cost $600K. Who pays the difference?', description: "The difference comes from your savings, your home, your business — unless you have umbrella coverage. Less than $1 a day for $1 million in additional protection. The last line of defense for what you've built. Subject to terms and conditions.", cta: 'Get umbrella quote', price: 'From $19', priceLabel: 'Reference rate · subject to approval' },
 ];
 
-export const TAB_TO_INS: InsType[] = ['Auto', 'Salud', 'Vida', 'Mascotas', 'Comercial', 'Umbrella'];
+export const TAB_TO_INS_ES: InsType[] = ['Auto', 'Salud', 'Vida', 'Mascotas', 'Comercial', 'Umbrella'];
+export const TAB_TO_INS_EN: InsType[] = ['Auto', 'Vida', 'Salud', 'Mascotas', 'Comercial', 'Umbrella'];
+/** @deprecated use TAB_TO_INS_ES or TAB_TO_INS_EN */
+export const TAB_TO_INS = TAB_TO_INS_ES;
 
 export const ALL_INS_TYPES: InsType[] = ['Auto', 'AutoComercial', 'Mascotas', 'Vida', 'Salud', 'Dental', 'Paquete', 'Comercial', 'Umbrella'];
 
@@ -85,14 +88,14 @@ export const FAQ_ES = [
 ];
 
 export const FAQ_EN = [
-  { n: '01', q: 'Can I get car insurance without a Social Security Number?', a: 'Yes. You can quote and enroll using an ITIN, passport, or consular ID card. No SSN ever required. We work with immigrants, DACA recipients, visa holders, and those with pending status. You only need your name and email to get started.', open: true },
-  { n: '02', q: 'What happens if I get pulled over without insurance?', a: 'In most states: fines from $150 to $5,000, license suspension, possible vehicle impoundment, and personal financial liability for all damages you cause. For immigrants, this can also complicate your legal situation. Minimum required liability insurance protects both you and other drivers.' },
+  { n: '01', q: 'What is an independent insurance agent and why does it matter?', a: 'A captive agent at State Farm, Allstate, or GEICO can only show you that company\'s rates. An independent agent compares 10+ carriers at the same time and brings you the best options for your situation. You pay the same price either way. The difference is who is working for you versus who is working for the carrier.', open: true },
+  { n: '02', q: 'Why did my premium go up without any explanation?', a: 'Half of insured Americans received a carrier-initiated rate increase in the past 12 months (JD Power 2025). Carriers raise rates based on ZIP code claims data, reinsurance costs, and inflation. None of which depends on your driving record. When it happens, you have three options: accept it, call to negotiate, or compare with other carriers. An independent agent can run that comparison in one conversation.' },
   { n: '03', q: "I drive for DoorDash, Uber, or Lyft — do I need commercial auto insurance?", a: "It depends on the phase. Apps cover you when you have an active delivery or passenger (Phase 2–3), but when the app is on and you're waiting for a request (Phase 1), coverage is minimal or nonexistent. DoorDash and Instacart provide zero vehicle coverage at any phase. Rideshare/gig insurance fills that gap. Without it, a Phase 1 accident could leave you with no coverage at all." },
-  { n: '04', q: 'Is my personal information shared with immigration authorities?', a: 'No. Your information is 100% confidential and is never shared with ICE, immigration authorities, or any government agency without a specific court order. We comply with HIPAA and all state privacy regulations. This includes your immigration status, income, and any other personal data you share with us.' },
+  { n: '04', q: 'Does getting a quote affect my credit score?', a: 'No. Getting a quote is a soft inquiry that does not appear on your credit report and does not affect your score. We never run a hard credit check to provide a quote. You can compare rates across multiple carriers with zero impact on your credit.' },
   { n: '05', q: 'Can non-US citizens get life insurance in America?', a: 'Yes. We accept ITIN as valid identification. You can designate beneficiaries anywhere in the world — your mom in Mexico, your kids in Guatemala, your partner in Colombia. They do not need US documents. Our Living Benefits plans also let you access the money while still alive if diagnosed with a critical illness.' },
   { n: '06', q: 'How much does car insurance cost for immigrants in the US?', a: 'From $89/month, depending on your state, vehicle, and driving history. Using an ITIN instead of an SSN does not significantly affect your premium. Fill out the form, and a bilingual agent will call you within 24 hours with your personalized quote — no pressure.' },
   { n: '07', q: 'Does getting a quote affect my credit score?', a: 'No. Getting a quote does not affect your credit score. We do not require a credit check to provide a quote or to enroll in most plans. You can explore all your options with zero impact on your credit.' },
-  { n: '08', q: 'What is a home and auto bundle and how much can I save?', a: 'When you combine home insurance (or renters insurance if you rent) with auto insurance, you get a discount on both policies. The typical savings is $400–$900 per year. One thing most people don\'t know: your landlord\'s insurance does NOT cover your belongings — if there\'s a theft or fire, everything you own is gone without renters insurance. No SSN to quote the bundle.' },
+  { n: '08', q: 'What happens if my claim is denied or takes too long?', a: 'When you file a claim directly with a carrier, you call a 1-800 number and start from zero. When you work with an independent agent, you call one person who knows your policy and your history, and knows exactly who to escalate to. 80% of customers who have a poor claims experience leave their carrier. Most don\'t know an independent agent could have changed the outcome. That advocacy is part of what we do, not an extra service.' },
 ];
 
 export const HERO_VIDEOS = [
@@ -110,7 +113,7 @@ export const TRUST_STATS_ES = [
 
 export const TRUST_STATS_EN = [
   { value: '200+', label: 'Families protected' },
-  { value: '8', label: 'Insurance types' },
+  { value: '10+', label: 'Carriers compared' },
   { value: '100%', label: 'Bilingual service' },
   { value: '24h', label: 'Guaranteed response' },
 ];
@@ -129,7 +132,7 @@ export const MARIA_BIO_EN = {
   name: 'María Fernanda',
   title: 'Licensed Insurance Agent',
   subtitle: 'Your bilingual agent',
-  bio: "I understand firsthand what it means to build a life in a new country. That's why I became an insurance agent: so your family can have the protection it deserves — no language barriers, no fine print, and no matter your immigration status.",
+  bio: "I became an insurance agent so your family has the protection it deserves, with no language barriers, no fine print, and someone in your corner when it matters most.",
   quote: '"Because protecting your family shouldn\'t depend on having a Social Security Number."',
   cta: 'Talk to María Fernanda',
   ctaHref: "https://wa.me/19082280973?text=Hi%20Mar%C3%ADa%20Fernanda%20%F0%9F%91%8B%20I'd%20like%20to%20explore%20insurance%20options.%20When's%20a%20good%20time%20to%20connect%3F",
