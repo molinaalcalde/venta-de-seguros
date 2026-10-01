@@ -3,7 +3,7 @@ import { headers } from 'next/headers';
 import Script from 'next/script';
 import './globals.css';
 
-const BASE_URL = 'https://venta-de-seguros.vercel.app';
+const BASE_URL = 'https://consultingbymf.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     'Seguros de auto, vida, salud, mascotas y comerciales para la comunidad hispana en Estados Unidos. Atención 100% en español. Cotiza online en menos de un minuto. Acepta ITIN.',
   keywords: [
     'seguros en español',
-    'seguro de vida para inmigrantes',
+    'seguro de vida en español',
     'seguro de auto hispanos',
     'seguro con ITIN',
     'seguros baratos hispanos',
     'seguro de salud en español USA',
     'agencia de seguros hispana',
-    'seguros para inmigrantes',
+    'agente independiente de seguros',
     'seguro sin SSN',
     'Medicare en español',
     'seguro de mascotas',
