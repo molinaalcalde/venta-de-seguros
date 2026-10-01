@@ -20,10 +20,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     metadataBase: new URL(BASE_URL),
     title: isEn
       ? 'Maria Fernanda Insurance Consulting | Bilingual Insurance for the Hispanic Community'
-      : 'Maria Fernanda Insurance Consulting | Seguros en Español para la Comunidad Hispana',
+      : 'Agente de Seguros en Español | ITIN aceptado · 10+ Aseguradoras · Cotización gratis',
     description: isEn
       ? 'Bilingual insurance agency for immigrants and the Hispanic community in the United States. Auto, life, health, pet, dental, and business insurance. ITIN accepted. No SSN required.'
-      : 'Seguros de auto, vida, salud, mascotas y comerciales para la comunidad hispana en Estados Unidos. Atención 100% en español. Cotiza online en menos de un minuto. Acepta ITIN.',
+      : 'Agente independiente compara 10+ aseguradoras de auto, salud, vida, dental y más. Atención 100% en español. ITIN aceptado. Sin SSN para cotizar. Cotización gratis.',
     keywords: isEn
       ? [
           'insurance without SSN',
@@ -38,16 +38,16 @@ export async function generateMetadata({ params }: { params: { lang: string } })
           'insurance en español',
         ]
       : [
-          'seguros en español',
-          'seguro de vida para inmigrantes',
-          'seguro de auto hispanos',
-          'seguro con ITIN',
-          'seguros baratos hispanos',
-          'seguro de salud en español USA',
-          'agencia de seguros hispana',
-          'seguros para inmigrantes',
-          'seguro sin SSN',
-          'Medicare en español',
+          'agente de seguros en español',
+          'comparar seguros en español',
+          'seguro de auto con ITIN',
+          'agente independiente de seguros',
+          'cotizar seguro de auto en español',
+          'seguro de salud en español',
+          'seguro de vida sin SSN',
+          'seguros para hispanos USA',
+          'seguro de auto ITIN',
+          'cotizar seguro gratis en español',
         ],
     alternates: {
       canonical: `${BASE_URL}/${lang}`,
@@ -60,10 +60,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     openGraph: {
       title: isEn
         ? 'Maria Fernanda Insurance Consulting | Bilingual Insurance for the Hispanic Community'
-        : 'Maria Fernanda Insurance Consulting | Seguros en Español para la Comunidad Hispana',
+        : 'Agente Independiente de Seguros en Español | María Fernanda',
       description: isEn
         ? 'Bilingual insurance for immigrants and Hispanic families. Auto, life, health, pet, dental, and business insurance. ITIN accepted. No SSN required.'
-        : 'Seguros de auto, vida, salud, mascotas y comerciales con atención 100% en español. Cotiza sin SSN. Acepta ITIN. Agentes bilingüe certificados.',
+        : 'Compara 10+ aseguradoras en español. Auto, salud, vida, dental, mascotas y comercial. ITIN aceptado. Sin SSN. Cotización gratis.',
       type: 'website',
       locale: isEn ? 'en_US' : 'es_US',
       url: `${BASE_URL}/${lang}`,
