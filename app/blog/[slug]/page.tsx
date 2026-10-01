@@ -90,7 +90,7 @@ export default function ArticlePage({ params }: Props) {
     publisher: {
       '@type': 'Organization',
       name: 'Maria Fernanda Insurance Consulting',
-      url: 'https://venta-de-seguros.vercel.app',
+      url: 'https://consultingbymf.com',
     },
     inLanguage: 'es-US',
   };
