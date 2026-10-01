@@ -285,23 +285,23 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="flex flex-wrap gap-2 mb-5 lg:justify-end">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
                   <Globe className="w-3.5 h-3.5" aria-hidden="true" />
-                  {isEn ? '100% Bilingual Service' : 'Atención 100% en español'}
+                  {isEn ? 'Personalized Service' : 'Atención 100% en español'}
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
                   <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
-                  {isEn ? 'ITIN accepted with participating carriers' : 'Acepta ITIN · Sin SSN'}
+                  {isEn ? '10+ Carriers Compared' : 'Acepta ITIN · Sin SSN'}
                 </span>
               </div>
               <h1 className="text-[40px] sm:text-5xl md:text-6xl lg:text-[76px] font-normal tracking-tight leading-[1.08] drop-shadow-sm">
                 {isEn ? (
-                  <>Insurance options<br /><span className="font-sans font-light">available</span>{' '}<span className="font-editorial-italic font-normal">without an SSN</span></>
+                  <>The right coverage<br /><span className="font-sans font-light">for your life,</span>{' '}<span className="font-editorial-italic font-normal">your family.</span></>
                 ) : (
                   <>Protegiendo <br /><span className="font-sans font-light">lo que más</span>{' '}<span className="font-editorial-italic font-normal">Valoras</span></>
                 )}
               </h1>
               <p className="mt-4 text-white/90 text-sm sm:text-base font-light max-w-xl leading-relaxed lg:ml-auto">
                 {isEn
-                  ? 'Bilingual insurance guidance for individuals, families and businesses. Auto, Home, Life, Health and Commercial Insurance. ITIN accepted with participating carriers. No credit check to quote.'
+                  ? 'Independent agent comparing 10+ carriers for auto, life, health, pet, and business insurance. Personalized guidance and annual policy review included. Free quote.'
                   : 'Seguros de auto, vida, salud y mascotas para tu familia. Agentes bilingüe que entienden tu comunidad, sin importar tu estatus migratorio.'}
               </p>
               <div className="mt-6 flex flex-wrap gap-4 items-center lg:justify-end">
@@ -386,7 +386,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               </div>
               <div className="md:col-span-3 bg-[#f0f6f0]/90 rounded-2xl p-7 lg:p-8 flex flex-col justify-between min-h-[280px] border border-white/60">
                 <div className="flex justify-end">
-                  <button onClick={() => openQuote(tabToIns[activeTab], 'solutions_tab')} className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-800 hover:scale-110 hover:text-black transition-all shadow-sm" title={isEn ? 'Get Quote' : 'Calcular Prima'}>
+                  <button onClick={() => openQuote(tabToIns[activeTab], 'solutions_tab')} className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-800 hover:scale-110 hover:text-black transition-all shadow-sm" title={isEn ? 'Get Quote' : 'Cotizar gratis'}>
                     <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
                   </button>
                 </div>
@@ -397,7 +397,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   </div>
                   <p className="text-xs font-normal text-slate-600 mt-1">{activeTabData.priceLabel}</p>
                   <a className="mt-4 w-full py-2.5 px-4 rounded-xl bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all text-center flex items-center justify-center gap-1.5" href="#cotizador">
-                    <span>Calcular Prima</span><ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                    <span>{isEn ? 'Get free quote' : 'Cotizar gratis'}</span><ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </a>
                 </div>
               </div>
