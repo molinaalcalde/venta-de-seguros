@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-const BASE_URL = 'https://venta-de-seguros.vercel.app';
+const BASE_URL = 'https://consultingbymf.com';
 
 export function generateStaticParams() {
   return [{ lang: 'es' }, { lang: 'en' }];
@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
       ? 'Pet insurance with up to 90% reimbursement. No SSN required. ITIN accepted. Any vet in the USA. Full dental coverage included. Dogs and cats.'
       : 'Seguro de mascotas con reembolso de hasta el 90%. Sin SSN requerido. Acepta ITIN. Cualquier veterinario en EE.UU. Cobertura dental completa incluida.',
     keywords: isEn
-      ? ['pet insurance no SSN', 'pet insurance ITIN', 'pet insurance immigrants', 'fetch pet insurance', 'pet insurance reimbursement', 'dog cat insurance USA']
-      : ['seguro de mascotas sin SSN', 'seguro de mascotas ITIN', 'seguro veterinario inmigrantes', 'fetch pet insurance', 'seguro mascotas reembolso', 'seguro mascotas hispanos'],
+      ? ['pet insurance no SSN', 'pet insurance ITIN', 'fetch pet insurance', 'pet insurance reimbursement', 'dog cat insurance USA', 'pet insurance bilingual']
+      : ['seguro de mascotas sin SSN', 'seguro de mascotas ITIN', 'seguro veterinario hispanos', 'fetch pet insurance', 'seguro mascotas reembolso', 'seguro mascotas hispanos'],
     alternates: {
       canonical: isEn ? `${BASE_URL}/en/pet-insurance` : `${BASE_URL}/es/seguros/mascotas`,
       languages: {
