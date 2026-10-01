@@ -139,7 +139,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             '@context': 'https://schema.org', '@type': 'InsuranceAgency',
             name: 'Maria Fernanda Insurance Consulting',
             url: 'https://consultingbymf.com/en',
-            description: 'Independent insurance agent comparing 10+ carriers for car, life, health, pet, dental, and business insurance. Annual policy review and claims advocacy included. Bilingual service in English and Spanish.',
+            description: 'Independent insurance agent comparing 10+ carriers for car, life, health, pet, dental, and business insurance. Annual policy review and claims advocacy included. Free quote.',
             areaServed: { '@type': 'Country', name: 'United States' },
             availableLanguage: ['en-US', 'es-US'],
             priceRange: '$$',
@@ -516,7 +516,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Business Insurance' : 'Seguro de Negocio'}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'One defended lawsuit costs $75,000+ on average, even when you win. We compare multiple carriers for your specific industry so you know exactly what you\'re covered for. Sujeto a términos y condiciones.' : 'Una demanda puede vaciarte las cuentas, aunque tengas LLC. Comparamos múltiples aseguradoras para proteger tu negocio por lo que realmente vale, en español, desde el primer día. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['GL, BOP, Workers Comp compared across carriers', 'COI issued in under 24 hours', 'Coverage for every industry — restaurants to contractors', 'ITIN accepted, bilingual support'] : ['Responsabilidad Civil (GL) desde $19/mes', 'COI en menos de 24 horas para landlords y contratos', 'ITIN o EIN aceptados', 'Workers Comp cuando contratas tu primer empleado']).map(b => (
+                    {(isEn ? ['GL, BOP, Workers Comp compared across carriers', 'COI issued in under 24 hours', 'Coverage for every industry — restaurants to contractors', 'One agent for all your business coverage needs'] : ['Responsabilidad Civil (GL) desde $19/mes', 'COI en menos de 24 horas para landlords y contratos', 'ITIN o EIN aceptados', 'Workers Comp cuando contratas tu primer empleado']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
@@ -540,7 +540,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Commercial Auto Insurance' : 'Auto Comercial'}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Personal auto policies do not cover business use. If your employees or drivers use vehicles for work, your personal policy may not cover a claim. We help you find the right commercial auto coverage.' : 'Aceptaste el pedido. Tuviste un accidente. La aseguradora revisó el GPS: "uso comercial — reclamo denegado." Tu seguro personal no cubre tu trabajo. Este sí. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['Covers vans, trucks, fleets and gig drivers', 'Hired and Non-Owned Auto (HNOA) coverage available', 'Business liability for work-related vehicle incidents', 'Bilingual service in English and Spanish'] : ['Cubre Uber/Lyft/DoorDash + vans y pickups de trabajo', 'Sin SSN para cotizar', 'Conductores adicionales incluidos']).map(b => (
+                    {(isEn ? ['Covers vans, trucks, fleets and gig drivers', 'Hired and Non-Owned Auto (HNOA) coverage available', 'Business liability for work-related vehicle incidents', 'One contact for all claims and renewals'] : ['Cubre Uber/Lyft/DoorDash + vans y pickups de trabajo', 'Sin SSN para cotizar', 'Conductores adicionales incluidos']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
@@ -564,7 +564,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Health Insurance' : 'Seguro de Salud'}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'We help you find a plan that fits your needs and your budget. Whether you need individual, family or small group coverage, we compare plans from multiple carriers and walk you through your options at no cost.' : 'Tu información médica está protegida por la ley federal HIPAA y nunca se comparte sin tu consentimiento. Comparamos 10+ aseguradoras para encontrar el plan que cubre tu familia: consultas, medicamentos, emergencias. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['Individual, family and small group plans', 'ACA marketplace and private plan options', 'Side-by-side plan comparison at no cost', 'Bilingual support in English and Spanish'] : ['HIPAA: tu info médica no se comparte con migración', 'Sin SSN, acepta ITIN', 'Cubre familia completa desde $199/mes']).map(b => (
+                    {(isEn ? ['Individual, family and small group plans', 'ACA marketplace and private plan options', 'Side-by-side plan comparison at no cost', 'Annual review to make sure your plan still fits'] : ['HIPAA: tu info médica no se comparte con migración', 'Sin SSN, acepta ITIN', 'Cubre familia completa desde $199/mes']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
@@ -638,9 +638,9 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {(isEn ? [
-              { icon: Globe, title: '100% Bilingual', desc: 'Every agent speaks English and Spanish fluently. You choose the language — we adapt to you, not the other way around.' },
-              { icon: Lock, title: '100% Private', desc: 'Your information is never shared with government agencies or immigration authorities. HIPAA compliant and fully regulated.' },
-              { icon: ShieldCheck, title: 'No SSN Required', desc: 'We accept ITIN and do not require a Social Security Number to quote or enroll. Coverage for everyone, regardless of immigration status.' },
+              { icon: Globe, title: 'We Work For You', desc: 'A captive agent has one company to sell. We compare 10+ carriers and bring you the best option — at no extra cost to you.' },
+              { icon: Lock, title: '100% Private', desc: 'Your information is never shared with third parties without your consent. HIPAA compliant and fully regulated.' },
+              { icon: ShieldCheck, title: 'Annual Policy Review', desc: 'Rates go up. Life changes. We review your policy every 12 months — at no cost — to make sure your coverage still fits.' },
               { icon: CreditCard, title: 'No Credit Check to Quote', desc: 'Getting a quote doesn\'t affect your credit score and doesn\'t require a credit history. Just answer a few questions and see your options.' },
             ] : [
               { icon: Globe, title: 'Agentes 100% bilingüe', desc: 'Te atendemos completamente en español. Sin traductores, sin malentendidos. Tu asesor habla tu idioma de principio a fin.' },
@@ -657,7 +657,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
         </div>
       </section>
 
-      {/* ── Meet María Fernanda ── */}
+      {/* ── Meet Maria Fernanda ── */}
       <section className="py-20 lg:py-28 bg-[#f4f8f4] border-t border-stone-200/60">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -665,7 +665,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             <div className="flex justify-center lg:justify-end order-2 lg:order-1">
               <div className="relative">
                 <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-[32px] shadow-xl overflow-hidden">
-                  <Image src="/maria-fernanda.jpg" alt="María Fernanda" fill className="object-cover object-top" />
+                  <Image src="/maria-fernanda.jpg" alt="Maria Fernanda" fill className="object-cover object-top" />
                 </div>
                 {/* Floating badge */}
                 <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl px-4 py-3 shadow-lg border border-stone-200/70 flex items-center gap-2">
@@ -726,12 +726,12 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
         <div className="max-w-5xl mx-auto px-6">
           <div className="bg-white rounded-[32px] p-8 sm:p-12 shadow-sm border border-stone-200/70">
             <div className="max-w-xl mx-auto text-center mb-8">
-              <span className="text-xs font-semibold uppercase tracking-widest text-sage-800">{isEn ? 'FREE QUOTE · NO SSN · BILINGUAL' : 'Cotización Online · Sin SSN · En Español'}</span>
+              <span className="text-xs font-semibold uppercase tracking-widest text-sage-800">{isEn ? 'FREE QUOTE · NO COMMITMENT · NO CREDIT CHECK' : 'Cotización Online · Sin SSN · En Español'}</span>
               <h3 className="text-2xl sm:text-3xl font-normal text-slate-900 mt-2 tracking-tight">
                 {isEn ? <>Your personalized{' '}<span className="font-editorial-italic">insurance quote</span></> : <>Tu cotización{' '}<span className="font-editorial-italic">personalizada</span></>}
               </h3>
               <p className="text-xs sm:text-sm text-slate-500 mt-2">
-                {isEn ? 'Choose your coverage, answer a few quick questions, and a bilingual specialist will contact you within 15 minutes.' : 'Elige tu seguro, responde unas preguntas rápidas y un asesor bilingüe te contacta en 15 minutos.'}
+                {isEn ? 'Choose your coverage, answer a few quick questions, and a licensed agent will contact you within 15 minutes.' : 'Elige tu seguro, responde unas preguntas rápidas y un asesor bilingüe te contacta en 15 minutos.'}
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
@@ -750,9 +750,9 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </button>
             <div className="mt-6 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-center gap-4 text-[11px] text-slate-400">
-              <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-sage-800" aria-hidden="true" />{isEn ? 'No SSN required' : 'Sin SSN — aceptamos ITIN'}</span>
+              <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-sage-800" aria-hidden="true" />{isEn ? 'No credit check' : 'Sin SSN — aceptamos ITIN'}</span>
               <span>·</span>
-              <span>{isEn ? '100% bilingual service' : 'Atención 100% en español'}</span>
+              <span>{isEn ? 'No commitment' : 'Atención 100% en español'}</span>
               <span>·</span>
               <span>{isEn ? 'No spam' : 'Sin presiones · Sin spam'}</span>
             </div>
@@ -793,13 +793,13 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
         <div className="relative max-w-5xl mx-auto px-6 text-center space-y-6 z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-[#89f5e7]"></span>
-            <span className="text-xs uppercase tracking-widest text-sage-200 font-semibold">{isEn ? 'No cost · No commitment · Bilingual' : 'Sin costo · Sin compromiso · En español'}</span>
+            <span className="text-xs uppercase tracking-widest text-sage-200 font-semibold">{isEn ? 'No cost · No commitment · Free annual review' : 'Sin costo · Sin compromiso · En español'}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight leading-tight max-w-3xl mx-auto">
             {isEn ? <>Ready to protect<br /><span className="font-editorial-italic font-normal text-sage-200">everything you&apos;ve built?</span></> : <>Tu familia merece estar{' '}<span className="font-editorial-italic font-normal text-sage-200">protegida hoy</span></>}
           </h2>
           <p className="text-sm sm:text-base text-sage-100/90 max-w-2xl mx-auto leading-relaxed font-light">
-            {isEn ? 'Fill out the form and a bilingual specialist will contact you within 24 hours. No pressure, no fine print, no SSN required.' : 'Completá el formulario y un asesor en español te contacta en 24 horas. Sin presiones, sin letra chica.'}
+            {isEn ? 'Fill out the form and a licensed agent will contact you within 24 hours. No pressure, no fine print, no commitment.' : 'Completá el formulario y un asesor en español te contacta en 24 horas. Sin presiones, sin letra chica.'}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
             <button onClick={() => openQuote(undefined, 'final_cta')} className="px-8 py-3.5 rounded-full bg-white text-slate-900 font-semibold text-xs sm:text-sm hover:bg-sage-50 transition-all shadow-xl active:scale-95 flex items-center gap-2 group">
@@ -863,11 +863,11 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
           <div className="pt-8 pb-6 border-b border-white/5 text-[10px] text-slate-600 font-light leading-relaxed max-w-5xl">
             {isEn ? (
               <>
-                María Fernanda Insurance Consulting is a licensed independent insurance agent. Insurance products are offered through multiple carriers and are subject to underwriting review, approval, and availability by state. Quotes and price estimates shown on this website are not binding offers of coverage. Final premiums are determined by the issuing carrier based on individual risk factors. Coverage is subject to policy terms, conditions, limitations, and exclusions. Not all products are available in all states. Savings figures referenced represent documented savings achieved by specific clients under specific circumstances and are not guaranteed or typical results. Individual savings vary based on state, coverage type, carrier, and personal risk profile. Licensed in New Jersey (License #[NJ_LICENSE]). Licensed in additional states upon request. This website does not constitute a solicitation in any state where the agent is not licensed. Testimonials reflect individual customer experiences. An independent insurance agent will contact you.
+                Maria Fernanda Insurance Consulting is a licensed independent insurance agent. Insurance products are offered through multiple carriers and are subject to underwriting review, approval, and availability by state. Quotes and price estimates shown on this website are not binding offers of coverage. Final premiums are determined by the issuing carrier based on individual risk factors. Coverage is subject to policy terms, conditions, limitations, and exclusions. Not all products are available in all states. Savings figures referenced represent documented savings achieved by specific clients under specific circumstances and are not guaranteed or typical results. Individual savings vary based on state, coverage type, carrier, and personal risk profile. Licensed in New Jersey (License #[NJ_LICENSE]). Licensed in additional states upon request. This website does not constitute a solicitation in any state where the agent is not licensed. Testimonials reflect individual customer experiences. An independent insurance agent will contact you.
               </>
             ) : (
               <>
-                María Fernanda Insurance Consulting es una agencia de seguros independiente con licencia. Los productos de seguro se ofrecen a través de múltiples aseguradoras y están sujetos a revisión de suscripción, aprobación y disponibilidad según el estado. Las cotizaciones y estimaciones de precio que aparecen en este sitio no son ofertas vinculantes de cobertura. Las primas finales son determinadas por la aseguradora según el perfil de riesgo individual. La cobertura está sujeta a los términos, condiciones, limitaciones y exclusiones de la póliza. Las cifras de ahorro mencionadas representan resultados obtenidos por clientes específicos y no son resultados garantizados ni típicos. El ahorro individual varía según el estado, tipo de cobertura, aseguradora y perfil de riesgo personal. Licenciada en New Jersey (Licencia #[NJ_LICENSE]). Licenciada en estados adicionales disponible a solicitud.
+                Maria Fernanda Insurance Consulting es una agencia de seguros independiente con licencia. Los productos de seguro se ofrecen a través de múltiples aseguradoras y están sujetos a revisión de suscripción, aprobación y disponibilidad según el estado. Las cotizaciones y estimaciones de precio que aparecen en este sitio no son ofertas vinculantes de cobertura. Las primas finales son determinadas por la aseguradora según el perfil de riesgo individual. La cobertura está sujeta a los términos, condiciones, limitaciones y exclusiones de la póliza. Las cifras de ahorro mencionadas representan resultados obtenidos por clientes específicos y no son resultados garantizados ni típicos. El ahorro individual varía según el estado, tipo de cobertura, aseguradora y perfil de riesgo personal. Licenciada en New Jersey (Licencia #[NJ_LICENSE]). Licenciada en estados adicionales disponible a solicitud.
               </>
             )}
           </div>

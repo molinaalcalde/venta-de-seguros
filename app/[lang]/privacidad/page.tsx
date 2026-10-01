@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Política de Privacidad — María Fernanda Insurance',
+  title: 'Privacy Policy | Política de Privacidad — Maria Fernanda Insurance',
   robots: { index: false, follow: false },
 };
 
@@ -19,7 +19,7 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
       <section className="space-y-8 text-sm leading-relaxed text-slate-700">
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">1. Who We Are</h2>
-          <p>María Fernanda Insurance Consulting is a licensed independent insurance agent operating in the United States. We collect personal information solely to provide insurance quotes and connect individuals with coverage options through licensed carriers.</p>
+          <p>Maria Fernanda Insurance Consulting is a licensed independent insurance agent operating in the United States. We collect personal information solely to provide insurance quotes and connect individuals with coverage options through licensed carriers.</p>
         </div>
 
         <div>
@@ -65,7 +65,7 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">5. TCPA Consent and Communications</h2>
-          <p>By submitting a quote request, you provide prior express written consent for María Fernanda Insurance Consulting to contact you at the phone number and email address provided, including via automated telephone calls, pre-recorded messages, and text messages (SMS/MMS), for insurance-related purposes. Consent is not a condition of purchase. You may revoke consent at any time by replying STOP to any text message or emailing us.</p>
+          <p>By submitting a quote request, you provide prior express written consent for Maria Fernanda Insurance Consulting to contact you at the phone number and email address provided, including via automated telephone calls, pre-recorded messages, and text messages (SMS/MMS), for insurance-related purposes. Consent is not a condition of purchase. You may revoke consent at any time by replying STOP to any text message or emailing us.</p>
         </div>
 
         <div>
@@ -96,7 +96,7 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">10. Contact</h2>
           <p>For privacy-related requests or questions, contact us at:</p>
-          <p className="mt-2 font-medium">María Fernanda Insurance Consulting<br />
+          <p className="mt-2 font-medium">Maria Fernanda Insurance Consulting<br />
           Email: [EMAIL]<br />
           Phone: (908) 228-0973</p>
         </div>
@@ -113,7 +113,7 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
       <section className="space-y-8 text-sm leading-relaxed text-slate-700">
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">1. Quiénes somos</h2>
-          <p>María Fernanda Insurance Consulting es una agencia de seguros independiente con licencia en los Estados Unidos. Recopilamos información personal exclusivamente para proporcionar cotizaciones de seguros y conectar a las personas con opciones de cobertura a través de aseguradoras con licencia.</p>
+          <p>Maria Fernanda Insurance Consulting es una agencia de seguros independiente con licencia en los Estados Unidos. Recopilamos información personal exclusivamente para proporcionar cotizaciones de seguros y conectar a las personas con opciones de cobertura a través de aseguradoras con licencia.</p>
         </div>
 
         <div>
@@ -159,7 +159,7 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">5. Consentimiento TCPA y comunicaciones</h2>
-          <p>Al enviar una solicitud de cotización, otorgas consentimiento expreso por escrito para que María Fernanda Insurance Consulting te contacte al número de teléfono y correo electrónico proporcionados, incluyendo llamadas telefónicas automatizadas, mensajes pregrabados y mensajes de texto (SMS/MMS), para fines relacionados con seguros. El consentimiento no es condición para realizar ninguna compra. Puedes revocar el consentimiento en cualquier momento respondiendo STOP a cualquier mensaje de texto o enviándonos un correo electrónico.</p>
+          <p>Al enviar una solicitud de cotización, otorgas consentimiento expreso por escrito para que Maria Fernanda Insurance Consulting te contacte al número de teléfono y correo electrónico proporcionados, incluyendo llamadas telefónicas automatizadas, mensajes pregrabados y mensajes de texto (SMS/MMS), para fines relacionados con seguros. El consentimiento no es condición para realizar ninguna compra. Puedes revocar el consentimiento en cualquier momento respondiendo STOP a cualquier mensaje de texto o enviándonos un correo electrónico.</p>
         </div>
 
         <div>
@@ -190,7 +190,7 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">10. Contacto</h2>
           <p>Para solicitudes o preguntas relacionadas con privacidad, contáctanos en:</p>
-          <p className="mt-2 font-medium">María Fernanda Insurance Consulting<br />
+          <p className="mt-2 font-medium">Maria Fernanda Insurance Consulting<br />
           Email: [EMAIL]<br />
           Teléfono: (908) 228-0973</p>
         </div>
