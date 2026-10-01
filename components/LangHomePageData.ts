@@ -42,7 +42,7 @@ export const REEL_SLIDES = [
   {
     src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuALlX2I4j-SU_STw4ViFQeVDt0M4YxEt0cbgHQFMCr8RXn9gV-DavMlNlAmXZS5X0494HA4XpJvw5jwxaZjTbKrAT0cs5qhPlhNB6tBGECcuhEVItlT7n37JJ8JTVwq74OszgS9qLJhKo48A4YdUUD4hWflLudi-RKeyKWWeGXfWlGE7qzxaFJEee_eU5SF0rSAfIv10xx7FgIu3fdsemCQoRviPDgmodbQI5MoL1-DJGq2_eRboNg7',
     alt: 'Paisajes abiertos y seguros — cada horizonte resguardado',
-    caption: 'Cada horizonte resguardado con María Fernanda.',
+    caption: 'Cada horizonte resguardado con Maria Fernanda.',
   },
   {
     src: 'https://lh3.googleusercontent.com/aida/AEtjO1X7Fsl95nUF-Lp5Lff5U0pm19f6MSz9GOCmjjKo0fCZNv9O3rYuqZl69L1su4s9Lg_UXnQ_Ooap4L6zaqGTyZVjIflziXskEcdRy0zQtJc7LZWhM-e0xHK38oZQkk3kEJ439GhT7rA8v2y_unh8f-IFzVojqQoBXslc6sSkwzqydPTZap34_QhXnj1xihdb-A8e68h8Ap_dEq2WHhgyff7M5MLXHF3C2syuCTX_PkerUHg2IwuPu2MDxf0',
@@ -114,26 +114,26 @@ export const TRUST_STATS_ES = [
 export const TRUST_STATS_EN = [
   { value: '200+', label: 'Families protected' },
   { value: '10+', label: 'Carriers compared' },
-  { value: '100%', label: 'Bilingual service' },
+  { value: '100%', label: 'Annual review included' },
   { value: '24h', label: 'Guaranteed response' },
 ];
 
 export const MARIA_BIO_ES = {
-  name: 'María Fernanda',
+  name: 'Maria Fernanda',
   title: 'Agente de Seguros Licenciada',
   subtitle: 'Tu asesora bilingüe de confianza',
   bio: 'Entiendo de primera mano lo que significa construir una vida en un país nuevo. Por eso me convertí en agente de seguros: para que tu familia tenga la protección que merece, sin barreras de idioma, sin letra chica y sin importar el tipo de documentación que tengas.',
   quote: '"Porque proteger a tu familia no debería depender de tener un número de seguro social."',
-  cta: 'Hablar con María Fernanda',
-  ctaHref: 'https://wa.me/19082280973?text=Hola%20Mar%C3%ADa%20Fernanda%20%F0%9F%91%8B%20me%20gustar%C3%ADa%20cotizar%20un%20seguro%2C%20%C2%BFcu%C3%A1ndo%20tiene%20un%20momento%20para%20hablar%3F',
+  cta: 'Hablar con Maria Fernanda',
+  ctaHref: 'https://wa.me/19082280973?text=Hola%20Maria%20Fernanda%20%F0%9F%91%8B%20me%20gustar%C3%ADa%20cotizar%20un%20seguro%2C%20%C2%BFcu%C3%A1ndo%20tiene%20un%20momento%20para%20hablar%3F',
 };
 
 export const MARIA_BIO_EN = {
-  name: 'María Fernanda',
+  name: 'Maria Fernanda',
   title: 'Licensed Insurance Agent',
-  subtitle: 'Your bilingual agent',
-  bio: "I became an insurance agent so your family has the protection it deserves, with no language barriers, no fine print, and someone in your corner when it matters most.",
-  quote: '"Because protecting your family shouldn\'t depend on having a Social Security Number."',
-  cta: 'Talk to María Fernanda',
-  ctaHref: "https://wa.me/19082280973?text=Hi%20Mar%C3%ADa%20Fernanda%20%F0%9F%91%8B%20I'd%20like%20to%20explore%20insurance%20options.%20When's%20a%20good%20time%20to%20connect%3F",
+  subtitle: 'Your independent agent',
+  bio: "I became an insurance agent so your family has the protection it deserves — no fine print, no surprises, and someone in your corner when you need to file a claim.",
+  quote: '"Because when you file a claim, you deserve a real person in your corner — not a 1-800 number."',
+  cta: 'Talk to Maria Fernanda',
+  ctaHref: "https://wa.me/19082280973?text=Hi%20Maria%20Fernanda%20%F0%9F%91%8B%20I'd%20like%20to%20explore%20insurance%20options.%20When's%20a%20good%20time%20to%20connect%3F",
 };
