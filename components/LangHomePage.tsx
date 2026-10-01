@@ -23,7 +23,7 @@ import QuoteModal from '@/components/QuoteModal';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { Umbrella as PhUmbrella } from '@phosphor-icons/react';
 import {
-  REEL_SLIDES, solutionsTabs_es, solutionsTabs_en, TAB_TO_INS, ALL_INS_TYPES,
+  REEL_SLIDES, solutionsTabs_es, solutionsTabs_en, TAB_TO_INS_ES, TAB_TO_INS_EN, ALL_INS_TYPES,
   FAQ_ES, FAQ_EN, HERO_VIDEOS, TIPO_LABEL, TIPO_LABEL_EN, COTIZADOR_ICONS,
   TRUST_STATS_ES, TRUST_STATS_EN, MARIA_BIO_ES, MARIA_BIO_EN,
 } from '@/components/LangHomePageData';
@@ -107,6 +107,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
   const [activeTab, setActiveTab] = useState(0);
   const solutionsTabs = isEn ? solutionsTabs_en : solutionsTabs_es;
   const activeTabData = solutionsTabs[activeTab];
+  const tabToIns = isEn ? TAB_TO_INS_EN : TAB_TO_INS_ES;
 
   // Quote modal
   const [quoteOpen, setQuoteOpen] = useState(false);
@@ -378,14 +379,14 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   <p className="text-xs text-slate-700 mt-2 font-light leading-relaxed">{activeTabData.description}</p>
                 </div>
                 <div className="pt-6">
-                  <button onClick={() => openQuote(TAB_TO_INS[activeTab], 'solutions_tab')} className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-900 hover:underline">
+                  <button onClick={() => openQuote(tabToIns[activeTab], 'solutions_tab')} className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-900 hover:underline">
                     <span>{activeTabData.cta}</span><ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </button>
                 </div>
               </div>
               <div className="md:col-span-3 bg-[#f0f6f0]/90 rounded-2xl p-7 lg:p-8 flex flex-col justify-between min-h-[280px] border border-white/60">
                 <div className="flex justify-end">
-                  <button onClick={() => openQuote(TAB_TO_INS[activeTab], 'solutions_tab')} className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-800 hover:scale-110 hover:text-black transition-all shadow-sm" title={isEn ? 'Get Quote' : 'Calcular Prima'}>
+                  <button onClick={() => openQuote(tabToIns[activeTab], 'solutions_tab')} className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-800 hover:scale-110 hover:text-black transition-all shadow-sm" title={isEn ? 'Get Quote' : 'Calcular Prima'}>
                     <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
                   </button>
                 </div>

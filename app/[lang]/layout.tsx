@@ -19,23 +19,23 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   return {
     metadataBase: new URL(BASE_URL),
     title: isEn
-      ? 'Maria Fernanda Insurance Consulting | Bilingual Insurance for the Hispanic Community'
+      ? 'Independent Insurance Agent | Compare 10+ Carriers · Annual Review · Free Quote'
       : 'Agente de Seguros en Español | ITIN aceptado · 10+ Aseguradoras · Cotización gratis',
     description: isEn
-      ? 'Bilingual insurance agency for immigrants and the Hispanic community in the United States. Auto, life, health, pet, dental, and business insurance. ITIN accepted. No SSN required.'
+      ? 'Independent agent comparing 10+ carriers for car, health, life, pet, and business insurance. Annual review and claims advocacy included. Free quote.'
       : 'Agente independiente compara 10+ aseguradoras de auto, salud, vida, dental y más. Atención 100% en español. ITIN aceptado. Sin SSN para cotizar. Cotización gratis.',
     keywords: isEn
       ? [
-          'insurance without SSN',
-          'ITIN insurance',
-          'insurance for immigrants',
-          'bilingual insurance agent',
-          'car insurance no SSN',
-          'life insurance non-citizens',
-          'health insurance no social security',
-          'pet insurance ITIN',
-          'hispanic insurance USA',
-          'insurance en español',
+          'independent insurance agent',
+          'compare car insurance rates',
+          'insurance agent near me',
+          'switch car insurance save money',
+          'compare insurance quotes',
+          'home auto insurance bundle',
+          'best car insurance rates',
+          'life insurance cost estimate',
+          'pet insurance plans',
+          'small business liability insurance',
         ]
       : [
           'agente de seguros en español',
@@ -59,10 +59,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     },
     openGraph: {
       title: isEn
-        ? 'Maria Fernanda Insurance Consulting | Bilingual Insurance for the Hispanic Community'
+        ? 'Independent Insurance Agent | Compare 10+ Carriers · Maria Fernanda'
         : 'Agente Independiente de Seguros en Español | María Fernanda',
       description: isEn
-        ? 'Bilingual insurance for immigrants and Hispanic families. Auto, life, health, pet, dental, and business insurance. ITIN accepted. No SSN required.'
+        ? 'Compare 10+ carriers for car, health, life, pet, and business insurance. Annual review and claims advocacy included. Free quote.'
         : 'Compara 10+ aseguradoras en español. Auto, salud, vida, dental, mascotas y comercial. ITIN aceptado. Sin SSN. Cotización gratis.',
       type: 'website',
       locale: isEn ? 'en_US' : 'es_US',
@@ -72,10 +72,10 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     twitter: {
       card: 'summary_large_image',
       title: isEn
-        ? 'Maria Fernanda Insurance Consulting | Bilingual Insurance'
+        ? 'Independent Insurance Agent | Compare 10+ Carriers'
         : 'Maria Fernanda Insurance Consulting | Seguros en Español',
       description: isEn
-        ? 'Bilingual insurance for immigrants. Auto, life, health, pet, dental. ITIN accepted. No SSN required.'
+        ? 'Compare rates across 10+ carriers. Annual review and claims advocacy included. Car, health, life, pet, and business. Free quote.'
         : 'Seguros de auto, vida, salud, mascotas y comerciales para la comunidad hispana. Sin SSN. Acepta ITIN.',
     },
     robots: {
