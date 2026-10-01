@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import CookieConsent from '@/components/CookieConsent';
 
-const BASE_URL = 'https://venta-de-seguros.vercel.app';
+const BASE_URL = 'https://consultingbymf.com';
 
 type Props = {
   params: { lang: string };
