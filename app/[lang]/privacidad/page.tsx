@@ -38,14 +38,24 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">3. How We Use Your Information</h2>
-          <p>Your information is used exclusively to:</p>
+          <p>We do not sell or market your personal data. Your information is used exclusively to:</p>
           <ul className="list-disc pl-5 mt-2 space-y-1">
             <li>Prepare and deliver insurance quotes</li>
             <li>Contact you regarding insurance options you requested</li>
             <li>Connect you with licensed insurance carriers for coverage</li>
             <li>Comply with legal and regulatory requirements</li>
           </ul>
-          <p className="mt-2">We do not sell, rent, or share your personal information with third-party marketers. Information shared with insurance carriers is done solely to process your quote request.</p>
+        </div>
+
+        <div>
+          <h2 className="font-semibold text-slate-900 mb-2">4. Data Sharing</h2>
+          <p>We do not sell or market personal data. We may share your information only with:</p>
+          <ul className="list-disc pl-5 mt-2 space-y-1">
+            <li>Technology service providers (hosting, CRM, email delivery) who process data on our behalf under confidentiality agreements</li>
+            <li>Advertising platforms (Meta, Google) under their own privacy policies, solely for campaign measurement</li>
+            <li>Licensed insurance carriers, solely to process your quote request</li>
+            <li>Competent authorities when required by law</li>
+          </ul>
         </div>
 
         <div>
@@ -70,12 +80,17 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">8. Data Retention</h2>
-          <p>We retain your personal information for as long as necessary to fulfill the purposes described in this policy and to comply with applicable legal requirements. Quote request data is retained for a minimum of 5 years to comply with insurance regulatory requirements.</p>
+          <p>We retain your personal information for as long as necessary to fulfill the purposes described in this policy, and no longer than 5 years from the date of your last active contact, unless a longer period is required by applicable law or insurance regulation.</p>
         </div>
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">9. Security</h2>
-          <p>We implement industry-standard security measures to protect your personal information. However, no method of transmission over the Internet is 100% secure. We cannot guarantee absolute security of your data.</p>
+          <p>We implement HTTPS encryption, access controls, and periodic security reviews to protect your personal information. No method of transmission over the Internet is 100% secure. In the event of a data breach affecting your rights, we will notify affected users as required by applicable law.</p>
+        </div>
+
+        <div>
+          <h2 className="font-semibold text-slate-900 mb-2">10. International Data Transfers</h2>
+          <p>Your data may be processed on servers outside the United States through providers such as Supabase (database), Google (analytics), and Meta (advertising). Each of these providers maintains data transfer mechanisms that comply with internationally recognized data protection standards.</p>
         </div>
 
         <div>
@@ -117,14 +132,24 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">3. Cómo usamos tu información</h2>
-          <p>Tu información se usa exclusivamente para:</p>
+          <p>No vendemos ni comercializamos tus datos personales. Tu información se usa exclusivamente para:</p>
           <ul className="list-disc pl-5 mt-2 space-y-1">
             <li>Preparar y entregar cotizaciones de seguros</li>
             <li>Contactarte sobre las opciones de seguro que solicitaste</li>
             <li>Conectarte con aseguradoras con licencia para obtener cobertura</li>
             <li>Cumplir con requisitos legales y regulatorios</li>
           </ul>
-          <p className="mt-2">No vendemos, alquilamos ni compartimos tu información personal con terceros con fines de marketing. La información compartida con las aseguradoras se hace exclusivamente para procesar tu solicitud de cotización.</p>
+        </div>
+
+        <div>
+          <h2 className="font-semibold text-slate-900 mb-2">4. Compartición de datos con terceros</h2>
+          <p>No vendemos ni comercializamos datos personales. Los datos pueden compartirse únicamente con:</p>
+          <ul className="list-disc pl-5 mt-2 space-y-1">
+            <li>Proveedores de servicios tecnológicos (alojamiento, CRM, correo electrónico) que procesan datos en nuestro nombre bajo acuerdos de confidencialidad</li>
+            <li>Plataformas de publicidad (Meta, Google) bajo sus propias políticas de privacidad, exclusivamente para medición de campañas</li>
+            <li>Aseguradoras con licencia, exclusivamente para procesar tu solicitud de cotización</li>
+            <li>Autoridades competentes cuando lo exija la ley</li>
+          </ul>
         </div>
 
         <div>
@@ -149,12 +174,17 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">8. Retención de datos</h2>
-          <p>Conservamos tu información personal durante el tiempo necesario para cumplir los propósitos descritos en esta política y para cumplir con los requisitos legales aplicables. Los datos de solicitud de cotización se conservan por un mínimo de 5 años para cumplir con los requisitos regulatorios de seguros.</p>
+          <p>Conservamos tu información personal durante el tiempo necesario para cumplir los propósitos descritos en esta política, y no más de 5 años desde la fecha de tu último contacto activo, salvo que una obligación legal o regulatoria de seguros exija un período distinto.</p>
         </div>
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">9. Seguridad</h2>
-          <p>Implementamos medidas de seguridad estándar de la industria para proteger tu información personal. Sin embargo, ningún método de transmisión por Internet es 100% seguro. No podemos garantizar la seguridad absoluta de tus datos.</p>
+          <p>Implementamos cifrado HTTPS, control de acceso a sistemas internos y revisiones periódicas de seguridad para proteger tu información personal. Ningún método de transmisión por Internet es 100% seguro. En caso de brecha de seguridad que afecte tus derechos, notificaremos a los usuarios afectados conforme a la normativa aplicable.</p>
+        </div>
+
+        <div>
+          <h2 className="font-semibold text-slate-900 mb-2">10. Transferencias internacionales de datos</h2>
+          <p>Tus datos pueden ser procesados en servidores fuera de Estados Unidos a través de proveedores como Supabase (base de datos), Google (analítica) y Meta (publicidad). Cada uno de estos proveedores cuenta con mecanismos de transferencia internacional que cumplen con estándares reconocidos de protección de datos.</p>
         </div>
 
         <div>
