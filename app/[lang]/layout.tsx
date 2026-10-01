@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import CookieConsent from '@/components/CookieConsent';
 
 const BASE_URL = 'https://consultingbymf.com';
 
@@ -98,7 +97,6 @@ export default function LangLayout({ children, params }: Props) {
     <>
       {children}
       <WhatsAppButton />
-      <CookieConsent lang={params.lang} />
     </>
   );
 }
