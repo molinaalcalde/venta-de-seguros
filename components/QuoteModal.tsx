@@ -424,6 +424,9 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
           lead_score: calcScore(data),
           detalles: { ...data.detalles, quote_path: data.quote_path, vin_decoded: vinDecoded },
           nivel_proteccion: '',
+          tcpa_consent: true,
+          consent_timestamp: new Date().toISOString(),
+          tcpa_text: 'Al enviar, consientes que María Fernanda Insurance Consulting te contacte al teléfono y correo proporcionados, incluyendo mensajes de texto y llamadas, para fines relacionados con seguros. El consentimiento no es condición de compra.',
         }),
       });
       if (!res.ok) { const d = await res.json(); setSubmitErr(d.error ?? 'Error al enviar. Intenta de nuevo.'); return; }
@@ -704,7 +707,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                 </div>
               </div>
               {submitErr && <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2 mb-3">{submitErr}</p>}
-              <p className="text-xs text-slate-400 leading-relaxed">🔒 Tu información es 100% privada. No la compartimos con el gobierno ni agencias de inmigración. <strong>Aceptamos ITIN.</strong></p>
+              <p className="text-xs text-slate-400 leading-relaxed">🔒 Al enviar, consientes que <strong>María Fernanda Insurance Consulting</strong> te contacte al teléfono y correo proporcionados, incluyendo mensajes de texto y llamadas, para fines relacionados con seguros. El consentimiento no es condición de compra. By submitting, you consent to be contacted by María Fernanda Insurance Consulting at the phone and email provided, including automated calls and texts, for insurance purposes. Consent is not required to purchase. <a href="/es/privacidad" className="underline hover:text-slate-600">Privacidad</a> · <a href="/es/terminos" className="underline hover:text-slate-600">Términos</a></p>
             </>
           )}
         </div>

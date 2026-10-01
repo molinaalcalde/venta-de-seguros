@@ -12,6 +12,7 @@ export async function POST(request: NextRequest) {
       zip_code, estado_us, ciudad,
       timeline, tiene_seguro, lead_score,
       detalles,
+      tcpa_consent, consent_timestamp, tcpa_text,
     } = body;
 
     if (!nombre || typeof nombre !== 'string' || nombre.trim().length === 0) {
@@ -36,6 +37,9 @@ export async function POST(request: NextRequest) {
         tiene_seguro: tiene_seguro || null,
         lead_score: typeof lead_score === 'number' ? lead_score : null,
         detalles: detalles || null,
+        tcpa_consent: tcpa_consent === true,
+        consent_timestamp: consent_timestamp || new Date().toISOString(),
+        tcpa_text: tcpa_text || null,
         created_at: new Date().toISOString(),
       }])
       .select()

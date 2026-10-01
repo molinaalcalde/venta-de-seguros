@@ -853,10 +853,26 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <h5 className="text-xs font-semibold text-white uppercase tracking-wider mb-4">{isEn ? 'Support' : 'Atención'}</h5>
               <ul className="space-y-2.5 text-xs text-slate-400 font-light">
                 <li><a className="hover:text-white transition-colors" href="#cotizador">{isEn ? 'Get a Free Quote' : 'Cotizar gratis'}</a></li>
+                <li><Link className="hover:text-white transition-colors" href={l('/privacidad')}>{isEn ? 'Privacy Policy' : 'Política de Privacidad'}</Link></li>
+                <li><Link className="hover:text-white transition-colors" href={l('/terminos')}>{isEn ? 'Terms of Service' : 'Términos de Servicio'}</Link></li>
               </ul>
             </div>
           </div>
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 font-light gap-4">
+
+          {/* ── Legal Disclaimer ── */}
+          <div className="pt-8 pb-6 border-b border-white/5 text-[10px] text-slate-600 font-light leading-relaxed max-w-5xl">
+            {isEn ? (
+              <>
+                María Fernanda Insurance Consulting is a licensed independent insurance agent. Insurance products are offered through multiple carriers and are subject to underwriting review, approval, and availability by state. Quotes and price estimates shown on this website are not binding offers of coverage. Final premiums are determined by the issuing carrier based on individual risk factors. Coverage is subject to policy terms, conditions, limitations, and exclusions. Not all products are available in all states. Savings figures referenced represent documented savings achieved by specific clients under specific circumstances and are not guaranteed or typical results. Individual savings vary based on state, coverage type, carrier, and personal risk profile. Licensed in New Jersey (License #[NJ_LICENSE]). Licensed in additional states upon request. This website does not constitute a solicitation in any state where the agent is not licensed. Testimonials reflect individual customer experiences. An independent insurance agent will contact you.
+              </>
+            ) : (
+              <>
+                María Fernanda Insurance Consulting es una agencia de seguros independiente con licencia. Los productos de seguro se ofrecen a través de múltiples aseguradoras y están sujetos a revisión de suscripción, aprobación y disponibilidad según el estado. Las cotizaciones y estimaciones de precio que aparecen en este sitio no son ofertas vinculantes de cobertura. Las primas finales son determinadas por la aseguradora según el perfil de riesgo individual. La cobertura está sujeta a los términos, condiciones, limitaciones y exclusiones de la póliza. Las cifras de ahorro mencionadas representan resultados obtenidos por clientes específicos y no son resultados garantizados ni típicos. El ahorro individual varía según el estado, tipo de cobertura, aseguradora y perfil de riesgo personal. Licenciada en New Jersey (Licencia #[NJ_LICENSE]). Licenciada en estados adicionales disponible a solicitud.
+              </>
+            )}
+          </div>
+
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 font-light gap-4">
             <div>
               <Link href="/admin/login" className="hover:opacity-60 transition-opacity">©</Link>{' '}
               {new Date().getFullYear()} Maria Fernanda Insurance Consulting. {isEn ? 'All rights reserved.' : 'Todos los derechos reservados.'}
