@@ -138,8 +138,8 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
             '@context': 'https://schema.org', '@type': 'InsuranceAgency',
             name: 'Maria Fernanda Insurance Consulting',
-            url: 'https://venta-de-seguros.vercel.app/en',
-            description: 'Bilingual insurance agency specializing in coverage for immigrants and the Hispanic community across the US. Auto, life, health, pet, dental, and business insurance. ITIN accepted. No SSN required.',
+            url: 'https://consultingbymf.com/en',
+            description: 'Independent insurance agent comparing 10+ carriers for car, life, health, pet, dental, and business insurance. Annual policy review and claims advocacy included. Bilingual service in English and Spanish.',
             areaServed: { '@type': 'Country', name: 'United States' },
             availableLanguage: ['en-US', 'es-US'],
             priceRange: '$$',
@@ -562,7 +562,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Health Insurance' : 'Seguro de Salud'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'We help you find a plan that fits your needs and your budget. Whether you need individual, family or small group coverage, we compare plans from multiple carriers and walk you through your options at no cost.' : 'HIPAA — ley federal — prohíbe compartir tu información médica con migración. El 29% de familias inmigrantes evitó el médico en 2025 por miedo (KFF). Atenderte no afecta tu estatus. Sujeto a términos y condiciones.'}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'We help you find a plan that fits your needs and your budget. Whether you need individual, family or small group coverage, we compare plans from multiple carriers and walk you through your options at no cost.' : 'Tu información médica está protegida por la ley federal HIPAA y nunca se comparte sin tu consentimiento. Comparamos 10+ aseguradoras para encontrar el plan que cubre tu familia: consultas, medicamentos, emergencias. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['Individual, family and small group plans', 'ACA marketplace and private plan options', 'Side-by-side plan comparison at no cost', 'Bilingual support in English and Spanish'] : ['HIPAA: tu info médica no se comparte con migración', 'Sin SSN, acepta ITIN', 'Cubre familia completa desde $199/mes']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
@@ -816,7 +816,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/10">
             <div className="md:col-span-2 space-y-4">
               <div className="text-white"><Image src="/logo.png" alt="Maria Fernanda Insurance Consulting" width={160} height={40} className="h-10 w-auto brightness-0 invert" /></div>
-              <p className="text-xs text-slate-400 max-w-sm leading-relaxed font-light">{isEn ? 'Bilingual insurance agency for the Hispanic community and immigrant families across the United States.' : 'Seguridad generacional, protección de vehículos y mascotas, y resguardo patrimonial integral.'}</p>
+              <p className="text-xs text-slate-400 max-w-sm leading-relaxed font-light">{isEn ? 'Independent insurance agency comparing 10+ carriers across the United States. Car, life, health, pet, and business insurance.' : 'Seguridad generacional, protección de vehículos y mascotas, y resguardo patrimonial integral.'}</p>
               <div className="text-xs text-slate-500 pt-1">Correduría Aseguradora Autorizada • Miembro NAIC #892110 • Calificación AM Best A+ Superior</div>
               {/* ── Social ── */}
               <div className="flex items-center gap-3 pt-2">
