@@ -106,7 +106,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
     provider: {
       '@type': 'InsuranceAgency',
       name: 'Maria Fernanda Insurance Consulting',
-      url: 'https://venta-de-seguros.vercel.app',
+      url: 'https://consultingbymf.com',
     },
     areaServed: { '@type': 'Country', name: 'United States' },
     ...(config.schema.price
