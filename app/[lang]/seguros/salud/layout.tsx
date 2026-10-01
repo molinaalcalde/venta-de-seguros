@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-const BASE = 'https://venta-de-seguros.vercel.app';
+const BASE = 'https://consultingbymf.com';
 export function generateStaticParams() { return [{ lang: 'es' }, { lang: 'en' }]; }
 export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
   const isEn = params.lang === 'en';
