@@ -294,7 +294,7 @@ export default function MascotasLangPage({ params }: { params: { lang: string } 
       '@context': 'https://schema.org', '@type': 'Service',
       name: isEn ? 'Pet Insurance — Fetch Pet Insurance' : 'Seguro de Mascotas — Fetch Pet Insurance',
       description: isEn ? 'Pet insurance with up to 90% reimbursement. No SSN required. ITIN accepted. Any vet in the USA.' : 'Seguro de mascotas con reembolso de hasta el 90%. Sin SSN requerido. Acepta ITIN. Cualquier veterinario en EE.UU.',
-      provider: { '@type': 'InsuranceAgency', name: 'Maria Fernanda Insurance Consulting', url: 'https://venta-de-seguros.vercel.app' },
+      provider: { '@type': 'InsuranceAgency', name: 'Maria Fernanda Insurance Consulting', url: 'https://consultingbymf.com' },
       areaServed: { '@type': 'Country', name: 'United States' },
     },
   ];
