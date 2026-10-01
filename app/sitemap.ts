@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const BASE_URL = 'https://venta-de-seguros.vercel.app';
+const BASE_URL = 'https://consultingbymf.com';
 
 const SEGUROS_PAGES = [
   { slug: 'auto',              enSlug: 'car-insurance',      priority: 0.9, freq: 'monthly' as const },
