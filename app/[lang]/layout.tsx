@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import CookieConsent from '@/components/CookieConsent';
 
 const BASE_URL = 'https://venta-de-seguros.vercel.app';
 
@@ -92,11 +93,12 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   };
 }
 
-export default function LangLayout({ children }: Props) {
+export default function LangLayout({ children, params }: Props) {
   return (
     <>
       {children}
       <WhatsAppButton />
+      <CookieConsent lang={params.lang} />
     </>
   );
 }
