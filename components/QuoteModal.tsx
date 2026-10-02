@@ -376,7 +376,8 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    document.body.dataset.quoteOpen = open ? 'true' : '';
+    return () => { document.body.style.overflow = ''; document.body.dataset.quoteOpen = ''; };
   }, [open]);
 
   async function fade(fn: () => void) {

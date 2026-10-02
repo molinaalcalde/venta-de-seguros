@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { pushGTMEvent } from '@/lib/gtm';
 
@@ -85,9 +86,18 @@ export default function WhatsAppButton() {
   const insType = getInsType(pathname);
   const message = encodeURIComponent(MESSAGES[insType][lang]);
   const href = `https://wa.me/${PHONE}?text=${message}`;
+  const [modalOpen, setModalOpen] = useState(false);
 
   const ariaLabel = lang === 'en' ? 'Chat on WhatsApp' : 'Chatea por WhatsApp';
   const tooltip = lang === 'en' ? 'Chat with us' : 'Chatea con nosotros';
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setModalOpen(document.body.dataset.quoteOpen === 'true');
+    });
+    observer.observe(document.body, { attributes: true, attributeFilter: ['data-quote-open'] });
+    return () => observer.disconnect();
+  }, []);
 
   function handleClick() {
     pushGTMEvent({
@@ -107,7 +117,7 @@ export default function WhatsAppButton() {
       aria-label={ariaLabel}
       title={tooltip}
       onClick={handleClick}
-      className="fixed bottom-20 md:bottom-6 right-6 z-50 flex items-center justify-center"
+      className={`fixed bottom-20 md:bottom-6 right-6 z-50 flex items-center justify-center${modalOpen ? ' hidden md:flex' : ''}`}
     >
       <span
         className="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-20"
