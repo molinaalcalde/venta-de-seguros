@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, Fragment } from 'react';
 import Link from 'next/link';
 import {
   ArrowLeft, ArrowRight, CheckCircle, Star,
-  Shield, Lock, Headset, CreditCard,
   type Icon,
 } from '@phosphor-icons/react';
 import QuoteModal, { type InsType } from '@/components/QuoteModal';
@@ -85,6 +84,33 @@ export interface InsurancePageConfig {
   schema: { description: string; price?: string };
 }
 
+/* ─── Scroll reveal hook ─────────────────────────────────────────────── */
+function useReveal(threshold = 0.12) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+/* ─── Reveal wrapper component ───────────────────────────────────────── */
+function RevealWrapper({ children, className }: { children: React.ReactNode; className?: string }) {
+  const { ref, visible } = useReveal();
+  return (
+    <div ref={ref} className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${className ?? ''}`}>
+      {children}
+    </div>
+  );
+}
+
 /* ─── Component ─────────────────────────────────────────────────────── */
 export default function InsurancePage({ config, lang = 'es' }: { config: InsurancePageConfig; lang?: string }) {
   const [quoteOpen, setQuoteOpen]   = useState(false);
@@ -124,18 +150,6 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
       acceptedAnswer: { '@type': 'Answer', text: a },
     })),
   };
-
-  const whyUsCards = isEn ? [
-    { icon: Shield,     title: 'We work for you, not the insurer',  desc: 'Captive agents sell one company. We compare 10+ carriers and bring you the best option at no extra cost to you.' },
-    { icon: Headset,    title: 'Your advocate on claims',            desc: 'When you need to file, we help you navigate the process. Not a 1-800 number. A real agent in your corner.' },
-    { icon: Lock,       title: 'No cost to you',                     desc: 'The insurer pays our commission. You pay the exact same rate as going direct, but with someone comparing options for you.' },
-    { icon: CreditCard, title: 'Annual review included',             desc: 'Every 12 months we check your policy. If your carrier raised rates or we found something better, we tell you. At no charge.' },
-  ] : [
-    { icon: Shield,     title: 'Comparamos por ti',       desc: 'No trabajamos para una sola compañía. Buscamos la mejor cobertura al precio más justo para tu situación.' },
-    { icon: Headset,    title: 'Atención en español',     desc: 'Agentes reales que te explican todo en español, desde la cotización hasta el momento de usar tu seguro.' },
-    { icon: Lock,       title: 'Sin costo para ti',       desc: 'La comisión la paga la aseguradora. Pagas exactamente lo mismo que si fueras directo, pero con alguien que compara por ti.' },
-    { icon: CreditCard, title: 'Revisión anual incluida', desc: 'Cada 12 meses revisamos tu póliza. Si tu carrier subió el precio o encontramos algo mejor, te avisamos. Sin que tengas que hacer nada.' },
-  ];
 
   const footerLinks = isEn ? [
     { href: '/en/seguros/auto',              label: 'Car Insurance' },
@@ -225,35 +239,25 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
           ) : (
             <div className={`absolute inset-0 bg-gradient-to-br ${t.heroBg} via-white to-white pointer-events-none`} />
           )}
-          <div className={`relative max-w-5xl mx-auto px-5 lg:px-8 py-16 md:py-24 ${config.heroVideo ? 'pt-24 md:pt-32' : ''}`}>
+          <div className={`relative max-w-5xl mx-auto px-5 lg:px-8 py-20 md:py-32 ${config.heroVideo ? 'pt-28 md:pt-36' : ''}`}>
             <div className="max-w-2xl">
               <div className={`inline-flex items-center gap-2 ${config.heroVideo ? 'bg-white/15 text-white border border-white/20' : `${t.badgeBg} ${t.badgeText}`} text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6 backdrop-blur-sm`}>
                 {config.badgeIcon && <config.badgeIcon weight="bold" className="w-3.5 h-3.5 shrink-0" />}
                 {config.badge}
               </div>
-              <h1 className={`text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.1] mb-5 ${config.heroVideo ? 'text-white' : 'text-slate-900'}`}>
+              <h1 className={`text-4xl md:text-5xl lg:text-[64px] font-light tracking-tight leading-[1.08] mb-8 ${config.heroVideo ? 'text-white' : 'text-slate-900'}`}>
                 {config.heroLine1}{' '}
                 <span className={`font-editorial-italic ${config.heroVideo ? 'text-white/90' : t.iconText}`}>{config.heroItalic}</span>
               </h1>
-              <p className={`text-lg md:text-xl font-light leading-relaxed mb-8 ${config.heroVideo ? 'text-white/85' : 'text-slate-600'}`}>
-                {config.heroSubtitle}
-              </p>
-              <div className="flex flex-wrap gap-3 mb-10">
-                {config.trustBadges.map((b) => (
-                  <span key={b} className={`text-xs font-medium px-3 py-1 rounded-full shadow-sm ${config.heroVideo ? 'bg-white/15 text-white border border-white/25 backdrop-blur-sm' : 'text-slate-700 bg-white border border-slate-200'}`}>
-                    {b}
-                  </span>
-                ))}
-              </div>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <button
                   onClick={() => setQuoteOpen(true)}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-100 text-slate-900 font-semibold text-sm transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-100 text-slate-900 font-semibold text-sm transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95"
                 >
                   {config.ctaButton}
                   <ArrowRight weight="bold" className="w-4 h-4" />
                 </button>
-                <span className={`text-xs ${config.heroVideo ? 'text-white/70' : 'text-slate-500'}`}>
+                <span className={`text-xs ${config.heroVideo ? 'text-white/60' : 'text-slate-400'}`}>
                   {config.priceFrom} {isEn ? '· No commitment' : '· Sin compromiso'}
                 </span>
               </div>
@@ -261,67 +265,56 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
           </div>
         </section>
 
-        {/* ── Eligibility ──────────────────────────────────────────── */}
-        <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
-          <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-3">
-            {config.eligibilityTitle}
-          </h2>
-          <p className="text-slate-600 font-light text-sm leading-relaxed mb-8 max-w-lg">{config.eligibilityText}</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
-            {/* Situation cards — 2/3 width */}
-            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {config.eligibilityItems.map((item, i) => (
-                <div key={i} className="bg-white rounded-2xl px-5 py-4 border border-slate-100 shadow-sm flex items-start gap-3">
-                  <span className={`text-xs font-bold ${t.iconText} shrink-0 mt-0.5 tabular-nums`}>{String(i + 1).padStart(2, '0')}</span>
-                  <span className="text-sm text-slate-700 font-medium leading-snug">{item}</span>
-                </div>
-              ))}
-            </div>
-            {/* CTA card — 1/3 width */}
-            <div className={`rounded-2xl p-7 border ${t.accentBorder} bg-white shadow-sm`}>
-              <p className="font-semibold text-slate-900 text-sm mb-2">
-                {isEn ? 'Does any of this sound familiar?' : '¿Te identificas con alguna?'}
-              </p>
-              <p className="text-xs text-slate-500 font-light leading-relaxed mb-5">
-                {isEn
-                  ? 'A licensed agent reviews your situation and walks you through your options. No pressure, no commitment.'
-                  : 'Un asesor revisa tu situación y te explica tus opciones, sin presiones, sin compromiso.'}
-              </p>
-              <div className="border-t border-slate-100 pt-4 mb-5">
-                <p className="text-xs text-slate-500 font-light leading-relaxed">
-                  {isEn
-                    ? 'And every year we review your policy. If we find a better option for your situation, we let you know.'
-                    : 'Y cada año revisamos tu póliza. Si encontramos algo mejor para tu situación, te avisamos.'}
-                </p>
+        {/* ── Stat strip ───────────────────────────────────────────── */}
+        <section className="bg-slate-900 border-b border-slate-800">
+          <div className="max-w-5xl mx-auto px-5 lg:px-8 py-10 grid grid-cols-3 gap-4 divide-x divide-slate-700">
+            {[
+              { value: '10+', label: isEn ? 'Carriers compared' : 'Aseguradoras comparadas' },
+              { value: '200+', label: isEn ? 'Families protected' : 'Familias protegidas' },
+              { value: '24h', label: isEn ? 'Response time' : 'Tiempo de respuesta' },
+            ].map(({ value, label }) => (
+              <div key={label} className="text-center px-4">
+                <p className="text-3xl md:text-4xl font-light text-white tracking-tight">{value}</p>
+                <p className="text-xs text-slate-400 mt-1 font-light">{label}</p>
               </div>
-              <button
-                onClick={() => setQuoteOpen(true)}
-                className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl ${t.stepBg} text-white text-sm font-semibold transition-all hover:opacity-90 hover:-translate-y-0.5 shadow-sm`}
-              >
-                {config.ctaButton}
-                <ArrowRight weight="bold" className="w-4 h-4" />
-              </button>
-              <p className="text-[11px] text-slate-400 text-center mt-2">
-                {config.priceFrom} {isEn ? '· No commitment' : '· Sin compromiso'}
-              </p>
-            </div>
+            ))}
           </div>
         </section>
 
-        {/* ── 3 Feature highlights ─────────────────────────────────── */}
-        <section className="bg-white border-y border-slate-100">
-          <div className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-18">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-              {config.features.map((f) => (
-                <div key={f.title} className="px-6 py-8 md:py-6 first:pl-0 last:pr-0">
-                  <div className={`w-11 h-11 rounded-xl ${t.badgeBg} flex items-center justify-center mb-5`}>
-                    <f.icon weight="duotone" className={`w-6 h-6 ${t.iconText}`} />
+        {/* ── Para quién (eligibility compact) ─────────────────────── */}
+        <section className="border-b border-slate-100 bg-white">
+          <div className="max-w-5xl mx-auto px-5 lg:px-8 py-6 flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider shrink-0">
+              {isEn ? 'Who this is for:' : 'Para quién es:'}
+            </span>
+            {config.eligibilityItems.map((item, i) => (
+              <span key={i} className="inline-flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-full px-3 py-1.5 font-medium">
+                <CheckCircle weight="fill" className={`w-3 h-3 ${t.iconText} shrink-0`} />
+                {item}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Feature blocks (alternating) ─────────────────────────── */}
+        <section className="bg-[#fafbfa] py-16 md:py-24">
+          <div className="max-w-5xl mx-auto px-5 lg:px-8 space-y-16 md:space-y-24">
+            {config.features.map((f, i) => {
+              const isEven = i % 2 === 0;
+              return (
+                <RevealWrapper key={f.title} className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                  {/* Icon panel */}
+                  <div className={`flex items-center justify-center rounded-3xl bg-white border border-slate-100 shadow-sm h-52 md:h-64 ${isEven ? 'md:order-first' : 'md:order-last'}`}>
+                    <f.icon weight="duotone" className={`w-20 h-20 ${t.iconText} opacity-80`} />
                   </div>
-                  <h3 className="font-semibold text-slate-900 text-base mb-2">{f.title}</h3>
-                  <p className="text-sm text-slate-600 font-light leading-relaxed">{f.desc}</p>
-                </div>
-              ))}
-            </div>
+                  {/* Text */}
+                  <div className={isEven ? 'md:order-last' : 'md:order-first'}>
+                    <h2 className="text-2xl md:text-3xl font-light text-slate-900 tracking-tight mb-3">{f.title}</h2>
+                    <p className="text-slate-600 font-light leading-relaxed text-base">{f.desc}</p>
+                  </div>
+                </RevealWrapper>
+              );
+            })}
           </div>
         </section>
 
@@ -381,7 +374,25 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
               {isEn ? 'This is' : 'Así de'}{' '}
               <span className={`font-editorial-italic ${t.iconText}`}>{isEn ? 'how it works' : 'sencillo'}</span>
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12">
+            {/* Desktop: flex con conectores */}
+            <div className="hidden sm:flex items-start gap-0 mb-12">
+              {config.steps.map((s, i) => (
+                <Fragment key={i}>
+                  <div className="flex-1 min-w-0">
+                    <div className={`w-10 h-10 rounded-full ${t.stepBg} text-white text-sm font-bold flex items-center justify-center mb-4`}>
+                      {i + 1}
+                    </div>
+                    <h3 className="font-semibold text-slate-900 mb-2 pr-6">{s.title}</h3>
+                    <p className="text-sm text-slate-600 font-light leading-relaxed pr-6">{s.desc}</p>
+                  </div>
+                  {i < config.steps.length - 1 && (
+                    <div className="flex-shrink-0 w-12 h-px bg-slate-200 mt-5" />
+                  )}
+                </Fragment>
+              ))}
+            </div>
+            {/* Mobile: apilado */}
+            <div className="sm:hidden space-y-8 mb-12">
               {config.steps.map((s, i) => (
                 <div key={i}>
                   <div className={`w-10 h-10 rounded-full ${t.stepBg} text-white text-sm font-bold flex items-center justify-center mb-4`}>
@@ -413,65 +424,48 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
           </div>
         </section>
 
-        {/* ── Por qué nosotros / Why work with us ──────────────────── */}
-        <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
-          <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-10">
-            {isEn ? 'Why' : '¿Por qué'}{' '}
-            <span className="font-editorial-italic text-slate-400">{isEn ? 'work with us?' : 'elegirnos?'}</span>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-            {whyUsCards.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-sm">
-                <Icon weight="duotone" className={`w-6 h-6 ${t.iconText} mb-3`} />
-                <h3 className="font-semibold text-slate-900 text-sm mb-1.5">{title}</h3>
-                <p className="text-xs text-slate-500 font-light leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* ── Testimonials ─────────────────────────────────────────── */}
-        <section className="bg-white border-y border-slate-100">
+        <section className="bg-slate-900">
           <div className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
-            <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-10">
+            <h2 className="text-3xl md:text-4xl font-light text-white tracking-tight mb-10">
               {isEn ? 'What our' : 'Lo que dicen'}{' '}
               <span className="font-editorial-italic text-slate-400">{isEn ? 'clients say' : 'nuestros clientes'}</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {config.testimonials.map((t_, i) => (
-                <div key={i} className="bg-[#fafbfa] rounded-2xl p-6 border border-slate-100">
+                <div key={i} className="bg-white/[0.06] rounded-2xl p-6 border border-white/10">
                   <div className="flex items-center gap-1 mb-3">
                     {[...Array(5)].map((_, s) => (
                       <Star key={s} weight="fill" className="w-3.5 h-3.5 text-amber-400" />
                     ))}
                   </div>
-                  <p className="text-sm text-slate-700 font-light leading-relaxed mb-4 italic">
+                  <p className="text-sm text-white/80 font-light leading-relaxed mb-4 italic">
                     &ldquo;{t_.text}&rdquo;
                   </p>
                   <div>
-                    <p className="text-sm font-semibold text-slate-900">{t_.name}</p>
-                    <p className="text-xs text-slate-500">{t_.location}</p>
+                    <p className="text-sm font-semibold text-white">{t_.name}</p>
+                    <p className="text-xs text-slate-400">{t_.location}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-slate-400 mt-5">
+            <p className="text-xs text-slate-500 mt-5">
               {isEn ? '*Names have been changed to protect client privacy.' : '*Los nombres han sido cambiados para proteger la privacidad de nuestros clientes.'}
             </p>
 
             {/* CTA 3 — after testimonials */}
             <div className="mt-10 text-center">
-              <p className="text-slate-500 text-sm mb-4">
+              <p className="text-white/60 text-sm mb-4">
                 {isEn ? 'Join over 200 families already protected.' : 'Únete a más de 200 familias que ya están protegidas.'}
               </p>
               <button
                 onClick={() => setQuoteOpen(true)}
-                className={`inline-flex items-center gap-2 px-8 py-4 rounded-full ${t.stepBg} text-white font-bold text-sm transition-all hover:opacity-90 hover:-translate-y-0.5 shadow-lg`}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white hover:bg-slate-100 text-slate-900 font-bold text-sm transition-all hover:-translate-y-0.5 shadow-lg"
               >
                 {config.ctaButton}
                 <ArrowRight weight="bold" className="w-4 h-4" />
               </button>
-              <p className="text-[11px] text-slate-400 mt-3">
+              <p className="text-[11px] text-white/30 mt-3">
                 {config.priceFrom} {isEn ? '· No commitment' : '· Sin compromiso'}
               </p>
             </div>
