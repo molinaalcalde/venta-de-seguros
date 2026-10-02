@@ -142,7 +142,6 @@ const configEn: InsurancePageConfig = {
     'You\'re counting on your employer\'s group life policy as your main coverage',
     'Your beneficiaries live outside the US',
     'You have pre-existing health conditions (no-exam plans available)',
-    'You don\'t have a Social Security Number — ITIN is accepted',
     'You\'ve been putting it off because the options feel overwhelming',
   ],
   features: [
@@ -176,7 +175,7 @@ const configEn: InsurancePageConfig = {
   steps: [
     {
       title: 'Tell us about yourself — 5 minutes',
-      desc: 'Basic questions about your age and health. No medical exam required on many plans. ITIN accepted if you don\'t have an SSN.',
+      desc: 'Basic questions about your age and health. No medical exam required on many plans.',
     },
     {
       title: 'We explain term vs. permanent in plain language',
@@ -230,10 +229,6 @@ const configEn: InsurancePageConfig = {
       a: 'Digital platforms work well for straightforward cases — but they use algorithms, not judgment. If you have a pre-existing condition, work a high-risk job, need over $1M in coverage, or want Living Benefits riders, an independent agent shops 10+ carriers and navigates underwriting to find who approves you at the best rate. We also do annual reviews — something no digital platform offers. And when a claim happens, you have someone in your corner. Haven Life, one of the largest digital-only platforms, closed to new applicants in January 2024.',
     },
     {
-      q: 'Can I get life insurance without an SSN?',
-      a: 'Yes. ITIN is accepted as valid identification by most carriers we work with. You\'ll also need a valid ID from your country of origin and verifiable US residence. An independent agent can identify which carriers are most favorable for your specific situation.',
-    },
-    {
       q: 'Can my family in another country collect the benefit?',
       a: 'Yes. You can name beneficiaries living in Mexico, Guatemala, Honduras, Colombia, or any country in the world. They don\'t need US documents or to live in the US. The benefit reaches them when they need it.',
     },
@@ -248,12 +243,12 @@ const configEn: InsurancePageConfig = {
   ctaButton: 'Get a free quote',
   theme: 'emerald',
   schema: {
-    description: 'Life insurance from an independent agent. ITIN accepted. Living Benefits included. Beneficiaries in any country. From $15/mo. Up to $300,000 with no medical exam on qualifying plans.',
+    description: 'Life insurance from an independent agent. Living Benefits included. Beneficiaries in any country. From $15/mo. Up to $300,000 with no medical exam on qualifying plans.',
     price: '15',
   },
 };
 
 export default function VidaPage({ params }: { params: { lang: string } }) {
   const config = params.lang === 'en' ? configEn : configEs;
-  return <InsurancePage config={config} />;
+  return <InsurancePage config={config} lang={params.lang} />;
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Términos de Servicio — María Fernanda Insurance',
+  title: 'Terms of Service | Términos de Servicio — Maria Fernanda Insurance',
   robots: { index: false, follow: false },
 };
 
@@ -29,7 +29,7 @@ export default function TerminosPage({ params }: { params: { lang: string } }) {
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">3. Licensing</h2>
-          <p>María Fernanda Insurance Consulting is a licensed independent insurance agent in New Jersey (License #[NJ_LICENSE]) and in additional states upon request. This website does not constitute a solicitation for insurance in any state where the agent is not licensed to sell insurance. By submitting a quote request, you represent that you are located in a state where we are licensed to conduct insurance business.</p>
+          <p>Maria Fernanda Insurance Consulting is a licensed independent insurance agent in New Jersey (License #[NJ_LICENSE]) and in additional states upon request. This website does not constitute a solicitation for insurance in any state where the agent is not licensed to sell insurance. By submitting a quote request, you represent that you are located in a state where we are licensed to conduct insurance business.</p>
         </div>
 
         <div>
@@ -54,7 +54,7 @@ export default function TerminosPage({ params }: { params: { lang: string } }) {
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">8. Limitation of Liability</h2>
-          <p>To the maximum extent permitted by applicable law, María Fernanda Insurance Consulting shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website or reliance on information contained herein. Our total liability for any claim shall not exceed the amount of fees, if any, paid by you to us in the 12 months preceding the claim.</p>
+          <p>To the maximum extent permitted by applicable law, Maria Fernanda Insurance Consulting shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website or reliance on information contained herein. Our total liability for any claim shall not exceed the amount of fees, if any, paid by you to us in the 12 months preceding the claim.</p>
         </div>
 
         <div>
@@ -70,7 +70,7 @@ export default function TerminosPage({ params }: { params: { lang: string } }) {
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">11. Contact</h2>
           <p>For questions about these Terms, contact us at:</p>
-          <p className="mt-2 font-medium">María Fernanda Insurance Consulting<br />
+          <p className="mt-2 font-medium">Maria Fernanda Insurance Consulting<br />
           Email: [EMAIL]<br />
           Phone: (908) 228-0973</p>
         </div>
@@ -97,7 +97,7 @@ export default function TerminosPage({ params }: { params: { lang: string } }) {
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">3. Licencias</h2>
-          <p>María Fernanda Insurance Consulting es una agente de seguros independiente con licencia en New Jersey (Licencia #[NJ_LICENSE]) y en estados adicionales disponible a solicitud. Este sitio web no constituye una solicitud de seguros en ningún estado donde la agente no tenga licencia para vender seguros.</p>
+          <p>Maria Fernanda Insurance Consulting es una agente de seguros independiente con licencia en New Jersey (Licencia #[NJ_LICENSE]) y en estados adicionales disponible a solicitud. Este sitio web no constituye una solicitud de seguros en ningún estado donde la agente no tenga licencia para vender seguros.</p>
         </div>
 
         <div>
@@ -117,7 +117,7 @@ export default function TerminosPage({ params }: { params: { lang: string } }) {
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">7. Limitación de responsabilidad</h2>
-          <p>En la máxima medida permitida por la ley aplicable, María Fernanda Insurance Consulting no será responsable de ningún daño indirecto, incidental, especial, consecuente o punitivo que surja del uso de este sitio web. Nuestra responsabilidad total por cualquier reclamación no superará el monto de los honorarios, si los hubiera, pagados por ti en los 12 meses anteriores a la reclamación.</p>
+          <p>En la máxima medida permitida por la ley aplicable, Maria Fernanda Insurance Consulting no será responsable de ningún daño indirecto, incidental, especial, consecuente o punitivo que surja del uso de este sitio web. Nuestra responsabilidad total por cualquier reclamación no superará el monto de los honorarios, si los hubiera, pagados por ti en los 12 meses anteriores a la reclamación.</p>
         </div>
 
         <div>
@@ -133,7 +133,7 @@ export default function TerminosPage({ params }: { params: { lang: string } }) {
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">10. Contacto</h2>
           <p>Para preguntas sobre estos Términos, contáctanos en:</p>
-          <p className="mt-2 font-medium">María Fernanda Insurance Consulting<br />
+          <p className="mt-2 font-medium">Maria Fernanda Insurance Consulting<br />
           Email: [EMAIL]<br />
           Teléfono: (908) 228-0973</p>
         </div>

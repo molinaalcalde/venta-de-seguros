@@ -246,5 +246,5 @@ const configEn: InsurancePageConfig = {
 
 export default function SaludPage({ params }: { params: { lang: string } }) {
   const config = params.lang === 'en' ? configEn : configEs;
-  return <InsurancePage config={config} />;
+  return <InsurancePage config={config} lang={params.lang} />;
 }

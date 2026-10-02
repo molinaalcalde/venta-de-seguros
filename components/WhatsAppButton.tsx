@@ -23,44 +23,44 @@ type InsKey =
    ────────────────────────────────────────────────────────────────────────── */
 const MESSAGES: Record<InsKey, { es: string; en: string }> = {
   home: {
-    es: 'Hola María Fernanda 👋 me gustaría cotizar un seguro, ¿cuándo tiene un momento para hablar?',
-    en: "Hi María Fernanda 👋 I'd like to explore insurance options. When's a good time to connect?",
+    es: 'Hola Maria Fernanda 👋 me gustaría cotizar un seguro, ¿cuándo tiene un momento para hablar?',
+    en: "Hi Maria Fernanda 👋 I'd like to explore insurance options. When's a good time to connect?",
   },
   auto: {
-    es: 'Hola María Fernanda 👋, me gustaría cotizar un seguro de auto. ¿Podrías ayudarme a encontrar la mejor cobertura?',
-    en: "Hi María Fernanda 👋, I'm looking for a car insurance quote. Could you help me find the best coverage?",
+    es: 'Hola Maria Fernanda 👋, me gustaría cotizar un seguro de auto. ¿Podrías ayudarme a encontrar la mejor cobertura?',
+    en: "Hi Maria Fernanda 👋, I'm looking for a car insurance quote. Could you help me find the best coverage?",
   },
   mascotas: {
-    es: 'Hola María Fernanda 👋, quiero proteger a mi mascota ante cualquier emergencia médica. ¿Qué planes ofreces?',
-    en: "Hi María Fernanda 👋, I want to protect my pet in case of a medical emergency. What plans do you offer?",
+    es: 'Hola Maria Fernanda 👋, quiero proteger a mi mascota ante cualquier emergencia médica. ¿Qué planes ofreces?',
+    en: "Hi Maria Fernanda 👋, I want to protect my pet in case of a medical emergency. What plans do you offer?",
   },
   vida: {
-    es: 'Hola María Fernanda 👋, estoy pensando en el futuro y quiero asegurar la tranquilidad de mi familia. ¿Podemos revisar opciones de seguro de vida?',
-    en: "Hi María Fernanda 👋, I'm planning for the future and want to ensure my family is protected. Can we discuss life insurance options?",
+    es: 'Hola Maria Fernanda 👋, estoy pensando en el futuro y quiero asegurar la tranquilidad de mi familia. ¿Podemos revisar opciones de seguro de vida?',
+    en: "Hi Maria Fernanda 👋, I'm planning for the future and want to ensure my family is protected. Can we discuss life insurance options?",
   },
   salud: {
-    es: 'Hola María Fernanda 👋, busco un buen seguro de salud para mi familia. ¿Me ayudas a comparar los planes disponibles?',
-    en: "Hi María Fernanda 👋, I'm looking for reliable health insurance for my family. Can you help me compare the available plans?",
+    es: 'Hola Maria Fernanda 👋, busco un buen seguro de salud para mi familia. ¿Me ayudas a comparar los planes disponibles?',
+    en: "Hi Maria Fernanda 👋, I'm looking for reliable health insurance for my family. Can you help me compare the available plans?",
   },
   dental: {
-    es: 'Hola María Fernanda 👋, me interesa un seguro dental que cubra más allá de limpiezas preventivas. ¿Tienes opciones para mí?',
-    en: "Hi María Fernanda 👋, I'm interested in dental insurance that goes beyond basic cleanings. Do you have options for me?",
+    es: 'Hola Maria Fernanda 👋, me interesa un seguro dental que cubra más allá de limpiezas preventivas. ¿Tienes opciones para mí?',
+    en: "Hi Maria Fernanda 👋, I'm interested in dental insurance that goes beyond basic cleanings. Do you have options for me?",
   },
   comercial: {
-    es: 'Hola María Fernanda 👋, tengo un negocio y necesito asegurarlo correctamente. ¿Me ayudas a encontrar la póliza ideal?',
-    en: "Hi María Fernanda 👋, I own a business and need to make sure it's properly insured. Can you help me find the right policy?",
+    es: 'Hola Maria Fernanda 👋, tengo un negocio y necesito asegurarlo correctamente. ¿Me ayudas a encontrar la póliza ideal?',
+    en: "Hi Maria Fernanda 👋, I own a business and need to make sure it's properly insured. Can you help me find the right policy?",
   },
   auto_comercial: {
-    es: 'Hola María Fernanda 👋, uso mi vehículo para trabajar y busco un seguro comercial. ¿Me asesoras con las opciones?',
-    en: "Hi María Fernanda 👋, I use my vehicle for work and need commercial auto insurance. Can you guide me through my options?",
+    es: 'Hola Maria Fernanda 👋, uso mi vehículo para trabajar y busco un seguro comercial. ¿Me asesoras con las opciones?',
+    en: "Hi Maria Fernanda 👋, I use my vehicle for work and need commercial auto insurance. Can you guide me through my options?",
   },
   paquete: {
-    es: 'Hola María Fernanda 👋, me interesa combinar mis seguros de auto y hogar para obtener un mejor precio. ¿Me ayudas con una cotización?',
-    en: "Hi María Fernanda 👋, I'm interested in bundling my home and auto insurance to save money. Can you put a quote together for me?",
+    es: 'Hola Maria Fernanda 👋, me interesa combinar mis seguros de auto y hogar para obtener un mejor precio. ¿Me ayudas con una cotización?',
+    en: "Hi Maria Fernanda 👋, I'm interested in bundling my home and auto insurance to save money. Can you put a quote together for me?",
   },
   umbrella: {
-    es: 'Hola María Fernanda 👋 quiero proteger mis bienes más allá de lo básico. ¿Cómo funciona la protección extra?',
-    en: "Hi María Fernanda 👋 I want to make sure my assets are fully protected beyond my current policies. Can we talk?",
+    es: 'Hola Maria Fernanda 👋 quiero proteger mis bienes más allá de lo básico. ¿Cómo funciona la protección extra?',
+    en: "Hi Maria Fernanda 👋 I want to make sure my assets are fully protected beyond my current policies. Can we talk?",
   },
 };
 

@@ -61,6 +61,22 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
+  // ── Bio badge rotation (EN only) ──
+  const EN_BADGE_TEXTS = ['Free annual review included', 'Your advocate on every claim'];
+  const [badgeIndex, setBadgeIndex] = useState(0);
+  const [badgeVisible, setBadgeVisible] = useState(true);
+  useEffect(() => {
+    if (!isEn) return;
+    const interval = setInterval(() => {
+      setBadgeVisible(false);
+      setTimeout(() => {
+        setBadgeIndex(i => (i + 1) % EN_BADGE_TEXTS.length);
+        setBadgeVisible(true);
+      }, 400);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [isEn]);
+
   // ── Video Hero Carousel ──
   const [heroIndex, setHeroIndex] = useState(0);
   const videoRef0 = useRef<HTMLVideoElement | null>(null);
@@ -674,7 +690,9 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                       <svg key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     ))}
                   </div>
-                  <span className="text-[11px] font-semibold text-slate-700">200+ familias</span>
+                  <span className={`text-[11px] font-semibold text-slate-700 transition-opacity duration-300 ${isEn ? (badgeVisible ? 'opacity-100' : 'opacity-0') : ''}`}>
+                    {isEn ? EN_BADGE_TEXTS[badgeIndex] : '200+ familias'}
+                  </span>
                 </div>
               </div>
             </div>
