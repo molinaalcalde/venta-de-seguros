@@ -298,16 +298,6 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <span className="tracking-wide">Scroll Down</span>
             </div>
             <div className="max-w-2xl text-white lg:text-right">
-              <div className="flex flex-wrap gap-2 mb-5 lg:justify-end">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
-                  <Globe className="w-3.5 h-3.5" aria-hidden="true" />
-                  {isEn ? 'Personalized Service' : 'Atención 100% en español'}
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
-                  <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
-                  {isEn ? '10+ Carriers Compared' : 'Acepta ITIN · Sin SSN'}
-                </span>
-              </div>
               <h1 className="text-[40px] sm:text-5xl md:text-6xl lg:text-[76px] font-normal tracking-tight leading-[1.08] drop-shadow-sm">
                 {isEn ? (
                   <>The right coverage<br /><span className="font-sans font-light">for your life,</span>{' '}<span className="font-editorial-italic font-normal">your family.</span></>
