@@ -264,26 +264,26 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
       {/* ── Hero — Full Bleed ── */}
       <div className="relative w-full min-h-[680px] lg:min-h-[860px] flex flex-col justify-between overflow-hidden">
         {/* Slot 0 */}
-        <video ref={videoRefs[0]} src={HERO_VIDEOS[0].src} muted playsInline loop preload="metadata"
+        <video ref={videoRefs[0]} src={HERO_VIDEOS[0].src} autoPlay muted playsInline loop preload="auto"
           onLoadedMetadata={() => { const el = videoRefs[0].current; if (el) el.currentTime = HERO_VIDEOS[0].startTime; }}
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${heroIndex === 0 ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Slot 1 — desktop */}
-        <video ref={videoRefs[1]} src="/videos/hero2-desktop.mp4" muted playsInline loop preload="metadata"
+        <video ref={videoRefs[1]} src="/videos/hero2-desktop.mp4" autoPlay muted playsInline loop preload="auto"
           onLoadedMetadata={() => { const el = videoRefs[1].current; if (el) el.currentTime = HERO_VIDEOS[1].startTime; }}
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 hidden md:block ${heroIndex === 1 ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Slot 1 — mobile */}
-        <video src="/videos/hero2-mobile.mp4" muted playsInline loop preload="metadata"
+        <video src="/videos/hero2-mobile.mp4" autoPlay muted playsInline loop preload="auto"
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 md:hidden ${heroIndex === 1 ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Slot 2 — desktop */}
-        <video ref={videoRefs[2]} src={HERO_VIDEOS[2].src} muted playsInline loop preload="metadata"
+        <video ref={videoRefs[2]} src={HERO_VIDEOS[2].src} autoPlay muted playsInline loop preload="auto"
           onLoadedMetadata={() => { const el = videoRefs[2].current; if (el) el.currentTime = HERO_VIDEOS[2].startTime; }}
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 hidden md:block ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Slot 2 — mobile (vertical) */}
-        <video src="/videos/hero-auto-mobile.mp4" muted playsInline loop preload="metadata"
+        <video src="/videos/hero-auto-mobile.mp4" autoPlay muted playsInline loop preload="auto"
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 md:hidden ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/15 to-black/70 z-[1]"></div>
