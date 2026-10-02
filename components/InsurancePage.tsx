@@ -111,6 +111,46 @@ function RevealWrapper({ children, className }: { children: React.ReactNode; cla
   );
 }
 
+/* ─── Eligibility stagger section ────────────────────────────────────── */
+function EligibilitySection({ items, isEn, iconText, stepBg }: {
+  items: string[]; isEn: boolean; iconText: string; stepBg: string;
+}) {
+  const { ref, visible } = useReveal(0.08);
+  return (
+    <section className="bg-white border-b border-slate-100">
+      <div className="max-w-5xl mx-auto px-5 lg:px-8 py-16 md:py-20">
+        <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.15em] mb-10">
+          {isEn ? 'Does any of this sound familiar?' : '¿Te suena alguna de estas?'}
+        </p>
+        <div ref={ref}>
+          {items.map((item, i) => (
+            <div
+              key={i}
+              style={{ transitionDelay: visible ? `${i * 90}ms` : '0ms' }}
+              className={`group flex items-center gap-4 py-4 border-b border-slate-100 last:border-0 transition-all duration-700 ease-out ${
+                visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+              }`}
+            >
+              <div className={`w-0.5 h-7 rounded-full ${stepBg} shrink-0 scale-y-0 group-hover:scale-y-100 transition-transform duration-200 origin-center`} />
+              <p className="text-lg md:text-xl font-light text-slate-500 group-hover:text-slate-900 transition-colors duration-200 leading-snug">
+                {item}
+              </p>
+            </div>
+          ))}
+        </div>
+        <p
+          style={{ transitionDelay: visible ? `${items.length * 90 + 100}ms` : '0ms' }}
+          className={`mt-8 font-editorial-italic text-lg md:text-xl ${iconText} transition-all duration-700 ${
+            visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+          }`}
+        >
+          {isEn ? "That's exactly why we're here." : 'Si es así, para eso estoy aquí.'}
+        </p>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Component ─────────────────────────────────────────────────────── */
 export default function InsurancePage({ config, lang = 'es' }: { config: InsurancePageConfig; lang?: string }) {
   const [quoteOpen, setQuoteOpen]   = useState(false);
@@ -265,20 +305,13 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
           </div>
         </section>
 
-        {/* ── Para quién (eligibility compact) ─────────────────────── */}
-        <section className="border-b border-slate-100 bg-white">
-          <div className="max-w-5xl mx-auto px-5 lg:px-8 py-6 flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider shrink-0">
-              {isEn ? 'Who this is for:' : 'Para quién es:'}
-            </span>
-            {config.eligibilityItems.map((item, i) => (
-              <span key={i} className="inline-flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-full px-3 py-1.5 font-medium">
-                <CheckCircle weight="fill" className={`w-3 h-3 ${t.iconText} shrink-0`} />
-                {item}
-              </span>
-            ))}
-          </div>
-        </section>
+        {/* ── Para quién (eligibility stagger) ─────────────────────── */}
+        <EligibilitySection
+          items={config.eligibilityItems}
+          isEn={isEn}
+          iconText={t.iconText}
+          stepBg={t.stepBg}
+        />
 
         {/* ── Feature blocks (alternating) ─────────────────────────── */}
         <section className="bg-[#fafbfa] py-16 md:py-24">
