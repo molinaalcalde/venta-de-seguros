@@ -340,10 +340,6 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </button>
               ))}
             </div>
-            <button onClick={goNext} aria-label={isEn ? 'Next video' : 'Siguiente video'} className="flex items-center gap-1.5 text-white/80 hover:text-white text-xs font-light transition-all border border-white/30 hover:border-white/60 rounded-full px-3 py-1.5 backdrop-blur-sm">
-              <span>{isEn ? 'Next' : 'Siguiente'}</span>
-              <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
-            </button>
           </div>
         </div>
       </div>
