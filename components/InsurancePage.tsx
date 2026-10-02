@@ -210,7 +210,7 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
               <video
                 src={config.heroVideo}
                 autoPlay muted loop playsInline
-                className={`absolute inset-0 w-full h-full object-cover ${config.heroVideoMobile ? 'hidden md:block' : ''}`}
+                className={`absolute inset-0 w-full h-full object-cover ${config.heroVideoMobile ? 'hidden md:block' : 'object-top md:object-center'}`}
               />
               {/* Mobile video (vertical) */}
               {config.heroVideoMobile && (
