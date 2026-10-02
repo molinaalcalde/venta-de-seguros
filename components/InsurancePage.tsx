@@ -112,8 +112,9 @@ function RevealWrapper({ children, className }: { children: React.ReactNode; cla
 }
 
 /* ─── Eligibility stagger section ────────────────────────────────────── */
-function EligibilitySection({ items, isEn, iconText, stepBg }: {
-  items: string[]; isEn: boolean; iconText: string; stepBg: string;
+function EligibilitySection({ items, isEn, stepBg, onQuote, ctaButton }: {
+  items: string[]; isEn: boolean; stepBg: string;
+  onQuote: () => void; ctaButton: string;
 }) {
   const { ref, visible } = useReveal(0.08);
   return (
@@ -138,14 +139,18 @@ function EligibilitySection({ items, isEn, iconText, stepBg }: {
             </div>
           ))}
         </div>
-        <p
+        <div
           style={{ transitionDelay: visible ? `${items.length * 90 + 100}ms` : '0ms' }}
-          className={`mt-8 font-editorial-italic text-lg md:text-xl ${iconText} transition-all duration-700 ${
-            visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-          }`}
+          className={`mt-10 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}
         >
-          {isEn ? "That's exactly why we're here." : 'Si es así, para eso estoy aquí.'}
-        </p>
+          <button
+            onClick={onQuote}
+            className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full ${stepBg} text-white font-semibold text-sm hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 shadow-sm`}
+          >
+            {ctaButton}
+            <ArrowRight weight="bold" className="w-4 h-4" />
+          </button>
+        </div>
       </div>
     </section>
   );
@@ -309,8 +314,9 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
         <EligibilitySection
           items={config.eligibilityItems}
           isEn={isEn}
-          iconText={t.iconText}
           stepBg={t.stepBg}
+          onQuote={() => setQuoteOpen(true)}
+          ctaButton={config.ctaButton}
         />
 
         {/* ── Feature blocks (alternating) ─────────────────────────── */}
