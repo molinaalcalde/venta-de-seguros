@@ -117,6 +117,7 @@ const configEs: InsurancePageConfig = {
   ctaSubtitle: 'ITIN aceptado. Comparamos 10+ aseguradoras. Sin compromiso.',
   ctaButton: 'Cotizar gratis',
   theme: 'blue',
+  heroVideo: '/videos/salud.mp4',
   schema: {
     description: 'Seguro de salud para hispanos con ITIN en USA. Agente independiente compara 10+ aseguradoras. Planes individuales y familiares. Inscripción abierta del 1 de noviembre al 15 de enero. Atención en español.',
     price: '381',
@@ -238,6 +239,7 @@ const configEn: InsurancePageConfig = {
   ctaSubtitle: 'Free comparison. 10+ carriers. Annual review included. No obligation.',
   ctaButton: 'Get a free quote',
   theme: 'blue',
+  heroVideo: '/videos/salud.mp4',
   schema: {
     description: 'Health insurance for self-employed, gig workers, and individuals without employer coverage. Independent agent compares 10+ carriers. ACA marketplace and off-marketplace options. Annual review included.',
     price: '381',

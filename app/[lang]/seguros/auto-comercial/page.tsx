@@ -170,6 +170,7 @@ const configEs: InsurancePageConfig = {
   ctaSubtitle: 'Gig workers, contratistas y flotas. Sin compromiso.',
   ctaButton: 'Cotizar gratis',
   theme: 'orange',
+  heroVideo: '/videos/comercial-negocio.mp4',
   schema: {
     description: 'Seguro de auto comercial para hispanos. Uber, Lyft, DoorDash, Instacart, contratistas y flotas. Agente independiente compara 10+ aseguradoras. COI en 24 horas. Desde $110 al mes.',
     price: '110',
@@ -343,6 +344,7 @@ const configEn: InsurancePageConfig = {
   ctaSubtitle: 'Free comparison. 10+ carriers. COI in 24 hours. No obligation.',
   ctaButton: 'Get a free quote',
   theme: 'orange',
+  heroVideo: '/videos/comercial-negocio.mp4',
   schema: {
     description: 'Commercial auto insurance for small businesses, contractors, and gig workers in the US. Independent agent compares 10+ carriers. Hired and Non-Owned Auto, fleet policies, and rideshare coverage. COI in 24 hours. From $110/mo.',
     price: '110',

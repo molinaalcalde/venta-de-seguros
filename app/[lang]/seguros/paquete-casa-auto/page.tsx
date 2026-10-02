@@ -111,6 +111,7 @@ const configEs: InsurancePageConfig = {
   ctaSubtitle: 'ITIN aceptado. 10+ aseguradoras comparadas. Cotización gratis.',
   ctaButton: 'Cotizar gratis',
   theme: 'violet',
+  heroVideo: '/videos/paquete.mp4',
   schema: {
     description: 'Paquete seguro de casa y auto para hispanos en USA. ITIN aceptado. Un solo agente para los dos. Ahorra hasta 25%, entre $466 y $1,184 al año. Para inquilinos y dueños de casa. Cotización gratis.',
     price: '15',
@@ -228,6 +229,7 @@ const configEn: InsurancePageConfig = {
   ctaSubtitle: 'Free comparison. 10+ carriers. Annual review included. No obligation.',
   ctaButton: 'Get a free quote',
   theme: 'violet',
+  heroVideo: '/videos/paquete.mp4',
   schema: {
     description: 'Home and auto bundle insurance. Independent agent compares 10+ carriers. Save $466 to $1,184 per year. Renters and homeowners qualify. Annual review included. Free quote.',
     price: '15',
