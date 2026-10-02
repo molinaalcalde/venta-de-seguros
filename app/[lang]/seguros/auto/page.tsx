@@ -21,6 +21,12 @@ const configEs: InsurancePageConfig = {
     'Tienes accidentes o infracciones previas y no sabes si calificas para un seguro',
     'Tienes varios conductores en casa y quieres asegurarlos a todos',
   ],
+  featuresHeading: {
+    label: 'Por qué comparar',
+    title: 'Tres cosas que la aseguradora',
+    italic: 'no te cuenta',
+    subtitle: 'Situaciones donde la mayoría de conductores pierde dinero — y cómo las resolvemos.',
+  },
   features: [
     {
       icon: IdentificationCard,
@@ -153,6 +159,7 @@ const configEs: InsurancePageConfig = {
       { independent: 'Explica cada opción en español, sin apuro', direct: 'Call center en turno' },
       { independent: 'Un solo contacto para todo', direct: 'Cambia de agente cada renovación' },
     ],
+    testimonialIndex: 1,
   },
 };
 
@@ -175,6 +182,12 @@ const configEn: InsurancePageConfig = {
     'You want to understand what "full coverage" actually covers before you need to find out the hard way',
     'New car, new home, new driver on the policy — something changed and your coverage probably should too',
   ],
+  featuresHeading: {
+    label: 'Why comparison matters',
+    title: 'Three things your carrier',
+    italic: 'doesn\'t tell you',
+    subtitle: 'Common situations where most drivers lose money — and how we handle them.',
+  },
   features: [
     {
       icon: TrendUp,
@@ -307,6 +320,7 @@ const configEn: InsurancePageConfig = {
       { independent: 'Walks through every option in plain language', direct: 'Call center, next in queue' },
       { independent: 'One contact for everything', direct: 'New agent every renewal' },
     ],
+    testimonialIndex: 1,
   },
 };
 
