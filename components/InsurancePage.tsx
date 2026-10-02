@@ -265,22 +265,6 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
           </div>
         </section>
 
-        {/* ── Stat strip ───────────────────────────────────────────── */}
-        <section className="bg-slate-900 border-b border-slate-800">
-          <div className="max-w-5xl mx-auto px-5 lg:px-8 py-10 grid grid-cols-3 gap-4 divide-x divide-slate-700">
-            {[
-              { value: '10+', label: isEn ? 'Carriers compared' : 'Aseguradoras comparadas' },
-              { value: '200+', label: isEn ? 'Families protected' : 'Familias protegidas' },
-              { value: '24h', label: isEn ? 'Response time' : 'Tiempo de respuesta' },
-            ].map(({ value, label }) => (
-              <div key={label} className="text-center px-4">
-                <p className="text-3xl md:text-4xl font-light text-white tracking-tight">{value}</p>
-                <p className="text-xs text-slate-400 mt-1 font-light">{label}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* ── Para quién (eligibility compact) ─────────────────────── */}
         <section className="border-b border-slate-100 bg-white">
           <div className="max-w-5xl mx-auto px-5 lg:px-8 py-6 flex flex-wrap items-center gap-2">
@@ -449,9 +433,6 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
                 </div>
               ))}
             </div>
-            <p className="text-xs text-slate-500 mt-5">
-              {isEn ? '*Names have been changed to protect client privacy.' : '*Los nombres han sido cambiados para proteger la privacidad de nuestros clientes.'}
-            </p>
 
             {/* CTA 3 — after testimonials */}
             <div className="mt-10 text-center">

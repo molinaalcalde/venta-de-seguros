@@ -96,7 +96,7 @@ const CONTENT = {
       { q: '¿Cuánto cuesta el seguro de mascotas?', a: 'El precio varía según la raza, edad, estado y el porcentaje de reembolso que elijas (70%, 80% o 90%). También puedes personalizar el deductible y el máximo anual para ajustar el precio a tu presupuesto. Para obtener el precio exacto para tu mascota, cotiza en línea — es gratis y sin compromiso. Sujeto a términos y condiciones.' },
       { q: '¿Puedo ir a cualquier veterinario?', a: 'Sí. No hay red restringida. Puedes llevar a tu mascota a cualquier veterinario con licencia en Estados Unidos, incluyendo especialistas y hospitales de emergencia. La cobertura también aplica en Canadá. No aplica fuera de EE.UU. y Canadá.' },
       { q: '¿El seguro cubre enfermedades preexistentes?', a: 'Las enfermedades preexistentes generalmente no están cubiertas. Las condiciones hereditarias de raza sí pueden estar cubiertas si no eran preexistentes al momento de contratar la póliza. Consulta los términos exactos con un asesor para tu caso específico.' },
-      { q: '¿La compra directa en línea está disponible en mi estado?', a: 'La compra directa en línea está disponible en: Nueva Jersey, Florida, Iowa, Nevada, Pensilvania, Rhode Island y Texas. Para residentes de otros estados, un asesor en español te guiará sin costo.' },
+      { q: '¿La compra en línea está disponible en mi estado?', a: 'Dependiendo de tu estado, puedes completar el proceso 100% en línea o con la ayuda de un asesor en español sin costo. Ingresa tu ubicación y te indicamos la mejor opción disponible para ti.' },
       { q: '¿Mi información personal se comparte con el gobierno o migración?', a: 'No. Tu información personal es 100% confidencial. Nunca la compartimos con ICE ni ninguna agencia gubernamental. Cumplimos con todas las regulaciones estatales de privacidad de seguros.' },
     ],
     footerInsurance: 'Nuestros Seguros',
@@ -207,7 +207,7 @@ const CONTENT = {
       { q: 'How much does pet insurance cost?', a: 'The price varies based on breed, age, state, and your chosen reimbursement percentage (70%, 80%, or 90%). You can also customize the deductible and annual maximum. Get your exact price online — free and no commitment. Subject to terms and conditions.' },
       { q: 'Can I go to any vet?', a: "Yes. There's no restricted network. You can take your pet to any licensed vet in the United States, including specialists and emergency hospitals. Coverage also applies in Canada. Does not apply outside the U.S. and Canada." },
       { q: 'Does insurance cover pre-existing conditions?', a: 'Pre-existing conditions are generally not covered. Hereditary breed conditions may be covered if they were not pre-existing when the policy was purchased. Consult an advisor for your specific case.' },
-      { q: 'Is direct online purchase available in my state?', a: 'Direct online purchase is available in: New Jersey, Florida, Iowa, Nevada, Pennsylvania, Rhode Island, and Texas. For residents of other states, a licensed agent will guide you at no cost.' },
+      { q: 'Can I sign up online regardless of my state?', a: 'Depending on your state, you can complete the process fully online or with the help of a licensed agent at no cost. Enter your location and we will show you the best option available.' },
     ],
     footerInsurance: 'Our Insurance',
     footerLinks: [
@@ -603,16 +603,6 @@ export default function MascotasLangPage({ params }: { params: { lang: string } 
           </div>
         </section>
 
-        {/* ── State availability ── */}
-        <section className="max-w-5xl mx-auto px-5 lg:px-8 py-10">
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col sm:flex-row sm:items-start gap-4">
-            <MapPin weight="duotone" className="w-6 h-6 text-[#3d7a47] shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm font-semibold text-slate-800 mb-1">{c.availTitle}</p>
-              <p className="text-sm text-slate-600 font-light leading-relaxed">{c.availDesc}</p>
-            </div>
-          </div>
-        </section>
 
         {/* ── FAQ ── */}
         <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
