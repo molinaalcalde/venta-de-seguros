@@ -113,6 +113,7 @@ const configEs: InsurancePageConfig = {
   ctaSubtitle: 'Desde $19/mes. $1M de protección adicional. Sin SSN. Tu asesora en español.',
   ctaButton: 'Ver mi precio gratis',
   theme: 'slate',
+  heroVideo: '/videos/hero3.mp4',
   schema: {
     description: 'Protección Extra (Umbrella Insurance) para latinos en USA. $1M a $5M de cobertura adicional sobre seguro de auto y hogar. Protege salario, ahorros y casa ante demandas. Sin SSN. Desde $19/mes.',
     price: '19',
@@ -226,6 +227,7 @@ const configEn: InsurancePageConfig = {
   ctaSubtitle: 'From $150/yr. $1M–$5M coverage. Legal defense included. Worldwide.',
   ctaButton: 'Get my umbrella quote',
   theme: 'slate',
+  heroVideo: '/videos/hero3.mp4',
   schema: {
     description: 'Umbrella insurance — $1M to $5M in excess liability above auto and home policies. Covers verdict gaps, social media defamation, teen drivers, pools, dogs, and social host liability. From $150/yr.',
     price: '19',
