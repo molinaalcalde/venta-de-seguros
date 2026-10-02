@@ -124,6 +124,36 @@ const configEs: InsurancePageConfig = {
     description: 'Agente de seguros de auto para familias latinas. Comparamos múltiples aseguradoras para encontrarte la mejor cobertura al precio justo. Atención en español. Desde $89/mes.',
     price: '89',
   },
+  stats: [
+    {
+      value: '$144 más/año',
+      label: 'es lo que pagan en promedio los conductores latinos comparado con conductores blancos por la misma cobertura.',
+      source: 'Insurance Journal · 2024',
+    },
+    {
+      value: '55%',
+      label: 'de hispanos en EE.UU. tiene seguro de auto, frente al 80% de la población general.',
+      source: 'Claritas · 2024',
+    },
+    {
+      value: '48%',
+      label: 'de conductores recibió un aumento de prima el último año sin recibir una explicación clara.',
+      source: 'JD Power · 2025',
+    },
+  ],
+  agentComparison: {
+    heading: 'Agente independiente',
+    independentLabel: 'Con María Fernanda',
+    directLabel: 'Directo con la aseguradora',
+    rows: [
+      { independent: 'Compara 10+ aseguradoras al mismo tiempo', direct: 'Solo sus propias tarifas' },
+      { independent: 'Sin costo adicional para ti', direct: 'Sin costo adicional' },
+      { independent: 'Revisión anual de tu póliza incluida', direct: 'Nunca más te contactan' },
+      { independent: 'Te acompaña si necesitas hacer un reclamo', direct: 'Tú solo contra el sistema' },
+      { independent: 'Explica cada opción en español, sin apuro', direct: 'Call center en turno' },
+      { independent: 'Un solo contacto para todo', direct: 'Cambia de agente cada renovación' },
+    ],
+  },
 };
 
 const configEn: InsurancePageConfig = {
@@ -247,6 +277,36 @@ const configEn: InsurancePageConfig = {
   schema: {
     description: 'Independent car insurance agent. We shop 10+ carriers, explain full coverage in plain English, and review your policy every year. Rate check in 5 minutes. From $89/mo.',
     price: '89',
+  },
+  stats: [
+    {
+      value: '$144/yr more',
+      label: 'is what Hispanic drivers pay on average compared to white drivers for the same coverage.',
+      source: 'Insurance Journal · 2024',
+    },
+    {
+      value: '55%',
+      label: 'of Hispanic adults in the US have auto insurance, versus 80% of the general population.',
+      source: 'Claritas · 2024',
+    },
+    {
+      value: '48%',
+      label: 'of drivers received a rate increase last year without receiving a clear explanation.',
+      source: 'JD Power · 2025',
+    },
+  ],
+  agentComparison: {
+    heading: 'Independent agent',
+    independentLabel: 'With María Fernanda',
+    directLabel: 'Going direct',
+    rows: [
+      { independent: 'Shops 10+ carriers at the same time', direct: 'Only their own rates' },
+      { independent: 'No extra cost to you', direct: 'No extra cost either' },
+      { independent: 'Annual policy review included', direct: 'You\'re on your own after you sign' },
+      { independent: 'Guides you through claims if you need it', direct: 'You vs. their claims team' },
+      { independent: 'Walks through every option in plain language', direct: 'Call center, next in queue' },
+      { independent: 'One contact for everything', direct: 'New agent every renewal' },
+    ],
   },
 };
 

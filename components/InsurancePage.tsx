@@ -82,6 +82,13 @@ export interface InsurancePageConfig {
   heroVideo?: string;
   heroVideoMobile?: string;
   schema: { description: string; price?: string };
+  stats?: { value: string; label: string; source: string }[];
+  agentComparison?: {
+    heading: string;
+    independentLabel: string;
+    directLabel: string;
+    rows: { independent: string; direct: string }[];
+  };
 }
 
 /* ─── Scroll reveal hook ─────────────────────────────────────────────── */
@@ -294,6 +301,11 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
                 {config.heroLine1}{' '}
                 <span className={`font-editorial-italic ${config.heroVideo ? 'text-white/90' : t.iconText}`}>{config.heroItalic}</span>
               </h1>
+              {config.heroSubtitle && (
+                <p className={`text-base font-light leading-relaxed mb-8 max-w-xl ${config.heroVideo ? 'text-white/75' : 'text-slate-600'}`}>
+                  {config.heroSubtitle}
+                </p>
+              )}
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <button
                   onClick={() => setQuoteOpen(true)}
@@ -319,6 +331,26 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
           ctaButton={config.ctaButton}
         />
 
+        {/* ── Stats (market data) ───────────────────────────────────── */}
+        {config.stats && config.stats.length > 0 && (
+          <section className="bg-white border-b border-slate-100">
+            <div className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
+              <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.15em] mb-10">
+                {isEn ? 'The market reality' : 'La realidad del mercado'}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+                {config.stats.map((s, i) => (
+                  <div key={i} className={`${i > 0 ? 'pt-8 sm:pt-0 sm:pl-12' : ''} ${i < config.stats!.length - 1 ? 'pb-8 sm:pb-0 sm:pr-12' : ''}`}>
+                    <p className={`text-4xl md:text-5xl font-light tracking-tight ${t.iconText} mb-2`}>{s.value}</p>
+                    <p className="text-sm text-slate-700 font-light leading-snug mb-2">{s.label}</p>
+                    <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-[0.12em]">{s.source}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ── Feature blocks (alternating) ─────────────────────────── */}
         <section className="bg-[#fafbfa] py-16 md:py-24">
           <div className="max-w-5xl mx-auto px-5 lg:px-8 space-y-16 md:space-y-24">
@@ -340,6 +372,49 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
             })}
           </div>
         </section>
+
+        {/* ── Agent comparison ─────────────────────────────────────── */}
+        {config.agentComparison && (
+          <section className="bg-white border-b border-slate-100">
+            <div className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
+              <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-12">
+                {config.agentComparison.heading}
+              </h2>
+              <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-2xl">
+                {/* Independent column header */}
+                <div className={`rounded-2xl border-2 ${t.accentBorder} bg-white px-5 md:px-7 py-6`}>
+                  <p className={`text-xs font-bold uppercase tracking-[0.15em] ${t.iconText} mb-6`}>
+                    {config.agentComparison.independentLabel}
+                  </p>
+                  <div className="space-y-4">
+                    {config.agentComparison.rows.map((row, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <CheckCircle weight="duotone" className={`w-4 h-4 ${t.iconText} shrink-0 mt-0.5`} />
+                        <span className="text-sm text-slate-800 font-light leading-snug">{row.independent}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/* Direct column header */}
+                <div className="rounded-2xl border border-slate-100 bg-slate-50 px-5 md:px-7 py-6">
+                  <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400 mb-6">
+                    {config.agentComparison.directLabel}
+                  </p>
+                  <div className="space-y-4">
+                    {config.agentComparison.rows.map((row, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <span className="w-4 h-4 shrink-0 mt-0.5 flex items-center justify-center text-slate-300 font-bold text-base leading-none">–</span>
+                        <span className="text-sm text-slate-400 font-light leading-snug">
+                          {row.direct}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ── Coverage grid ─────────────────────────────────────────── */}
         <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
