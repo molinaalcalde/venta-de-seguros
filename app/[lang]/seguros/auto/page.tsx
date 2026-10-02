@@ -1,6 +1,6 @@
 'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
-import { Car, IdentificationCard, Warning, TrendUp, ArrowsLeftRight, House, Headset } from '@phosphor-icons/react';
+import { Car, IdentificationCard, Warning, TrendUp, ArrowsLeftRight, CurrencyDollar } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Auto',
@@ -28,7 +28,7 @@ const configEs: InsurancePageConfig = {
       desc: 'No trabajamos para una sola aseguradora. Comparamos opciones y te explicamos las diferencias reales: cobertura, precio y condiciones, sin presionarte. Aceptamos ITIN, pasaporte y matrícula consular para cotizar.',
     },
     {
-      icon: House,
+      icon: CurrencyDollar,
       title: 'Primer auto financiado: lo que el dealer no te explica',
       desc: 'Si financiaste el carro, el banco exige full coverage, no es opcional. El minimum liability solo cubre a la otra persona, no a ti. Tu historial de manejo de otro país no se transfiere: empiezas desde cero. Te decimos exactamente qué necesitas.',
     },
@@ -66,17 +66,17 @@ const configEs: InsurancePageConfig = {
     {
       name: 'Carmen L.',
       location: 'Miami, Florida',
-      text: 'Era mi primer seguro de auto en EE.UU. y no sabía por dónde empezar. Me explicaron cada cobertura en español, compararon varias opciones y elegí la que tenía sentido para mí. En 15 minutos tenía mi póliza activa.',
+      text: 'Era mi primer seguro de auto en EE.UU. y no sabía ni por dónde empezar. María Fernanda me explicó cada cobertura en español, sin apuro. Comparé tres opciones y elegí la que tenía sentido para mi situación. En 15 minutos tenía la póliza activa.',
     },
     {
       name: 'Roberto M.',
       location: 'Houston, Texas',
-      text: 'El dealer me ofreció seguro carísimo para el auto que acababa de financiar. Me asesoraron, compararon opciones y conseguí la misma cobertura por $180 menos al mes. En un año son más de $2,000 de diferencia.',
+      text: 'El dealer me quiso vender el seguro ahí mismo. Por instinto llamé a María Fernanda antes de firmar. Comparó opciones y conseguí la misma cobertura por $180 menos al mes. En un año son más de $2,000 de diferencia.',
     },
     {
       name: 'Patricia V.',
       location: 'Los Ángeles, California',
-      text: 'Mi seguro subió $60 al mes sin haber tenido ningún accidente. Me explicaron que era por los costos de reparación de autos modernos, algo que nadie me había dicho. Luego me encontraron una aseguradora más barata. Ahorré $720 al año.',
+      text: 'Mi aseguradora me subió $60 al mes sin un solo accidente. María Fernanda me explicó que era por los costos de reparación de los autos modernos, algo que la compañía nunca me dijo. Luego comparó opciones y ahorré $720 al año.',
     },
   ],
   faq: [
@@ -190,17 +190,17 @@ const configEn: InsurancePageConfig = {
     {
       name: 'Jennifer K.',
       location: 'Phoenix, Arizona',
-      text: 'Nine years with the same carrier. Never once shopped around. Switching saved me a significant amount for identical coverage. Turns out I\'d just been quietly paying the loyalty tax the whole time.',
+      text: 'Nine years with the same carrier and never once questioned it. María Fernanda compared my rate against ten others in one call. Switching saved me more than I expected for identical coverage. Turns out I\'d been quietly paying the loyalty tax the whole time.',
     },
     {
       name: 'Michael T.',
       location: 'Tampa, Florida',
-      text: 'Got hit with a rate jump and had zero explanation for it. They broke down exactly why it happened — sensor repairs on newer cars are brutal now — and then found me a better rate anyway. First time insurance actually made sense to me.',
+      text: 'My carrier raised my rate and couldn\'t give me a straight answer why. María Fernanda broke down exactly what happened — sensor repairs on newer cars cost a lot more now — and then found me a better rate anyway. First time insurance actually made sense to me.',
     },
     {
       name: 'Sarah D.',
       location: 'Austin, Texas',
-      text: 'Just bought my first car. Had no idea what I actually needed. They walked me through everything — liability vs. full coverage, gap insurance since I financed it, what my deductible should be. Wish I\'d called before I talked to the dealer.',
+      text: 'Just bought my first car and had no idea what I actually needed. María Fernanda walked me through everything before I left the lot — liability vs. full coverage, gap insurance since I financed it, what my deductible should be. Wish I\'d called before I talked to the dealer.',
     },
   ],
   faq: [
