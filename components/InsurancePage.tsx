@@ -83,11 +83,15 @@ export interface InsurancePageConfig {
   heroVideoMobile?: string;
   schema: { description: string; price?: string };
   stats?: { value: string; label: string; source: string }[];
+  featuresHeading?: { label: string; title: string; italic: string; subtitle?: string };
   agentComparison?: {
     heading: string;
+    headingItalic?: string;
     independentLabel: string;
     directLabel: string;
     rows: { independent: string; direct: string }[];
+    testimonialIndex?: number;
+    trustLine?: string;
   };
 }
 
@@ -353,6 +357,24 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
 
         {/* ── Feature blocks (alternating) ─────────────────────────── */}
         <section className="bg-[#fafbfa] py-16 md:py-24">
+          <div className="max-w-5xl mx-auto px-5 lg:px-8">
+            {config.featuresHeading && (
+              <div className="mb-16 md:mb-20">
+                <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.15em] mb-4">
+                  {config.featuresHeading.label}
+                </p>
+                <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-3">
+                  {config.featuresHeading.title}{' '}
+                  <span className={`font-editorial-italic ${t.iconText}`}>{config.featuresHeading.italic}</span>
+                </h2>
+                {config.featuresHeading.subtitle && (
+                  <p className="text-slate-500 font-light text-base max-w-xl leading-relaxed">
+                    {config.featuresHeading.subtitle}
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
           <div className="max-w-5xl mx-auto px-5 lg:px-8 space-y-16 md:space-y-24">
             {config.features.map((f, i) => {
               const isEven = i % 2 === 0;
@@ -381,7 +403,7 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
                 {config.agentComparison.heading}
               </h2>
               <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-2xl">
-                {/* Independent column header */}
+                {/* Independent column */}
                 <div className={`rounded-2xl border-2 ${t.accentBorder} bg-white px-5 md:px-7 py-6`}>
                   <p className={`text-xs font-bold uppercase tracking-[0.15em] ${t.iconText} mb-6`}>
                     {config.agentComparison.independentLabel}
@@ -395,7 +417,7 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
                     ))}
                   </div>
                 </div>
-                {/* Direct column header */}
+                {/* Direct column */}
                 <div className="rounded-2xl border border-slate-100 bg-slate-50 px-5 md:px-7 py-6">
                   <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400 mb-6">
                     {config.agentComparison.directLabel}
@@ -404,14 +426,44 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
                     {config.agentComparison.rows.map((row, i) => (
                       <div key={i} className="flex items-start gap-3">
                         <span className="w-4 h-4 shrink-0 mt-0.5 flex items-center justify-center text-slate-300 font-bold text-base leading-none">–</span>
-                        <span className="text-sm text-slate-400 font-light leading-snug">
-                          {row.direct}
-                        </span>
+                        <span className="text-sm text-slate-400 font-light leading-snug">{row.direct}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
+
+              {/* ── CTA: testimonial → trust → button ─────────────────── */}
+              {(() => {
+                const idx = config.agentComparison!.testimonialIndex ?? 0;
+                const testi = config.testimonials[idx];
+                return (
+                  <div className="mt-12 max-w-2xl">
+                    {testi && (
+                      <blockquote className="mb-6 pl-4 border-l-2 border-slate-200">
+                        <p className="text-sm text-slate-600 font-light italic leading-relaxed mb-2">
+                          &ldquo;{testi.text}&rdquo;
+                        </p>
+                        <cite className="text-xs text-slate-400 not-italic font-medium">
+                          {testi.name} &middot; {testi.location}
+                        </cite>
+                      </blockquote>
+                    )}
+                    <p className="text-xs text-slate-400 mb-5">
+                      {config.agentComparison!.trustLine ?? (isEn
+                        ? 'No extra cost to you · No commitment · Response within 24 hours'
+                        : 'Sin costo adicional para ti · Sin compromiso · Respuesta en 24 horas')}
+                    </p>
+                    <button
+                      onClick={() => setQuoteOpen(true)}
+                      className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full ${t.stepBg} text-white font-semibold text-sm hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 shadow-sm`}
+                    >
+                      {config.ctaButton}
+                      <ArrowRight weight="bold" className="w-4 h-4" />
+                    </button>
+                  </div>
+                );
+              })()}
             </div>
           </section>
         )}
