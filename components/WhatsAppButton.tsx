@@ -107,7 +107,7 @@ export default function WhatsAppButton() {
       aria-label={ariaLabel}
       title={tooltip}
       onClick={handleClick}
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center"
+      className="fixed bottom-20 md:bottom-6 right-6 z-50 flex items-center justify-center"
     >
       <span
         className="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-20"
