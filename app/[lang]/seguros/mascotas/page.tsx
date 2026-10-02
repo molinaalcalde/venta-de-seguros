@@ -61,14 +61,14 @@ const CONTENT = {
     quoteTitle: 'Cotiza en línea',
     quoteItalic: 'en 5 minutos',
     quoteEligible: (state: string) => `Estás en ${state} — puedes activar tu póliza directamente en línea, 100% digital, sin llamadas.`,
-    quoteNotEligible: 'Un asesor en español te guía en todo el proceso sin costo. Sin SSN, sin burocracia.',
+    quoteNotEligible: 'Un asesor en español te guía en todo el proceso sin costo.',
     quoteSteps: [
       { step: '01', title: 'Datos de tu mascota', desc: 'Ingresa el nombre, raza, edad y sexo de tu perro o gato. El sistema actualiza el precio en tiempo real.' },
       { step: '02', title: 'Personaliza tu plan', desc: 'Elige el porcentaje de reembolso (70%, 80% o 90%), el deductible y el máximo anual según tu presupuesto.' },
       { step: '03', title: 'Paga y activa', desc: 'Paga con tarjeta de crédito o débito. La póliza queda activa de inmediato. Recibes tu póliza por email.' },
     ],
     quoteCTAEligible: (state: string) => ({ title: `Disponible en ${state}`, desc: 'Compra tu seguro de mascotas directamente en línea. Proceso 100% digital, sin llamadas.', btn: 'Obtener mi seguro de mascotas ahora' }),
-    quoteCTANotEligible: { title: 'Protege a tu mascota', titleItalic: 'hoy mismo', desc: 'Un asesor en español te guía en todo el proceso. Sin SSN, sin burocracia.', btn: 'Cotizar Seguro de Mascotas gratis' },
+    quoteCTANotEligible: { title: 'Protege a tu mascota', titleItalic: 'hoy mismo', desc: 'Un asesor en español te guía en todo el proceso sin costo.', btn: 'Cotizar Seguro de Mascotas gratis' },
     whyTitle: '¿Por qué',
     whyItalic: 'elegirnos?',
     whyCards: [
@@ -81,16 +81,16 @@ const CONTENT = {
     testimonialsItalic: 'nuestros clientes',
     testimonials: [
       { name: 'Carmen R.', location: 'Houston, Texas', text: 'Mi perro tuvo una cirugía de emergencia. Subí la factura al portal esa misma noche y en menos de una semana me depositaron el 80% de todo. No creía que fuera tan fácil.', plan: '80% Reembolso' },
-      { name: 'Andrés M.', location: 'Miami, Florida', text: 'Pensé que necesitaba SSN para asegurar a mi gata. Me dijeron que solo necesitaba ITIN y en 10 minutos tenía la póliza activa. Muy fácil.', plan: '70% Reembolso' },
-      { name: 'Lucía P.', location: 'Newark, New Jersey', text: 'Tres mascotas aseguradas con el 90% de reembolso. El servicio en español es real — hablas con una persona, no con un menú automático.', plan: '90% Reembolso' },
+      { name: 'Andrés M.', location: 'Miami, Florida', text: 'Pensé que el proceso iba a ser complicado. Entré al portal, ingresé los datos de mi gata y en 10 minutos tenía la póliza activa. No esperaba que fuera tan directo.', plan: '70% Reembolso' },
+      { name: 'Lucía P.', location: 'Newark, New Jersey', text: 'Tres mascotas aseguradas con el 90% de reembolso. El servicio en español es real, hablas con una persona, no con un menú automático.', plan: '90% Reembolso' },
     ],
-    testimonialsNote: '*Los nombres han sido cambiados para proteger la privacidad de nuestros clientes.',
+    testimonialsNote: '',
     availTitle: 'Disponibilidad de compra directa en línea',
     availDesc: 'La compra directa en línea está disponible en: Nueva Jersey, Florida, Iowa, Nevada, Pensilvania, Rhode Island y Texas. Para residentes de otros estados, un asesor en español te guiará en el proceso sin costo.',
     faqTitle: 'Preguntas',
     faqItalic: 'frecuentes',
     faq: [
-      { q: '¿Necesito número de seguro social para asegurar a mi mascota?', a: 'No. Puedes contratar el seguro de mascotas con tu ITIN. No se requiere SSN ni ciudadanía. Solo necesitas tu nombre, dirección y la información básica de tu mascota.' },
+      { q: '¿Necesito SSN o ITIN para asegurar a mi mascota?', a: 'No. Fetch no requiere SSN ni ITIN. Para asegurar a tu mascota solo necesitas tu nombre, dirección y los datos básicos de tu mascota: nombre, raza, edad y sexo. El proceso es completamente en línea.' },
       { q: '¿Cómo funciona el reembolso?', a: 'El proceso es simple: llevas a tu mascota a cualquier veterinario con licencia en EE.UU. o Canadá, pagas la factura, y luego subes el recibo al portal de seguros. Recibes tu reembolso según el porcentaje de tu plan (70%, 80% o 90%) en aproximadamente una semana.' },
       { q: '¿Cuánto tiempo tarda el reembolso?', a: 'En promedio, los reembolsos se procesan en menos de una semana una vez que subes la factura al portal. Los tiempos exactos pueden variar según el caso. Sujeto a términos y condiciones.' },
       { q: '¿Cuánto cuesta el seguro de mascotas?', a: 'El precio varía según la raza, edad, estado y el porcentaje de reembolso que elijas (70%, 80% o 90%). También puedes personalizar el deductible y el máximo anual para ajustar el precio a tu presupuesto. Para obtener el precio exacto para tu mascota, cotiza en línea — es gratis y sin compromiso. Sujeto a términos y condiciones.' },
@@ -113,7 +113,7 @@ const CONTENT = {
     ],
     footerDisclaimer: 'Los precios son referenciales y varían según raza, edad, estado y plan elegido. Sujeto a aprobación y términos y condiciones de Fetch Pet Insurance. Maria Fernanda Insurance Consulting actúa como agente afiliado de Fetch Pet Insurance en los estados indicados.',
     heroBadge1: '1 de cada 3 mascotas necesitará una emergencia · Desde $30/mes',
-    heroBadge2: 'Sin SSN · Acepta ITIN',
+    heroBadge2: '',
     heroTitle: 'Seguro de',
     heroTitleSpan: 'Mascotas',
     heroItalic: 'que reembolsa rápido',
@@ -137,7 +137,7 @@ const CONTENT = {
     navBack: 'Cotizar gratis',
     fetchRedirectNote: 'Serás redirigido al portal del seguro · Maria Fernanda Insurance Consulting, agente certificado',
     noCommit: 'Sin compromiso · Respuesta en menos de 24 horas',
-    footerTagline: 'Seguros para la comunidad hispana · Sin SSN · ITIN aceptado',
+    footerTagline: 'Seguros para la comunidad hispana · Cualquier veterinario en EE.UU.',
   },
   en: {
     plans: [
@@ -196,7 +196,7 @@ const CONTENT = {
       { name: 'Andrés M.', location: 'Miami, Florida', text: 'I wasn\'t sure if I could get pet insurance for my cat. They walked me through everything and in 10 minutes the policy was active. Super easy.', plan: '70% Reimbursement' },
       { name: 'Lucía P.', location: 'Newark, New Jersey', text: 'Three pets insured at 90% reimbursement. You actually talk to a real person, not a bot or automated menu. Quick and straightforward.', plan: '90% Reimbursement' },
     ],
-    testimonialsNote: '*Names have been changed to protect the privacy of our clients.',
+    testimonialsNote: '',
     availTitle: 'Direct online purchase availability',
     availDesc: 'Direct online purchase is available in: New Jersey, Florida, Iowa, Nevada, Pennsylvania, Rhode Island, and Texas. For residents of other states, a licensed agent will guide you through the process at no cost.',
     faqTitle: 'Frequently',
@@ -291,7 +291,7 @@ export default function MascotasLangPage({ params }: { params: { lang: string } 
     {
       '@context': 'https://schema.org', '@type': 'Service',
       name: isEn ? 'Pet Insurance — Fetch Pet Insurance' : 'Seguro de Mascotas — Fetch Pet Insurance',
-      description: isEn ? 'Pet insurance with up to 90% reimbursement. Any licensed vet in the USA. Annual policy review included.' : 'Seguro de mascotas con reembolso de hasta el 90%. Sin SSN requerido. Acepta ITIN. Cualquier veterinario en EE.UU.',
+      description: isEn ? 'Pet insurance with up to 90% reimbursement. Any licensed vet in the USA. Annual policy review included.' : 'Seguro de mascotas con reembolso de hasta el 90%. Cualquier veterinario con licencia en EE.UU. o Canadá. Revisión anual incluida.',
       provider: { '@type': 'InsuranceAgency', name: 'Maria Fernanda Insurance Consulting', url: 'https://consultingbymf.com' },
       areaServed: { '@type': 'Country', name: 'United States' },
     },
@@ -342,7 +342,7 @@ export default function MascotasLangPage({ params }: { params: { lang: string } 
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">
                     <PawPrint weight="duotone" className="w-3.5 h-3.5" />{c.heroBadge1}
                   </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">{c.heroBadge2}</span>
+                  {c.heroBadge2 && <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-xs text-white font-medium">{c.heroBadge2}</span>}
                 </div>
                 <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-normal tracking-tight leading-[1.06] drop-shadow-sm">
                   {c.heroTitle} <br />
@@ -599,7 +599,7 @@ export default function MascotasLangPage({ params }: { params: { lang: string } 
                 </div>
               ))}
             </div>
-            <p className="text-xs text-slate-400 mt-5">{c.testimonialsNote}</p>
+            {c.testimonialsNote && <p className="text-xs text-slate-400 mt-5">{c.testimonialsNote}</p>}
           </div>
         </section>
 
