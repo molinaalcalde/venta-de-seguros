@@ -426,7 +426,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
           nivel_proteccion: '',
           tcpa_consent: true,
           consent_timestamp: new Date().toISOString(),
-          tcpa_text: 'Al enviar, consientes que María Fernanda Insurance Consulting te contacte al teléfono y correo proporcionados, incluyendo mensajes de texto y llamadas, para fines relacionados con seguros. El consentimiento no es condición de compra.',
+          tcpa_text: 'Al enviar, consientes que Maria Fernanda Insurance Consulting te contacte al teléfono y correo proporcionados, incluyendo mensajes de texto y llamadas, para fines relacionados con seguros. El consentimiento no es condición de compra.',
         }),
       });
       if (!res.ok) { const d = await res.json(); setSubmitErr(d.error ?? 'Error al enviar. Intenta de nuevo.'); return; }
@@ -690,7 +690,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
               <div className="space-y-3 mb-4">
                 <div>
                   <label className="block text-xs font-semibold text-slate-500 mb-1.5">Tu nombre *</label>
-                  <input type="text" autoComplete="name" placeholder="María García" value={data.nombre} onChange={e => set('nombre', e.target.value)}
+                  <input type="text" autoComplete="name" placeholder="Maria García" value={data.nombre} onChange={e => set('nombre', e.target.value)}
                     className="w-full px-4 py-3 border-2 border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors" />
                 </div>
                 <div>
@@ -707,7 +707,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                 </div>
               </div>
               {submitErr && <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2 mb-3">{submitErr}</p>}
-              <p className="text-xs text-slate-400 leading-relaxed">🔒 Al enviar, consientes que <strong>María Fernanda Insurance Consulting</strong> te contacte al teléfono y correo proporcionados, incluyendo mensajes de texto y llamadas, para fines relacionados con seguros. El consentimiento no es condición de compra. By submitting, you consent to be contacted by María Fernanda Insurance Consulting at the phone and email provided, including automated calls and texts, for insurance purposes. Consent is not required to purchase. <a href="/es/privacidad" className="underline hover:text-slate-600">Privacidad</a> · <a href="/es/terminos" className="underline hover:text-slate-600">Términos</a></p>
+              <p className="text-xs text-slate-400 leading-relaxed">🔒 Al enviar, consientes que <strong>Maria Fernanda Insurance Consulting</strong> te contacte al teléfono y correo proporcionados, incluyendo mensajes de texto y llamadas, para fines relacionados con seguros. El consentimiento no es condición de compra. By submitting, you consent to be contacted by Maria Fernanda Insurance Consulting at the phone and email provided, including automated calls and texts, for insurance purposes. Consent is not required to purchase. <a href="/es/privacidad" className="underline hover:text-slate-600">Privacidad</a> · <a href="/es/terminos" className="underline hover:text-slate-600">Términos</a></p>
             </>
           )}
         </div>

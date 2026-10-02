@@ -86,11 +86,12 @@ export interface InsurancePageConfig {
 }
 
 /* ─── Component ─────────────────────────────────────────────────────── */
-export default function InsurancePage({ config }: { config: InsurancePageConfig }) {
+export default function InsurancePage({ config, lang = 'es' }: { config: InsurancePageConfig; lang?: string }) {
   const [quoteOpen, setQuoteOpen]   = useState(false);
   const [openFaq, setOpenFaq]       = useState<number | null>(null);
   const [scrolled, setScrolled]     = useState(false);
   const t = THEMES[config.theme];
+  const isEn = lang === 'en';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -124,6 +125,40 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
     })),
   };
 
+  const whyUsCards = isEn ? [
+    { icon: Shield,     title: 'We work for you, not the insurer',  desc: 'Captive agents sell one company. We compare 10+ carriers and bring you the best option at no extra cost to you.' },
+    { icon: Headset,    title: 'Your advocate on claims',            desc: 'When you need to file, we help you navigate the process. Not a 1-800 number. A real agent in your corner.' },
+    { icon: Lock,       title: 'No cost to you',                     desc: 'The insurer pays our commission. You pay the exact same rate as going direct, but with someone comparing options for you.' },
+    { icon: CreditCard, title: 'Annual review included',             desc: 'Every 12 months we check your policy. If your carrier raised rates or we found something better, we tell you. At no charge.' },
+  ] : [
+    { icon: Shield,     title: 'Comparamos por ti',       desc: 'No trabajamos para una sola compañía. Buscamos la mejor cobertura al precio más justo para tu situación.' },
+    { icon: Headset,    title: 'Atención en español',     desc: 'Agentes reales que te explican todo en español, desde la cotización hasta el momento de usar tu seguro.' },
+    { icon: Lock,       title: 'Sin costo para ti',       desc: 'La comisión la paga la aseguradora. Pagas exactamente lo mismo que si fueras directo, pero con alguien que compara por ti.' },
+    { icon: CreditCard, title: 'Revisión anual incluida', desc: 'Cada 12 meses revisamos tu póliza. Si tu carrier subió el precio o encontramos algo mejor, te avisamos. Sin que tengas que hacer nada.' },
+  ];
+
+  const footerLinks = isEn ? [
+    { href: '/en/seguros/auto',              label: 'Car Insurance' },
+    { href: '/en/seguros/vida',              label: 'Life Insurance' },
+    { href: '/en/seguros/salud',             label: 'Health Insurance' },
+    { href: '/en/seguros/dental',            label: 'Dental Insurance' },
+    { href: '/en/seguros/mascotas',          label: 'Pet Insurance' },
+    { href: '/en/seguros/auto-comercial',    label: 'Commercial Auto' },
+    { href: '/en/seguros/comercial',         label: 'Business Insurance' },
+    { href: '/en/seguros/paquete-casa-auto', label: 'Home + Auto Bundle' },
+    { href: '/en/seguros/proteccion-extra',  label: 'Umbrella Insurance' },
+  ] : [
+    { href: '/seguros/auto',              label: 'Seguro de Auto' },
+    { href: '/seguros/vida',              label: 'Seguro de Vida' },
+    { href: '/seguros/salud',             label: 'Seguro de Salud' },
+    { href: '/seguros/dental',            label: 'Seguro Dental' },
+    { href: '/seguros/mascotas',          label: 'Seguro de Mascotas' },
+    { href: '/seguros/auto-comercial',    label: 'Auto Comercial' },
+    { href: '/seguros/comercial',         label: 'Seguro Comercial' },
+    { href: '/seguros/paquete-casa-auto', label: 'Paquete Casa + Auto' },
+    { href: '/seguros/proteccion-extra',  label: 'Protección Extra' },
+  ];
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
@@ -142,7 +177,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
           }`}>
             <div className="max-w-5xl mx-auto px-5 lg:px-8">
               <div className="flex items-center justify-between h-14">
-                <Link href="/" className="flex items-center gap-2 group">
+                <Link href={isEn ? '/en' : '/'} className="flex items-center gap-2 group">
                   <ArrowLeft weight="regular" className={`w-4 h-4 transition-colors ${navTransparent ? 'text-white/70 group-hover:text-white' : 'text-slate-400 group-hover:text-slate-700'}`} />
                   <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className={`h-8 w-auto transition-all duration-300 ${navTransparent ? 'brightness-0 invert' : ''}`} />
                 </Link>
@@ -156,7 +191,7 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
                         : 'bg-slate-900 hover:bg-slate-800 text-white'
                     }`}
                   >
-                    Cotizar gratis
+                    {isEn ? 'Get a quote' : 'Cotizar gratis'}
                   </button>
                 </div>
               </div>
@@ -218,7 +253,9 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
                   {config.ctaButton}
                   <ArrowRight weight="bold" className="w-4 h-4" />
                 </button>
-                <span className={`text-xs ${config.heroVideo ? 'text-white/70' : 'text-slate-500'}`}>{config.priceFrom} · Sin compromiso</span>
+                <span className={`text-xs ${config.heroVideo ? 'text-white/70' : 'text-slate-500'}`}>
+                  {config.priceFrom} {isEn ? '· No commitment' : '· Sin compromiso'}
+                </span>
               </div>
             </div>
           </div>
@@ -242,13 +279,19 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
             </div>
             {/* CTA card — 1/3 width */}
             <div className={`rounded-2xl p-7 border ${t.accentBorder} bg-white shadow-sm`}>
-              <p className="font-semibold text-slate-900 text-sm mb-2">¿Te identificas con alguna?</p>
+              <p className="font-semibold text-slate-900 text-sm mb-2">
+                {isEn ? 'Does any of this sound familiar?' : '¿Te identificas con alguna?'}
+              </p>
               <p className="text-xs text-slate-500 font-light leading-relaxed mb-5">
-                Un asesor bilingüe revisa tu situación y te explica tus opciones — sin presiones, sin compromiso.
+                {isEn
+                  ? 'A licensed agent reviews your situation and walks you through your options. No pressure, no commitment.'
+                  : 'Un asesor revisa tu situación y te explica tus opciones, sin presiones, sin compromiso.'}
               </p>
               <div className="border-t border-slate-100 pt-4 mb-5">
                 <p className="text-xs text-slate-500 font-light leading-relaxed">
-                  Y cada año revisamos tu póliza. Si encontramos algo mejor para tu situación, te avisamos.
+                  {isEn
+                    ? 'And every year we review your policy. If we find a better option for your situation, we let you know.'
+                    : 'Y cada año revisamos tu póliza. Si encontramos algo mejor para tu situación, te avisamos.'}
                 </p>
               </div>
               <button
@@ -258,7 +301,9 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
                 {config.ctaButton}
                 <ArrowRight weight="bold" className="w-4 h-4" />
               </button>
-              <p className="text-[11px] text-slate-400 text-center mt-2">{config.priceFrom} · Sin compromiso</p>
+              <p className="text-[11px] text-slate-400 text-center mt-2">
+                {config.priceFrom} {isEn ? '· No commitment' : '· Sin compromiso'}
+              </p>
             </div>
           </div>
         </section>
@@ -283,10 +328,12 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
         {/* ── Coverage grid ─────────────────────────────────────────── */}
         <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
           <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-2">
-            ¿Qué está{' '}
-            <span className={`font-editorial-italic ${t.iconText}`}>cubierto?</span>
+            {isEn ? "What's" : '¿Qué está'}{' '}
+            <span className={`font-editorial-italic ${t.iconText}`}>{isEn ? 'covered?' : 'cubierto?'}</span>
           </h2>
-          <p className="text-slate-400 font-light text-xs mb-8">Sujeto a términos y condiciones de la póliza.</p>
+          <p className="text-slate-400 font-light text-xs mb-8">
+            {isEn ? 'Subject to policy terms and conditions.' : 'Sujeto a términos y condiciones de la póliza.'}
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {config.coverageItems.map((item) => (
               <div key={item} className="flex items-center gap-3 bg-white rounded-xl px-4 py-3.5 border border-slate-100 shadow-sm">
@@ -301,10 +348,12 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
         {config.industrySections && config.industrySections.length > 0 && (
           <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
             <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-2">
-              Cobertura por{' '}
-              <span className={`font-editorial-italic ${t.iconText}`}>tipo de negocio</span>
+              {isEn ? 'Coverage by' : 'Cobertura por'}{' '}
+              <span className={`font-editorial-italic ${t.iconText}`}>{isEn ? 'business type' : 'tipo de negocio'}</span>
             </h2>
-            <p className="text-slate-500 font-light text-sm mb-10">Cada industria tiene riesgos distintos. Tu póliza debe reflejar los tuyos.</p>
+            <p className="text-slate-500 font-light text-sm mb-10">
+              {isEn ? 'Every industry has distinct risks. Your policy should reflect yours.' : 'Cada industria tiene riesgos distintos. Tu póliza debe reflejar los tuyos.'}
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {config.industrySections.map((ind) => (
                 <div key={ind.industry} className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
@@ -329,8 +378,8 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
         <section className="bg-white border-y border-slate-100">
           <div className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
             <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-12">
-              Así de{' '}
-              <span className={`font-editorial-italic ${t.iconText}`}>sencillo</span>
+              {isEn ? 'This is' : 'Así de'}{' '}
+              <span className={`font-editorial-italic ${t.iconText}`}>{isEn ? 'how it works' : 'sencillo'}</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12">
               {config.steps.map((s, i) => (
@@ -346,8 +395,12 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
             {/* CTA 2 — after steps */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 rounded-2xl px-7 py-5 border border-slate-100">
               <div>
-                <p className="font-semibold text-slate-900 text-sm">¿Todo claro? Empieza ahora — tarda menos de 5 minutos.</p>
-                <p className="text-xs text-slate-500 mt-0.5">{config.priceFrom} · Sin compromiso · Sin revisión de crédito</p>
+                <p className="font-semibold text-slate-900 text-sm">
+                  {isEn ? 'Ready to get started? Takes under 5 minutes.' : '¿Todo claro? Empieza ahora, tarda menos de 5 minutos.'}
+                </p>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  {config.priceFrom} {isEn ? '· No commitment · No credit check' : '· Sin compromiso · Sin revisión de crédito'}
+                </p>
               </div>
               <button
                 onClick={() => setQuoteOpen(true)}
@@ -360,19 +413,14 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
           </div>
         </section>
 
-        {/* ── Por qué nosotros ─────────────────────────────────────── */}
+        {/* ── Por qué nosotros / Why work with us ──────────────────── */}
         <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
           <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-10">
-            ¿Por qué{' '}
-            <span className="font-editorial-italic text-slate-400">elegirnos?</span>
+            {isEn ? 'Why' : '¿Por qué'}{' '}
+            <span className="font-editorial-italic text-slate-400">{isEn ? 'work with us?' : 'elegirnos?'}</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-            {[
-              { icon: Shield,     title: 'Comparamos por ti',        desc: 'No trabajamos para una sola compañía. Buscamos la mejor cobertura al precio más justo para tu situación.' },
-              { icon: Headset,    title: 'Atención en español',      desc: 'Agentes reales que te explican todo en español, desde la cotización hasta el momento de usar tu seguro.' },
-              { icon: Lock,       title: 'Sin costo para ti',        desc: 'La comisión la paga la aseguradora. Pagas exactamente lo mismo que si fueras directo, pero con alguien que compara por ti.' },
-              { icon: CreditCard, title: 'Revisión anual incluida',  desc: 'Cada 12 meses revisamos tu póliza. Si tu carrier subió el precio o encontramos algo mejor, te avisamos. Sin que tengas que hacer nada.' },
-            ].map(({ icon: Icon, title, desc }) => (
+            {whyUsCards.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-sm">
                 <Icon weight="duotone" className={`w-6 h-6 ${t.iconText} mb-3`} />
                 <h3 className="font-semibold text-slate-900 text-sm mb-1.5">{title}</h3>
@@ -386,8 +434,8 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
         <section className="bg-white border-y border-slate-100">
           <div className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
             <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-10">
-              Lo que dicen{' '}
-              <span className="font-editorial-italic text-slate-400">nuestros clientes</span>
+              {isEn ? 'What our' : 'Lo que dicen'}{' '}
+              <span className="font-editorial-italic text-slate-400">{isEn ? 'clients say' : 'nuestros clientes'}</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {config.testimonials.map((t_, i) => (
@@ -407,11 +455,15 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
                 </div>
               ))}
             </div>
-            <p className="text-xs text-slate-400 mt-5">*Los nombres han sido cambiados para proteger la privacidad de nuestros clientes.</p>
+            <p className="text-xs text-slate-400 mt-5">
+              {isEn ? '*Names have been changed to protect client privacy.' : '*Los nombres han sido cambiados para proteger la privacidad de nuestros clientes.'}
+            </p>
 
             {/* CTA 3 — after testimonials */}
             <div className="mt-10 text-center">
-              <p className="text-slate-500 text-sm mb-4">Únete a más de 200 familias que ya están protegidas.</p>
+              <p className="text-slate-500 text-sm mb-4">
+                {isEn ? 'Join over 200 families already protected.' : 'Únete a más de 200 familias que ya están protegidas.'}
+              </p>
               <button
                 onClick={() => setQuoteOpen(true)}
                 className={`inline-flex items-center gap-2 px-8 py-4 rounded-full ${t.stepBg} text-white font-bold text-sm transition-all hover:opacity-90 hover:-translate-y-0.5 shadow-lg`}
@@ -419,7 +471,9 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
                 {config.ctaButton}
                 <ArrowRight weight="bold" className="w-4 h-4" />
               </button>
-              <p className="text-[11px] text-slate-400 mt-3">{config.priceFrom} · Sin compromiso</p>
+              <p className="text-[11px] text-slate-400 mt-3">
+                {config.priceFrom} {isEn ? '· No commitment' : '· Sin compromiso'}
+              </p>
             </div>
           </div>
         </section>
@@ -427,8 +481,8 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
         {/* ── FAQ ──────────────────────────────────────────────────── */}
         <section className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
           <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-10">
-            Preguntas{' '}
-            <span className={`font-editorial-italic ${t.iconText}`}>frecuentes</span>
+            {isEn ? 'Frequently' : 'Preguntas'}{' '}
+            <span className={`font-editorial-italic ${t.iconText}`}>{isEn ? 'asked questions' : 'frecuentes'}</span>
           </h2>
           <div className="space-y-3 max-w-3xl">
             {config.faq.map((item, i) => (
@@ -465,7 +519,9 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
               {config.ctaButton}
               <ArrowRight weight="bold" className="w-4 h-4" />
             </button>
-            <p className="text-xs text-white/40 mt-4">Gratis · Sin compromiso · Respuesta en menos de 24 horas</p>
+            <p className="text-xs text-white/40 mt-4">
+              {isEn ? 'Free · No commitment · Response within 24 hours' : 'Gratis · Sin compromiso · Respuesta en menos de 24 horas'}
+            </p>
           </div>
         </section>
 
@@ -477,12 +533,16 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
                 <div className="mb-1.5">
                   <img src="/logo.png" alt="Maria Fernanda Insurance Consulting" className="h-8 w-auto brightness-0 invert" />
                 </div>
-                <p className="text-xs text-slate-400 font-light mb-4">Seguros para familias y negocios hispanos · Atención en español · ITIN aceptado</p>
+                <p className="text-xs text-slate-400 font-light mb-4">
+                  {isEn
+                    ? 'Independent insurance for families and businesses across the US'
+                    : 'Seguros para familias y negocios hispanos · Atención en español · ITIN aceptado'}
+                </p>
                 <button
                   onClick={() => setQuoteOpen(true)}
                   className="px-4 py-2 rounded-full bg-white hover:bg-slate-100 text-slate-900 text-xs font-semibold transition-all"
                 >
-                  Cotizar gratis
+                  {isEn ? 'Get a quote' : 'Cotizar gratis'}
                 </button>
                 <div className="flex items-center gap-3 mt-4">
                   <a href="https://www.instagram.com/insurancebymf_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-slate-500 hover:text-white transition-colors">
@@ -493,19 +553,11 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
                 </div>
               </div>
               <div>
-                <p className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">Nuestros Seguros</p>
+                <p className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">
+                  {isEn ? 'Our Insurance' : 'Nuestros Seguros'}
+                </p>
                 <div className="grid grid-cols-2 gap-x-8 gap-y-1.5">
-                  {[
-                    { href: '/seguros/auto',              label: 'Seguro de Auto' },
-                    { href: '/seguros/vida',              label: 'Seguro de Vida' },
-                    { href: '/seguros/salud',             label: 'Seguro de Salud' },
-                    { href: '/seguros/dental',            label: 'Seguro Dental' },
-                    { href: '/seguros/mascotas',          label: 'Seguro de Mascotas' },
-                    { href: '/seguros/auto-comercial',    label: 'Auto Comercial' },
-                    { href: '/seguros/comercial',         label: 'Seguro Comercial' },
-                    { href: '/seguros/paquete-casa-auto', label: 'Paquete Casa + Auto' },
-                    { href: '/seguros/proteccion-extra',  label: 'Protección Extra' },
-                  ].map(({ href, label }) => (
+                  {footerLinks.map(({ href, label }) => (
                     <Link key={href} href={href} className="text-xs text-slate-400 hover:text-white transition-colors">
                       {label}
                     </Link>
@@ -515,8 +567,9 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
             </div>
             <div className="border-t border-white/10 mt-8 pt-4">
               <p className="text-xs text-slate-500 font-light">
-                Los precios son referenciales. Cobertura, términos y condiciones varían por estado y sujetos a aprobación.
-                Maria Fernanda Insurance Consulting es un agente de seguros con licencia.
+                {isEn
+                  ? 'Prices are for reference only. Coverage, terms and conditions vary by state and are subject to underwriting approval. Maria Fernanda Insurance Consulting is a licensed insurance agent.'
+                  : 'Los precios son referenciales. Cobertura, términos y condiciones varían por estado y sujetos a aprobación. Maria Fernanda Insurance Consulting es un agente de seguros con licencia.'}
               </p>
             </div>
           </div>
@@ -527,7 +580,9 @@ export default function InsurancePage({ config }: { config: InsurancePageConfig 
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-sm border-t border-slate-200 px-5 py-3 flex items-center justify-between shadow-[0_-4px_24px_rgba(0,0,0,0.08)]">
         <div>
           <p className="text-xs font-bold text-slate-900">{config.priceFrom}</p>
-          <p className="text-[10px] text-slate-500">Sin compromiso · Sin revisión de crédito</p>
+          <p className="text-[10px] text-slate-500">
+            {isEn ? 'No commitment · No credit check' : 'Sin compromiso · Sin revisión de crédito'}
+          </p>
         </div>
         <button
           onClick={() => setQuoteOpen(true)}
