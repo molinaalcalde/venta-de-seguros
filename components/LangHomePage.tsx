@@ -444,9 +444,9 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Car Insurance' : 'Seguro de Auto'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Rates hit a 47-year high. Most drivers pay the increase without ever shopping around. We compare 10+ carriers for your exact situation in 5 minutes — and check back every year.' : 'La mayoría paga el aumento de su seguro sin cuestionar. Comparamos 10+ aseguradoras por ti en 5 minutos y revisamos tu póliza cada año. Sin costo para ti.'}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Rates hit a 47-year high. Most drivers pay the increase without ever shopping around. We compare 10+ carriers for your exact situation in 5 minutes — and check back every year.' : 'La mayoría paga el aumento de su seguro sin cuestionar. Comparamos 10 o más aseguradoras por ti en 5 minutos y revisamos tu póliza cada año. Sin costo para ti.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['We shop 10+ carriers so you don\'t have to', 'Annual rate review, every 12 months', 'Someone in your corner when you file a claim', 'No credit check, no commitment'] : ['Comparamos 10+ aseguradoras por ti', 'Revisión anual de tu póliza incluida', 'Atención en español en todo el proceso', 'ITIN y licencia extranjera aceptados']).map(b => (
+                    {(isEn ? ['We shop 10+ carriers so you don\'t have to', 'Annual rate review, every 12 months', 'Someone in your corner when you file a claim', 'No credit check, no commitment'] : ['Comparamos 10 o más aseguradoras por ti', 'Revisión anual de tu póliza incluida', 'Atención en español en todo el proceso', 'ITIN y licencia extranjera aceptados']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
@@ -470,7 +470,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Pet Insurance' : 'Seguro de Mascotas'}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Any vet. Up to 90% back. No network restrictions. Visit any licensed vet in the U.S. or Canada, pay the bill, and submit your claim online. We help you choose the right reimbursement level for your budget.' : 'Lleva a tu mascota a cualquier veterinario con licencia en EE.UU. — sin red restringida. Pagas la factura y recibes hasta el 90% de reembolso en menos de una semana. Una cirugía puede costarte $8,000 sin seguro. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['Up to 90% reimbursement on covered expenses', 'Any licensed vet in the U.S. and Canada', 'Covers accidents, illness, dental and prescriptions', 'Plans starting at $29/mo. Subject to terms and conditions.'] : ['Hasta el 90% de reembolso — en menos de una semana', 'Cubre consultas, cirugías, vacunas y medicamentos', 'Cualquier veterinario con licencia en EE.UU. o Canadá']).map(b => (
+                    {(isEn ? ['Up to 90% reimbursement on covered expenses', 'Any licensed vet in the U.S. and Canada', 'Covers accidents, illness, dental and prescriptions', 'Plans starting at $29/mo. Subject to terms and conditions.'] : ['Hasta el 90% de reembolso en menos de una semana', 'Cubre consultas, cirugías, vacunas y medicamentos', 'Cualquier veterinario con licencia en EE.UU. o Canadá']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
@@ -540,7 +540,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Commercial Auto Insurance' : 'Auto Comercial'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Personal auto policies do not cover business use. If your employees or drivers use vehicles for work, your personal policy may not cover a claim. We help you find the right commercial auto coverage.' : 'Aceptaste el pedido. Tuviste un accidente. La aseguradora revisó el GPS: "uso comercial — reclamo denegado." Tu seguro personal no cubre tu trabajo. Este sí. Sujeto a términos y condiciones.'}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Personal auto policies do not cover business use. If your employees or drivers use vehicles for work, your personal policy may not cover a claim. We help you find the right commercial auto coverage.' : 'Aceptaste el pedido. Tuviste un accidente. La aseguradora revisó el GPS: "uso comercial, reclamo denegado." Tu seguro personal no cubre tu trabajo. Este sí. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['Covers vans, trucks, fleets and gig drivers', 'Hired and Non-Owned Auto (HNOA) coverage available', 'Business liability for work-related vehicle incidents', 'One contact for all claims and renewals'] : ['Cubre Uber/Lyft/DoorDash + vans y pickups de trabajo', 'Sin SSN para cotizar', 'Conductores adicionales incluidos']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
@@ -564,7 +564,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Health Insurance' : 'Seguro de Salud'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'We help you find a plan that fits your needs and your budget. Whether you need individual, family or small group coverage, we compare plans from multiple carriers and walk you through your options at no cost.' : 'Tu información médica está protegida por la ley federal HIPAA y nunca se comparte sin tu consentimiento. Comparamos 10+ aseguradoras para encontrar el plan que cubre tu familia: consultas, medicamentos, emergencias. Sujeto a términos y condiciones.'}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'We help you find a plan that fits your needs and your budget. Whether you need individual, family or small group coverage, we compare plans from multiple carriers and walk you through your options at no cost.' : 'Tu información médica está protegida por la ley federal HIPAA y nunca se comparte sin tu consentimiento. Comparamos 10 o más aseguradoras para encontrar el plan que cubre tu familia: consultas, medicamentos, emergencias. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['Individual, family and small group plans', 'ACA marketplace and private plan options', 'Side-by-side plan comparison at no cost', 'Annual review to make sure your plan still fits'] : ['HIPAA: tu info médica no se comparte con migración', 'Sin SSN, acepta ITIN', 'Cubre familia completa desde $199/mes']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
@@ -588,7 +588,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Dental Insurance' : 'Seguro Dental'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Preventive care today prevents expensive procedures tomorrow. One root canal without coverage can cost $1,500 or more. We help you find affordable dental plans that cover cleanings, basic and major procedures.' : 'El 74% de adultos hispanos evita el dentista por el costo. Una endodoncia sin seguro: $1,500. Un implante: $3,500. Con plan desde $19/mes — cubierto. Sujeto a términos y condiciones.'}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Preventive care today prevents expensive procedures tomorrow. One root canal without coverage can cost $1,500 or more. We help you find affordable dental plans that cover cleanings, basic and major procedures.' : 'El 74% de adultos hispanos evita el dentista por el costo. Una endodoncia sin seguro: $1,500. Un implante: $3,500. Con plan desde $19/mes, cubierto. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['Preventive cleanings with no waiting period', 'Basic and major procedure coverage included', 'Individual and family plans available', 'Plans starting at $19/mo. Subject to terms and conditions.'] : ['Limpieza preventiva incluida, sin período de espera', 'Tratamientos mayores con deducible bajo', 'Toda la familia en un solo plan']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
@@ -611,10 +611,10 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
-                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Home and Auto Bundle' : 'Paquete Casa + Auto'}</h3>
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Home and Auto Bundle' : 'Seguro Hogar y Auto'}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Bundling is the fastest way to lower both premiums at once. We help you combine your home or renters and auto policies from the same carrier. An independent agent shops multiple carriers to find your best rate.' : 'El landlord cubre las paredes. Tus cosas, no. El 71% de los renters latinos no tiene cobertura para sus pertenencias. Combina renters + auto y ahorra hasta $1,184/año. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['Homeowners, renters and condo options available', 'Bundle discount applied to both policies', 'Independent agent shops multiple carriers', 'One contact for both policies and claims'] : ['Renters + auto: hasta $1,184/año de ahorro real', 'Cubre ropa, laptop y muebles — no solo las paredes', 'Sin SSN, acepta ITIN']).map(b => (
+                    {(isEn ? ['Homeowners, renters and condo options available', 'Bundle discount applied to both policies', 'Independent agent shops multiple carriers', 'One contact for both policies and claims'] : ['Renters + auto: hasta $1,184/año de ahorro real', 'Cubre ropa, laptop y muebles, no solo las paredes', 'Sin SSN, acepta ITIN']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
@@ -754,7 +754,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </button>
             <div className="mt-6 pt-5 border-t border-slate-100 flex flex-wrap items-center justify-center gap-4 text-[11px] text-slate-400">
-              <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-sage-800" aria-hidden="true" />{isEn ? 'No credit check' : 'Sin SSN — aceptamos ITIN'}</span>
+              <span className="flex items-center gap-1.5"><Lock className="w-3.5 h-3.5 text-sage-800" aria-hidden="true" />{isEn ? 'No credit check' : 'Sin SSN, aceptamos ITIN'}</span>
               <span>·</span>
               <span>{isEn ? 'No commitment' : 'Atención 100% en español'}</span>
               <span>·</span>
@@ -825,7 +825,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <p className="text-xs text-slate-400 leading-relaxed font-light">
                 {isEn
                   ? 'Independent agent. We compare 10+ carriers to find the best coverage for your family — at no extra cost to you.'
-                  : 'Agente independiente. Comparamos 10+ aseguradoras para encontrar la mejor cobertura para tu familia, sin costo adicional.'}
+                  : 'Agente independiente. Comparamos 10 o más aseguradoras para encontrar la mejor cobertura para tu familia, sin costo adicional.'}
               </p>
               <div className="space-y-1.5 text-xs text-slate-500">
                 <p>{isEn ? 'Licensed Independent Agent' : 'Agente Independiente con Licencia'}</p>
@@ -849,7 +849,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   { href: l('/seguros/dental'), label: isEn ? 'Dental Insurance' : 'Seguro Dental' },
                   { href: l('/seguros/mascotas'), label: isEn ? 'Pet Insurance' : 'Seguro de Mascotas' },
                   { href: l('/seguros/comercial'), label: isEn ? 'Business Insurance' : 'Seguro Comercial' },
-                  { href: l('/seguros/paquete-casa-auto'), label: isEn ? 'Home + Auto Bundle' : 'Paquete Casa + Auto' },
+                  { href: l('/seguros/paquete-casa-auto'), label: isEn ? 'Home + Auto Bundle' : 'Seguro Hogar y Auto' },
                 ].map(({ href, label }) => (
                   <li key={href}><Link className="hover:text-white transition-colors" href={href}>{label}</Link></li>
                 ))}
