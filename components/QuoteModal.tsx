@@ -54,7 +54,7 @@ const INSURANCE_OPTIONS: {
   { id: 'Vida',          label: 'Seguro de Vida',   sublabel: 'Protege a tu familia',       price: 'Desde $45/mes',  icon: Heart as PhosphorIcon,       iconBg: 'bg-rose-100',    iconColor: 'text-rose-600',    selBg: 'bg-rose-500',    selText: 'text-white' },
   { id: 'Salud',         label: 'Seguro de Salud',  sublabel: 'Individual o familiar',      price: 'Desde $199/mes', icon: Stethoscope as PhosphorIcon, iconBg: 'bg-emerald-100', iconColor: 'text-emerald-600', selBg: 'bg-emerald-600', selText: 'text-white' },
   { id: 'Dental',        label: 'Seguro Dental',    sublabel: 'Sonríe sin preocuparte',     price: 'Desde $19/mes',  icon: Tooth as PhosphorIcon,       iconBg: 'bg-cyan-100',    iconColor: 'text-cyan-600',    selBg: 'bg-cyan-600',    selText: 'text-white' },
-  { id: 'Paquete',       label: 'Casa + Auto',      sublabel: 'Paquete — ahorra hasta 25%', price: 'Bundle',         icon: Package as PhosphorIcon,     iconBg: 'bg-violet-100',  iconColor: 'text-violet-600',  selBg: 'bg-violet-600',  selText: 'text-white' },
+  { id: 'Paquete',       label: 'Casa + Auto',      sublabel: 'Paquete: ahorra hasta 25%', price: 'Bundle',         icon: Package as PhosphorIcon,     iconBg: 'bg-violet-100',  iconColor: 'text-violet-600',  selBg: 'bg-violet-600',  selText: 'text-white' },
   { id: 'Comercial',     label: 'Seguro Comercial', sublabel: 'Protege tu negocio',         price: 'Desde $120/mes', icon: Buildings as PhosphorIcon,   iconBg: 'bg-purple-100',  iconColor: 'text-purple-600',  selBg: 'bg-purple-600',  selText: 'text-white' },
   { id: 'Umbrella',      label: 'Protección Extra', sublabel: 'Cobertura adicional',        price: 'Desde $19/mes',  icon: Umbrella as PhosphorIcon,    iconBg: 'bg-slate-100',   iconColor: 'text-slate-600',   selBg: 'bg-slate-700',   selText: 'text-white' },
 ];
@@ -271,7 +271,7 @@ function VinField({ value, decoded, onChange, onDecoded }: {
     const v = raw.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, '').slice(0, 17);
     onChange(v); onDecoded(''); setError('');
     if (v.length === 17) {
-      if (!VIN_REGEX.test(v)) { setError('VIN inválido — verifica los caracteres'); return; }
+      if (!VIN_REGEX.test(v)) { setError('VIN inválido. Verifica los caracteres.'); return; }
       setLoading(true);
       const result = await decodeVin(v);
       setLoading(false);
@@ -408,7 +408,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
       if (!r.ok) throw new Error();
       const j = await r.json(); const p = j.places?.[0];
       if (p) { setData(d => ({ ...d, estado_us: p['state'], ciudad: p['place name'] })); setZipMsg(`✓ ${p['place name']}, ${p['state abbreviation']}`); }
-    } catch { setZipMsg('ZIP no reconocido — puedes continuar igual.'); }
+    } catch { setZipMsg('ZIP no reconocido. Puedes continuar igual.'); }
     finally { setZipLoading(false); }
   }
 
@@ -616,7 +616,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
               {zipMsg && (
                 <div className={`text-sm px-3 py-2 rounded-xl mb-3 ${zipMsg.startsWith('✓') ? 'text-emerald-700 bg-emerald-50 border border-emerald-200' : 'text-amber-700 bg-amber-50 border border-amber-200'}`}>{zipMsg}</div>
               )}
-              <p className="text-xs text-slate-400">🔒 Tu ubicación es privada — solo la usamos para encontrar tarifas disponibles en tu área.</p>
+              <p className="text-xs text-slate-400">🔒 Tu ubicación es privada. Solo la usamos para encontrar tarifas disponibles en tu área.</p>
             </>
           )}
 
