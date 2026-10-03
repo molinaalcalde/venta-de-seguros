@@ -448,6 +448,17 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
                 </RevealWrapper>
               );
             })}
+
+            {/* CTA after features */}
+            <RevealWrapper className="text-center mt-10">
+              <button
+                onClick={() => setQuoteOpen(true)}
+                className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full ${t.stepBg} text-white font-semibold text-sm hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 shadow-sm`}
+              >
+                {config.ctaButton}
+                <ArrowRight weight="bold" className="w-4 h-4" />
+              </button>
+            </RevealWrapper>
           </div>
         </section>
 

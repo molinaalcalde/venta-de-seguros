@@ -1,6 +1,6 @@
 'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
-import { Car, IdentificationCard, Warning, TrendUp, ArrowsLeftRight, CurrencyDollar, Question, ShieldWarning, UsersThree } from '@phosphor-icons/react';
+import { Car, Warning, TrendUp, ArrowsLeftRight, CurrencyDollar, Question, UsersThree } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Auto',
@@ -55,9 +55,9 @@ const configEs: InsurancePageConfig = {
   },
   features: [
     {
-      icon: IdentificationCard,
-      title: 'Cotizamos con varias compañías. Tú eliges la mejor.',
-      desc: 'No trabajamos para una sola aseguradora. Comparamos opciones y te explicamos las diferencias reales: cobertura, precio y condiciones, sin presionarte. Aceptamos ITIN, pasaporte y matrícula consular para cotizar.',
+      icon: ArrowsLeftRight,
+      title: 'Tu aseguradora no te compara con nadie. Le conviene que no lo hagas tú.',
+      desc: 'Las aseguradoras directas solo muestran SU precio. Un agente independiente compara 10+ opciones por ti y te explica las diferencias reales: cobertura, precio y condiciones. Aceptamos ITIN, pasaporte y matrícula consular para cotizar.',
     },
     {
       icon: CurrencyDollar,
