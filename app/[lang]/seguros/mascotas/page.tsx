@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   PawPrint, CheckCircle, Stethoscope, FirstAidKit,
   Syringe, Pill, ArrowRight, MapPin, ArrowLeft, Star,
-  Shield, Headset, CreditCard, Tooth, Heart, CurrencyDollar, Infinity,
+  Shield, Headset, CreditCard, Tooth, Heart, CurrencyDollar,
 } from '@phosphor-icons/react';
 import QuoteModal from '@/components/QuoteModal';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -129,7 +129,7 @@ const CONTENT = {
     features: [
       { icon: Stethoscope, title: 'Cualquier Veterinario', desc: 'No hay red restringida. Lleva a tu mascota a cualquier veterinario con licencia en Estados Unidos — incluyendo especialistas y emergencias.' },
       { icon: CurrencyDollar, title: 'Hasta 90% de Reembolso', desc: 'Tú eliges el porcentaje: 70%, 80% o 90% de los gastos elegibles cubiertos. También personalizas el deductible y el máximo anual. Sujeto a términos y condiciones.' },
-      { icon: Infinity, title: 'Sin límite de edad', desc: 'Puedes asegurar a tu perro o gato sin importar su edad. Muchos seguros rechazan mascotas mayores o cobran más por serlo — Fetch no tiene límite de edad para inscribirse.' },
+      { icon: Heart, title: 'Sin límite de edad', desc: 'Puedes asegurar a tu perro o gato sin importar su edad. Muchos seguros rechazan mascotas mayores o cobran más por serlo — Fetch no tiene límite de edad para inscribirse.' },
     ],
     quoteBtnEligible: 'Ir a fetchpet.com — portal afiliado',
     quoteBtnNotEligible: 'Hablar con un asesor en español',
@@ -239,7 +239,7 @@ const CONTENT = {
     features: [
       { icon: Stethoscope, title: 'Any Veterinarian', desc: 'No restricted network. Take your pet to any licensed vet in the United States — including specialists and emergency hospitals.' },
       { icon: CurrencyDollar, title: 'Up to 90% Reimbursement', desc: 'You choose the percentage: 70%, 80%, or 90% of covered eligible expenses. Also customize deductible and annual maximum. Subject to terms and conditions.' },
-      { icon: Infinity, title: 'No age limit', desc: 'You can insure your dog or cat at any age. Many pet insurance plans turn away older pets or charge more for them — Fetch has no age limit to enroll.' },
+      { icon: Heart, title: 'No age limit', desc: 'You can insure your dog or cat at any age. Many pet insurance plans turn away older pets or charge more for them — Fetch has no age limit to enroll.' },
     ],
     quoteBtnEligible: 'Go to fetchpet.com — affiliate portal',
     quoteBtnNotEligible: 'Talk to a licensed agent',
