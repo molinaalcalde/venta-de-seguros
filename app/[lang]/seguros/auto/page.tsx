@@ -1,6 +1,6 @@
 'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
-import { Car, IdentificationCard, Warning, TrendUp, ArrowsLeftRight, CurrencyDollar } from '@phosphor-icons/react';
+import { Car, IdentificationCard, Warning, TrendUp, ArrowsLeftRight, CurrencyDollar, Question, ShieldWarning, UsersThree } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Auto',
@@ -20,6 +20,32 @@ const configEs: InsurancePageConfig = {
     'Tuviste un accidente y el proceso de reclamo fue confuso y lento',
     'Tienes accidentes o infracciones previas y no sabes si calificas para un seguro',
     'Tienes varios conductores en casa y quieres asegurarlos a todos',
+  ],
+  eligibilityTabs: [
+    {
+      label: 'Primera vez',
+      icon: Question,
+      items: [
+        'Es tu primer seguro de auto en EE.UU. y no sabes qué cobertura necesitas',
+        'Financiaste el auto y el banco exige full coverage, pero no sabes qué significa',
+      ],
+    },
+    {
+      label: 'Pagando de más',
+      icon: TrendUp,
+      items: [
+        'Tu prima subió y nadie te explicó por qué',
+        'Tienes accidentes o infracciones previas y no sabes si calificas para un mejor precio',
+      ],
+    },
+    {
+      label: 'Situación familiar',
+      icon: UsersThree,
+      items: [
+        'Tienes varios conductores en casa y quieres asegurarlos a todos',
+        'Tuviste un accidente y el proceso de reclamo fue confuso y lento',
+      ],
+    },
   ],
   featuresHeading: {
     label: 'Por qué comparar',
@@ -176,11 +202,37 @@ const configEn: InsurancePageConfig = {
   eligibilityText: 'No two drivers are in the same situation. Tell us yours and we\'ll find coverage that actually makes sense for it.',
   eligibilityItems: [
     'You got hit with a rate increase and nobody gave you a straight answer why',
-    'You\'ve been with the same carrier for years and honestly haven\'t thought about it since — classic "set it and forget it"',
+    'You\'ve been with the same carrier for years and honestly haven\'t thought about it since',
     'You financed your car and your lender is requiring full coverage, but you\'re not totally sure what that includes',
     'You filed a claim and the process was a lot more painful than you expected',
     'You want to understand what "full coverage" actually covers before you need to find out the hard way',
-    'New car, new home, new driver on the policy — something changed and your coverage probably should too',
+    'New car, new home, new driver on the policy: something changed and your coverage probably should too',
+  ],
+  eligibilityTabs: [
+    {
+      label: 'First time',
+      icon: Question,
+      items: [
+        'You financed your car and your lender is requiring full coverage, but you\'re not totally sure what that includes',
+        'You want to understand what "full coverage" actually covers before you need to find out the hard way',
+      ],
+    },
+    {
+      label: 'Overpaying',
+      icon: TrendUp,
+      items: [
+        'You got hit with a rate increase and nobody gave you a straight answer why',
+        'You\'ve been with the same carrier for years and honestly haven\'t thought about it since',
+      ],
+    },
+    {
+      label: 'Life changed',
+      icon: UsersThree,
+      items: [
+        'New car, new home, new driver on the policy: something changed and your coverage probably should too',
+        'You filed a claim and the process was a lot more painful than you expected',
+      ],
+    },
   ],
   featuresHeading: {
     label: 'Why comparison matters',

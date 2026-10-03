@@ -67,6 +67,7 @@ export interface InsurancePageConfig {
   eligibilityTitle: string;
   eligibilityText: string;
   eligibilityItems: string[];
+  eligibilityTabs?: { label: string; icon: Icon; items: string[] }[];
   badgeIcon?: Icon;
   features: { icon: Icon; title: string; desc: string }[];
   coverageItems: string[];
@@ -122,52 +123,101 @@ function RevealWrapper({ children, className }: { children: React.ReactNode; cla
   );
 }
 
-/* ─── Eligibility stagger section ────────────────────────────────────── */
-function EligibilitySection({ items, isEn, stepBg, iconText, onQuote, ctaButton }: {
-  items: string[]; isEn: boolean; stepBg: string; iconText: string;
+/* ─── Eligibility tabs section ──────────────────────────────────────── */
+function EligibilitySection({ items, tabs, isEn, stepBg, iconText, accentBorder, onQuote, ctaButton }: {
+  items: string[]; tabs?: { label: string; icon: Icon; items: string[] }[];
+  isEn: boolean; stepBg: string; iconText: string; accentBorder: string;
   onQuote: () => void; ctaButton: string;
 }) {
   const { ref, visible } = useReveal(0.08);
+  const [active, setActive] = useState(0);
+  const [animating, setAnimating] = useState(false);
+
+  /* If no tabs provided, auto-group items into pairs */
+  const resolvedTabs = tabs ?? autoGroupItems(items, isEn);
+
+  const handleTab = (i: number) => {
+    if (i === active) return;
+    setAnimating(true);
+    setTimeout(() => { setActive(i); setAnimating(false); }, 200);
+  };
+
   return (
     <section className="bg-white border-b border-slate-100">
       <div className="max-w-5xl mx-auto px-5 lg:px-8 py-16 md:py-20">
-        <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.15em] mb-10">
+        <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.15em] mb-8">
           {isEn ? 'Does any of this sound familiar?' : '¿Te suena alguna de estas?'}
         </p>
-        <div ref={ref}>
-          {items.map((item, i) => (
-            <div
-              key={i}
-              style={{ transitionDelay: visible ? `${i * 90}ms` : '0ms' }}
-              className={`group flex items-start gap-4 py-5 border-b border-slate-100 last:border-0 transition-all duration-700 ease-out ${
-                visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-              }`}
-            >
-              <span className={`text-sm font-semibold ${iconText} opacity-30 group-hover:opacity-100 transition-opacity duration-200 w-7 shrink-0 pt-0.5`}>
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <div className={`w-0.5 self-stretch rounded-full ${stepBg} shrink-0 opacity-20 group-hover:opacity-100 transition-opacity duration-200`} />
-              <p className="text-lg md:text-xl font-light text-slate-500 group-hover:text-slate-900 transition-colors duration-200 leading-snug">
-                {item}
-              </p>
+
+        {/* Tab pills */}
+        <div ref={ref} className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-hide">
+            {resolvedTabs.map((tab, i) => {
+              const TabIcon = tab.icon;
+              const isActive = i === active;
+              return (
+                <button
+                  key={i}
+                  onClick={() => handleTab(i)}
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 shrink-0 ${
+                    isActive
+                      ? `${stepBg} text-white shadow-sm`
+                      : 'bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700'
+                  }`}
+                >
+                  <TabIcon weight={isActive ? 'fill' : 'regular'} className="w-4 h-4" />
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Content card */}
+          <div className={`mt-6 rounded-2xl border ${accentBorder} bg-slate-50/50 p-6 md:p-8 min-h-[160px] transition-all duration-200 ${
+            animating ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
+          }`}>
+            <div className="space-y-4">
+              {resolvedTabs[active]?.items.map((item, j) => (
+                <div key={j} className="flex items-start gap-3">
+                  <CheckCircle weight="fill" className={`w-5 h-5 ${iconText} shrink-0 mt-0.5`} />
+                  <p className="text-base md:text-lg text-slate-700 leading-relaxed">{item}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div
-          style={{ transitionDelay: visible ? `${items.length * 90 + 100}ms` : '0ms' }}
-          className={`mt-10 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}
-        >
-          <button
-            onClick={onQuote}
-            className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full ${stepBg} text-white font-semibold text-sm hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 shadow-sm`}
-          >
-            {ctaButton}
-            <ArrowRight weight="bold" className="w-4 h-4" />
-          </button>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-8">
+            <button
+              onClick={onQuote}
+              className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full ${stepBg} text-white font-semibold text-sm hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 shadow-sm`}
+            >
+              {ctaButton}
+              <ArrowRight weight="bold" className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
   );
+}
+
+/* Auto-group string[] items into tab pairs for backward compat */
+function autoGroupItems(items: string[], isEn: boolean): { label: string; icon: Icon; items: string[] }[] {
+  const labels = isEn
+    ? ['Your situation', 'Your coverage', 'Your options']
+    : ['Tu situación', 'Tu cobertura', 'Tus opciones'];
+  const icons: Icon[] = [Star, CheckCircle, ArrowRight];
+  const tabs: { label: string; icon: Icon; items: string[] }[] = [];
+  for (let i = 0; i < items.length; i += 2) {
+    const idx = Math.min(Math.floor(i / 2), labels.length - 1);
+    tabs.push({
+      label: labels[idx] ?? labels[labels.length - 1],
+      icon: icons[idx] ?? icons[icons.length - 1],
+      items: items.slice(i, i + 2),
+    });
+  }
+  return tabs;
 }
 
 /* ─── Component ─────────────────────────────────────────────────────── */
@@ -332,9 +382,11 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
         {/* ── Para quién (eligibility stagger) ─────────────────────── */}
         <EligibilitySection
           items={config.eligibilityItems}
+          tabs={config.eligibilityTabs}
           isEn={isEn}
           stepBg={t.stepBg}
           iconText={t.iconText}
+          accentBorder={t.accentBorder}
           onQuote={() => setQuoteOpen(true)}
           ctaButton={config.ctaButton}
         />
