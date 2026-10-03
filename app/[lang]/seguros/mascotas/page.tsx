@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   PawPrint, CheckCircle, Stethoscope, FirstAidKit,
   Syringe, Pill, ArrowRight, MapPin, ArrowLeft, Star,
-  Shield, Lock, Headset, CreditCard, Tooth, Heart, CurrencyDollar,
+  Shield, Headset, CreditCard, Tooth, Heart, CurrencyDollar, Infinity,
 } from '@phosphor-icons/react';
 import QuoteModal from '@/components/QuoteModal';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -97,7 +97,6 @@ const CONTENT = {
       { q: '¿Puedo ir a cualquier veterinario?', a: 'Sí. No hay red restringida. Puedes llevar a tu mascota a cualquier veterinario con licencia en Estados Unidos, incluyendo especialistas y hospitales de emergencia. La cobertura también aplica en Canadá. No aplica fuera de EE.UU. y Canadá.' },
       { q: '¿El seguro cubre enfermedades preexistentes?', a: 'Las enfermedades preexistentes generalmente no están cubiertas. Las condiciones hereditarias de raza sí pueden estar cubiertas si no eran preexistentes al momento de contratar la póliza. Consulta los términos exactos con un asesor para tu caso específico.' },
       { q: '¿La compra en línea está disponible en mi estado?', a: 'Dependiendo de tu estado, puedes completar el proceso 100% en línea o con la ayuda de un asesor en español sin costo. Ingresa tu ubicación y te indicamos la mejor opción disponible para ti.' },
-      { q: '¿Mi información personal se comparte con el gobierno o migración?', a: 'No. Tu información personal es 100% confidencial. Nunca la compartimos con ICE ni ninguna agencia gubernamental. Cumplimos con todas las regulaciones estatales de privacidad de seguros.' },
     ],
     footerInsurance: 'Nuestros Seguros',
     footerLinks: [
@@ -125,12 +124,12 @@ const CONTENT = {
       { value: 'Hasta 90%', label: 'De reembolso' },
       { value: 'Cualquier', label: 'Veterinario en Estados Unidos' },
       { value: 'Rápido', label: 'Reembolso en días' },
-      { value: '100%', label: 'Confidencial' },
+      { value: 'Sin límite', label: 'De edad para asegurarte' },
     ],
     features: [
       { icon: Stethoscope, title: 'Cualquier Veterinario', desc: 'No hay red restringida. Lleva a tu mascota a cualquier veterinario con licencia en Estados Unidos — incluyendo especialistas y emergencias.' },
       { icon: CurrencyDollar, title: 'Hasta 90% de Reembolso', desc: 'Tú eliges el porcentaje: 70%, 80% o 90% de los gastos elegibles cubiertos. También personalizas el deductible y el máximo anual. Sujeto a términos y condiciones.' },
-      { icon: Lock, title: 'Tu Privacidad Importa', desc: 'Tu información personal se mantiene segura y se usa únicamente para gestionar tu cobertura. Cumplimos con todas las leyes de privacidad aplicables. Tus datos nunca se venden ni se comparten sin tu consentimiento.' },
+      { icon: Infinity, title: 'Sin límite de edad', desc: 'Puedes asegurar a tu perro o gato sin importar su edad. Muchos seguros rechazan mascotas mayores o cobran más por serlo — Fetch no tiene límite de edad para inscribirse.' },
     ],
     quoteBtnEligible: 'Ir a fetchpet.com — portal afiliado',
     quoteBtnNotEligible: 'Hablar con un asesor en español',
@@ -235,12 +234,12 @@ const CONTENT = {
       { value: 'Up to 90%', label: 'Reimbursement' },
       { value: 'Any', label: 'Vet in the USA' },
       { value: 'Fast', label: 'Reimbursement' },
-      { value: '100%', label: 'Confidential' },
+      { value: 'No age', label: 'Limit to enroll' },
     ],
     features: [
       { icon: Stethoscope, title: 'Any Veterinarian', desc: 'No restricted network. Take your pet to any licensed vet in the United States — including specialists and emergency hospitals.' },
       { icon: CurrencyDollar, title: 'Up to 90% Reimbursement', desc: 'You choose the percentage: 70%, 80%, or 90% of covered eligible expenses. Also customize deductible and annual maximum. Subject to terms and conditions.' },
-      { icon: Lock, title: 'Your Privacy Matters', desc: 'Your personal information is kept secure and used only to help you get covered. We comply with all applicable privacy laws. Your data is never sold or shared without your consent.' },
+      { icon: Infinity, title: 'No age limit', desc: 'You can insure your dog or cat at any age. Many pet insurance plans turn away older pets or charge more for them — Fetch has no age limit to enroll.' },
     ],
     quoteBtnEligible: 'Go to fetchpet.com — affiliate portal',
     quoteBtnNotEligible: 'Talk to a licensed agent',
