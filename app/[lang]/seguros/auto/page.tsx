@@ -179,7 +179,7 @@ const configEs: InsurancePageConfig = {
     directLabel: 'Directo con la aseguradora',
     rows: [
       { independent: 'Compara 10+ aseguradoras al mismo tiempo', direct: 'Solo sus propias tarifas' },
-      { independent: 'Sin costo adicional para ti', direct: 'Sin costo adicional' },
+      { independent: 'Tu agente te conoce y recuerda tu caso', direct: 'Empiezas de cero con cada llamada' },
       { independent: 'Revisión anual de tu póliza incluida', direct: 'Nunca más te contactan' },
       { independent: 'Te acompaña si necesitas hacer un reclamo', direct: 'Tú solo contra el sistema' },
       { independent: 'Explica cada opción en español, sin apuro', direct: 'Call center en turno' },
@@ -366,7 +366,7 @@ const configEn: InsurancePageConfig = {
     directLabel: 'Going direct',
     rows: [
       { independent: 'Shops 10+ carriers at the same time', direct: 'Only their own rates' },
-      { independent: 'No extra cost to you', direct: 'No extra cost either' },
+      { independent: 'Your agent knows your case personally', direct: 'You start over with every call' },
       { independent: 'Annual policy review included', direct: 'You\'re on your own after you sign' },
       { independent: 'Guides you through claims if you need it', direct: 'You vs. their claims team' },
       { independent: 'Walks through every option in plain language', direct: 'Call center, next in queue' },
