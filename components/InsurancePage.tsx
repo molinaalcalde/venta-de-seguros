@@ -220,6 +220,107 @@ function autoGroupItems(items: string[], isEn: boolean): { label: string; icon: 
   return tabs;
 }
 
+/* ─── Agent comparison with scroll-reveal rows ─────────────────────── */
+function AgentComparisonSection({ config, testimonials, ctaButton, isEn, theme, onQuote }: {
+  config: NonNullable<InsurancePageConfig['agentComparison']>;
+  testimonials: InsurancePageConfig['testimonials'];
+  ctaButton: string; isEn: boolean;
+  theme: typeof THEMES[ThemeKey]; onQuote: () => void;
+}) {
+  const { ref, visible } = useReveal(0.05);
+  const idx = config.testimonialIndex ?? 0;
+  const testi = testimonials[idx];
+
+  return (
+    <section className="bg-white border-b border-slate-100">
+      <div className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
+        <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-4">
+          {config.heading}{' '}
+          {config.headingItalic && (
+            <span className={`font-editorial-italic ${theme.iconText}`}>{config.headingItalic}</span>
+          )}
+        </h2>
+
+        {/* Column headers */}
+        <div ref={ref} className="mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6">
+            <p className={`text-xs font-bold uppercase tracking-[0.15em] ${theme.iconText}`}>
+              {config.independentLabel}
+            </p>
+            <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400">
+              {config.directLabel}
+            </p>
+          </div>
+
+          {/* Rows with stagger reveal */}
+          <div className="space-y-3">
+            {config.rows.map((row, i) => (
+              <div
+                key={i}
+                style={{ transitionDelay: visible ? `${i * 120}ms` : '0ms' }}
+                className={`grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 transition-all duration-500 ease-out ${
+                  visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}
+              >
+                {/* María Fernanda side */}
+                <div className={`flex items-start gap-3 rounded-xl border-2 ${theme.accentBorder} bg-white px-5 py-4 shadow-md md:scale-[1.02] origin-left`}>
+                  <CheckCircle weight="fill" className={`w-5 h-5 ${theme.iconText} shrink-0 mt-0.5`} />
+                  <span className="text-sm text-slate-800 font-medium leading-snug">{row.independent}</span>
+                </div>
+                {/* Direct side */}
+                <div className="flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50/70 px-5 py-4">
+                  <span className="w-5 h-5 shrink-0 mt-0.5 flex items-center justify-center text-slate-300 text-base leading-none">–</span>
+                  <span className="text-sm text-slate-400 font-light leading-snug">{row.direct}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Testimonial */}
+          {testi && (
+            <div
+              style={{ transitionDelay: visible ? `${config.rows.length * 120 + 200}ms` : '0ms' }}
+              className={`mt-10 max-w-2xl transition-all duration-700 ${
+                visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
+              <blockquote className={`pl-5 border-l-3 ${theme.accentBorder}`}>
+                <p className="text-base text-slate-600 font-light italic leading-relaxed mb-2">
+                  &ldquo;{testi.text}&rdquo;
+                </p>
+                <cite className={`text-sm not-italic font-medium ${theme.iconText}`}>
+                  {testi.name} &middot; {testi.location}
+                </cite>
+              </blockquote>
+            </div>
+          )}
+
+          {/* Trust line + CTA */}
+          <div
+            style={{ transitionDelay: visible ? `${config.rows.length * 120 + 400}ms` : '0ms' }}
+            className={`mt-8 text-center transition-all duration-700 ${
+              visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            <p className="text-xs text-slate-400 mb-5">
+              {config.trustLine ?? (isEn
+                ? 'No extra cost to you · No commitment · Response within 24 hours'
+                : 'Sin costo adicional para ti · Sin compromiso · Respuesta en 24 horas')}
+            </p>
+            <button
+              onClick={onQuote}
+              className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full ${theme.stepBg} text-white font-semibold text-sm hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 shadow-sm`}
+            >
+              {ctaButton}
+              <ArrowRight weight="bold" className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Component ─────────────────────────────────────────────────────── */
 export default function InsurancePage({ config, lang = 'es' }: { config: InsurancePageConfig; lang?: string }) {
   const [quoteOpen, setQuoteOpen]   = useState(false);
@@ -462,82 +563,16 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
           </div>
         </section>
 
-        {/* ── Agent comparison ─────────────────────────────────────── */}
+        {/* ── Agent comparison (scroll-reveal rows) ────────────────── */}
         {config.agentComparison && (
-          <section className="bg-white border-b border-slate-100">
-            <div className="max-w-5xl mx-auto px-5 lg:px-8 py-14 md:py-20">
-              <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-12">
-                {config.agentComparison.heading}
-              </h2>
-              {/* Desktop: comparison left + CTA right | Mobile: stacked */}
-              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
-
-                {/* ── Comparison cards ────────────────────────────────── */}
-                <div className="grid grid-cols-2 gap-4 flex-1">
-                  {/* Independent column */}
-                  <div className={`rounded-2xl border-2 ${t.accentBorder} bg-white px-5 py-6`}>
-                    <p className={`text-xs font-bold uppercase tracking-[0.15em] ${t.iconText} mb-6`}>
-                      {config.agentComparison.independentLabel}
-                    </p>
-                    <div className="space-y-4">
-                      {config.agentComparison.rows.map((row, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <CheckCircle weight="duotone" className={`w-4 h-4 ${t.iconText} shrink-0 mt-0.5`} />
-                          <span className="text-sm text-slate-800 font-light leading-snug">{row.independent}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  {/* Direct column */}
-                  <div className="rounded-2xl border border-slate-100 bg-slate-50 px-5 py-6">
-                    <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400 mb-6">
-                      {config.agentComparison.directLabel}
-                    </p>
-                    <div className="space-y-4">
-                      {config.agentComparison.rows.map((row, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <span className="w-4 h-4 shrink-0 mt-0.5 flex items-center justify-center text-slate-300 font-bold text-base leading-none">–</span>
-                          <span className="text-sm text-slate-400 font-light leading-snug">{row.direct}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* ── CTA panel: testimonial → trust → button ─────────── */}
-                {(() => {
-                  const idx = config.agentComparison!.testimonialIndex ?? 0;
-                  const testi = config.testimonials[idx];
-                  return (
-                    <div className="lg:w-72 xl:w-80 shrink-0 lg:pt-1">
-                      {testi && (
-                        <blockquote className="mb-6 pl-4 border-l-2 border-slate-200">
-                          <p className="text-sm text-slate-600 font-light italic leading-relaxed mb-2">
-                            &ldquo;{testi.text}&rdquo;
-                          </p>
-                          <cite className="text-xs text-slate-400 not-italic font-medium">
-                            {testi.name} &middot; {testi.location}
-                          </cite>
-                        </blockquote>
-                      )}
-                      <p className="text-xs text-slate-400 mb-5">
-                        {config.agentComparison!.trustLine ?? (isEn
-                          ? 'No extra cost to you · No commitment · Response within 24 hours'
-                          : 'Sin costo adicional para ti · Sin compromiso · Respuesta en 24 horas')}
-                      </p>
-                      <button
-                        onClick={() => setQuoteOpen(true)}
-                        className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full ${t.stepBg} text-white font-semibold text-sm hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 shadow-sm`}
-                      >
-                        {config.ctaButton}
-                        <ArrowRight weight="bold" className="w-4 h-4" />
-                      </button>
-                    </div>
-                  );
-                })()}
-              </div>
-            </div>
-          </section>
+          <AgentComparisonSection
+            config={config.agentComparison}
+            testimonials={config.testimonials}
+            ctaButton={config.ctaButton}
+            isEn={isEn}
+            theme={t}
+            onQuote={() => setQuoteOpen(true)}
+          />
         )}
 
         {/* ── Coverage grid ─────────────────────────────────────────── */}
