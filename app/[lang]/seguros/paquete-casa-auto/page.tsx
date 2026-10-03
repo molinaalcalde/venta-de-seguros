@@ -1,6 +1,6 @@
 'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
-import { House, PiggyBank, Key, Phone, Warning } from '@phosphor-icons/react';
+import { House, PiggyBank, Hammer, Phone, Warning } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Paquete',
@@ -22,7 +22,7 @@ const configEs: InsurancePageConfig = {
   ],
   features: [
     {
-      icon: Warning,
+      icon: House,
       title: 'Tus muebles, tu ropa, tu computadora. Si hay un incendio, eso no lo cubre nadie si no tienes tu propio seguro.',
       desc: 'El seguro del dueño del edificio cubre el edificio. Lo que hay adentro de tu apartamento, tus cosas, depende de ti. El costo promedio de recuperar lo que se daña en un incendio o robo es $6,000. Un seguro de hogar para inquilinos cuesta entre $15 y $22 al mes. La mayoría no lo sabe hasta que lo necesita.',
     },
@@ -143,7 +143,7 @@ const configEn: InsurancePageConfig = {
       desc: 'Auto insurance hit a record high in 2024, up 26% in one year. Home insurance is up 24% since 2021 — more than double the rate of inflation. Most people sign the renewal without comparing because switching feels like a project. It is not. We compare your current policies against 10+ carriers in one conversation. 57% of Americans shopped their insurance last year. The ones who did saved an average of $736.',
     },
     {
-      icon: Key,
+      icon: Hammer,
       title: '2 in 3 American homes are insured for less than it would cost to rebuild them today.',
       desc: 'Construction costs rose nearly 30% over five years. Most home policies written before 2021 now have a coverage gap — meaning if your home burns down, your payout may not cover what rebuilding actually costs today. The average shortfall is 22%. When we set up your bundle, we check both your premium and your actual coverage, not just the monthly number.',
     },

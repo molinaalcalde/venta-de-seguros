@@ -1,6 +1,6 @@
 'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
-import { Hospital, Shield, FirstAid, Pill, Warning } from '@phosphor-icons/react';
+import { Warning, ArrowsLeftRight, CalendarCheck, BookOpen } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Salud',
@@ -27,12 +27,12 @@ const configEs: InsurancePageConfig = {
       desc: 'Un parto sin cobertura cuesta entre $15,000 y $30,000. Una hospitalización de 3 días cuesta $30,000 o más. Una apendicitis puede llegar a $35,000. El 50% de los adultos hispanos en USA tienen deuda médica activa hoy. El seguro no es un gasto mensual extra. Es lo que protege todo lo que ya construiste.',
     },
     {
-      icon: Shield,
+      icon: ArrowsLeftRight,
       title: 'Comparamos 10+ aseguradoras. Tú eliges con toda la información',
       desc: 'No trabajamos para ninguna compañía en particular. Comparamos cada plan disponible en tu estado: precio mensual, qué cubre, qué médicos incluye y cuánto pagarías si necesitas usarlo. La mayoría de personas elige el plan más barato sin saber que el deducible puede triplicar el costo real.',
     },
     {
-      icon: FirstAid,
+      icon: CalendarCheck,
       title: 'Las primas para 2027 suben hasta 15%. Quien no revisa, paga de más',
       desc: 'Las aseguradoras propusieron aumentos de entre 10% y 25% para 2027. Cigna sale del mercado en todos los estados. Quienes tienen ese plan necesitan elegir uno nuevo. Revisamos tu cobertura actual cada año en noviembre para asegurarnos de que sigues teniendo la mejor opción disponible.',
     },
@@ -149,12 +149,12 @@ const configEn: InsurancePageConfig = {
       desc: 'An appendectomy without coverage costs between $10,000 and $50,000. A broken leg requiring surgery: $17,000 to $35,000. 107 million Americans, 41% of all adults, carry medical debt right now. For someone self-employed, a week in the hospital is not just a bill. It is a bill plus zero income plus no employer safety net.',
     },
     {
-      icon: Shield,
+      icon: ArrowsLeftRight,
       title: 'COBRA averages $790 a month. Most people don\'t know there are cheaper options.',
       desc: 'When you leave a job, COBRA lets you keep your exact plan but you pay 100% of the premium plus an admin fee. For most people that means $635 to $790 a month for one person, or up to $2,290 for a family. A comparable plan for the same person typically costs $200 to $477 a month. We show you the exact comparison before you make any decision.',
     },
     {
-      icon: Pill,
+      icon: BookOpen,
       title: 'Only 9% of Americans understand their health plan. We explain yours before you sign.',
       desc: 'Most people pick the plan with the lowest monthly premium without realizing their deductible could be $6,000 or $7,000. 28% of insured Americans say they could not pay their deductible today if needed. We walk you through exactly what you would pay monthly, for a routine visit, and in a real emergency, before you choose anything.',
     },
