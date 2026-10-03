@@ -402,68 +402,73 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
               <h2 className="text-3xl md:text-4xl font-light text-slate-900 tracking-tight mb-12">
                 {config.agentComparison.heading}
               </h2>
-              <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-2xl">
-                {/* Independent column */}
-                <div className={`rounded-2xl border-2 ${t.accentBorder} bg-white px-5 md:px-7 py-6`}>
-                  <p className={`text-xs font-bold uppercase tracking-[0.15em] ${t.iconText} mb-6`}>
-                    {config.agentComparison.independentLabel}
-                  </p>
-                  <div className="space-y-4">
-                    {config.agentComparison.rows.map((row, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <CheckCircle weight="duotone" className={`w-4 h-4 ${t.iconText} shrink-0 mt-0.5`} />
-                        <span className="text-sm text-slate-800 font-light leading-snug">{row.independent}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                {/* Direct column */}
-                <div className="rounded-2xl border border-slate-100 bg-slate-50 px-5 md:px-7 py-6">
-                  <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400 mb-6">
-                    {config.agentComparison.directLabel}
-                  </p>
-                  <div className="space-y-4">
-                    {config.agentComparison.rows.map((row, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <span className="w-4 h-4 shrink-0 mt-0.5 flex items-center justify-center text-slate-300 font-bold text-base leading-none">–</span>
-                        <span className="text-sm text-slate-400 font-light leading-snug">{row.direct}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              {/* Desktop: comparison left + CTA right | Mobile: stacked */}
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
 
-              {/* ── CTA: testimonial → trust → button ─────────────────── */}
-              {(() => {
-                const idx = config.agentComparison!.testimonialIndex ?? 0;
-                const testi = config.testimonials[idx];
-                return (
-                  <div className="mt-12 max-w-2xl">
-                    {testi && (
-                      <blockquote className="mb-6 pl-4 border-l-2 border-slate-200">
-                        <p className="text-sm text-slate-600 font-light italic leading-relaxed mb-2">
-                          &ldquo;{testi.text}&rdquo;
-                        </p>
-                        <cite className="text-xs text-slate-400 not-italic font-medium">
-                          {testi.name} &middot; {testi.location}
-                        </cite>
-                      </blockquote>
-                    )}
-                    <p className="text-xs text-slate-400 mb-5">
-                      {config.agentComparison!.trustLine ?? (isEn
-                        ? 'No extra cost to you · No commitment · Response within 24 hours'
-                        : 'Sin costo adicional para ti · Sin compromiso · Respuesta en 24 horas')}
+                {/* ── Comparison cards ────────────────────────────────── */}
+                <div className="grid grid-cols-2 gap-4 flex-1">
+                  {/* Independent column */}
+                  <div className={`rounded-2xl border-2 ${t.accentBorder} bg-white px-5 py-6`}>
+                    <p className={`text-xs font-bold uppercase tracking-[0.15em] ${t.iconText} mb-6`}>
+                      {config.agentComparison.independentLabel}
                     </p>
-                    <button
-                      onClick={() => setQuoteOpen(true)}
-                      className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full ${t.stepBg} text-white font-semibold text-sm hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 shadow-sm`}
-                    >
-                      {config.ctaButton}
-                      <ArrowRight weight="bold" className="w-4 h-4" />
-                    </button>
+                    <div className="space-y-4">
+                      {config.agentComparison.rows.map((row, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <CheckCircle weight="duotone" className={`w-4 h-4 ${t.iconText} shrink-0 mt-0.5`} />
+                          <span className="text-sm text-slate-800 font-light leading-snug">{row.independent}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                );
-              })()}
+                  {/* Direct column */}
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50 px-5 py-6">
+                    <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400 mb-6">
+                      {config.agentComparison.directLabel}
+                    </p>
+                    <div className="space-y-4">
+                      {config.agentComparison.rows.map((row, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <span className="w-4 h-4 shrink-0 mt-0.5 flex items-center justify-center text-slate-300 font-bold text-base leading-none">–</span>
+                          <span className="text-sm text-slate-400 font-light leading-snug">{row.direct}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── CTA panel: testimonial → trust → button ─────────── */}
+                {(() => {
+                  const idx = config.agentComparison!.testimonialIndex ?? 0;
+                  const testi = config.testimonials[idx];
+                  return (
+                    <div className="lg:w-72 xl:w-80 shrink-0 lg:pt-1">
+                      {testi && (
+                        <blockquote className="mb-6 pl-4 border-l-2 border-slate-200">
+                          <p className="text-sm text-slate-600 font-light italic leading-relaxed mb-2">
+                            &ldquo;{testi.text}&rdquo;
+                          </p>
+                          <cite className="text-xs text-slate-400 not-italic font-medium">
+                            {testi.name} &middot; {testi.location}
+                          </cite>
+                        </blockquote>
+                      )}
+                      <p className="text-xs text-slate-400 mb-5">
+                        {config.agentComparison!.trustLine ?? (isEn
+                          ? 'No extra cost to you · No commitment · Response within 24 hours'
+                          : 'Sin costo adicional para ti · Sin compromiso · Respuesta en 24 horas')}
+                      </p>
+                      <button
+                        onClick={() => setQuoteOpen(true)}
+                        className={`inline-flex items-center gap-2 px-7 py-3.5 rounded-full ${t.stepBg} text-white font-semibold text-sm hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150 shadow-sm`}
+                      >
+                        {config.ctaButton}
+                        <ArrowRight weight="bold" className="w-4 h-4" />
+                      </button>
+                    </div>
+                  );
+                })()}
+              </div>
             </div>
           </section>
         )}
