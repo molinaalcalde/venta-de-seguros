@@ -1,6 +1,6 @@
 'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
-import { Buildings, Scales, ShieldCheck, Certificate } from '@phosphor-icons/react';
+import { Buildings, Scales, ShieldCheck, Certificate, Warning, Storefront, ArrowsClockwise } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Comercial',
@@ -13,13 +13,35 @@ const configEs: InsurancePageConfig = {
   priceFrom: 'Desde $19/mes',
   eligibilityTitle: '¿Tu negocio está realmente protegido?',
   eligibilityText: 'La mayoría cree que sí, hasta que pasa algo. Estos son los negocios que más ayudamos:',
-  eligibilityItems: [
-    'Restaurantes, panaderías, tiendas y negocios de comida',
-    'Contratistas: construcción, plomería, electricidad, landscaping',
-    'Salones de belleza, barberías, spas y estéticas',
-    'Empresas de limpieza, mudanzas y servicios al hogar',
-    'Trabajadores independientes con clientes o contratos',
-    'Cualquier negocio que recibe clientes o tiene empleados',
+  eligibilityItems: [],
+  eligibilityTabs: [
+    {
+      label: 'Me lo están pidiendo',
+      icon: Warning,
+      items: [
+        'Un cliente o contratista te pidió un certificado de seguro (COI) para poder trabajar',
+        'Tu landlord exige prueba de seguro para renovar el contrato del local',
+        'Necesitas Workers Comp porque acabas de contratar a tu primer empleado',
+      ],
+    },
+    {
+      label: 'Estoy empezando',
+      icon: Storefront,
+      items: [
+        'Acabas de abrir tu negocio y no sabes qué seguro necesitas',
+        'Tienes una LLC pero no sabes si eso te protege de demandas (no lo hace)',
+        'Trabajas desde casa y no sabes si tu seguro de hogar cubre tu negocio (no lo cubre)',
+      ],
+    },
+    {
+      label: 'Ya tengo seguro',
+      icon: ArrowsClockwise,
+      items: [
+        'Tu prima subió y nadie te explicó por qué',
+        'No has revisado tu póliza desde que abriste y tu negocio ha cambiado',
+        'Sientes que pagas de más o que no estás realmente cubierto',
+      ],
+    },
   ],
   features: [
     {
@@ -197,13 +219,35 @@ const configEn: InsurancePageConfig = {
   priceFrom: 'From $19/mo',
   eligibilityTitle: 'Are you actually covered — or just insured?',
   eligibilityText: 'There\'s a difference. 77% of small businesses have a policy that doesn\'t cover what they think it covers (Hiscox 2025). These are the situations we see most:',
-  eligibilityItems: [
-    'You have an LLC and figured that meant you were protected from lawsuits',
-    'A landlord, GC, or corporate client just asked for a COI and you don\'t have one',
-    'You\'re hiring your first employee and just found out workers comp is required in your state',
-    'You haven\'t reviewed your policy since you opened — and a lot has changed since then',
-    'Your premium went up and nobody gave you a real explanation why',
-    'You have coverage, but you\'re not sure it would actually hold up if something happened',
+  eligibilityItems: [],
+  eligibilityTabs: [
+    {
+      label: 'I need it now',
+      icon: Warning,
+      items: [
+        'A client or GC just asked for a Certificate of Insurance (COI) before you can start work',
+        'Your landlord requires proof of insurance to renew your lease',
+        'You just hired your first employee and need Workers Comp before they start',
+      ],
+    },
+    {
+      label: 'Just starting out',
+      icon: Storefront,
+      items: [
+        'You just opened your business and don\'t know what insurance you actually need',
+        'You have an LLC and assumed that meant you were protected from lawsuits (it doesn\'t)',
+        'You work from home and don\'t know if your homeowner\'s policy covers your business (it doesn\'t)',
+      ],
+    },
+    {
+      label: 'Already insured',
+      icon: ArrowsClockwise,
+      items: [
+        'Your premium went up and nobody gave you a real explanation why',
+        'You haven\'t reviewed your policy since you opened and your business has changed',
+        'You have coverage but you\'re not sure it would actually hold up if something happened',
+      ],
+    },
   ],
   features: [
     {
