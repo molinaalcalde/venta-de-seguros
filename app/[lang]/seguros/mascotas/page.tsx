@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   PawPrint, CheckCircle, Stethoscope, FirstAidKit,
   Syringe, Pill, ArrowRight, MapPin, ArrowLeft, Star,
-  Shield, Headset, CreditCard, Tooth, Heart, CurrencyDollar,
+  Shield, Lock, Headset, CreditCard, Tooth, Heart, CurrencyDollar,
 } from '@phosphor-icons/react';
 import QuoteModal from '@/components/QuoteModal';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
