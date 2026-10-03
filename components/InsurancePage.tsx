@@ -537,12 +537,18 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
               const isEven = i % 2 === 0;
               return (
                 <RevealWrapper key={f.title} className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-                  {/* Icon panel */}
-                  <div className={`flex items-center justify-center rounded-3xl bg-white border border-slate-100 shadow-sm h-52 md:h-64 ${isEven ? 'md:order-first' : 'md:order-last'}`}>
+                  {/* Icon panel — hidden on mobile, visible on desktop */}
+                  <div className={`hidden md:flex items-center justify-center rounded-3xl bg-white border border-slate-100 shadow-sm h-64 ${isEven ? 'md:order-first' : 'md:order-last'}`}>
                     <f.icon weight="duotone" className={`w-20 h-20 ${t.iconText} opacity-80`} />
                   </div>
                   {/* Text */}
                   <div className={isEven ? 'md:order-last' : 'md:order-first'}>
+                    {/* Inline icon — visible on mobile only */}
+                    <div className="md:hidden mb-4">
+                      <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white border border-slate-100 shadow-sm`}>
+                        <f.icon weight="duotone" className={`w-6 h-6 ${t.iconText}`} />
+                      </div>
+                    </div>
                     <h2 className="text-2xl md:text-3xl font-light text-slate-900 tracking-tight mb-3">{f.title}</h2>
                     <p className="text-slate-600 font-light leading-relaxed text-base">{f.desc}</p>
                   </div>

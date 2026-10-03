@@ -1,6 +1,6 @@
 'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
-import { Heart, CurrencyDollar, Globe, Lock, Users } from '@phosphor-icons/react';
+import { Heart, CurrencyDollar, Lock, Users, Target, Heartbeat } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Vida',
@@ -156,7 +156,7 @@ const configEn: InsurancePageConfig = {
   ],
   features: [
     {
-      icon: Users,
+      icon: Target,
       title: 'Only 1 in 10 Americans guesses the cost correctly',
       desc: 'Adults under 30 overestimate the cost of life insurance by 10 to 12 times (LIMRA 2025). More than half base their estimate on a random guess. A healthy 30-year-old pays around $18/month for $250,000 in 20-year coverage — less than most people spend on a single dinner out. The gap between what people think it costs and what it actually costs is the #1 reason 102 million Americans are underinsured (LIMRA 2024).',
     },
@@ -166,7 +166,7 @@ const configEn: InsurancePageConfig = {
       desc: 'Group life through work typically provides 1–2× your annual salary. Financial planners recommend 10–12× to cover what your family actually needs: income replacement, mortgage, debt, childcare, and college. More importantly, that policy is not yours. When you leave your job — voluntarily or not — the coverage disappears. Building your family\'s financial safety net on something you don\'t own creates real risk.',
     },
     {
-      icon: Lock,
+      icon: Heartbeat,
       title: 'You survive the diagnosis. The bills don\'t stop.',
       desc: 'Living Benefits let you access part of your policy\'s death benefit while you\'re still alive if you\'re diagnosed with a terminal illness (under 24 months to live), a critical illness (heart attack, cancer, stroke), or a chronic illness (unable to perform basic daily activities). A heart attack at 52 shouldn\'t also be a financial crisis. What\'s advanced is deducted from the final death benefit. The rate you lock in today also never increases — not with age, not with health changes.',
     },

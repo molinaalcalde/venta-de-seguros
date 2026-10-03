@@ -1,6 +1,6 @@
 'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
-import { Umbrella, Bank, CurrencyDollar, Warning, Car } from '@phosphor-icons/react';
+import { Umbrella, Vault, CurrencyDollar, Warning, Car } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Umbrella',
@@ -32,7 +32,7 @@ const configEs: InsurancePageConfig = {
       desc: 'En 43 estados existe la "social host liability": si alguien se lastima en tu propiedad o en tu reunión, puedes ser demandado. Si tu perro muerde a un vecino, eres responsable en la mayoría de estados sin importar el historial del animal. Si un niño se mete a tu piscina y se lastima, la "attractive nuisance doctrine" te hace responsable aunque no lo hayas invitado. Tu seguro de hogar cubre $300,000. Si la demanda supera eso, pagas el resto.',
     },
     {
-      icon: Bank,
+      icon: Vault,
       title: 'Trabajaste Demasiado para Perderlo Todo en un Juicio',
       desc: 'El embargo de salario, el gravamen sobre la casa, las cuentas congeladas — son mecanismos legales reales que un tribunal puede aplicar si una demanda exitosa supera tus límites de seguro. Por menos de $20 al mes, la Protección Extra pone una barrera legal entre lo que construiste y quien te demande. $1 millón de cobertura adicional. Aumentar a $2M o $5M cuesta muy poco más.',
     },
@@ -150,7 +150,7 @@ const configEn: InsurancePageConfig = {
       desc: 'A serious accident caused by your teenage driver can easily exceed $300K in damages. A pool injury falls under "attractive nuisance" doctrine — you can be liable even if the child wasn\'t invited. Dog bites trigger strict liability in most states regardless of the animal\'s history. And in 43 states, social host liability means you can be sued if a guest drinks at your home and causes an accident afterward. Each of these individually can exhaust your standard policy limits.',
     },
     {
-      icon: Bank,
+      icon: Umbrella,
       title: 'Umbrella Also Covers What Your Other Policies Don\'t Touch',
       desc: 'Standard auto and homeowners policies don\'t cover defamation, libel, slander, or invasion of privacy — including what you post on social media. Umbrella does. It also provides worldwide coverage (not just in the US), covers legal defense costs even if you\'re not found liable, and extends to incidents involving rental properties, boats, and ATVs when added to the policy.',
     },

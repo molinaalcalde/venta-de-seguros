@@ -1,6 +1,6 @@
 'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
-import { Truck, WarningDiamond, Users } from '@phosphor-icons/react';
+import { Truck, DeviceMobile, ArrowsLeftRight, Phone } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'AutoComercial',
@@ -23,7 +23,7 @@ const configEs: InsurancePageConfig = {
   ],
   features: [
     {
-      icon: WarningDiamond,
+      icon: DeviceMobile,
       title: 'Tres momentos. Solo uno te cubre si usas apps.',
       desc: 'Cuando la app está encendida esperando un viaje, tu seguro personal no cubre. DoorDash no te cubre cuando vas al restaurante a buscar el pedido. Instacart no cubre a sus conductores en ningún momento. Solo durante la entrega o viaje activo activa la plataforma cobertura completa. Todo lo demás es responsabilidad tuya directa.',
     },
@@ -33,7 +33,7 @@ const configEs: InsurancePageConfig = {
       desc: 'Si usas tu pickup, van o camioneta para ir a trabajos, transportar herramientas o llevar empleados, tu póliza personal puede ser inválida en un accidente. 1 de cada 3 trabajadores de construcción en USA es hispano. La mayoría opera con pólizas personales en vehículos de trabajo. Cuando la aseguradora investiga, el GPS, las herramientas y los pasajeros son evidencia suficiente para negar el reclamo completo.',
     },
     {
-      icon: Users,
+      icon: ArrowsLeftRight,
       title: 'Progressive solo vende Progressive. Nosotros comparamos 10+.',
       desc: 'Si contratas directo con una aseguradora, solo ves sus planes. Nosotros comparamos cada opción disponible para tu tipo de vehículo y uso. Un conductor de apps puede agregar cobertura desde $15 al mes sobre su póliza actual. Un contratista con pickup paga en promedio entre $177 y $285 al mes. Encontramos la opción correcta antes de recomendarte nada.',
     },
@@ -197,17 +197,17 @@ const configEn: InsurancePageConfig = {
   ],
   features: [
     {
-      icon: WarningDiamond,
+      icon: DeviceMobile,
       title: 'The business exclusion your personal insurer will not volunteer',
       desc: 'Personal auto policies exclude commercial use in the fine print. When you have an accident and your insurer checks GPS data or app history, they have what they need to deny the claim. Uber and Lyft only cover your vehicle during an active ride. Period 1 (app on, waiting) is your responsibility. DoorDash does not cover your car at all. Instacart does not cover you in any period. A commercial policy closes every one of those gaps explicitly.',
     },
     {
-      icon: Truck,
+      icon: Phone,
       title: 'When you file a claim, you call me directly. Not a 1-800 number.',
       desc: 'Progressive, Next Insurance, and every online-first carrier route you to a call center when something goes wrong. I am your agent before, during, and after the claim. If a carrier denies coverage, I escalate it. If you need a COI by tomorrow morning to keep a contract, I issue it today. That is not a promise most agents make because most agents disappear after the sale.',
     },
     {
-      icon: Users,
+      icon: ArrowsLeftRight,
       title: 'We compare 10+ carriers. Progressive only shows you one.',
       desc: 'If you go directly to Progressive, you see Progressive rates. An independent agent compares 10 or more carriers for your specific vehicle, industry, and state. A gig driver can add commercial coverage from $15 a month over their current policy. A contractor with a pickup averages $177 to $285 a month. We find the real number before recommending anything.',
     },
