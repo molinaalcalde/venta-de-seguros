@@ -123,8 +123,8 @@ function RevealWrapper({ children, className }: { children: React.ReactNode; cla
 }
 
 /* ─── Eligibility stagger section ────────────────────────────────────── */
-function EligibilitySection({ items, isEn, stepBg, onQuote, ctaButton }: {
-  items: string[]; isEn: boolean; stepBg: string;
+function EligibilitySection({ items, isEn, stepBg, iconText, onQuote, ctaButton }: {
+  items: string[]; isEn: boolean; stepBg: string; iconText: string;
   onQuote: () => void; ctaButton: string;
 }) {
   const { ref, visible } = useReveal(0.08);
@@ -139,11 +139,14 @@ function EligibilitySection({ items, isEn, stepBg, onQuote, ctaButton }: {
             <div
               key={i}
               style={{ transitionDelay: visible ? `${i * 90}ms` : '0ms' }}
-              className={`group flex items-center gap-4 py-4 border-b border-slate-100 last:border-0 transition-all duration-700 ease-out ${
+              className={`group flex items-start gap-4 py-5 border-b border-slate-100 last:border-0 transition-all duration-700 ease-out ${
                 visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
               }`}
             >
-              <div className={`w-0.5 h-7 rounded-full ${stepBg} shrink-0 scale-y-0 group-hover:scale-y-100 transition-transform duration-200 origin-center`} />
+              <span className={`text-sm font-semibold ${iconText} opacity-30 group-hover:opacity-100 transition-opacity duration-200 w-7 shrink-0 pt-0.5`}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div className={`w-0.5 self-stretch rounded-full ${stepBg} shrink-0 opacity-20 group-hover:opacity-100 transition-opacity duration-200`} />
               <p className="text-lg md:text-xl font-light text-slate-500 group-hover:text-slate-900 transition-colors duration-200 leading-snug">
                 {item}
               </p>
@@ -331,6 +334,7 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
           items={config.eligibilityItems}
           isEn={isEn}
           stepBg={t.stepBg}
+          iconText={t.iconText}
           onQuote={() => setQuoteOpen(true)}
           ctaButton={config.ctaButton}
         />
