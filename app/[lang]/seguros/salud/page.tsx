@@ -1,6 +1,6 @@
 'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
-import { Warning, ArrowsLeftRight, CalendarCheck, BookOpen } from '@phosphor-icons/react';
+import { Hospital, Warning, ArrowsLeftRight, CalendarCheck, BookOpen } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Salud',
