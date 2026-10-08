@@ -829,7 +829,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               </p>
               <div className="space-y-1.5 text-xs text-slate-500">
                 <p>{isEn ? 'Licensed Independent Agent' : 'Agente Independiente con Licencia'}</p>
-                <p>New Jersey · License #[NJ_LICENSE]</p>
+                <p>New Jersey · License #3002959176 · NPN 21073252</p>
               </div>
               <a href="https://www.instagram.com/insurancebymf_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="inline-flex text-slate-500 hover:text-white transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -878,6 +878,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   </a>
                 </li>
                 <li><a href="tel:+19082280973" className="hover:text-white transition-colors">(908) 228-0973</a></li>
+                <li><a href="mailto:info@consultingbymf.com" className="hover:text-white transition-colors">info@consultingbymf.com</a></li>
                 <li><Link className="hover:text-white transition-colors" href={l('/privacidad')}>{isEn ? 'Privacy Policy' : 'Política de Privacidad'}</Link></li>
                 <li><Link className="hover:text-white transition-colors" href={l('/terminos')}>{isEn ? 'Terms of Service' : 'Términos de Servicio'}</Link></li>
               </ul>
@@ -888,11 +889,11 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
           <div className="pt-8 pb-6 border-b border-white/5 text-[10px] text-slate-600 font-light leading-relaxed max-w-5xl">
             {isEn ? (
               <>
-                Maria Fernanda Insurance Consulting is a licensed independent insurance agent. Insurance products are offered through multiple carriers and are subject to underwriting review, approval, and availability by state. Quotes and price estimates shown on this website are not binding offers of coverage. Final premiums are determined by the issuing carrier based on individual risk factors. Coverage is subject to policy terms, conditions, limitations, and exclusions. Not all products are available in all states. Savings figures referenced represent documented savings achieved by specific clients under specific circumstances and are not guaranteed or typical results. Individual savings vary based on state, coverage type, carrier, and personal risk profile. Licensed in New Jersey (License #[NJ_LICENSE]). Licensed in additional states upon request. This website does not constitute a solicitation in any state where the agent is not licensed. Testimonials reflect individual customer experiences. An independent insurance agent will contact you.
+                Maria Fernanda Insurance Consulting is a licensed independent insurance agent. Insurance products are offered through multiple carriers and are subject to underwriting review, approval, and availability by state. Quotes and price estimates shown on this website are not binding offers of coverage. Final premiums are determined by the issuing carrier based on individual risk factors. Coverage is subject to policy terms, conditions, limitations, and exclusions. Not all products are available in all states. Savings figures referenced represent documented savings achieved by specific clients under specific circumstances and are not guaranteed or typical results. Individual savings vary based on state, coverage type, carrier, and personal risk profile. Licensed in New Jersey (License #3002959176, NPN 21073252). Licensed in additional states upon request. This website does not constitute a solicitation in any state where the agent is not licensed. Testimonials reflect individual customer experiences. An independent insurance agent will contact you.
               </>
             ) : (
               <>
-                Maria Fernanda Insurance Consulting es una agente de seguros independiente con licencia. Los productos de seguro se ofrecen a través de múltiples aseguradoras y están sujetos a revisión de suscripción, aprobación y disponibilidad según el estado. Las cotizaciones y estimaciones de precio que aparecen en este sitio no son ofertas vinculantes de cobertura. Las primas finales son determinadas por la aseguradora según el perfil de riesgo individual. La cobertura está sujeta a los términos, condiciones, limitaciones y exclusiones de la póliza. Las cifras de ahorro mencionadas representan resultados obtenidos por clientes específicos y no son resultados garantizados ni típicos. El ahorro individual varía según el estado, tipo de cobertura, aseguradora y perfil de riesgo personal. Licenciada en New Jersey (Licencia #[NJ_LICENSE]). Licenciada en estados adicionales disponible a solicitud.
+                Maria Fernanda Insurance Consulting es una agente de seguros independiente con licencia. Los productos de seguro se ofrecen a través de múltiples aseguradoras y están sujetos a revisión de suscripción, aprobación y disponibilidad según el estado. Las cotizaciones y estimaciones de precio que aparecen en este sitio no son ofertas vinculantes de cobertura. Las primas finales son determinadas por la aseguradora según el perfil de riesgo individual. La cobertura está sujeta a los términos, condiciones, limitaciones y exclusiones de la póliza. Las cifras de ahorro mencionadas representan resultados obtenidos por clientes específicos y no son resultados garantizados ni típicos. El ahorro individual varía según el estado, tipo de cobertura, aseguradora y perfil de riesgo personal. Licenciada en New Jersey (Licencia #3002959176, NPN 21073252). Licenciada en estados adicionales disponible a solicitud.
               </>
             )}
           </div>

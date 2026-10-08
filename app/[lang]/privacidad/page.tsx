@@ -97,7 +97,7 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
           <h2 className="font-semibold text-slate-900 mb-2">10. Contact</h2>
           <p>For privacy-related requests or questions, contact us at:</p>
           <p className="mt-2 font-medium">Maria Fernanda Insurance Consulting<br />
-          Email: [EMAIL]<br />
+          Email: info@consultingbymf.com<br />
           Phone: (908) 228-0973</p>
         </div>
       </section>
@@ -191,7 +191,7 @@ export default function PrivacidadPage({ params }: { params: { lang: string } })
           <h2 className="font-semibold text-slate-900 mb-2">10. Contacto</h2>
           <p>Para solicitudes o preguntas relacionadas con privacidad, contáctanos en:</p>
           <p className="mt-2 font-medium">Maria Fernanda Insurance Consulting<br />
-          Email: [EMAIL]<br />
+          Email: info@consultingbymf.com<br />
           Teléfono: (908) 228-0973</p>
         </div>
       </section>

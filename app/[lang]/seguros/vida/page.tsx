@@ -1,6 +1,6 @@
 'use client';
 import InsurancePage, { type InsurancePageConfig } from '@/components/InsurancePage';
-import { Heart, CurrencyDollar, Lock, Users, Target, Heartbeat } from '@phosphor-icons/react';
+import { Heart, CurrencyDollar, Globe, Lock, Users } from '@phosphor-icons/react';
 
 const configEs: InsurancePageConfig = {
   quoteType: 'Vida',
@@ -8,15 +8,10 @@ const configEs: InsurancePageConfig = {
   badge: 'ITIN aceptado · Living Benefits · Desde $15/mes · Beneficiarios en cualquier país',
   heroLine1: 'Seguro de Vida',
   heroItalic: 'casi todos calculan el precio cinco veces más caro de lo que es',
-  heroSubtitle: 'Cotiza en minutos, sin examen médico y sin términos complicados. Comparo decenas de aseguradoras para encontrar el plan que se ajuste a tu presupuesto.',
+  heroSubtitle: 'Solo el 40% de los latinos en USA tiene seguro de vida, la tasa más baja de cualquier grupo y 11 puntos menos que hace cuatro años (LIMRA 2025). La razón principal no es falta de dinero: el 72% sobrestima el costo real. Una persona sana de 30 años puede tener $500,000 de cobertura por alrededor de $30/mes. Y si te diagnostican algo grave, puedes usar ese dinero mientras sigues vivo.',
   trustBadges: ['ITIN aceptado', 'Desde $15/mes', 'Living Benefits incluidos', 'Beneficiarios en cualquier país'],
   priceFrom: 'Desde $15/mes',
   heroVideo: '/videos/hero-vida.mp4',
-  stats: [
-    { value: '72%', label: 'sobrestima el costo real del seguro de vida', source: 'LIMRA 2024' },
-    { value: '40%', label: 'de latinos en USA tiene seguro de vida, la tasa más baja de cualquier grupo', source: 'LIMRA 2025' },
-    { value: '~$30/mes', label: 'por $500,000 de cobertura para una persona sana de 30 años', source: 'Promedio del mercado' },
-  ],
   eligibilityTitle: 'Sí puedes asegurarte aunque...',
   eligibilityText: 'Estas son las situaciones más comunes de personas que cotizaron sin esperarlo y encontraron opciones que no sabían que existían:',
   eligibilityItems: [
@@ -136,15 +131,10 @@ const configEn: InsurancePageConfig = {
   badge: 'Independent Agent · Living Benefits · From $15/mo · 10+ carriers',
   heroLine1: 'Life Insurance',
   heroItalic: 'most people guess the price wrong — by 10 times',
-  heroSubtitle: 'Quote in minutes, no medical exam, no confusing terms. We compare dozens of carriers to find the plan that fits your budget.',
+  heroSubtitle: '102 million Americans know they need more life insurance but don\'t have it — the largest coverage gap on record (LIMRA 2024). The #1 reason: most people overestimate what it costs by 3 to 10 times. A healthy 30-year-old pays around $18/month for $250,000 in 20-year coverage. And if you\'re ever diagnosed with something serious, you can access that money while you\'re still alive.',
   trustBadges: ['10+ carriers compared', 'From $15/mo', 'Living Benefits included', 'Free, no commitment'],
   priceFrom: 'From $15/mo',
   heroVideo: '/videos/hero-vida.mp4',
-  stats: [
-    { value: '72%', label: 'overestimate the real cost of life insurance', source: 'LIMRA 2024' },
-    { value: '102M', label: 'Americans know they need more coverage but don\'t have it', source: 'LIMRA 2024' },
-    { value: '~$18/mo', label: 'for $250,000 in coverage for a healthy 30-year-old', source: 'Market average' },
-  ],
   eligibilityTitle: 'You can get covered even if...',
   eligibilityText: 'These are the most common situations we see — most people are surprised by how straightforward coverage actually is:',
   eligibilityItems: [
@@ -156,7 +146,7 @@ const configEn: InsurancePageConfig = {
   ],
   features: [
     {
-      icon: Target,
+      icon: Users,
       title: 'Only 1 in 10 Americans guesses the cost correctly',
       desc: 'Adults under 30 overestimate the cost of life insurance by 10 to 12 times (LIMRA 2025). More than half base their estimate on a random guess. A healthy 30-year-old pays around $18/month for $250,000 in 20-year coverage — less than most people spend on a single dinner out. The gap between what people think it costs and what it actually costs is the #1 reason 102 million Americans are underinsured (LIMRA 2024).',
     },
@@ -166,7 +156,7 @@ const configEn: InsurancePageConfig = {
       desc: 'Group life through work typically provides 1–2× your annual salary. Financial planners recommend 10–12× to cover what your family actually needs: income replacement, mortgage, debt, childcare, and college. More importantly, that policy is not yours. When you leave your job — voluntarily or not — the coverage disappears. Building your family\'s financial safety net on something you don\'t own creates real risk.',
     },
     {
-      icon: Heartbeat,
+      icon: Lock,
       title: 'You survive the diagnosis. The bills don\'t stop.',
       desc: 'Living Benefits let you access part of your policy\'s death benefit while you\'re still alive if you\'re diagnosed with a terminal illness (under 24 months to live), a critical illness (heart attack, cancer, stroke), or a chronic illness (unable to perform basic daily activities). A heart attack at 52 shouldn\'t also be a financial crisis. What\'s advanced is deducted from the final death benefit. The rate you lock in today also never increases — not with age, not with health changes.',
     },

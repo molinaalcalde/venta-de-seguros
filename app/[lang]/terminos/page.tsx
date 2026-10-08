@@ -29,7 +29,7 @@ export default function TerminosPage({ params }: { params: { lang: string } }) {
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">3. Licensing</h2>
-          <p>Maria Fernanda Insurance Consulting is a licensed independent insurance agent in New Jersey (License #[NJ_LICENSE]) and in additional states upon request. This website does not constitute a solicitation for insurance in any state where the agent is not licensed to sell insurance. By submitting a quote request, you represent that you are located in a state where we are licensed to conduct insurance business.</p>
+          <p>Maria Fernanda Insurance Consulting is a licensed independent insurance agent in New Jersey (License #3002959176, NPN 21073252) and in additional states upon request. This website does not constitute a solicitation for insurance in any state where the agent is not licensed to sell insurance. By submitting a quote request, you represent that you are located in a state where we are licensed to conduct insurance business.</p>
         </div>
 
         <div>
@@ -71,7 +71,7 @@ export default function TerminosPage({ params }: { params: { lang: string } }) {
           <h2 className="font-semibold text-slate-900 mb-2">11. Contact</h2>
           <p>For questions about these Terms, contact us at:</p>
           <p className="mt-2 font-medium">Maria Fernanda Insurance Consulting<br />
-          Email: [EMAIL]<br />
+          Email: info@consultingbymf.com<br />
           Phone: (908) 228-0973</p>
         </div>
       </section>
@@ -97,7 +97,7 @@ export default function TerminosPage({ params }: { params: { lang: string } }) {
 
         <div>
           <h2 className="font-semibold text-slate-900 mb-2">3. Licencias</h2>
-          <p>Maria Fernanda Insurance Consulting es una agente de seguros independiente con licencia en New Jersey (Licencia #[NJ_LICENSE]) y en estados adicionales disponible a solicitud. Este sitio web no constituye una solicitud de seguros en ningún estado donde la agente no tenga licencia para vender seguros.</p>
+          <p>Maria Fernanda Insurance Consulting es una agente de seguros independiente con licencia en New Jersey (Licencia #3002959176, NPN 21073252) y en estados adicionales disponible a solicitud. Este sitio web no constituye una solicitud de seguros en ningún estado donde la agente no tenga licencia para vender seguros.</p>
         </div>
 
         <div>
@@ -134,7 +134,7 @@ export default function TerminosPage({ params }: { params: { lang: string } }) {
           <h2 className="font-semibold text-slate-900 mb-2">10. Contacto</h2>
           <p>Para preguntas sobre estos Términos, contáctanos en:</p>
           <p className="mt-2 font-medium">Maria Fernanda Insurance Consulting<br />
-          Email: [EMAIL]<br />
+          Email: info@consultingbymf.com<br />
           Teléfono: (908) 228-0973</p>
         </div>
       </section>
