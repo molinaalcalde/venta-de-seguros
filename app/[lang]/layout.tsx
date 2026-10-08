@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: { params: { lang: string } })
     openGraph: {
       title: isEn
         ? 'Independent Insurance Agent | Compare 10+ Carriers · Maria Fernanda'
-        : 'Agente Independiente de Seguros en Español | María Fernanda',
+        : 'Agente Independiente de Seguros en Español | Maria Fernanda',
       description: isEn
         ? 'Compare 10+ carriers for car, health, life, pet, and business insurance. Annual review and claims advocacy included. Free quote.'
         : 'Compara 10+ aseguradoras en español. Auto, salud, vida, dental, mascotas y comercial. ITIN aceptado. Sin SSN. Cotización gratis.',

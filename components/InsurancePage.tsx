@@ -537,18 +537,12 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
               const isEven = i % 2 === 0;
               return (
                 <RevealWrapper key={f.title} className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-                  {/* Icon panel — hidden on mobile, visible on desktop */}
-                  <div className={`hidden md:flex items-center justify-center rounded-3xl bg-white border border-slate-100 shadow-sm h-64 ${isEven ? 'md:order-first' : 'md:order-last'}`}>
+                  {/* Icon panel */}
+                  <div className={`flex items-center justify-center rounded-3xl bg-white border border-slate-100 shadow-sm h-52 md:h-64 ${isEven ? 'md:order-first' : 'md:order-last'}`}>
                     <f.icon weight="duotone" className={`w-20 h-20 ${t.iconText} opacity-80`} />
                   </div>
                   {/* Text */}
                   <div className={isEven ? 'md:order-last' : 'md:order-first'}>
-                    {/* Inline icon — visible on mobile only */}
-                    <div className="md:hidden mb-4">
-                      <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white border border-slate-100 shadow-sm`}>
-                        <f.icon weight="duotone" className={`w-6 h-6 ${t.iconText}`} />
-                      </div>
-                    </div>
                     <h2 className="text-2xl md:text-3xl font-light text-slate-900 tracking-tight mb-3">{f.title}</h2>
                     <p className="text-slate-600 font-light leading-relaxed text-base">{f.desc}</p>
                   </div>
@@ -798,6 +792,7 @@ export default function InsurancePage({ config, lang = 'es' }: { config: Insuran
                 >
                   {isEn ? 'Get a quote' : 'Cotizar gratis'}
                 </button>
+                <a href="mailto:info@consultingbymf.com" className="text-xs text-slate-400 hover:text-white transition-colors mt-2 inline-block">info@consultingbymf.com</a>
                 <div className="flex items-center gap-3 mt-4">
                   <a href="https://www.instagram.com/insurancebymf_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-slate-500 hover:text-white transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
