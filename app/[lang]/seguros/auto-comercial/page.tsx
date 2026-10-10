@@ -10,7 +10,7 @@ const configEs: InsurancePageConfig = {
   heroItalic: 'tu póliza personal no te cubre cuando vas a trabajar',
   heroSubtitle: 'Tu aseguradora lo sabe. No te lo dijo. Cuando tienes un accidente y revisan el GPS o el historial de la app, la respuesta llega rápido: uso comercial, reclamo denegado. El costo promedio de un reclamo de lesión a terceros es $27,373. Sin la cobertura correcta, ese número es tuyo.',
   trustBadges: ['Gig workers', 'Contratistas y flotas', '10+ aseguradoras', 'Cotización gratis'],
-  priceFrom: 'Desde $110/mes',
+  priceFrom: '',
   eligibilityTitle: 'Si tu vehículo trabaja, necesita el seguro correcto',
   eligibilityText: 'Cualquier uso de tu vehículo para generar ingresos lo convierte en vehículo comercial ante tu aseguradora. No importa si es tiempo completo o unas horas a la semana.',
   eligibilityItems: [
@@ -172,8 +172,7 @@ const configEs: InsurancePageConfig = {
   theme: 'orange',
   heroVideo: '/videos/comercial-negocio.mp4',
   schema: {
-    description: 'Seguro de auto comercial para hispanos. Uber, Lyft, DoorDash, Instacart, contratistas y flotas. Agente independiente compara 10+ aseguradoras. COI en 24 horas. Desde $110 al mes.',
-    price: '110',
+    description: 'Seguro de auto comercial. Uber, Lyft, DoorDash, Instacart, contratistas y flotas. Agente independiente compara 10+ aseguradoras. COI disponible.',
   },
 };
 
@@ -184,8 +183,8 @@ const configEn: InsurancePageConfig = {
   heroLine1: 'Commercial Auto Insurance',
   heroItalic: 'your personal auto policy has a business exclusion',
   heroSubtitle: 'Your insurer knows it. They don\'t volunteer it. The moment GPS data or app history shows you were working when the accident happened, personal policies deny the claim under the commercial use exclusion. The average third-party injury claim costs $27,373. Without the right coverage, that number is yours.',
-  trustBadges: ['10+ carriers compared', 'COI in 24 hours', 'Contractors and fleets', 'From $110/mo'],
-  priceFrom: 'From $110/mo',
+  trustBadges: ['10+ carriers compared', 'COI available', 'Contractors and fleets', 'Free quote'],
+  priceFrom: '',
   eligibilityTitle: 'If your vehicle earns money, it needs the right policy',
   eligibilityText: 'Any use of your vehicle to generate income makes it a commercial vehicle to your insurer. It does not matter if it is full time or a few hours a week. The exclusion is already written into your current policy.',
   eligibilityItems: [
@@ -346,8 +345,7 @@ const configEn: InsurancePageConfig = {
   theme: 'orange',
   heroVideo: '/videos/comercial-negocio.mp4',
   schema: {
-    description: 'Commercial auto insurance for small businesses, contractors, and gig workers in the US. Independent agent compares 10+ carriers. Hired and Non-Owned Auto, fleet policies, and rideshare coverage. COI in 24 hours. From $110/mo.',
-    price: '110',
+    description: 'Commercial auto insurance for small businesses, contractors, and gig workers in the US. Independent agent compares 10+ carriers. Hired and Non-Owned Auto, fleet policies, and rideshare coverage. COI available.',
   },
 };
 

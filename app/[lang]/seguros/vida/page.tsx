@@ -5,17 +5,17 @@ import { Heart, CurrencyDollar, Globe, Lock, Users } from '@phosphor-icons/react
 const configEs: InsurancePageConfig = {
   quoteType: 'Vida',
   badgeIcon: Heart,
-  badge: 'ITIN aceptado · Living Benefits · Desde $15/mes · Beneficiarios en cualquier país',
+  badge: 'ITIN aceptado · Beneficios en vida disponibles · Beneficiarios en cualquier país',
   heroLine1: 'Seguro de Vida',
-  heroItalic: 'casi todos calculan el precio cinco veces más caro de lo que es',
-  heroSubtitle: 'Solo el 40% de los latinos en USA tiene seguro de vida, la tasa más baja de cualquier grupo y 11 puntos menos que hace cuatro años (LIMRA 2025). La razón principal no es falta de dinero: el 72% sobrestima el costo real. Una persona sana de 30 años puede tener $500,000 de cobertura por alrededor de $30/mes. Y si te diagnostican algo grave, puedes usar ese dinero mientras sigues vivo.',
-  trustBadges: ['ITIN aceptado', 'Desde $15/mes', 'Living Benefits incluidos', 'Beneficiarios en cualquier país'],
-  priceFrom: 'Desde $15/mes',
+  heroItalic: 'protege hoy el futuro de quienes más quieres',
+  heroSubtitle: 'Un seguro de vida puede ayudar a tu familia a afrontar gastos, deudas y compromisos económicos si llegas a faltar. Te orientamos para elegir entre opciones temporales y permanentes, según tus necesidades y presupuesto.',
+  trustBadges: ['ITIN aceptado', 'Opciones sin examen médico', 'Beneficios en vida en ciertos planes', 'Beneficiarios en cualquier país'],
+  priceFrom: '',
   heroVideo: '/videos/hero-vida.mp4',
   eligibilityTitle: 'Sí puedes asegurarte aunque...',
   eligibilityText: 'Estas son las situaciones más comunes de personas que cotizaron sin esperarlo y encontraron opciones que no sabían que existían:',
   eligibilityItems: [
-    'Creas que está fuera de tu presupuesto (el 72% sobrestima el precio real)',
+    'Creas que está fuera de tu presupuesto',
     'Quieras usar tu ITIN en lugar de SSN',
     'Tus beneficiarios vivan en México, Centroamérica u otro país',
     'No tengas historial de crédito en USA',
@@ -25,13 +25,13 @@ const configEs: InsurancePageConfig = {
   features: [
     {
       icon: Users,
-      title: '29% de familias hispanas no cubriría un mes de gastos si falta el ingreso principal',
-      desc: 'En 2021, el 51% de los latinos en USA tenía seguro de vida. Hoy es el 40%, la caída más grande en cuatro años (LIMRA 2025). El 72% sobrestima el costo real: una persona sana de 30 años paga alrededor de $30/mes por $500,000 de cobertura. La barrera no es el dinero, es el precio imaginado.',
+      title: 'Una decisión que puede marcar la diferencia para tu familia',
+      desc: 'Si falta el ingreso principal, muchas familias no cubren ni un mes de gastos. Un seguro de vida puede ayudar a cubrir hipotecas, deudas y gastos del hogar. Te orientamos para encontrar una opción que se ajuste a tu presupuesto.',
     },
     {
       icon: CurrencyDollar,
-      title: 'El dinero lo usas tú, no solo tu familia después',
-      desc: 'Los Living Benefits te permiten acceder a parte del beneficio mientras sigues vivo si te diagnostican una enfermedad crítica (infarto, cáncer, derrame), crónica (incapacidad para actividades básicas) o terminal. No tienes que esperar. Ese dinero paga tratamientos, deudas o los gastos del hogar cuando más se necesita. Es el beneficio que casi nadie explica en español.',
+      title: 'Beneficios en vida, disponibles en ciertos planes',
+      desc: 'Algunos planes incluyen beneficios en vida que permiten acceder a parte del beneficio si te diagnostican una enfermedad crítica, crónica o terminal. El acceso y las condiciones dependen del plan y la aseguradora. Te explicamos las opciones disponibles en español.',
     },
     {
       icon: Lock,
@@ -82,20 +82,20 @@ const configEs: InsurancePageConfig = {
   ],
   faq: [
     {
-      q: '¿Por qué tan pocos latinos tienen seguro de vida?',
-      a: 'Solo el 40% de los latinos en USA tiene seguro de vida, la tasa más baja de cualquier grupo étnico (LIMRA 2025). Las razones más comunes: creer que el costo está fuera de su presupuesto, no saber que se puede usar el ITIN, o no tener a alguien que lo explique en español. Los tres obstáculos tienen solución.',
+      q: '¿Por qué muchas personas no tienen seguro de vida?',
+      a: 'Las razones más comunes: creer que el costo está fuera de su presupuesto, no saber qué opciones existen, o no tener a alguien que lo explique en español. Te ayudamos a explorar alternativas según tu situación.',
     },
     {
       q: '¿Puedo tener seguro de vida usando mi ITIN?',
       a: 'Sí. No necesitas SSN para contratar seguro de vida en EE.UU. El ITIN es identificación válida para la mayoría de aseguradoras. También aceptamos pasaporte vigente del país de origen como documento adicional.',
     },
     {
-      q: '¿Por qué la mayoría cree que el seguro de vida cuesta más de lo que es?',
-      a: 'El 72% de las personas sobrestima el costo de una póliza a término (LIMRA 2024). El precio imaginado promedio es cinco veces el precio real. Una persona sana de 30 años paga alrededor de $30/mes por $500,000 de cobertura durante 20 años. La diferencia entre lo que se imagina y lo que cuesta es el motivo principal por el que millones de familias posponen algo que ya podrían tener esta semana.',
+      q: '¿Cuánto cuesta realmente un seguro de vida?',
+      a: 'El costo varía según tu edad, salud, monto de cobertura y tipo de plan. Muchas personas sobrestiman el precio real. Te damos una cotización personalizada para que compares opciones con información real.',
     },
     {
-      q: '¿Qué son los Living Benefits y cómo funcionan?',
-      a: 'Los Living Benefits te permiten acceder a parte del beneficio de tu seguro de vida mientras sigues vivo si te diagnostican: enfermedad terminal (menos de 24 meses de vida), enfermedad crítica (infarto, cáncer, derrame cerebral) o enfermedad crónica (cuando no puedes realizar actividades básicas diarias). El dinero lo usas para lo que necesitas. Lo que se adelanta se descuenta del beneficio final.',
+      q: '¿Qué son los beneficios en vida y cómo funcionan?',
+      a: 'Algunos planes de seguro de vida incluyen beneficios en vida que permiten acceder a parte del beneficio si te diagnostican una enfermedad terminal, crítica o crónica. El acceso, las condiciones y los montos dependen del plan y la aseguradora. Lo que se adelanta se descuenta del beneficio final. Te explicamos las opciones disponibles.',
     },
     {
       q: '¿Mi familia en otro país puede cobrar el seguro?',
@@ -110,18 +110,17 @@ const configEs: InsurancePageConfig = {
       a: 'No siempre. Muchos planes aprueban hasta $300,000 de cobertura sin examen médico, solo con un cuestionario de salud básico. Los planes sin examen son especialmente útiles si tienes condiciones preexistentes o no tienes historial médico en USA. Los planes con examen ofrecen primas más bajas si tienes buena salud.',
     },
     {
-      q: '¿Cuánto cuesta el seguro de vida?',
-      a: 'Los planes a término comienzan desde $15/mes para personas jóvenes y sanas. Una persona sana de 25 años puede tener $250,000 de cobertura por menos de $16/mes durante 20 años. El precio varía según edad, salud, monto de cobertura y tipo de plan. Lo más importante: el precio que fijas hoy se mantiene fijo toda la vigencia de la póliza.',
+      q: '¿El precio del seguro de vida puede cambiar después de contratarlo?',
+      a: 'En los planes a término, el precio que fijas al contratar se mantiene durante toda la vigencia de la póliza. En los planes permanentes, el precio también se mantiene estable. El costo final depende de tu edad, salud y el tipo de plan que elijas.',
     },
   ],
   ctaTitle: 'El respaldo que tu familia',
   ctaItalic: 'necesita hoy',
-  ctaSubtitle: 'Living Benefits incluidos. ITIN aceptado. Tu asesora en español te guía. Gratis, sin compromiso.',
+  ctaSubtitle: 'Beneficios en vida disponibles en ciertos planes. ITIN aceptado. Tu asesora en español te guía. Gratis, sin compromiso.',
   ctaButton: 'Cotizar gratis',
   theme: 'emerald',
   schema: {
-    description: 'Seguro de vida para latinos en USA. ITIN aceptado. Living Benefits incluidos. Beneficiarios en cualquier país. Desde $15/mes. Hasta $300,000 sin examen médico en planes calificados.',
-    price: '15',
+    description: 'Seguro de vida en USA. ITIN aceptado. Beneficios en vida disponibles en ciertos planes. Beneficiarios en cualquier país. Opciones sin examen médico en planes calificados.',
   },
 };
 

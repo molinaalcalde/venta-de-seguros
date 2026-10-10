@@ -107,7 +107,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => {
       setHeroIndex(prev => (prev + 1) % HERO_VIDEOS.length);
-    }, 10000);
+    }, heroIndex === 0 ? 8000 : 10000);
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [heroIndex]);
@@ -181,7 +181,6 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 { label: 'Blog', href: '/blog', sectionId: '' },
                 { label: 'FAQ', href: '#faq', sectionId: 'faq' },
               ] : [
-                { label: 'Soluciones', href: '#soluciones', sectionId: 'soluciones' },
                 { label: 'Coberturas', href: '#coberturas-destacadas', sectionId: 'coberturas-destacadas' },
                 { label: 'Por qué Nosotros', href: '#por-que-aegis', sectionId: 'por-que-aegis' },
                 { label: 'Blog', href: '/blog', sectionId: '' },
@@ -243,7 +242,6 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 { label: 'FAQ', href: '#faq' },
               ] : [
                 { label: 'Inicio', href: `/${lang}` },
-                { label: 'Soluciones', href: '#soluciones' },
                 { label: 'Blog', href: '/blog' },
                 { label: 'Cotizador', href: '#cotizador' },
                 { label: 'FAQ', href: '#faq' },
@@ -350,75 +348,6 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
           </div>
         </div>
       </div>
-
-      {/* ── Solutions Section ── */}
-      {!isEn && (
-        <section className="py-20 lg:py-28 px-4 sm:px-8 max-w-7xl mx-auto" id="soluciones">
-          <div className="text-center mb-14 max-w-2xl mx-auto">
-            <div className="inline-flex items-center justify-center gap-2 mb-3 text-slate-700">
-              <div className="w-4 h-4 rounded-full border-[1.8px] border-slate-800 flex items-center justify-center"><span className="w-1 h-1 bg-slate-800 rounded-full"></span></div>
-              <span className="text-xs uppercase tracking-widest font-semibold text-slate-600">Todos los Seguros en un Solo Lugar</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-normal text-slate-900 tracking-tight leading-tight">
-              El seguro que necesitas,{' '}<br /><span className="font-editorial-italic font-normal">explicado en tu idioma</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-3 max-w-xl mx-auto">Sin letra chica, sin presiones. Elige el tipo de seguro y un asesor bilingüe te acompaña desde la cotización hasta el momento de usarlo.</p>
-          </div>
-          <div className="bg-[#dbe7dc] rounded-[32px] p-4 sm:p-7 lg:p-8 shadow-sm">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-5 lg:gap-6 items-stretch">
-              <div className="md:col-span-4 flex flex-col justify-center space-y-2">
-                {solutionsTabs.map((tab, idx) => (
-                  <button key={idx} onClick={() => setActiveTab(idx)} className={`w-full text-left px-5 py-3 rounded-2xl font-medium text-xs sm:text-[13px] transition-all flex items-center justify-between ${activeTab === idx ? 'bg-white text-slate-900 font-semibold shadow-sm' : 'text-slate-700 hover:text-slate-950 hover:bg-white/40 py-2.5'}`}>
-                    <span>{tab.label}</span>
-                    {activeTab === idx ? <span className="w-2 h-2 rounded-full bg-slate-900"></span> : <ChevronRight className="w-3.5 h-3.5 opacity-60" aria-hidden="true" />}
-                  </button>
-                ))}
-              </div>
-              <div className="md:col-span-5 bg-[#ccdccc]/80 rounded-2xl p-7 lg:p-9 flex flex-col justify-between min-h-[280px] border border-white/20">
-                <div>
-                  <span className="text-xs uppercase tracking-wider text-slate-700 font-semibold">{activeTabData.category}</span>
-                  <h3 className="text-2xl sm:text-3xl font-normal text-slate-900 tracking-tight leading-snug mt-3">{activeTabData.title}</h3>
-                  <p className="text-xs text-slate-700 mt-2 font-light leading-relaxed">{activeTabData.description}</p>
-                </div>
-                <div className="pt-6">
-                  <button onClick={() => openQuote(tabToIns[activeTab], 'solutions_tab')} className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-900 hover:underline">
-                    <span>{activeTabData.cta}</span><ArrowRight className="w-4 h-4" aria-hidden="true" />
-                  </button>
-                </div>
-              </div>
-              <div className="md:col-span-3 bg-[#f0f6f0]/90 rounded-2xl p-7 lg:p-8 flex flex-col justify-between min-h-[280px] border border-white/60">
-                <div className="flex justify-end">
-                  <button onClick={() => openQuote(tabToIns[activeTab], 'solutions_tab')} className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-800 hover:scale-110 hover:text-black transition-all shadow-sm" title={isEn ? 'Get Quote' : 'Cotizar gratis'}>
-                    <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-                  </button>
-                </div>
-                <div>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900">{activeTabData.price}</span>
-                    <span className="text-slate-500 text-xs font-medium">/mes</span>
-                  </div>
-                  <p className="text-xs font-normal text-slate-600 mt-1">{activeTabData.priceLabel}</p>
-                  <a className="mt-4 w-full py-2.5 px-4 rounded-xl bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all text-center flex items-center justify-center gap-1.5" href="#cotizador">
-                    <span>{isEn ? 'Get free quote' : 'Cotizar gratis'}</span><ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 px-4 sm:px-8">
-              {[
-                { icon: Globe, title: 'Cotiza en menos de un minuto', desc: 'Solo tu nombre y correo para empezar. Un asesor bilingüe te llama en 24 horas con tu cotización personalizada.' },
-                { icon: Layers, title: 'Agrupa y ahorra', desc: 'Combina auto, hogar, vida y mascotas en una sola cuenta. Mientras más coberturas tienes con nosotros, mayor es tu descuento. Sujeto a términos y condiciones.' },
-                { icon: ShieldCheck, title: 'Respaldo sólido detrás de ti', desc: 'Correduría autorizada con calificación AM Best A+ Superior. Cuando necesites usar tu seguro, el dinero está ahí.' },
-              ].map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-sage-100 flex items-center justify-center shrink-0 text-slate-800"><Icon className="w-5 h-5 text-sage-800" aria-hidden="true" /></div>
-                  <div><h4 className="text-sm font-semibold text-slate-900">{title}</h4><p className="text-xs text-slate-500 mt-1 leading-relaxed">{desc}</p></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ── Featured Coverage Lines ── */}
       <section className="py-20 bg-[#fafbfa] border-t border-stone-200/70" id="coberturas-destacadas">
@@ -535,21 +464,21 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/comercial.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $110/mo' : 'Desde $110/mes'}</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? '' : ''}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Commercial Auto Insurance' : 'Auto Comercial'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Personal auto policies do not cover business use. If your employees or drivers use vehicles for work, your personal policy may not cover a claim. We help you find the right commercial auto coverage.' : 'Aceptaste el pedido. Tuviste un accidente. La aseguradora revisó el GPS: "uso comercial, reclamo denegado." Tu seguro personal no cubre tu trabajo. Este sí. Sujeto a términos y condiciones.'}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Personal auto policies do not cover business use. If your employees or drivers use vehicles for work, your personal policy may not cover a claim. We help you find the right commercial auto coverage.' : 'Tu negocio también necesita protección en el camino. Si utilizas vehículos para trabajar, te ayudamos a encontrar opciones de seguro según tu actividad, los conductores y el uso de cada vehículo. Desde una van hasta una flota de camiones, comparamos coberturas para las necesidades de tu operación. Coberturas sujetas a disponibilidad, evaluación y condiciones de la póliza.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['Covers vans, trucks, fleets and gig drivers', 'Hired and Non-Owned Auto (HNOA) coverage available', 'Business liability for work-related vehicle incidents', 'One contact for all claims and renewals'] : ['Cubre Uber/Lyft/DoorDash + vans y pickups de trabajo', 'Sin SSN para cotizar', 'Conductores adicionales incluidos']).map(b => (
+                    {(isEn ? ['Covers vans, trucks, fleets and gig drivers', 'Hired and Non-Owned Auto (HNOA) coverage available', 'Business liability for work-related vehicle incidents', 'One contact for all claims and renewals'] : ['Opciones para vans, pickups, camiones y flotas', 'Seguros para contratistas, servicios, entregas y mudanzas', 'Evaluación de los vehículos y conductores de tu negocio']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/auto-comercial')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('AutoComercial', 'card_auto_comercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Commercial Auto' : 'Cotizar Flota'} <span className="text-sm">→</span></button>
+                  <button onClick={() => openQuote('AutoComercial', 'card_auto_comercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Get a Quote' : 'Cotizar ahora'} <span className="text-sm">→</span></button>
                 </div>
               </div>
             </div>
@@ -559,17 +488,18 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/salud.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $199/mo' : 'Desde $199/mes'}</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? '' : ''}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Health Insurance' : 'Seguro de Salud'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'We help you find a plan that fits your needs and your budget. Whether you need individual, family or small group coverage, we compare plans from multiple carriers and walk you through your options at no cost.' : 'Tu información médica está protegida por la ley federal HIPAA y nunca se comparte sin tu consentimiento. Comparamos 10 o más aseguradoras para encontrar el plan que cubre tu familia: consultas, medicamentos, emergencias. Sujeto a términos y condiciones.'}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'We help you find a plan that fits your needs and your budget. Whether you need individual, family or small group coverage, we compare plans from multiple carriers and walk you through your options at no cost.' : 'Cuidar de ti y de tu familia empieza por conocer tu cobertura. Te ayudamos a revisar qué incluye cada plan, qué médicos puedes visitar y cuánto pagarías por la atención.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['Individual, family and small group plans', 'ACA marketplace and private plan options', 'Side-by-side plan comparison at no cost', 'Annual review to make sure your plan still fits'] : ['HIPAA: tu info médica no se comparte con migración', 'Sin SSN, acepta ITIN', 'Cubre familia completa desde $199/mes']).map(b => (
+                    {(isEn ? ['Individual, family and small group plans', 'ACA marketplace and private plan options', 'Side-by-side plan comparison at no cost', 'Annual review to make sure your plan still fits'] : ['Opciones individuales y familiares', 'Alternativas sin SSN, según los requisitos del plan', 'Orientación sobre consultas, medicamentos y hospitalización']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
+                  {!isEn && <p className="text-xs text-slate-400 font-light pt-3">Beneficios y disponibilidad según el producto.</p>}
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/salud')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
