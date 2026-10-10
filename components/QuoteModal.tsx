@@ -260,9 +260,9 @@ function Chip({ label, selected, onClick }: { label: string; selected: boolean; 
   );
 }
 
-function VinField({ value, decoded, onChange, onDecoded }: {
+function VinField({ value, decoded, onChange, onDecoded, error: externalError }: {
   value: string; decoded: string;
-  onChange: (v: string) => void; onDecoded: (v: string) => void;
+  onChange: (v: string) => void; onDecoded: (v: string) => void; error?: string;
 }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -291,6 +291,7 @@ function VinField({ value, decoded, onChange, onDecoded }: {
           className={`w-full pl-11 pr-10 py-3.5 border-2 rounded-2xl text-sm font-mono tracking-wider focus:outline-none transition-colors ${
             value.length === 17 && !error && !loading
               ? 'border-emerald-400 bg-emerald-50 focus:border-emerald-500'
+              : externalError ? 'border-amber-400 bg-amber-50/50 focus:border-amber-500'
               : 'border-slate-200 focus:border-slate-700'
           }`}
         />
@@ -305,7 +306,7 @@ function VinField({ value, decoded, onChange, onDecoded }: {
   );
 }
 
-function AddressField({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+function AddressField({ value, onChange, error: externalError }: { value: string; onChange: (v: string) => void; error?: string }) {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
   const debounce = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -331,7 +332,9 @@ function AddressField({ value, onChange }: { value: string; onChange: (v: string
           onBlur={() => setTimeout(() => setOpen(false), 150)}
           placeholder="123 Main St, Miami, FL 33101"
           autoComplete="off"
-          className="w-full pl-11 py-3.5 border-2 border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors"
+          className={`w-full pl-11 py-3.5 border-2 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors ${
+            externalError ? 'border-amber-400 bg-amber-50/50' : 'border-slate-200'
+          }`}
         />
       </div>
       {open && (
@@ -366,11 +369,14 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
   const [submitting, setSubmitting] = useState(false);
   const [submitErr, setSubmitErr]   = useState('');
   const [success, setSuccess]   = useState(false);
+  const [showErrors, setShowErrors] = useState(false);
+  const [shaking, setShaking]       = useState(false);
 
   useEffect(() => {
     if (open) {
       setStep(0); setData({ ...INITIAL, tipo_seguro: initialType ?? '' });
       setVisible(true); setSuccess(false); setSubmitErr(''); setZipMsg(''); setVinDecoded('');
+      setShowErrors(false); setShaking(false);
     }
   }, [open, initialType]);
 
@@ -389,10 +395,22 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
   const totalSteps = data.quote_path === 'instantanea' ? 7 : 6;
   function visualStep(s: number) { return data.quote_path === 'asesor' && s >= 5 ? s - 1 : s; }
 
-  const next = () => fade(() => {
-    if (step === 3 && data.quote_path === 'asesor') setStep(5);
-    else setStep(s => s + 1);
-  });
+  const next = () => {
+    if (!canNext) {
+      setShowErrors(true);
+      setShaking(true);
+      setTimeout(() => setShaking(false), 500);
+      // Scroll to first invalid field
+      const firstErr = document.querySelector('[data-field-error="true"]');
+      if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    setShowErrors(false);
+    fade(() => {
+      if (step === 3 && data.quote_path === 'asesor') setStep(5);
+      else setStep(s => s + 1);
+    });
+  };
   const back = () => fade(() => {
     if (step === 5 && data.quote_path === 'asesor') setStep(3);
     else setStep(s => s - 1);
@@ -463,6 +481,24 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
     return false;
   })();
 
+  // Field-level error helpers for step 4
+  const step4Errors: Record<string, string> = {};
+  if (showErrors && step === 4) {
+    pathBFields.filter(f => f.required).forEach(f => {
+      const v = data.detalles[f.key] ?? '';
+      if (f.type === 'vin' && !VIN_REGEX.test(v))
+        step4Errors[f.key] = `El VIN debe tener 17 caracteres (tienes ${v.length})`;
+      else if (f.type === 'date' && !v)
+        step4Errors[f.key] = 'Selecciona tu fecha de nacimiento';
+      else if (f.type === 'chips' && !v)
+        step4Errors[f.key] = 'Selecciona una opción';
+      else if (f.type === 'address' && !v)
+        step4Errors[f.key] = 'Escribe tu dirección completa';
+      else if (!v)
+        step4Errors[f.key] = 'Este campo es necesario';
+    });
+  }
+
   if (!open) return null;
 
   return (
@@ -520,13 +556,13 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
             <>
               <h2 className="text-xl font-bold text-slate-800 mb-1">¿Qué quieres proteger?</h2>
               <p className="text-slate-500 text-sm mb-5">Elige el tipo de seguro y te guiamos paso a paso.</p>
-              <div className="grid grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-3 gap-2.5" data-field-error={showErrors && !data.tipo_seguro ? 'true' : undefined}>
                 {INSURANCE_OPTIONS.map(opt => {
                   const Icon = opt.icon; const sel = data.tipo_seguro === opt.id;
                   return (
-                    <button key={opt.id} type="button" onClick={() => set('tipo_seguro', opt.id)}
+                    <button key={opt.id} type="button" onClick={() => { set('tipo_seguro', opt.id); setShowErrors(false); }}
                       className={`flex flex-col items-center gap-2.5 p-3.5 rounded-2xl border-2 text-center transition-all duration-200 ${
-                        sel ? `${opt.selBg} border-transparent shadow-md scale-[1.03]` : 'border-slate-100 bg-white hover:border-slate-200 hover:shadow-sm'
+                        sel ? `${opt.selBg} border-transparent shadow-md scale-[1.03]` : showErrors && !data.tipo_seguro ? 'border-amber-300 bg-amber-50/50 hover:border-amber-400' : 'border-slate-100 bg-white hover:border-slate-200 hover:shadow-sm'
                       }`}>
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${sel ? 'bg-white/20' : opt.iconBg}`}>
                         <Icon weight="duotone" className={`w-5 h-5 ${sel ? 'text-white' : opt.iconColor}`} />
@@ -539,6 +575,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                   );
                 })}
               </div>
+              {showErrors && !data.tipo_seguro && <p className="text-xs text-amber-600 mt-2 px-1">Selecciona un tipo de seguro para continuar</p>}
             </>
           )}
 
@@ -547,7 +584,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
             <>
               <h2 className="text-xl font-bold text-slate-800 mb-1">¿Cómo prefieres continuar?</h2>
               <p className="text-slate-500 text-sm mb-6">Ambas opciones son gratuitas y sin compromiso.</p>
-              <div className="space-y-3">
+              <div className="space-y-3" data-field-error={showErrors && !data.quote_path ? 'true' : undefined}>
                 {([
                   {
                     value: 'asesor' as QuotePath,
@@ -576,8 +613,8 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                 ] as const).map(opt => {
                   const sel = data.quote_path === opt.value;
                   return (
-                    <button key={opt.value} type="button" onClick={() => set('quote_path', opt.value)}
-                      className={`w-full text-left p-5 rounded-2xl border-2 transition-all ${sel ? `${opt.selBg} text-white shadow-md` : 'border-slate-200 bg-white hover:border-slate-300'}`}>
+                    <button key={opt.value} type="button" onClick={() => { set('quote_path', opt.value); setShowErrors(false); }}
+                      className={`w-full text-left p-5 rounded-2xl border-2 transition-all ${sel ? `${opt.selBg} text-white shadow-md` : showErrors && !data.quote_path ? 'border-amber-300 bg-amber-50/50 hover:border-amber-400' : 'border-slate-200 bg-white hover:border-slate-300'}`}>
                       <div className="flex items-start gap-4">
                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${sel ? 'bg-white/20' : opt.iconBg}`}>
                           <opt.Icon weight="duotone" className={`w-5 h-5 ${sel ? 'text-white' : opt.iconColor}`} />
@@ -592,6 +629,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                   );
                 })}
               </div>
+              {showErrors && !data.quote_path && <p className="text-xs text-amber-600 mt-2 px-1">Elige cómo prefieres recibir tu cotización</p>}
             </>
           )}
 
@@ -600,7 +638,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
             <>
               <h2 className="text-xl font-bold text-slate-800 mb-1">¿Cuál es tu código postal?</h2>
               <p className="text-slate-500 text-sm mb-5">El precio varía por estado. No pedimos dirección exacta.</p>
-              <div className="relative mb-3">
+              <div className="relative mb-3" data-field-error={showErrors && data.zip_code.length !== 5 ? 'true' : undefined}>
                 <MapPin weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 {zipLoading && <CircleNotch weight="bold" className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 animate-spin" />}
                 <input type="text" inputMode="numeric" maxLength={5} autoComplete="postal-code"
@@ -609,10 +647,14 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                     const v = e.target.value.replace(/\D/g, '').slice(0, 5);
                     set('zip_code', v); setData(d => ({ ...d, estado_us: '', ciudad: '' })); setZipMsg('');
                     if (v.length === 5) lookupZip(v);
+                    if (showErrors) setShowErrors(false);
                   }}
-                  className="w-full pl-10 pr-10 py-4 text-xl font-semibold border-2 border-slate-200 rounded-2xl focus:outline-none focus:border-slate-700 tracking-widest transition-colors"
+                  className={`w-full pl-10 pr-10 py-4 text-xl font-semibold border-2 rounded-2xl focus:outline-none focus:border-slate-700 tracking-widest transition-colors ${
+                    showErrors && data.zip_code.length !== 5 ? 'border-amber-400 bg-amber-50/50' : 'border-slate-200'
+                  }`}
                 />
               </div>
+              {showErrors && data.zip_code.length !== 5 && <p className="text-xs text-amber-600 mb-3 px-1">Ingresa un código postal de 5 dígitos</p>}
               {zipMsg && (
                 <div className={`text-sm px-3 py-2 rounded-xl mb-3 ${zipMsg.startsWith('✓') ? 'text-emerald-700 bg-emerald-50 border border-emerald-200' : 'text-amber-700 bg-amber-50 border border-amber-200'}`}>{zipMsg}</div>
               )}
@@ -625,9 +667,16 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
             <>
               <h2 className="text-xl font-bold text-slate-800 mb-5">Cuéntame un poco más</h2>
               <p className="text-sm font-semibold text-slate-700 mb-2.5">{aq.q1}</p>
-              <div className="space-y-2 mb-6">{aq.opts1.map(o => <Chip key={o} label={o} selected={data.detalles[aq.key1] === o} onClick={() => setDetail(aq.key1, o)} />)}</div>
+              <div className="space-y-2 mb-1" data-field-error={showErrors && !data.detalles[aq.key1] ? 'true' : undefined}>
+                {aq.opts1.map(o => <Chip key={o} label={o} selected={data.detalles[aq.key1] === o} onClick={() => { setDetail(aq.key1, o); setShowErrors(false); }} />)}
+              </div>
+              {showErrors && !data.detalles[aq.key1] && <p className="text-xs text-amber-600 mb-4 px-1">Selecciona una opción</p>}
+              {(!showErrors || data.detalles[aq.key1]) && <div className="mb-6" />}
               <p className="text-sm font-semibold text-slate-700 mb-2.5">{aq.q2}</p>
-              <div className="space-y-2">{aq.opts2.map(o => <Chip key={o} label={o} selected={data.detalles[aq.key2] === o} onClick={() => setDetail(aq.key2, o)} />)}</div>
+              <div className="space-y-2" data-field-error={showErrors && !data.detalles[aq.key2] ? 'true' : undefined}>
+                {aq.opts2.map(o => <Chip key={o} label={o} selected={data.detalles[aq.key2] === o} onClick={() => { setDetail(aq.key2, o); setShowErrors(false); }} />)}
+              </div>
+              {showErrors && !data.detalles[aq.key2] && <p className="text-xs text-amber-600 mt-1 px-1">Selecciona una opción</p>}
             </>
           )}
 
@@ -637,30 +686,36 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
               <h2 className="text-xl font-bold text-slate-800 mb-1">Detalles para tu cotización</h2>
               <p className="text-slate-500 text-sm mb-6">Esta información nos permite calcular tu precio real.</p>
               <div className="space-y-6">
-                {pathBFields.map(field => (
-                  <div key={field.key}>
+                {pathBFields.map(field => {
+                  const errMsg = step4Errors[field.key];
+                  return (
+                  <div key={field.key} data-field-error={errMsg ? 'true' : undefined}>
                     <label className="block text-sm font-semibold text-slate-700 mb-2.5">
                       {field.label}
                       {!field.required && <span className="text-slate-400 font-normal ml-1">(opcional)</span>}
                     </label>
-                    {field.type === 'vin' && <VinField value={data.detalles[field.key] ?? ''} decoded={vinDecoded} onChange={v => setDetail(field.key, v)} onDecoded={setVinDecoded} />}
+                    {field.type === 'vin' && <VinField value={data.detalles[field.key] ?? ''} decoded={vinDecoded} onChange={v => { setDetail(field.key, v); if (showErrors) setShowErrors(false); }} onDecoded={setVinDecoded} error={errMsg} />}
                     {field.type === 'date' && (
                       <div className="relative">
                         <Calendar weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                         <input type="date" value={data.detalles[field.key] ?? ''}
-                          onChange={e => setDetail(field.key, e.target.value)}
+                          onChange={e => { setDetail(field.key, e.target.value); if (showErrors) setShowErrors(false); }}
                           max={new Date(new Date().setFullYear(new Date().getFullYear() - 16)).toISOString().split('T')[0]}
                           min="1924-01-01"
-                          className="w-full pl-11 py-3.5 border-2 border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors"
+                          className={`w-full pl-11 py-3.5 border-2 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors ${
+                            errMsg ? 'border-amber-400 bg-amber-50/50' : 'border-slate-200'
+                          }`}
                         />
                       </div>
                     )}
                     {field.type === 'chips' && (
-                      <div className="space-y-2">{field.options.map(o => <Chip key={o} label={o} selected={data.detalles[field.key] === o} onClick={() => setDetail(field.key, o)} />)}</div>
+                      <div className="space-y-2">{field.options.map(o => <Chip key={o} label={o} selected={data.detalles[field.key] === o} onClick={() => { setDetail(field.key, o); if (showErrors) setShowErrors(false); }} />)}</div>
                     )}
-                    {field.type === 'address' && <AddressField value={data.detalles[field.key] ?? ''} onChange={v => setDetail(field.key, v)} />}
+                    {field.type === 'address' && <AddressField value={data.detalles[field.key] ?? ''} onChange={v => { setDetail(field.key, v); if (showErrors) setShowErrors(false); }} error={errMsg} />}
+                    {errMsg && <p className="text-xs text-amber-600 mt-1 px-1">{errMsg}</p>}
                   </div>
-                ))}
+                  );
+                })}
                 {pathBFields.length === 0 && (
                   <p className="text-sm text-slate-500 text-center py-4">✓ Tenemos todo lo que necesitamos para tu cotización.</p>
                 )}
@@ -673,9 +728,16 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
             <>
               <h2 className="text-xl font-bold text-slate-800 mb-5">Una última pregunta…</h2>
               <p className="text-sm font-semibold text-slate-700 mb-2.5">¿Cuándo necesitas la cobertura?</p>
-              <div className="space-y-2 mb-6">{TIMELINE.map(o => <Chip key={o.value} label={o.label} selected={data.timeline === o.value} onClick={() => set('timeline', o.value)} />)}</div>
+              <div className="space-y-2 mb-1" data-field-error={showErrors && !data.timeline ? 'true' : undefined}>
+                {TIMELINE.map(o => <Chip key={o.value} label={o.label} selected={data.timeline === o.value} onClick={() => { set('timeline', o.value); setShowErrors(false); }} />)}
+              </div>
+              {showErrors && !data.timeline && <p className="text-xs text-amber-600 mb-4 px-1">Selecciona cuándo necesitas la cobertura</p>}
+              {(!showErrors || data.timeline) && <div className="mb-6" />}
               <p className="text-sm font-semibold text-slate-700 mb-2.5">¿Tienes seguro actualmente?</p>
-              <div className="space-y-2">{TIENE_SEGURO.map(o => <Chip key={o.value} label={o.label} selected={data.tiene_seguro === o.value} onClick={() => set('tiene_seguro', o.value)} />)}</div>
+              <div className="space-y-2" data-field-error={showErrors && !data.tiene_seguro ? 'true' : undefined}>
+                {TIENE_SEGURO.map(o => <Chip key={o.value} label={o.label} selected={data.tiene_seguro === o.value} onClick={() => { set('tiene_seguro', o.value); setShowErrors(false); }} />)}
+              </div>
+              {showErrors && !data.tiene_seguro && <p className="text-xs text-amber-600 mt-1 px-1">Selecciona una opción</p>}
             </>
           )}
 
@@ -689,15 +751,21 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                 {isInstantanea ? 'Te enviamos tu estimado de precio en minutos, sin spam.' : 'Un asesor bilingüe te llama en 15 minutos con tu cotización.'}
               </p>
               <div className="space-y-3 mb-4">
-                <div>
+                <div data-field-error={showErrors && !data.nombre.trim() ? 'true' : undefined}>
                   <label className="block text-xs font-semibold text-slate-500 mb-1.5">Tu nombre *</label>
-                  <input type="text" autoComplete="name" placeholder="Maria García" value={data.nombre} onChange={e => set('nombre', e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors" />
+                  <input type="text" autoComplete="name" placeholder="Maria García" value={data.nombre} onChange={e => { set('nombre', e.target.value); if (showErrors) setShowErrors(false); }}
+                    className={`w-full px-4 py-3 border-2 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors ${
+                      showErrors && !data.nombre.trim() ? 'border-amber-400 bg-amber-50/50' : 'border-slate-200'
+                    }`} />
+                  {showErrors && !data.nombre.trim() && <p className="text-xs text-amber-600 mt-1 px-1">Ingresa tu nombre</p>}
                 </div>
-                <div>
+                <div data-field-error={showErrors && !data.email.trim() ? 'true' : undefined}>
                   <label className="block text-xs font-semibold text-slate-500 mb-1.5">Email *</label>
-                  <input type="email" autoComplete="email" placeholder="maria@email.com" value={data.email} onChange={e => set('email', e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors" />
+                  <input type="email" autoComplete="email" placeholder="maria@email.com" value={data.email} onChange={e => { set('email', e.target.value); if (showErrors) setShowErrors(false); }}
+                    className={`w-full px-4 py-3 border-2 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors ${
+                      showErrors && !data.email.trim() ? 'border-amber-400 bg-amber-50/50' : 'border-slate-200'
+                    }`} />
+                  {showErrors && !data.email.trim() && <p className="text-xs text-amber-600 mt-1 px-1">Ingresa tu email</p>}
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-slate-500 mb-1.5">
@@ -717,16 +785,18 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
         {!success && (
           <div className="px-6 py-4 border-t border-slate-100 shrink-0 bg-white rounded-b-3xl">
             {step < 6 ? (
-              <button onClick={next} disabled={!canNext}
-                className={`w-full py-3.5 font-semibold text-sm rounded-2xl transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed ${
+              <button onClick={next}
+                className={`w-full py-3.5 font-semibold text-sm rounded-2xl transition-all active:scale-95 ${
+                  shaking ? 'animate-shake' : ''
+                } ${
                   step === 1 && data.quote_path === 'instantanea' ? 'bg-violet-600 hover:bg-violet-700 text-white' : 'bg-slate-800 hover:bg-slate-700 text-white'
                 }`}>
                 {step === 0 ? `Cotizar ${data.tipo_seguro ? TIPO_LABEL[data.tipo_seguro as InsType] : 'mi seguro'} →`
                   : step === 5 ? 'Casi listo →' : 'Continuar →'}
               </button>
             ) : (
-              <button onClick={submit} disabled={!canNext || submitting}
-                className="w-full py-3.5 font-semibold text-sm rounded-2xl transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white">
+              <button onClick={() => { if (!canNext) { setShowErrors(true); setShaking(true); setTimeout(() => setShaking(false), 500); return; } submit(); }} disabled={submitting}
+                className={`w-full py-3.5 font-semibold text-sm rounded-2xl transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white ${shaking ? 'animate-shake' : ''}`}>
                 {submitting ? <><CircleNotch weight="bold" className="w-4 h-4 animate-spin" /> Enviando…</> : isInstantanea ? '📧 Enviar mi cotización →' : 'Ver mi cotización →'}
               </button>
             )}

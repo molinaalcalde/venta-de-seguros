@@ -9,7 +9,7 @@ const configEs: InsurancePageConfig = {
   heroLine1: '¿Tu seguro de auto subió?',
   heroItalic: 'comparamos 10+ aseguradoras para que no pagues de más',
   heroSubtitle: 'La mayoría de conductores paga el aumento sin cuestionar. Nosotros comparamos múltiples aseguradoras por ti, te explicamos cada opción en español, y cada año revisamos tu póliza. Sin costo para ti: la aseguradora nos paga a nosotros.',
-  trustBadges: ['10+ aseguradoras comparadas', 'Desde $89/mes', 'Respuesta en 24 horas', 'ITIN y licencia extranjera aceptados'],
+  trustBadges: ['10+ aseguradoras comparadas', 'Desde $89/mes', 'Respuesta en 24 horas', 'Licencia de conducir de tu estado'],
   priceFrom: 'Desde $89/mes',
   eligibilityTitle: '¿Cuál es tu situación?',
   eligibilityText: 'Cada conductor tiene una historia diferente. Cuéntanos la tuya y encontramos la cobertura que tiene sentido para ti.',
@@ -57,7 +57,7 @@ const configEs: InsurancePageConfig = {
     {
       icon: ArrowsLeftRight,
       title: 'Tu aseguradora no te compara con nadie. Le conviene que no lo hagas tú.',
-      desc: 'Las aseguradoras directas solo muestran SU precio. Un agente independiente compara 10+ opciones por ti y te explica las diferencias reales: cobertura, precio y condiciones. Aceptamos ITIN, pasaporte y matrícula consular para cotizar.',
+      desc: 'Las aseguradoras directas solo muestran SU precio. Un agente independiente compara 10+ opciones por ti y te explica las diferencias reales: cobertura, precio y condiciones. No necesitas número de seguro social para cotizar.',
     },
     {
       icon: CurrencyDollar,
@@ -114,7 +114,7 @@ const configEs: InsurancePageConfig = {
   faq: [
     {
       q: '¿Qué documentos necesito para cotizar un seguro de auto?',
-      a: 'Para cotizar necesitamos: nombre completo, fecha de nacimiento, dirección donde se guarda el vehículo, número de licencia de manejo, información del vehículo (año, marca, modelo o VIN), e historial de manejo. Aceptamos ITIN, pasaporte y matrícula consular. No necesitas número de seguro social para cotizar.',
+      a: 'Para cotizar necesitamos: nombre completo, fecha de nacimiento, dirección donde se guarda el vehículo, número de licencia de manejo, información del vehículo (año, marca, modelo o VIN), e historial de manejo. No necesitas número de seguro social para cotizar.',
     },
     {
       q: '¿Cuánto me cobra usted por el servicio?',
