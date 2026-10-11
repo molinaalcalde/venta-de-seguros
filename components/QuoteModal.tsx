@@ -549,24 +549,20 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
           {/* Success */}
           {success && (
             <div className="text-center py-4">
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 ${isInstantanea ? 'bg-violet-100' : 'bg-emerald-100'}`}>
-                <Check weight="bold" className={`w-8 h-8 ${isInstantanea ? 'text-violet-600' : 'text-emerald-600'}`} />
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 bg-emerald-100">
+                <Check weight="bold" className="w-8 h-8 text-emerald-600" />
               </div>
               <h2 className="text-2xl font-bold text-slate-800 mb-2">
-                {isInstantanea ? `¡En camino, ${data.nombre.split(' ')[0]}!` : `¡Listo, ${data.nombre.split(' ')[0]}!`}
+                {`¡Recibimos tu solicitud, ${data.nombre.split(' ')[0]}!`}
               </h2>
               <p className="text-slate-500 text-sm mb-6 leading-relaxed">
-                {isInstantanea
-                  ? <>Tu cotización de <strong>{data.tipo_seguro ? TIPO_LABEL[data.tipo_seguro as InsType] : 'seguro'}</strong> está siendo calculada. Revisa <strong>{data.email}</strong> en los próximos <strong>5 minutos</strong>.</>
-                  : <>Recibimos tu solicitud de <strong>{data.tipo_seguro ? TIPO_LABEL[data.tipo_seguro as InsType] : 'seguro'}</strong>. Un asesor bilingüe te contactará en los próximos <strong>15 minutos</strong>.</>}
+                Un asesor bilingüe te contactará pronto con opciones personalizadas de <strong>{data.tipo_seguro ? TIPO_LABEL[data.tipo_seguro as InsType] : 'seguro'}</strong>.
               </p>
               <div className="bg-slate-50 rounded-2xl p-4 text-left text-xs text-slate-500 mb-6 space-y-1.5">
                 <p className="font-semibold text-slate-700 text-sm mb-2">¿Qué sigue?</p>
-                {isInstantanea ? (
-                  <><p>📧 Cotización estimada en tu email en 5 min</p><p>✅ 2–3 opciones con precios reales</p><p>📞 Un asesor disponible si tienes preguntas</p></>
-                ) : (
-                  <><p>✅ Revisamos tu perfil y opciones en {data.estado_us || 'tu estado'}</p><p>✅ Te presentamos 2–3 opciones sin presión</p><p>✅ Tú decides cuándo y si contratar</p></>
-                )}
+                <p>✅ Revisamos tu perfil y opciones en {data.estado_us || 'tu estado'}</p>
+                <p>✅ Te presentamos 2–3 opciones sin presión</p>
+                <p>✅ Tú decides cuándo y si contratar</p>
               </div>
               <button onClick={onClose} className="w-full py-3.5 bg-slate-800 text-white text-sm font-semibold rounded-2xl hover:bg-slate-700 transition-colors">Cerrar</button>
             </div>
