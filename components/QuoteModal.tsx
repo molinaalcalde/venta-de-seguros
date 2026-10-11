@@ -187,6 +187,22 @@ const INITIAL: QuoteData = {
 };
 
 const VIN_REGEX = /^[A-HJ-NPR-Z0-9]{17}$/i;
+const ADDRESS_REGEX = /\d+.*[a-zA-Z]{2,}/;
+
+function calcAge(dateStr: string): number | null {
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime()) || d.getFullYear() < 1920) return null;
+  const today = new Date();
+  let age = today.getFullYear() - d.getFullYear();
+  if (today.getMonth() < d.getMonth() || (today.getMonth() === d.getMonth() && today.getDate() < d.getDate())) age--;
+  return age >= 0 && age <= 120 ? age : null;
+}
+
+function isValidDate(dateStr: string): boolean {
+  if (!dateStr) return false;
+  const age = calcAge(dateStr);
+  return age !== null && age >= 16 && age <= 120;
+}
 
 /* ─── Helpers ─────────────────────────────────────────────────────────────── */
 function calcScore(d: QuoteData): number {
@@ -206,7 +222,10 @@ function calcScore(d: QuoteData): number {
 
 async function decodeVin(vin: string): Promise<string> {
   try {
-    const r = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vin}?format=json`);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    const r = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vin}?format=json`, { signal: controller.signal });
+    clearTimeout(timeout);
     const j = await r.json();
     const res: Array<{ Variable: string; Value: string }> = j.Results ?? [];
     const get = (n: string) => res.find(r => r.Variable === n)?.Value ?? '';
@@ -276,7 +295,7 @@ function VinField({ value, decoded, onChange, onDecoded, error: externalError }:
       const result = await decodeVin(v);
       setLoading(false);
       if (result) onDecoded(result);
-      else setError('No se pudo decodificar. Puedes continuar igual.');
+      else onDecoded('VIN registrado');
     }
   }
 
@@ -474,6 +493,8 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
     if (step === 4) return pathBFields.filter(f => f.required).every(f => {
       const v = data.detalles[f.key] ?? '';
       if (f.type === 'vin') return VIN_REGEX.test(v) || !f.required;
+      if (f.type === 'date') return isValidDate(v);
+      if (f.type === 'address') return v.length >= 10 && ADDRESS_REGEX.test(v);
       return v.length > 0;
     });
     if (step === 5) return !!data.timeline && !!data.tiene_seguro;
@@ -488,12 +509,12 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
       const v = data.detalles[f.key] ?? '';
       if (f.type === 'vin' && !VIN_REGEX.test(v))
         step4Errors[f.key] = `El VIN debe tener 17 caracteres (tienes ${v.length})`;
-      else if (f.type === 'date' && !v)
-        step4Errors[f.key] = 'Selecciona tu fecha de nacimiento';
+      else if (f.type === 'date' && !isValidDate(v))
+        step4Errors[f.key] = !v ? 'Selecciona tu fecha de nacimiento' : 'Ingresa una fecha de nacimiento válida';
       else if (f.type === 'chips' && !v)
         step4Errors[f.key] = 'Selecciona una opción';
-      else if (f.type === 'address' && !v)
-        step4Errors[f.key] = 'Escribe tu dirección completa';
+      else if (f.type === 'address' && (!v || v.length < 10 || !ADDRESS_REGEX.test(v)))
+        step4Errors[f.key] = 'Ingresa una dirección válida (ej. 123 Main St, Miami, FL)';
       else if (!v)
         step4Errors[f.key] = 'Este campo es necesario';
     });
@@ -695,19 +716,27 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                       {!field.required && <span className="text-slate-400 font-normal ml-1">(opcional)</span>}
                     </label>
                     {field.type === 'vin' && <VinField value={data.detalles[field.key] ?? ''} decoded={vinDecoded} onChange={v => { setDetail(field.key, v); if (showErrors) setShowErrors(false); }} onDecoded={setVinDecoded} error={errMsg} />}
-                    {field.type === 'date' && (
-                      <div className="relative">
-                        <Calendar weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-                        <input type="date" value={data.detalles[field.key] ?? ''}
-                          onChange={e => { setDetail(field.key, e.target.value); if (showErrors) setShowErrors(false); }}
-                          max={new Date(new Date().setFullYear(new Date().getFullYear() - 16)).toISOString().split('T')[0]}
-                          min="1924-01-01"
-                          className={`w-full pl-11 py-3.5 border-2 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors ${
-                            errMsg ? 'border-amber-400 bg-amber-50/50' : 'border-slate-200'
-                          }`}
-                        />
+                    {field.type === 'date' && (() => {
+                      const dateVal = data.detalles[field.key] ?? '';
+                      const age = dateVal ? calcAge(dateVal) : null;
+                      const valid = dateVal ? isValidDate(dateVal) : false;
+                      return (
+                      <div>
+                        <div className="relative">
+                          <Calendar weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                          <input type="date" value={dateVal}
+                            onChange={e => { setDetail(field.key, e.target.value); if (showErrors) setShowErrors(false); }}
+                            max={new Date(new Date().setFullYear(new Date().getFullYear() - 16)).toISOString().split('T')[0]}
+                            min="1920-01-01"
+                            className={`w-full pl-11 py-3.5 border-2 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors ${
+                              errMsg ? 'border-amber-400 bg-amber-50/50' : valid ? 'border-emerald-400 bg-emerald-50' : 'border-slate-200'
+                            }`}
+                          />
+                        </div>
+                        {valid && age !== null && <p className="text-xs text-emerald-600 mt-1 px-1 font-medium">✓ {age} años</p>}
                       </div>
-                    )}
+                      );
+                    })()}
                     {field.type === 'chips' && (
                       <div className="space-y-2">{field.options.map(o => <Chip key={o} label={o} selected={data.detalles[field.key] === o} onClick={() => { setDetail(field.key, o); if (showErrors) setShowErrors(false); }} />)}</div>
                     )}
@@ -797,7 +826,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
             ) : (
               <button onClick={() => { if (!canNext) { setShowErrors(true); setShaking(true); setTimeout(() => setShaking(false), 500); return; } submit(); }} disabled={submitting}
                 className={`w-full py-3.5 font-semibold text-sm rounded-2xl transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white ${shaking ? 'animate-shake' : ''}`}>
-                {submitting ? <><CircleNotch weight="bold" className="w-4 h-4 animate-spin" /> Enviando…</> : isInstantanea ? '📧 Enviar mi cotización →' : 'Ver mi cotización →'}
+                {submitting ? <><CircleNotch weight="bold" className="w-4 h-4 animate-spin" /> Enviando…</> : 'Solicitar mi cotización →'}
               </button>
             )}
           </div>

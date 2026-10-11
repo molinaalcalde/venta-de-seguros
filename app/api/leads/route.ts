@@ -46,7 +46,12 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (error) {
-      console.error('Supabase insert error:', error);
+      console.error('Supabase insert error:', {
+        code: error.code,
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+      });
       return NextResponse.json(
         { error: 'Error al guardar la información. Por favor inténtalo de nuevo.' },
         { status: 500 }
