@@ -616,7 +616,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
       return v.length > 0;
     });
     if (step === 5) return !!data.timeline && !!data.tiene_seguro;
-    if (step === 6) return !!data.nombre.trim() && !!data.email.trim();
+    if (step === 6) return !!data.nombre.trim() && !!data.email.trim() && data.telefono.replace(/\D/g, '').length >= 10;
     return false;
   })();
 
@@ -910,12 +910,13 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                     }`} />
                   {showErrors && !data.email.trim() && <p className="text-xs text-amber-600 mt-1 px-1">Ingresa tu email</p>}
                 </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-500 mb-1.5">
-                    Teléfono <span className="text-slate-400 font-normal">{isInstantanea ? '(opcional)' : '(para llamarte más rápido)'}</span>
-                  </label>
-                  <input type="tel" autoComplete="tel" placeholder="(555) 555-5555" value={data.telefono} onChange={e => set('telefono', e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors" />
+                <div data-field-error={showErrors && data.telefono.replace(/\D/g, '').length < 10 ? 'true' : undefined}>
+                  <label className="block text-xs font-semibold text-slate-500 mb-1.5">Teléfono *</label>
+                  <input type="tel" autoComplete="tel" placeholder="(555) 555-5555" value={data.telefono} onChange={e => { set('telefono', e.target.value); if (showErrors) setShowErrors(false); }}
+                    className={`w-full px-4 py-3 border-2 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors ${
+                      showErrors && data.telefono.replace(/\D/g, '').length < 10 ? 'border-amber-400 bg-amber-50/50' : 'border-slate-200'
+                    }`} />
+                  {showErrors && data.telefono.replace(/\D/g, '').length < 10 && <p className="text-xs text-amber-600 mt-1 px-1">Ingresa un teléfono válido (10 dígitos)</p>}
                 </div>
               </div>
               {submitErr && <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2 mb-3">{submitErr}</p>}
