@@ -12,6 +12,7 @@ import {
   TruckTrailer, Crane, FireTruck, Jeep,
   Handshake,
 } from '@phosphor-icons/react';
+import type { Icon as PhIcon } from '@phosphor-icons/react';
 
 /* ─── Types ─────────────────────────────────────────────────────────────── */
 export type InsType =
@@ -64,7 +65,7 @@ const INSURANCE_OPTIONS: {
   { id: 'Umbrella',      label: 'Protección Extra', sublabel: 'Cobertura adicional',        price: 'Desde $19/mes',  icon: Umbrella as PhosphorIcon,    iconBg: 'bg-slate-100',   iconColor: 'text-slate-600',   selBg: 'bg-slate-700',   selText: 'text-white' },
 ];
 
-type OptItem = { label: string; icon?: ComponentType<{ className?: string; weight?: string }> };
+type OptItem = { label: string; icon?: PhIcon };
 type AdaptiveConfig = { q1: string; opts1: OptItem[]; key1: string; q2: string; opts2: OptItem[]; key2: string };
 
 const ADAPTIVE: Record<InsType, AdaptiveConfig> = {
@@ -279,14 +280,14 @@ const PATH_B_FIELDS: Partial<Record<InsType, ExtraField[]>> = {
   ],
 };
 
-const TIMELINE = [
+const TIMELINE: { label: string; value: string; score: number; icon?: PhIcon }[] = [
   { label: 'Hoy mismo',       value: 'Hoy mismo',       score: 3, icon: Lightning },
   { label: 'Esta semana',     value: 'Esta semana',     score: 2, icon: Calendar },
   { label: 'Este mes',        value: 'Este mes',        score: 1, icon: Calendar },
   { label: 'Solo explorando', value: 'Solo explorando', score: -1 },
 ];
 
-const TIENE_SEGURO = [
+const TIENE_SEGURO: { label: string; value: string; score: number; icon?: PhIcon }[] = [
   { label: 'Sí, tengo seguro actualmente', value: 'Sí',     score: 1, icon: ShieldCheck },
   { label: 'No, nunca he tenido',           value: 'No',     score: 0 },
   { label: 'Tuve pero ya venció',           value: 'Venció', score: 0 },
@@ -374,7 +375,7 @@ function ProgressDots({ total, current }: { total: number; current: number }) {
 
 function Chip({ label, selected, onClick, icon: Icon }: {
   label: string; selected: boolean; onClick: () => void;
-  icon?: ComponentType<{ className?: string; weight?: string }>;
+  icon?: PhIcon;
 }) {
   return (
     <button
