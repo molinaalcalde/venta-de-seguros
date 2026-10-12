@@ -178,7 +178,7 @@ const configEs: InsurancePageConfig = {
   ctaItalic: 'construiste',
   ctaSubtitle: 'Desde $19/mes. COI en 24 horas. ITIN y EIN aceptados. Gratis, sin compromiso.',
   ctaButton: 'Cotizar gratis',
-  heroVideo: '/videos/hero-comercial.mp4',
+  heroVideo: '/videos/comercial-negocio.mp4',
   theme: 'purple',
   schema: {
     description: 'Seguro comercial para pequeños negocios en USA. ITIN y EIN aceptados. BOP, responsabilidad civil, Workers Comp y protección de propiedad. Restaurantes, salones, contratistas y más. Desde $19/mes.',
@@ -362,7 +362,7 @@ const configEn: InsurancePageConfig = {
   ctaItalic: 'actually covered',
   ctaSubtitle: 'Independent review. 10+ carriers compared. COI in 24 hours. Free, no commitment.',
   ctaButton: 'Get a free coverage review',
-  heroVideo: '/videos/hero-comercial.mp4',
+  heroVideo: '/videos/comercial-negocio.mp4',
   theme: 'purple',
   schema: {
     description: 'Small business insurance — General Liability, BOP, Workers Comp, and property protection. Independent agent comparing multiple carriers. COI in 24 hours. From $19/mo.',
