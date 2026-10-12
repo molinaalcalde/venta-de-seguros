@@ -27,14 +27,18 @@ export function hashPassword(plain: string): string {
 }
 
 export function checkCredentials(email: string, password: string): boolean {
-  const emailOk = crypto.timingSafeEqual(
-    Buffer.from(email.toLowerCase()),
-    Buffer.from((process.env.ADMIN_EMAIL ?? '').toLowerCase())
-  );
+  const adminEmail = process.env.ADMIN_EMAIL ?? '';
+  const adminHash = process.env.ADMIN_PASSWORD_HASH ?? '';
+  if (!adminEmail || !adminHash) return false;
+
+  const emailA = Buffer.from(email.toLowerCase());
+  const emailB = Buffer.from(adminEmail.toLowerCase());
+  const emailOk = emailA.length === emailB.length && crypto.timingSafeEqual(emailA, emailB);
+
   const hash = hashPassword(password);
-  const hashOk = crypto.timingSafeEqual(
-    Buffer.from(hash),
-    Buffer.from(process.env.ADMIN_PASSWORD_HASH ?? '')
-  );
+  const hashA = Buffer.from(hash);
+  const hashB = Buffer.from(adminHash);
+  const hashOk = hashA.length === hashB.length && crypto.timingSafeEqual(hashA, hashB);
+
   return emailOk && hashOk;
 }
