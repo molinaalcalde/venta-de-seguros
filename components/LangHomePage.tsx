@@ -589,6 +589,43 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
         </div>
       </section>
 
+      {/* ── Testimonials ── */}
+      <section className="py-20 bg-white border-t border-stone-100" id="testimonios">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <span className="text-xs uppercase tracking-widest font-semibold text-slate-600">{isEn ? 'What our clients say' : 'Lo que dicen nuestros clientes'}</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-normal text-slate-900 tracking-tight leading-tight mt-3">
+              {isEn ? <>Real stories from{' '}<span className="font-editorial-italic font-normal">real people</span></> : <>Historias reales de{' '}<span className="font-editorial-italic font-normal">personas como tú</span></>}
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {(isEn ? [
+              { quote: 'I was overpaying on my auto insurance for years. Maria Fernanda found me the same coverage for $87 less per month. The whole process was easy and pressure-free.', name: 'Carlos R.', type: 'Auto Insurance', state: 'New Jersey' },
+              { quote: 'I never thought I could get life insurance without a Social Security number. They walked me through every option and now my family is protected.', name: 'Ana M.', type: 'Life Insurance', state: 'Florida' },
+              { quote: 'I opened my restaurant and needed a COI fast for the lease. They got it done in 2 days. Now they handle all my business and commercial auto insurance.', name: 'Jorge L.', type: 'Business Insurance', state: 'Texas' },
+            ] : [
+              { quote: 'Llevaba 3 años pagando de más por mi seguro de auto. Maria Fernanda me encontró la misma cobertura por $87 menos al mes. Todo en español y sin complicaciones.', name: 'Carlos R.', type: 'Seguro de Auto', state: 'New Jersey' },
+              { quote: 'Nunca había tenido seguro de vida porque pensé que necesitaba Social. Me explicaron las opciones con paciencia y hoy mi familia tiene protección.', name: 'Ana M.', type: 'Seguro de Vida', state: 'Florida' },
+              { quote: 'Abrí mi restaurante y necesitaba el COI urgente para el lease. Me lo consiguieron en 2 días. Ahora tienen todo mi seguro comercial y el de mi camioneta.', name: 'Jorge L.', type: 'Seguro Comercial', state: 'Texas' },
+            ]).map(({ quote, name, type, state }) => (
+              <div key={name} className="bg-[#fafbfa] rounded-[24px] p-7 flex flex-col justify-between border border-stone-200/60">
+                <div>
+                  <div className="flex gap-0.5 mb-4">
+                    {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+                  </div>
+                  <p className="text-sm text-slate-700 leading-relaxed font-light">&ldquo;{quote}&rdquo;</p>
+                </div>
+                <div className="mt-5 pt-4 border-t border-stone-200/60">
+                  <p className="text-sm font-semibold text-slate-800">{name}</p>
+                  <p className="text-xs text-slate-500">{type} · {state}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-[10px] text-slate-400 mt-6">{isEn ? 'Individual experiences. Results vary by profile and state. Subject to terms and conditions.' : 'Experiencias individuales. Los resultados varían según perfil y estado. Sujeto a términos y condiciones.'}</p>
+        </div>
+      </section>
+
       {/* ── Meet Maria Fernanda ── */}
       <section className="py-20 lg:py-28 bg-[#f4f8f4] border-t border-stone-200/60">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
