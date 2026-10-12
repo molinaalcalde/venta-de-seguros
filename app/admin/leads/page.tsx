@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import {
   Search, Trash2, ChevronRight, X, Phone, Mail, MessageCircle,
   Users, TrendingUp, UserCheck, Star, Download, RefreshCw, Calendar, FileText,
-  MapPin, Clock, ShieldCheck, Zap, Filter, BarChart2,
+  MapPin, Clock, ShieldCheck, Zap, Filter, BarChart2, Copy, Check,
 } from 'lucide-react';
 
 /* ─── Types ─────────────────────────────────────────────────────────────── */
@@ -40,6 +40,25 @@ function fmtDate(iso: string) {
   return new Date(iso).toLocaleDateString('es-MX', {
     day: '2-digit', month: 'short', year: 'numeric',
   });
+}
+
+function fmtDateTime(iso: string) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('es-MX', {
+    day: '2-digit', month: 'short', year: 'numeric',
+  }) + ' · ' + d.toLocaleTimeString('es-MX', {
+    hour: '2-digit', minute: '2-digit', hour12: true,
+  });
+}
+
+function timeAgo(iso: string) {
+  const diff = Date.now() - new Date(iso).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 60) return `hace ${mins}m`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `hace ${hrs}h`;
+  const days = Math.floor(hrs / 24);
+  return `hace ${days}d`;
 }
 
 function initials(nombre: string) {
@@ -159,16 +178,17 @@ function DetailPanel({ lead, onClose, onUpdate, onDelete }: {
 
         {/* Info */}
         <div className="px-5 py-4 space-y-3 border-b border-slate-100 text-sm">
-          <Row icon={<Phone className="w-3.5 h-3.5" />} label="Teléfono" value={lead.telefono ?? '—'} />
-          <Row icon={<Mail className="w-3.5 h-3.5" />} label="Email" value={lead.email} />
-          <Row icon={<Calendar className="w-3.5 h-3.5" />} label="Registrado" value={fmtDate(lead.created_at)} />
+          <Row icon={<Phone className="w-3.5 h-3.5" />} label="Teléfono" value={lead.telefono ?? '—'} copyable />
+          <Row icon={<Mail className="w-3.5 h-3.5" />} label="Email" value={lead.email} copyable />
+          <Row icon={<Calendar className="w-3.5 h-3.5" />} label="Registrado" value={fmtDateTime(lead.created_at)} />
+          <Row icon={<Clock className="w-3.5 h-3.5" />} label="Tiempo" value={timeAgo(lead.created_at)} />
           <Row icon={<FileText className="w-3.5 h-3.5" />} label="Tipo de seguro" value={lead.tipo_seguro ?? '—'} />
           <Row icon={<Star className="w-3.5 h-3.5" />} label="Nivel" value={lead.nivel_proteccion ?? '—'} />
           {(lead.ciudad || lead.estado_us) && (
-            <Row icon={<MapPin className="w-3.5 h-3.5" />} label="Ubicación" value={[lead.ciudad, lead.estado_us].filter(Boolean).join(', ')} />
+            <Row icon={<MapPin className="w-3.5 h-3.5" />} label="Ubicación" value={[lead.ciudad, lead.estado_us].filter(Boolean).join(', ')} copyable />
           )}
           {lead.zip_code && (
-            <Row icon={<MapPin className="w-3.5 h-3.5" />} label="ZIP" value={lead.zip_code} />
+            <Row icon={<MapPin className="w-3.5 h-3.5" />} label="ZIP" value={lead.zip_code} copyable />
           )}
           {lead.timeline && (
             <Row icon={<Clock className="w-3.5 h-3.5" />} label="¿Cuándo necesita?" value={lead.timeline} />
@@ -209,7 +229,24 @@ function DetailPanel({ lead, onClose, onUpdate, onDelete }: {
         {lead.detalles && (
           <div className="px-5 py-4 border-b border-slate-100">
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Detalles del formulario</p>
-            <p className="text-xs text-slate-600 leading-relaxed bg-slate-50 rounded-xl px-3 py-2">{lead.detalles}</p>
+            <div className="bg-slate-50 rounded-xl px-3 py-2 space-y-1.5">
+              {(() => {
+                try {
+                  const obj = typeof lead.detalles === 'string' ? JSON.parse(lead.detalles) : lead.detalles;
+                  if (typeof obj === 'object' && obj !== null) {
+                    return Object.entries(obj).map(([k, v]) => (
+                      <div key={k} className="flex justify-between items-start gap-2">
+                        <span className="text-xs text-slate-500 shrink-0">{k.replace(/_/g, ' ')}</span>
+                        <span className="text-xs text-slate-700 font-medium text-right">{String(v)}</span>
+                      </div>
+                    ));
+                  }
+                  return <p className="text-xs text-slate-600">{String(obj)}</p>;
+                } catch {
+                  return <p className="text-xs text-slate-600">{String(lead.detalles)}</p>;
+                }
+              })()}
+            </div>
           </div>
         )}
 
@@ -287,14 +324,31 @@ function DetailPanel({ lead, onClose, onUpdate, onDelete }: {
   );
 }
 
-function Row({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+function Row({ icon, label, value, copyable }: { icon: React.ReactNode; label: string; value: string; copyable?: boolean }) {
+  const [copied, setCopied] = useState(false);
+
+  function handleCopy() {
+    navigator.clipboard.writeText(value);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
+
   return (
-    <div className="flex items-start gap-2">
+    <div className="flex items-start gap-2 group">
       <span className="text-slate-400 mt-0.5">{icon}</span>
-      <div>
+      <div className="flex-1 min-w-0">
         <span className="text-slate-500 text-xs">{label}: </span>
         <span className="text-slate-700 font-medium">{value}</span>
       </div>
+      {copyable && value !== '—' && (
+        <button
+          onClick={handleCopy}
+          className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-slate-600 mt-0.5 shrink-0"
+          title="Copiar"
+        >
+          {copied ? <Check className="w-3 h-3 text-emerald-500" /> : <Copy className="w-3 h-3" />}
+        </button>
+      )}
     </div>
   );
 }
@@ -602,8 +656,9 @@ export default function LeadsPage() {
                       </td>
 
                       {/* Fecha */}
-                      <td className="px-4 py-3 text-slate-500 text-xs hidden sm:table-cell whitespace-nowrap">
-                        {fmtDate(lead.created_at)}
+                      <td className="px-4 py-3 hidden sm:table-cell whitespace-nowrap">
+                        <p className="text-xs text-slate-500">{fmtDate(lead.created_at)}</p>
+                        <p className="text-[10px] text-slate-400">{timeAgo(lead.created_at)}</p>
                       </td>
 
                       {/* Arrow */}
