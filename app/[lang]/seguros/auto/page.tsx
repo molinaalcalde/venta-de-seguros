@@ -150,7 +150,7 @@ const configEs: InsurancePageConfig = {
   ctaSubtitle: 'Sin revisión de crédito. Comparamos múltiples aseguradoras. Cubrirte hoy es el primer paso. Cada año revisamos tu póliza para asegurarnos de que sigues pagando el precio justo.',
   ctaButton: 'Cotizar gratis',
   theme: 'blue',
-  heroVideo: '/videos/hero3.mp4',
+  heroVideo: '/videos/hero-auto-new.mp4',
   schema: {
     description: 'Agente de seguros de auto para familias latinas. Comparamos múltiples aseguradoras para encontrarte la mejor cobertura al precio justo. Atención en español. Desde $89/mes.',
     price: '89',
@@ -336,7 +336,7 @@ const configEn: InsurancePageConfig = {
   ctaSubtitle: 'Takes 5 minutes. 10+ carriers compared. No credit check, no commitment, no loyalty to any one insurer. We check back every year so you don\'t have to think about it.',
   ctaButton: 'Get my free rate check',
   theme: 'blue',
-  heroVideo: '/videos/hero3.mp4',
+  heroVideo: '/videos/hero-auto-new.mp4',
   schema: {
     description: 'Independent car insurance agent. We shop 10+ carriers, explain full coverage in plain English, and review your policy every year. Rate check in 5 minutes. From $89/mo.',
     price: '89',
