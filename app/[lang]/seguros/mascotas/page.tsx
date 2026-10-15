@@ -60,15 +60,15 @@ const CONTENT = {
     howDisclaimer: 'Sujeto a los términos y condiciones de la póliza.',
     quoteTitle: 'Cotiza en línea',
     quoteItalic: 'en 5 minutos',
-    quoteEligible: (state: string) => `Estás en ${state} — puedes activar tu póliza directamente en línea, 100% digital, sin llamadas.`,
+    quoteEligible: () => `Obtén el precio real para tu perro o gato. 100% en línea, sin compromiso.`,
     quoteNotEligible: 'Un asesor en español te guía en todo el proceso sin costo.',
     quoteSteps: [
       { step: '01', title: 'Datos de tu mascota', desc: 'Ingresa el nombre, raza, edad y sexo de tu perro o gato. El sistema actualiza el precio en tiempo real.' },
       { step: '02', title: 'Personaliza tu plan', desc: 'Elige el porcentaje de reembolso (70%, 80% o 90%), el deductible y el máximo anual según tu presupuesto.' },
       { step: '03', title: 'Paga y activa', desc: 'Paga con tarjeta de crédito o débito. La póliza queda activa de inmediato. Recibes tu póliza por email.' },
     ],
-    quoteCTAEligible: (state: string) => ({ title: `Disponible en ${state}`, desc: 'Compra tu seguro de mascotas directamente en línea. Proceso 100% digital, sin llamadas.', btn: 'Obtener mi seguro de mascotas ahora' }),
-    quoteCTANotEligible: { title: 'Protege a tu mascota', titleItalic: 'hoy mismo', desc: 'Un asesor en español te guía en todo el proceso sin costo.', btn: 'Cotizar Seguro de Mascotas gratis' },
+    quoteCTAEligible: () => ({ title: `Asegura a tu mascota`, desc: 'Cotiza en línea el seguro para tu perro o gato. Sin compromiso, sin llamadas.', btn: 'Asegurar a mi mascota ahora' }),
+    quoteCTANotEligible: { title: 'Asegura a tu mascota', titleItalic: 'hoy mismo', desc: 'Un asesor en español te guía en todo el proceso sin costo.', btn: 'Cotizar seguro para mi mascota' },
     whyTitle: '¿Por qué',
     whyItalic: 'elegirnos?',
     whyCards: [
@@ -117,8 +117,8 @@ const CONTENT = {
     heroTitleSpan: 'Mascotas',
     heroItalic: 'que reembolsa rápido',
     heroDesc: 'Ve a cualquier veterinario en Estados Unidos. Sube la factura al portal y recibe tu reembolso de hasta el 90% en menos de una semana.',
-    heroCTAEligible: 'Obtener seguro ahora',
-    heroCTANotEligible: 'Cotizar Seguro de Mascotas',
+    heroCTAEligible: 'Cotizar seguro para mi mascota',
+    heroCTANotEligible: 'Cotizar seguro para mi mascota',
     heroSubtext: 'Precio personalizable · Sin compromiso',
     statsBar: [
       { value: 'Hasta 90%', label: 'De reembolso' },
@@ -131,10 +131,10 @@ const CONTENT = {
       { icon: CurrencyDollar, title: 'Hasta 90% de Reembolso', desc: 'Tú eliges el porcentaje: 70%, 80% o 90% de los gastos elegibles cubiertos. También personalizas el deductible y el máximo anual. Sujeto a términos y condiciones.' },
       { icon: Heart, title: 'Sin límite de edad', desc: 'Puedes asegurar a tu perro o gato sin importar su edad. Muchos seguros rechazan mascotas mayores o cobran más por serlo. Aquí no hay límite de edad para inscribirse.' },
     ],
-    quoteBtnEligible: 'Ir a fetchpet.com — portal afiliado',
+    quoteBtnEligible: 'Ver precio para mi perro o gato',
     quoteBtnNotEligible: 'Hablar con un asesor en español',
     navBack: 'Cotizar gratis',
-    fetchRedirectNote: 'Serás redirigido al portal del seguro · Maria Fernanda Insurance Consulting, agente certificado',
+    fetchRedirectNote: 'Te conectamos con Fetch Pet Insurance para tu cotización · Maria Fernanda, agente certificada',
     noCommit: 'Sin compromiso · Respuesta en menos de 24 horas',
     footerTagline: 'Seguros para la comunidad hispana · Cualquier veterinario en EE.UU.',
   },
@@ -171,15 +171,15 @@ const CONTENT = {
     howDisclaimer: 'Subject to the terms and conditions of the policy.',
     quoteTitle: 'Get a quote online',
     quoteItalic: 'in 5 minutes',
-    quoteEligible: (state: string) => `You're in ${state} — you can activate your policy directly online, 100% digital, no calls.`,
+    quoteEligible: () => `Get the real price for your dog or cat. 100% online, no commitment.`,
     quoteNotEligible: 'A licensed agent guides you through the entire process at no cost.',
     quoteSteps: [
       { step: '01', title: "Your pet's info", desc: "Enter the name, breed, age, and sex of your dog or cat. The system updates the price in real time." },
       { step: '02', title: 'Customize your plan', desc: 'Choose your reimbursement percentage (70%, 80%, or 90%), deductible, and annual maximum to fit your budget.' },
       { step: '03', title: 'Pay and activate', desc: "Pay with credit or debit card. Policy is active immediately. You'll receive your policy by email." },
     ],
-    quoteCTAEligible: (state: string) => ({ title: `Available in ${state}`, desc: 'Buy your pet insurance directly online. 100% digital process, no calls.', btn: 'Get my pet insurance now' }),
-    quoteCTANotEligible: { title: 'Protect your pet', titleItalic: 'today', desc: 'A licensed agent guides you through the process. No commitment.', btn: 'Get a free Pet Insurance quote' },
+    quoteCTAEligible: () => ({ title: `Insure your pet`, desc: 'Get a quote online for your dog or cat. No commitment, no calls.', btn: 'Insure my pet now' }),
+    quoteCTANotEligible: { title: 'Insure your pet', titleItalic: 'today', desc: 'A licensed agent guides you through the process. No commitment.', btn: 'Get a quote for my pet' },
     whyTitle: 'Why',
     whyItalic: 'choose us?',
     whyCards: [
@@ -227,8 +227,8 @@ const CONTENT = {
     heroTitleSpan: '',
     heroItalic: 'reimburses fast',
     heroDesc: 'Visit any vet in the United States. Upload the invoice to the portal and receive your reimbursement of up to 90% in less than a week.',
-    heroCTAEligible: 'Get my insurance now',
-    heroCTANotEligible: 'Get a Pet Insurance Quote',
+    heroCTAEligible: 'Get a quote for my pet',
+    heroCTANotEligible: 'Get a quote for my pet',
     heroSubtext: 'Customizable price · No commitment',
     statsBar: [
       { value: 'Up to 90%', label: 'Reimbursement' },
@@ -241,10 +241,10 @@ const CONTENT = {
       { icon: CurrencyDollar, title: 'Up to 90% Reimbursement', desc: 'You choose the percentage: 70%, 80%, or 90% of covered eligible expenses. Also customize deductible and annual maximum. Subject to terms and conditions.' },
       { icon: Heart, title: 'No age limit', desc: 'You can insure your dog or cat at any age. Many pet insurance plans turn away older pets or charge more for them. There is no age limit to enroll.' },
     ],
-    quoteBtnEligible: 'Go to fetchpet.com — affiliate portal',
+    quoteBtnEligible: 'See price for my dog or cat',
     quoteBtnNotEligible: 'Talk to a licensed agent',
     navBack: 'Get a free quote',
-    fetchRedirectNote: 'You will be redirected to the insurance portal · Maria Fernanda Insurance Consulting, certified agent',
+    fetchRedirectNote: 'We connect you with Fetch Pet Insurance for your quote · Maria Fernanda, certified agent',
     noCommit: 'No commitment · Response within 24 hours',
     footerTagline: 'Pet insurance for families across the US · Any licensed vet · Annual review included',
   },
@@ -486,7 +486,7 @@ export default function MascotasLangPage({ params }: { params: { lang: string } 
                 {c.quoteTitle}{' '}<span className="font-editorial-italic text-[#3d7a47]">{c.quoteItalic}</span>
               </h2>
               {isEligibleState ? (
-                <p className="text-sm text-slate-500 font-light">{c.quoteEligible(stateName ?? '')}</p>
+                <p className="text-sm text-slate-500 font-light">{c.quoteEligible()}</p>
               ) : (
                 <p className="text-sm text-slate-500 font-light">{c.quoteNotEligible}</p>
               )}
@@ -527,7 +527,7 @@ export default function MascotasLangPage({ params }: { params: { lang: string } 
                   <div className="h-4 w-1/2 bg-white/10 animate-pulse rounded mx-auto" />
                 </>
               ) : isEligibleState ? (() => {
-                const cta = c.quoteCTAEligible(stateName ?? '');
+                const cta = c.quoteCTAEligible();
                 return (
                   <>
                     <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-4">{cta.title}</h2>

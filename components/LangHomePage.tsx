@@ -462,7 +462,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
-                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Commercial Auto Insurance' : 'Auto Comercial'}</h3>
+                  <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Commercial Auto Insurance' : 'Seguro Auto Comercial'}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Personal auto policies do not cover business use. If your employees or drivers use vehicles for work, your personal policy may not cover a claim. We help you find the right commercial auto coverage.' : 'Tu negocio también necesita protección en el camino. Si utilizas vehículos para trabajar, te ayudamos a encontrar opciones de seguro según tu actividad, los conductores y el uso de cada vehículo. Desde una van hasta una flota de camiones, comparamos coberturas para las necesidades de tu operación. Coberturas sujetas a disponibilidad, evaluación y condiciones de la póliza.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
                     {(isEn ? ['Covers vans, trucks, fleets and gig drivers', 'Hired and Non-Owned Auto (HNOA) coverage available', 'Business liability for work-related vehicle incidents', 'One contact for all claims and renewals'] : ['Opciones para vans, pickups, camiones y flotas', 'Seguros para contratistas, servicios, entregas y mudanzas', 'Evaluación de los vehículos y conductores de tu negocio']).map(b => (
