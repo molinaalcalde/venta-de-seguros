@@ -133,7 +133,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
     setQuoteType(insType);
     setQuoteOpen(true);
     pushGTMEvent({
-      event: 'quote_modal_open',
+      event: 'quote_opened',
       insurance_type: insType ?? 'general',
       page_lang: lang,
       source,

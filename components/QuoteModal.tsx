@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback, type ComponentType } from 'react';
+import { usePathname } from 'next/navigation';
 import { pushGTMEvent } from '@/lib/gtm';
 import {
   X, CaretLeft, Check, CircleNotch, Car, Truck, PawPrint, Heart,
@@ -497,6 +498,8 @@ export interface QuoteModalProps {
 }
 
 export default function QuoteModal({ open, onClose, initialType }: QuoteModalProps) {
+  const pathname = usePathname();
+  const pageLang = pathname?.startsWith('/en') ? 'en' : 'es';
   const [step, setStep]         = useState(0);
   const [data, setData]         = useState<QuoteData>(INITIAL);
   const [visible, setVisible]   = useState(true);
@@ -593,6 +596,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
         estado_us: data.estado_us || 'unknown',
         timeline: data.timeline,
         lead_score: calcScore(data),
+        page_lang: pageLang,
       });
       await fade(() => setSuccess(true));
     } catch { setSubmitErr('Error de conexión. Intenta de nuevo.'); }
