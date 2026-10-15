@@ -133,7 +133,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
     setQuoteType(insType);
     setQuoteOpen(true);
     pushGTMEvent({
-      event: 'quote_modal_open',
+      event: 'quote_opened',
       insurance_type: insType ?? 'general',
       page_lang: lang,
       source,
@@ -168,7 +168,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
       )}
 
       {/* ── Fixed Sticky Navbar ── */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm' : 'bg-transparent'}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200/60 shadow-sm' : 'bg-white/5 backdrop-blur-md border-b border-white/10'}`}>
         <div className="max-w-[1720px] mx-auto px-6 lg:px-10">
           <div className="flex items-center justify-between h-16">
             <a className="shrink-0" href={`/${lang}`}>
@@ -178,12 +178,10 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               {(isEn ? [
                 { label: 'Coverage', href: '#coberturas-destacadas', sectionId: 'coberturas-destacadas' },
                 { label: 'Why Us', href: '#por-que-aegis', sectionId: 'por-que-aegis' },
-                { label: 'Blog', href: '/blog', sectionId: '' },
                 { label: 'FAQ', href: '#faq', sectionId: 'faq' },
               ] : [
                 { label: 'Coberturas', href: '#coberturas-destacadas', sectionId: 'coberturas-destacadas' },
                 { label: 'Por qué Nosotros', href: '#por-que-aegis', sectionId: 'por-que-aegis' },
-                { label: 'Blog', href: '/blog', sectionId: '' },
                 { label: 'FAQ', href: '#faq', sectionId: 'faq' },
               ]).map(({ label, href, sectionId }) => {
                 const isActive = sectionId && activeSection === sectionId;
@@ -238,12 +236,12 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               {(isEn ? [
                 { label: 'Home', href: `/${lang}` },
                 { label: 'Coverage', href: '#coberturas-destacadas' },
-                { label: 'Blog', href: '/blog' },
+                { label: 'Why Us', href: '#por-que-aegis' },
                 { label: 'FAQ', href: '#faq' },
               ] : [
                 { label: 'Inicio', href: `/${lang}` },
-                { label: 'Blog', href: '/blog' },
-                { label: 'Cotizador', href: '#cotizador' },
+                { label: 'Coberturas', href: '#coberturas-destacadas' },
+                { label: 'Por qué Nosotros', href: '#por-que-aegis' },
                 { label: 'FAQ', href: '#faq' },
               ]).map(({ label, href }) => (
                 <a key={label} href={href} onClick={() => setMobileMenuOpen(false)} className="py-3.5 px-3 rounded-xl text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-all border-b border-slate-100 last:border-0">{label}</a>
@@ -275,14 +273,10 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
         <video src="/videos/hero2-mobile.mp4" autoPlay muted playsInline loop preload="auto"
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 md:hidden ${heroIndex === 1 ? 'opacity-100' : 'opacity-0'}`}
         />
-        {/* Slot 2 — desktop */}
+        {/* Slot 2 */}
         <video ref={videoRefs[2]} src={HERO_VIDEOS[2].src} autoPlay muted playsInline loop preload="auto"
           onLoadedMetadata={() => { const el = videoRefs[2].current; if (el) el.currentTime = HERO_VIDEOS[2].startTime; }}
-          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 hidden md:block ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
-        />
-        {/* Slot 2 — mobile (vertical) */}
-        <video src="/videos/hero-auto-mobile.mp4" autoPlay muted playsInline loop preload="auto"
-          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 md:hidden ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/15 to-black/70 z-[1]"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50 z-[1]"></div>
@@ -589,6 +583,43 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
         </div>
       </section>
 
+      {/* ── Testimonials ── */}
+      <section className="py-20 bg-white border-t border-stone-100" id="testimonios">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <span className="text-xs uppercase tracking-widest font-semibold text-slate-600">{isEn ? 'What our clients say' : 'Lo que dicen nuestros clientes'}</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-normal text-slate-900 tracking-tight leading-tight mt-3">
+              {isEn ? <>Real stories from{' '}<span className="font-editorial-italic font-normal">real people</span></> : <>Historias reales de{' '}<span className="font-editorial-italic font-normal">personas como tú</span></>}
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {(isEn ? [
+              { quote: 'I was overpaying on my auto insurance for years. Maria Fernanda found me the same coverage for $87 less per month. The whole process was easy and pressure-free.', name: 'Carlos R.', type: 'Auto Insurance', state: 'New Jersey' },
+              { quote: 'I never thought I could get life insurance without a Social Security number. They walked me through every option and now my family is protected.', name: 'Ana M.', type: 'Life Insurance', state: 'Florida' },
+              { quote: 'I opened my restaurant and needed a COI fast for the lease. They got it done in 2 days. Now they handle all my business and commercial auto insurance.', name: 'Jorge L.', type: 'Business Insurance', state: 'Texas' },
+            ] : [
+              { quote: 'Llevaba 3 años pagando de más por mi seguro de auto. Maria Fernanda me encontró la misma cobertura por $87 menos al mes. Todo en español y sin complicaciones.', name: 'Carlos R.', type: 'Seguro de Auto', state: 'New Jersey' },
+              { quote: 'Nunca había tenido seguro de vida porque pensé que necesitaba Social. Me explicaron las opciones con paciencia y hoy mi familia tiene protección.', name: 'Ana M.', type: 'Seguro de Vida', state: 'Florida' },
+              { quote: 'Abrí mi restaurante y necesitaba el COI urgente para el lease. Me lo consiguieron en 2 días. Ahora tienen todo mi seguro comercial y el de mi camioneta.', name: 'Jorge L.', type: 'Seguro Comercial', state: 'Texas' },
+            ]).map(({ quote, name, type, state }) => (
+              <div key={name} className="bg-[#fafbfa] rounded-[24px] p-7 flex flex-col justify-between border border-stone-200/60">
+                <div>
+                  <div className="flex gap-0.5 mb-4">
+                    {[1,2,3,4,5].map(i => <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
+                  </div>
+                  <p className="text-sm text-slate-700 leading-relaxed font-light">&ldquo;{quote}&rdquo;</p>
+                </div>
+                <div className="mt-5 pt-4 border-t border-stone-200/60">
+                  <p className="text-sm font-semibold text-slate-800">{name}</p>
+                  <p className="text-xs text-slate-500">{type} · {state}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-[10px] text-slate-400 mt-6">{isEn ? 'Individual experiences. Results vary by profile and state. Subject to terms and conditions.' : 'Experiencias individuales. Los resultados varían según perfil y estado. Sujeto a términos y condiciones.'}</p>
+        </div>
+      </section>
+
       {/* ── Meet Maria Fernanda ── */}
       <section className="py-20 lg:py-28 bg-[#f4f8f4] border-t border-stone-200/60">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
@@ -792,7 +823,6 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <ul className="space-y-3 text-xs font-light">
                 <li><a className="hover:text-white transition-colors" href="#cotizador">{isEn ? 'Get a Free Quote' : 'Cotizar gratis'}</a></li>
                 <li><a className="hover:text-white transition-colors" href="#faq">{isEn ? 'FAQ' : 'Preguntas frecuentes'}</a></li>
-                <li><a className="hover:text-white transition-colors" href="/blog">{isEn ? 'Blog & Tips' : 'Blog y Consejos'}</a></li>
                 <li><Link className="hover:text-white transition-colors" href={isEn ? '/es' : '/en'}>{isEn ? 'Ver en Español' : 'View in English'}</Link></li>
               </ul>
             </div>

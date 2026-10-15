@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback, type ComponentType } from 'react';
+import { usePathname } from 'next/navigation';
 import { pushGTMEvent } from '@/lib/gtm';
 import {
   X, CaretLeft, Check, CircleNotch, Car, Truck, PawPrint, Heart,
@@ -12,6 +13,7 @@ import {
   TruckTrailer, Crane, FireTruck, Jeep,
   Handshake,
 } from '@phosphor-icons/react';
+import type { Icon as PhIcon } from '@phosphor-icons/react';
 
 /* ─── Types ─────────────────────────────────────────────────────────────── */
 export type InsType =
@@ -64,7 +66,7 @@ const INSURANCE_OPTIONS: {
   { id: 'Umbrella',      label: 'Protección Extra', sublabel: 'Cobertura adicional',        price: 'Desde $19/mes',  icon: Umbrella as PhosphorIcon,    iconBg: 'bg-slate-100',   iconColor: 'text-slate-600',   selBg: 'bg-slate-700',   selText: 'text-white' },
 ];
 
-type OptItem = { label: string; icon?: ComponentType<{ className?: string; weight?: string }> };
+type OptItem = { label: string; icon?: PhIcon };
 type AdaptiveConfig = { q1: string; opts1: OptItem[]; key1: string; q2: string; opts2: OptItem[]; key2: string };
 
 const ADAPTIVE: Record<InsType, AdaptiveConfig> = {
@@ -279,14 +281,14 @@ const PATH_B_FIELDS: Partial<Record<InsType, ExtraField[]>> = {
   ],
 };
 
-const TIMELINE = [
+const TIMELINE: { label: string; value: string; score: number; icon?: PhIcon }[] = [
   { label: 'Hoy mismo',       value: 'Hoy mismo',       score: 3, icon: Lightning },
   { label: 'Esta semana',     value: 'Esta semana',     score: 2, icon: Calendar },
   { label: 'Este mes',        value: 'Este mes',        score: 1, icon: Calendar },
   { label: 'Solo explorando', value: 'Solo explorando', score: -1 },
 ];
 
-const TIENE_SEGURO = [
+const TIENE_SEGURO: { label: string; value: string; score: number; icon?: PhIcon }[] = [
   { label: 'Sí, tengo seguro actualmente', value: 'Sí',     score: 1, icon: ShieldCheck },
   { label: 'No, nunca he tenido',           value: 'No',     score: 0 },
   { label: 'Tuve pero ya venció',           value: 'Venció', score: 0 },
@@ -300,6 +302,22 @@ const INITIAL: QuoteData = {
 };
 
 const VIN_REGEX = /^[A-HJ-NPR-Z0-9]{17}$/i;
+const ADDRESS_REGEX = /\d+.*[a-zA-Z]{2,}/;
+
+function calcAge(dateStr: string): number | null {
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime()) || d.getFullYear() < 1920) return null;
+  const today = new Date();
+  let age = today.getFullYear() - d.getFullYear();
+  if (today.getMonth() < d.getMonth() || (today.getMonth() === d.getMonth() && today.getDate() < d.getDate())) age--;
+  return age >= 0 && age <= 120 ? age : null;
+}
+
+function isValidDate(dateStr: string): boolean {
+  if (!dateStr) return false;
+  const age = calcAge(dateStr);
+  return age !== null && age >= 16 && age <= 120;
+}
 
 /* ─── Helpers ─────────────────────────────────────────────────────────────── */
 function calcScore(d: QuoteData): number {
@@ -319,7 +337,10 @@ function calcScore(d: QuoteData): number {
 
 async function decodeVin(vin: string): Promise<string> {
   try {
-    const r = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vin}?format=json`);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    const r = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vin}?format=json`, { signal: controller.signal });
+    clearTimeout(timeout);
     const j = await r.json();
     const res: Array<{ Variable: string; Value: string }> = j.Results ?? [];
     const get = (n: string) => res.find(r => r.Variable === n)?.Value ?? '';
@@ -355,7 +376,7 @@ function ProgressDots({ total, current }: { total: number; current: number }) {
 
 function Chip({ label, selected, onClick, icon: Icon }: {
   label: string; selected: boolean; onClick: () => void;
-  icon?: ComponentType<{ className?: string; weight?: string }>;
+  icon?: PhIcon;
 }) {
   return (
     <button
@@ -393,7 +414,7 @@ function VinField({ value, decoded, onChange, onDecoded, error: externalError }:
       const result = await decodeVin(v);
       setLoading(false);
       if (result) onDecoded(result);
-      else setError('No se pudo decodificar. Puedes continuar igual.');
+      else onDecoded('VIN registrado');
     }
   }
 
@@ -477,6 +498,8 @@ export interface QuoteModalProps {
 }
 
 export default function QuoteModal({ open, onClose, initialType }: QuoteModalProps) {
+  const pathname = usePathname();
+  const pageLang = pathname?.startsWith('/en') ? 'en' : 'es';
   const [step, setStep]         = useState(0);
   const [data, setData]         = useState<QuoteData>(INITIAL);
   const [visible, setVisible]   = useState(true);
@@ -573,6 +596,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
         estado_us: data.estado_us || 'unknown',
         timeline: data.timeline,
         lead_score: calcScore(data),
+        page_lang: pageLang,
       });
       await fade(() => setSuccess(true));
     } catch { setSubmitErr('Error de conexión. Intenta de nuevo.'); }
@@ -591,10 +615,12 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
     if (step === 4) return pathBFields.filter(f => f.required).every(f => {
       const v = data.detalles[f.key] ?? '';
       if (f.type === 'vin') return VIN_REGEX.test(v) || !f.required;
+      if (f.type === 'date') return isValidDate(v);
+      if (f.type === 'address') return v.length >= 10 && ADDRESS_REGEX.test(v);
       return v.length > 0;
     });
     if (step === 5) return !!data.timeline && !!data.tiene_seguro;
-    if (step === 6) return !!data.nombre.trim() && !!data.email.trim();
+    if (step === 6) return !!data.nombre.trim() && !!data.email.trim() && data.telefono.replace(/\D/g, '').length >= 10;
     return false;
   })();
 
@@ -605,12 +631,12 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
       const v = data.detalles[f.key] ?? '';
       if (f.type === 'vin' && !VIN_REGEX.test(v))
         step4Errors[f.key] = `El VIN debe tener 17 caracteres (tienes ${v.length})`;
-      else if (f.type === 'date' && !v)
-        step4Errors[f.key] = 'Selecciona tu fecha de nacimiento';
+      else if (f.type === 'date' && !isValidDate(v))
+        step4Errors[f.key] = !v ? 'Selecciona tu fecha de nacimiento' : 'Ingresa una fecha de nacimiento válida';
       else if (f.type === 'chips' && !v)
         step4Errors[f.key] = 'Selecciona una opción';
-      else if (f.type === 'address' && !v)
-        step4Errors[f.key] = 'Escribe tu dirección completa';
+      else if (f.type === 'address' && (!v || v.length < 10 || !ADDRESS_REGEX.test(v)))
+        step4Errors[f.key] = 'Ingresa una dirección válida (ej. 123 Main St, Miami, FL)';
       else if (!v)
         step4Errors[f.key] = 'Este campo es necesario';
     });
@@ -645,24 +671,20 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
           {/* Success */}
           {success && (
             <div className="text-center py-4">
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 ${isInstantanea ? 'bg-violet-100' : 'bg-emerald-100'}`}>
-                <Check weight="bold" className={`w-8 h-8 ${isInstantanea ? 'text-violet-600' : 'text-emerald-600'}`} />
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 bg-emerald-100">
+                <Check weight="bold" className="w-8 h-8 text-emerald-600" />
               </div>
               <h2 className="text-2xl font-bold text-slate-800 mb-2">
-                {isInstantanea ? `¡En camino, ${data.nombre.split(' ')[0]}!` : `¡Listo, ${data.nombre.split(' ')[0]}!`}
+                {`¡Recibimos tu solicitud, ${data.nombre.split(' ')[0]}!`}
               </h2>
               <p className="text-slate-500 text-sm mb-6 leading-relaxed">
-                {isInstantanea
-                  ? <>Tu cotización de <strong>{data.tipo_seguro ? TIPO_LABEL[data.tipo_seguro as InsType] : 'seguro'}</strong> está siendo calculada. Revisa <strong>{data.email}</strong> en los próximos <strong>5 minutos</strong>.</>
-                  : <>Recibimos tu solicitud de <strong>{data.tipo_seguro ? TIPO_LABEL[data.tipo_seguro as InsType] : 'seguro'}</strong>. Un asesor bilingüe te contactará en los próximos <strong>15 minutos</strong>.</>}
+                Un asesor bilingüe te contactará pronto con opciones personalizadas de <strong>{data.tipo_seguro ? TIPO_LABEL[data.tipo_seguro as InsType] : 'seguro'}</strong>.
               </p>
               <div className="bg-slate-50 rounded-2xl p-4 text-left text-xs text-slate-500 mb-6 space-y-1.5">
                 <p className="font-semibold text-slate-700 text-sm mb-2">¿Qué sigue?</p>
-                {isInstantanea ? (
-                  <><p>📧 Cotización estimada en tu email en 5 min</p><p>✅ 2–3 opciones con precios reales</p><p>📞 Un asesor disponible si tienes preguntas</p></>
-                ) : (
-                  <><p>✅ Revisamos tu perfil y opciones en {data.estado_us || 'tu estado'}</p><p>✅ Te presentamos 2–3 opciones sin presión</p><p>✅ Tú decides cuándo y si contratar</p></>
-                )}
+                <p>✅ Revisamos tu perfil y opciones en {data.estado_us || 'tu estado'}</p>
+                <p>✅ Te presentamos 2–3 opciones sin presión</p>
+                <p>✅ Tú decides cuándo y si contratar</p>
               </div>
               <button onClick={onClose} className="w-full py-3.5 bg-slate-800 text-white text-sm font-semibold rounded-2xl hover:bg-slate-700 transition-colors">Cerrar</button>
             </div>
@@ -812,19 +834,27 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                       {!field.required && <span className="text-slate-400 font-normal ml-1">(opcional)</span>}
                     </label>
                     {field.type === 'vin' && <VinField value={data.detalles[field.key] ?? ''} decoded={vinDecoded} onChange={v => { setDetail(field.key, v); if (showErrors) setShowErrors(false); }} onDecoded={setVinDecoded} error={errMsg} />}
-                    {field.type === 'date' && (
-                      <div className="relative">
-                        <Calendar weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-                        <input type="date" value={data.detalles[field.key] ?? ''}
-                          onChange={e => { setDetail(field.key, e.target.value); if (showErrors) setShowErrors(false); }}
-                          max={new Date(new Date().setFullYear(new Date().getFullYear() - 16)).toISOString().split('T')[0]}
-                          min="1924-01-01"
-                          className={`w-full pl-11 py-3.5 border-2 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors ${
-                            errMsg ? 'border-amber-400 bg-amber-50/50' : 'border-slate-200'
-                          }`}
-                        />
+                    {field.type === 'date' && (() => {
+                      const dateVal = data.detalles[field.key] ?? '';
+                      const age = dateVal ? calcAge(dateVal) : null;
+                      const valid = dateVal ? isValidDate(dateVal) : false;
+                      return (
+                      <div>
+                        <div className="relative">
+                          <Calendar weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                          <input type="date" value={dateVal}
+                            onChange={e => { setDetail(field.key, e.target.value); if (showErrors) setShowErrors(false); }}
+                            max={new Date(new Date().setFullYear(new Date().getFullYear() - 16)).toISOString().split('T')[0]}
+                            min="1920-01-01"
+                            className={`w-full pl-11 py-3.5 border-2 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors ${
+                              errMsg ? 'border-amber-400 bg-amber-50/50' : valid ? 'border-emerald-400 bg-emerald-50' : 'border-slate-200'
+                            }`}
+                          />
+                        </div>
+                        {valid && age !== null && <p className="text-xs text-emerald-600 mt-1 px-1 font-medium">✓ {age} años</p>}
                       </div>
-                    )}
+                      );
+                    })()}
                     {field.type === 'chips' && (
                       <div className="space-y-2">{field.options.map(o => <Chip key={o} label={o} selected={data.detalles[field.key] === o} onClick={() => { setDetail(field.key, o); if (showErrors) setShowErrors(false); }} />)}</div>
                     )}
@@ -884,12 +914,13 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                     }`} />
                   {showErrors && !data.email.trim() && <p className="text-xs text-amber-600 mt-1 px-1">Ingresa tu email</p>}
                 </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-500 mb-1.5">
-                    Teléfono <span className="text-slate-400 font-normal">{isInstantanea ? '(opcional)' : '(para llamarte más rápido)'}</span>
-                  </label>
-                  <input type="tel" autoComplete="tel" placeholder="(555) 555-5555" value={data.telefono} onChange={e => set('telefono', e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-slate-200 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors" />
+                <div data-field-error={showErrors && data.telefono.replace(/\D/g, '').length < 10 ? 'true' : undefined}>
+                  <label className="block text-xs font-semibold text-slate-500 mb-1.5">Teléfono *</label>
+                  <input type="tel" autoComplete="tel" placeholder="(555) 555-5555" value={data.telefono} onChange={e => { set('telefono', e.target.value); if (showErrors) setShowErrors(false); }}
+                    className={`w-full px-4 py-3 border-2 rounded-2xl text-sm focus:outline-none focus:border-slate-700 transition-colors ${
+                      showErrors && data.telefono.replace(/\D/g, '').length < 10 ? 'border-amber-400 bg-amber-50/50' : 'border-slate-200'
+                    }`} />
+                  {showErrors && data.telefono.replace(/\D/g, '').length < 10 && <p className="text-xs text-amber-600 mt-1 px-1">Ingresa un teléfono válido (10 dígitos)</p>}
                 </div>
               </div>
               {submitErr && <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2 mb-3">{submitErr}</p>}
@@ -914,7 +945,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
             ) : (
               <button onClick={() => { if (!canNext) { setShowErrors(true); setShaking(true); setTimeout(() => setShaking(false), 500); return; } submit(); }} disabled={submitting}
                 className={`w-full py-3.5 font-semibold text-sm rounded-2xl transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white ${shaking ? 'animate-shake' : ''}`}>
-                {submitting ? <><CircleNotch weight="bold" className="w-4 h-4 animate-spin" /> Enviando…</> : isInstantanea ? '📧 Enviar mi cotización →' : 'Ver mi cotización →'}
+                {submitting ? <><CircleNotch weight="bold" className="w-4 h-4 animate-spin" /> Enviando…</> : 'Solicitar mi cotización →'}
               </button>
             )}
           </div>
