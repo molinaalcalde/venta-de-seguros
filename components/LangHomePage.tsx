@@ -384,7 +384,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
             {/* Card – Mascotas */}
             <div className="group bg-white rounded-[28px] overflow-hidden shadow-sm border border-stone-200/70 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
               <div className="relative h-52 w-full overflow-hidden">
-                <video src="/videos/hero2-desktop.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
+                <video src="/videos/mascotas-card.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Plans from $29/mo' : 'Planes desde $29/mes'}</span>
               </div>
