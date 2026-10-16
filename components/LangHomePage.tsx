@@ -362,7 +362,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/hero3.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $89/mo' : 'Desde $75/mes'}</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Compare 10+ carriers' : 'Compara 10+ aseguradoras'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
@@ -386,14 +386,14 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/mascotas-card.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Plans from $29/mo' : 'Planes desde $29/mes'}</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Up to 90% reimbursement' : 'Reembolso hasta 90%'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Pet Insurance' : 'Seguro de Mascotas'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Any vet. Up to 90% back. No network restrictions. Visit any licensed vet in the U.S. or Canada, pay the bill, and submit your claim online. We help you choose the right reimbursement level for your budget.' : 'Lleva a tu mascota a cualquier veterinario con licencia en EE.UU. — sin red restringida. Pagas la factura y recibes hasta el 90% de reembolso en menos de una semana. Una cirugía puede costarte $8,000 sin seguro. Sujeto a términos y condiciones.'}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'An emergency vet surgery can cost $1,500 to $5,000 (CareCredit, 2024). Visit any licensed vet in the U.S. or Canada, pay the bill, and get up to 90% back. No network restrictions. We help you choose the right reimbursement level. Subject to terms and conditions.' : 'Una cirugía de emergencia veterinaria puede costar entre $1,500 y $5,000 (CareCredit, 2024). Lleva a tu mascota a cualquier veterinario con licencia en EE.UU., sin red restringida. Pagas la factura y recibes hasta el 90% de reembolso. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['Up to 90% reimbursement on covered expenses', 'Any licensed vet in the U.S. and Canada', 'Covers accidents, illness, dental and prescriptions', 'Plans starting at $29/mo. Subject to terms and conditions.'] : ['Hasta el 90% de reembolso en menos de una semana', 'Cubre consultas, cirugías, vacunas y medicamentos', 'Cualquier veterinario con licencia en EE.UU. o Canadá']).map(b => (
+                    {(isEn ? ['Up to 90% reimbursement on covered expenses', 'Any licensed vet in the U.S. and Canada', 'Covers accidents, illness, dental and prescriptions', 'Submit claims online in minutes'] : ['Hasta el 90% de reembolso en gastos cubiertos', 'Cubre consultas, cirugías, vacunas y medicamentos', 'Cualquier veterinario con licencia en EE.UU. o Canadá', 'Envía tus reclamos en línea en minutos']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
@@ -441,7 +441,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Business Insurance' : 'Seguro de Negocio'}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'One defended lawsuit costs $75,000+ on average, even when you win. We compare multiple carriers for your specific industry so you know exactly what you\'re covered for. Sujeto a términos y condiciones.' : 'Una demanda puede vaciarte las cuentas, aunque tengas LLC. Comparamos múltiples aseguradoras para proteger tu negocio por lo que realmente vale, en español, desde el primer día. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['GL, BOP, Workers Comp compared across carriers', 'COI issued in under 24 hours', 'Coverage for every industry — restaurants to contractors', 'One agent for all your business coverage needs'] : ['Responsabilidad Civil (GL) desde $19/mes', 'COI en menos de 24 horas para landlords y contratos', 'ITIN o EIN aceptados', 'Workers Comp cuando contratas tu primer empleado']).map(b => (
+                    {(isEn ? ['GL, BOP, Workers Comp compared across carriers', 'COI issued in under 24 hours', 'Coverage for every industry — restaurants to contractors', 'One agent for all your business coverage needs'] : ['Responsabilidad Civil (GL), BOP y Workers Comp', 'COI en menos de 24 horas para landlords y contratos', 'ITIN o EIN aceptados', 'Workers Comp cuando contratas tu primer empleado']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
@@ -458,7 +458,6 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/comercial.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? '' : ''}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
@@ -482,7 +481,6 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/salud.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? '' : ''}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
@@ -507,14 +505,14 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/dental.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'From $19/mo' : 'Desde $19/mes'}</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Preventive care included' : 'Cobertura preventiva incluida'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Dental Insurance' : 'Seguro Dental'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Preventive care today prevents expensive procedures tomorrow. One root canal without coverage can cost $1,500 or more. We help you find affordable dental plans that cover cleanings, basic and major procedures.' : 'El 74% de adultos hispanos evita el dentista por el costo. Una endodoncia sin seguro: $1,500. Un implante: $3,500. Con plan desde $19/mes, cubierto. Sujeto a términos y condiciones.'}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'A root canal can cost $1,000 to $1,500. A dental implant, $3,000 to $5,000 without coverage (FAIR Health / Delta Dental). Preventive care today prevents expensive procedures tomorrow. We help you find affordable dental plans that cover cleanings, basic and major procedures. Subject to terms and conditions.' : 'Una endodoncia puede costar entre $1,000 y $1,500. Un implante dental, entre $3,000 y $5,000 (FAIR Health / Delta Dental). El 74% de adultos hispanos evita el dentista por el costo. Te ayudamos a encontrar un plan que cubra desde limpiezas preventivas hasta procedimientos mayores. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['Preventive cleanings with no waiting period', 'Basic and major procedure coverage included', 'Individual and family plans available', 'Plans starting at $19/mo. Subject to terms and conditions.'] : ['Limpieza preventiva incluida, sin período de espera', 'Tratamientos mayores con deducible bajo', 'Toda la familia en un solo plan']).map(b => (
+                    {(isEn ? ['Preventive cleanings with no waiting period', 'Basic and major procedure coverage included', 'Individual and family plans available', 'ITIN accepted, no SSN required'] : ['Limpieza preventiva incluida, sin período de espera', 'Tratamientos mayores con deducible bajo', 'Toda la familia en un solo plan']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
@@ -531,14 +529,14 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <div className="relative h-52 w-full overflow-hidden">
                 <video src="/videos/paquete.mp4" muted autoPlay loop playsInline preload="auto" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Save up to 25%' : 'Hasta 25% de ahorro'}</span>
+                <span className="absolute bottom-4 right-4 text-xs font-medium text-white/90 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm">{isEn ? 'Multi-policy discount' : 'Descuento por combinar'}</span>
               </div>
               <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
                 <div className="space-y-3">
                   <h3 className="text-2xl font-normal text-slate-900 tracking-tight">{isEn ? 'Home and Auto Bundle' : 'Seguro Hogar y Auto'}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Bundling is the fastest way to lower both premiums at once. We help you combine your home or renters and auto policies from the same carrier. An independent agent shops multiple carriers to find your best rate.' : 'El landlord cubre las paredes. Tus cosas, no. El 71% de los renters latinos no tiene cobertura para sus pertenencias. Combina renters + auto y ahorra hasta $1,184/año. Sujeto a términos y condiciones.'}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed font-light">{isEn ? 'Your landlord\'s policy covers the walls. Not your stuff. The average renter owns $20,000 to $30,000 in personal belongings (Insurance Information Institute). Bundle renters + auto with one carrier and unlock multi-policy discounts. Subject to terms and conditions.' : 'El landlord cubre las paredes. Tus cosas, no. Tus pertenencias valen en promedio entre $20,000 y $30,000 (Insurance Information Institute). Combina renters + auto con la misma aseguradora y accede a descuentos por paquete. Sujeto a términos y condiciones.'}</p>
                   <ul className="space-y-2 text-sm text-slate-600 pt-2">
-                    {(isEn ? ['Homeowners, renters and condo options available', 'Bundle discount applied to both policies', 'Independent agent shops multiple carriers', 'One contact for both policies and claims'] : ['Renters + auto: hasta $1,184/año de ahorro real', 'Cubre ropa, laptop y muebles, no solo las paredes', 'Sin SSN, acepta ITIN']).map(b => (
+                    {(isEn ? ['Homeowners, renters and condo options available', 'Bundle discount applied to both policies', 'Independent agent shops multiple carriers', 'One contact for both policies and claims'] : ['Descuento por combinar renters + auto en una aseguradora', 'Cubre ropa, laptop y muebles, no solo las paredes', 'Sin SSN, acepta ITIN']).map(b => (
                       <li key={b} className="flex items-center gap-2"><svg className="w-4 h-4 text-sage-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>{b}</li>
                     ))}
                   </ul>
