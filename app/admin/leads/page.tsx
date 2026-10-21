@@ -65,6 +65,34 @@ function initials(nombre: string) {
   return nombre.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
 }
 
+function getCanal(lead: Lead): 'WhatsApp' | 'Formulario' {
+  if (!lead.detalles) return 'Formulario';
+  try {
+    const obj = typeof lead.detalles === 'string' ? JSON.parse(lead.detalles) : lead.detalles;
+    if (obj?.canal === 'WhatsApp') return 'WhatsApp';
+  } catch { /* ignore */ }
+  if (lead.email?.endsWith('@lead.local')) return 'WhatsApp';
+  return 'Formulario';
+}
+
+function CanalBadge({ lead }: { lead: Lead }) {
+  const canal = getCanal(lead);
+  if (canal === 'WhatsApp') {
+    return (
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-50 text-emerald-700">
+        <MessageCircle className="w-3 h-3" />
+        WhatsApp
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-blue-50 text-blue-600">
+      <FileText className="w-3 h-3" />
+      Formulario
+    </span>
+  );
+}
+
 /* ─── Stat Card ─────────────────────────────────────────────────────────── */
 function StatCard({ label, value, icon: Icon, color }: {
   label: string; value: number; icon: React.ElementType; color: string;
@@ -181,6 +209,13 @@ function DetailPanel({ lead, onClose, onUpdate, onDelete }: {
           <Row icon={<Phone className="w-3.5 h-3.5" />} label="Teléfono" value={lead.telefono ?? '—'} copyable />
           <Row icon={<Mail className="w-3.5 h-3.5" />} label="Email" value={lead.email} copyable />
           <Row icon={<Calendar className="w-3.5 h-3.5" />} label="Registrado" value={fmtDateTime(lead.created_at)} />
+          <div className="flex items-start gap-2">
+            <span className="text-slate-400 mt-0.5"><MessageCircle className="w-3.5 h-3.5" /></span>
+            <div className="flex-1 min-w-0">
+              <span className="text-slate-500 text-xs">Canal: </span>
+              <CanalBadge lead={lead} />
+            </div>
+          </div>
           <Row icon={<Clock className="w-3.5 h-3.5" />} label="Tiempo" value={timeAgo(lead.created_at)} />
           <Row icon={<FileText className="w-3.5 h-3.5" />} label="Tipo de seguro" value={lead.tipo_seguro ?? '—'} />
           <Row icon={<Star className="w-3.5 h-3.5" />} label="Nivel" value={lead.nivel_proteccion ?? '—'} />
@@ -379,9 +414,12 @@ function MobileLeadCard({ lead, selected, onSelect, onUpdate }: {
             <EstadoBadge estado={lead.estado} />
           </div>
           <p className="text-xs text-slate-500 mt-0.5 truncate">{lead.email}</p>
-          {lead.tipo_seguro && (
-            <p className="text-xs text-slate-400 mt-1">{lead.tipo_seguro}</p>
-          )}
+          <div className="flex items-center gap-1.5 mt-1 flex-wrap">
+            {lead.tipo_seguro && (
+              <span className="text-xs text-slate-400">{lead.tipo_seguro}</span>
+            )}
+            <CanalBadge lead={lead} />
+          </div>
         </div>
         <ChevronRight className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
       </div>
@@ -684,7 +722,8 @@ export default function LeadsPage() {
                     <tr className="border-b border-slate-100 bg-slate-50">
                       <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Contacto</th>
                       <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Tipo Seguro</th>
-                      <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide hidden lg:table-cell">Nivel</th>
+                      <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide hidden lg:table-cell">Canal</th>
+                      <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide hidden xl:table-cell">Nivel</th>
                       <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Estado</th>
                       <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide hidden lg:table-cell">Fecha</th>
                       <th className="px-4 py-3" />
@@ -720,8 +759,13 @@ export default function LeadsPage() {
                           {lead.tipo_seguro ?? <span className="text-slate-400">—</span>}
                         </td>
 
+                        {/* Canal */}
+                        <td className="px-4 py-3 hidden lg:table-cell">
+                          <CanalBadge lead={lead} />
+                        </td>
+
                         {/* Nivel */}
-                        <td className="px-4 py-3 text-slate-600 hidden lg:table-cell">
+                        <td className="px-4 py-3 text-slate-600 hidden xl:table-cell">
                           {lead.nivel_proteccion ?? <span className="text-slate-400">—</span>}
                         </td>
 

@@ -18,7 +18,8 @@ export async function POST(request: NextRequest) {
     if (!nombre || typeof nombre !== 'string' || nombre.trim().length === 0) {
       return NextResponse.json({ error: 'El nombre es requerido.' }, { status: 400 });
     }
-    if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+    const isWhatsAppLead = body.canal === 'WhatsApp';
+    if (!isWhatsAppLead && (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))) {
       return NextResponse.json({ error: 'Por favor ingresa un correo electrónico válido.' }, { status: 400 });
     }
 
