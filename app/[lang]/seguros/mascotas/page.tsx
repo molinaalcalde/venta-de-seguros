@@ -409,7 +409,7 @@ export default function MascotasLangPage({ params }: { params: { lang: string } 
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {c.plans.map((plan) => (
-                <div key={plan.name} className={`rounded-2xl p-7 flex flex-col transition-all ${plan.highlight ? 'bg-[#1a3320] text-white shadow-2xl scale-[1.02] relative' : 'bg-[#fafbfa] border border-slate-200 text-slate-900'}`}>
+                <div key={plan.name} className={`rounded-2xl p-7 flex flex-col transition-all ${plan.highlight ? 'bg-[#1a3320] text-white shadow-2xl md:scale-[1.02] relative' : 'bg-[#fafbfa] border border-slate-200 text-slate-900'}`}>
                   {plan.highlight && (
                     <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#7db887] text-[#1a3320] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">{c.plansMostPopular}</span>
                   )}

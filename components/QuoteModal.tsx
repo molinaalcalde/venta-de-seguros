@@ -653,13 +653,13 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 shrink-0">
           <div className="flex items-center gap-3">
             {step > 0 && !success && (
-              <button onClick={back} className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
+              <button onClick={back} className="w-10 h-10 min-w-[44px] min-h-[44px] rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
                 <CaretLeft weight="bold" className="w-4 h-4" />
               </button>
             )}
             {!success && <ProgressDots total={totalSteps} current={visualStep(step)} />}
           </div>
-          <button onClick={onClose} className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
+          <button onClick={onClose} className="w-10 h-10 min-w-[44px] min-h-[44px] rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors">
             <X weight="bold" className="w-4 h-4" />
           </button>
         </div>
@@ -708,7 +708,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
                       </div>
                       <div>
                         <p className={`text-[11px] font-semibold leading-tight ${sel ? 'text-white' : 'text-slate-800'}`}>{opt.label}</p>
-                        <p className={`text-[9px] mt-0.5 leading-tight ${sel ? 'text-white/70' : 'text-slate-400'}`}>{opt.sublabel}</p>
+                        <p className={`text-[11px] mt-0.5 leading-tight ${sel ? 'text-white/70' : 'text-slate-400'}`}>{opt.sublabel}</p>
                       </div>
                     </button>
                   );

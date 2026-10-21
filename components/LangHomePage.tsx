@@ -389,7 +389,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                     ))}
                   </ul>
                 </div>
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center gap-3 justify-between">
                   <Link href={l('/seguros/auto')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
                   <button onClick={() => openQuote('Auto', 'card_auto')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Check my rate — free' : 'Cotizar gratis'} <span className="text-sm">→</span></button>
                 </div>
@@ -413,7 +413,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                     ))}
                   </ul>
                 </div>
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center gap-3 justify-between">
                   <Link href={l('/seguros/mascotas')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
                   {isFetchEligible ? (
                     <a href={FETCH_URL} target="_blank" rel="noopener noreferrer" className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Pet Insurance' : 'Cotizar Mascotas'} <span className="text-sm">→</span></a>
@@ -441,7 +441,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                     ))}
                   </ul>
                 </div>
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center gap-3 justify-between">
                   <Link href={l('/seguros/vida')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
                   <button onClick={() => openQuote('Vida', 'card_vida')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Explore Life Insurance →' : 'Cotizar gratis →'}</button>
                 </div>
@@ -465,7 +465,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                     ))}
                   </ul>
                 </div>
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center gap-3 justify-between">
                   <Link href={l('/seguros/comercial')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
                   <button onClick={() => openQuote('Comercial', 'card_comercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Protect My Business →' : 'Cotizar gratis →'}</button>
                 </div>
@@ -488,7 +488,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                     ))}
                   </ul>
                 </div>
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center gap-3 justify-between">
                   <Link href={l('/seguros/auto-comercial')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
                   <button onClick={() => openQuote('AutoComercial', 'card_auto_comercial')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Get a Quote' : 'Cotizar ahora'} <span className="text-sm">→</span></button>
                 </div>
@@ -512,7 +512,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                   </ul>
                   {!isEn && <p className="text-xs text-slate-400 font-light pt-3">Beneficios y disponibilidad según el producto.</p>}
                 </div>
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center gap-3 justify-between">
                   <Link href={l('/seguros/salud')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
                   <button onClick={() => openQuote('Salud', 'card_salud')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'View Health Plans' : 'Ver Planes de Salud'} <span className="text-sm">→</span></button>
                 </div>
@@ -536,7 +536,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                     ))}
                   </ul>
                 </div>
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center gap-3 justify-between">
                   <Link href={l('/seguros/dental')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
                   <button onClick={() => openQuote('Dental', 'card_dental')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Dental' : 'Cotizar Dental'} <span className="text-sm">→</span></button>
                 </div>
@@ -560,7 +560,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                     ))}
                   </ul>
                 </div>
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center gap-3 justify-between">
                   <Link href={l('/seguros/paquete-casa-auto')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
                   <button onClick={() => openQuote('Paquete', 'card_paquete')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Build My Bundle' : 'Armar mi Paquete'} <span className="text-sm">→</span></button>
                 </div>
