@@ -60,9 +60,9 @@ html {
   animation: fadeInBackdrop 0.2s ease-out forwards;
 }
 
-/* WhatsApp mini-form slide up */
+/* WhatsApp chat widget slide up */
 @keyframes waSlideUp {
-  from { transform: translateY(100%); opacity: 0; }
+  from { transform: translateY(20px); opacity: 0; }
   to   { transform: translateY(0); opacity: 1; }
 }
 
