@@ -28,6 +28,11 @@ import {
   TRUST_STATS_ES, TRUST_STATS_EN, MARIA_BIO_ES, MARIA_BIO_EN,
 } from '@/components/LangHomePageData';
 import type { InsType } from '@/components/QuoteModal';
+
+// ── Fetch Pet Insurance (affiliate) ─────────────────────────────────────────
+const FETCH_URL =
+  'https://www.fetchpet.com/mypet?a=FC87573&utm_source=firstconnect&utm_medium=brokerportal&utm_campaign=firstconnect_email&c=firstconnect&p=firstconnect&v=FVPCTRL';
+const FETCH_STATES = new Set(['NJ', 'FL', 'IA', 'NV', 'PA', 'RI', 'TX']);
 import { pushGTMEvent } from '@/lib/gtm';
 
 export default function LangHomePage({ params }: { params: { lang: string } }) {
@@ -124,6 +129,16 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
   const solutionsTabs = isEn ? solutionsTabs_en : solutionsTabs_es;
   const activeTabData = solutionsTabs[activeTab];
   const tabToIns = isEn ? TAB_TO_INS_EN : TAB_TO_INS_ES;
+
+  // Geolocation for Fetch Pet Insurance
+  const [userState, setUserState] = useState<string | null>(null);
+  useEffect(() => {
+    fetch('https://ip-api.com/json/?fields=regionCode')
+      .then(r => r.json())
+      .then(d => { if (d.regionCode) setUserState(d.regionCode); })
+      .catch(() => {});
+  }, []);
+  const isFetchEligible = userState && FETCH_STATES.has(userState);
 
   // Quote modal
   const [quoteOpen, setQuoteOpen] = useState(false);
@@ -400,7 +415,11 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 </div>
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link href={l('/seguros/mascotas')} className="px-4 py-3 rounded-full border border-slate-200 hover:border-slate-400 text-slate-600 hover:text-slate-900 text-xs font-semibold inline-flex items-center gap-1 transition-all min-h-[44px]">{isEn ? 'View details →' : 'Ver detalle →'}</Link>
-                  <button onClick={() => openQuote('Mascotas', 'card_mascotas')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Pet Insurance' : 'Cotizar Mascotas'} <span className="text-sm">→</span></button>
+                  {isFetchEligible ? (
+                    <a href={FETCH_URL} target="_blank" rel="noopener noreferrer" className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Pet Insurance' : 'Cotizar Mascotas'} <span className="text-sm">→</span></a>
+                  ) : (
+                    <button onClick={() => openQuote('Mascotas', 'card_mascotas')} className="px-5 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm min-h-[44px]">{isEn ? 'Quote Pet Insurance' : 'Cotizar Mascotas'} <span className="text-sm">→</span></button>
+                  )}
                 </div>
               </div>
             </div>
