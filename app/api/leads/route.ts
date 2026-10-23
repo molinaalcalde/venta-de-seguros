@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase';
+import { notifyNewLead } from '@/lib/notify';
 
 export const dynamic = 'force-dynamic';
 
@@ -58,6 +59,18 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
+
+    /* Notificar por email (no bloquea la respuesta) */
+    notifyNewLead({
+      nombre: nombre.trim(),
+      email: email?.trim(),
+      telefono: telefono?.trim() || null,
+      tipo_seguro: tipo_seguro || null,
+      canal: body.canal || 'Formulario',
+      ciudad: ciudad || null,
+      estado_us: estado_us || null,
+      lead_score: typeof lead_score === 'number' ? lead_score : null,
+    }).catch(() => {});
 
     return NextResponse.json(
       { success: true, message: 'Cotización recibida exitosamente.', id: data?.id },
