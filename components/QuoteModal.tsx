@@ -583,6 +583,7 @@ export default function QuoteModal({ open, onClose, initialType }: QuoteModalPro
           lead_score: calcScore(data),
           detalles: { ...data.detalles, quote_path: data.quote_path, vin_decoded: vinDecoded },
           nivel_proteccion: '',
+          lang: pageLang,
           tcpa_consent: true,
           consent_timestamp: new Date().toISOString(),
           tcpa_text: 'Al enviar, consientes que Maria Fernanda Insurance Consulting te contacte al teléfono y correo proporcionados, incluyendo mensajes de texto y llamadas, para fines relacionados con seguros. El consentimiento no es condición de compra.',
