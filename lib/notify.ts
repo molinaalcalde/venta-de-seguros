@@ -28,7 +28,7 @@ export async function notifyNewLead(lead: LeadData) {
 
   try {
     await resend.emails.send({
-      from: 'Consulting by MF <onboarding@resend.dev>',
+      from: 'Consulting by MF <notificaciones@consultingbymf.com>',
       to: NOTIFY_TO,
       subject: `Nuevo lead${isWhatsApp ? ' via WhatsApp' : ''}: ${lead.nombre} - ${lead.tipo_seguro || 'General'}`,
       html: `
