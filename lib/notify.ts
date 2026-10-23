@@ -117,162 +117,165 @@ export async function sendAutoReply(lead: LeadData) {
   }
 }
 
-/* ── Template ES ────────────────────────────────────────────────────── */
-function buildAutoReplyES(nombre: string, tipoSeguro: string, waLink: string): string {
-  return `
-<!DOCTYPE html>
-<html lang="es" dir="ltr">
+/* ── Shared layout pieces ───────────────────────────────────────────── */
+const LOGO_URL = 'https://consultingbymf.com/logo.png';
+const WA_ICON = `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/240px-WhatsApp.svg.png" alt="" width="20" height="20" style="display:inline-block;vertical-align:middle;border:0;">`;
+const IG_ICON = `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/240px-Instagram_icon.png" alt="" width="16" height="16" style="display:inline-block;vertical-align:middle;border:0;">`;
+
+function emailShell(lang: 'es' | 'en', body: string): string {
+  const title = lang === 'es' ? 'Recibimos tu solicitud' : 'We received your request';
+  const subtitleText = lang === 'es' ? 'Agente Independiente de Seguros' : 'Independent Insurance Agent';
+  const signatureLine = lang === 'es' ? 'Consulting by MF · Agente Independiente' : 'Consulting by MF · Independent Agent';
+  const legalText = lang === 'es'
+    ? 'Toda cobertura sujeta a terminos y condiciones de cada aseguradora.'
+    : 'All coverage subject to terms and conditions of each carrier.';
+
+  return `<!DOCTYPE html>
+<html lang="${lang}" dir="ltr">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="color-scheme" content="light dark">
-<title>Recibimos tu solicitud</title></head>
-<body style="margin:0;padding:0;background-color:#f5f5f4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;">
-<div style="max-width:520px;margin:0 auto;padding:24px 16px;">
+<title>${title}</title></head>
+<body style="margin:0;padding:0;background-color:#f2f2f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased;">
 
-  <!-- Header -->
-  <div style="background:#17281b;padding:28px 32px;border-radius:16px 16px 0 0;text-align:center;">
-    <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:700;letter-spacing:-0.3px;">Consulting by MF</h1>
-    <p style="margin:6px 0 0;color:#b2d1b7;font-size:12px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;">Agente Independiente de Seguros</p>
-  </div>
+<!-- Outer wrapper -->
+<div style="max-width:540px;margin:0 auto;padding:32px 16px;">
 
-  <!-- Body -->
-  <div style="background:#ffffff;padding:32px;border-left:1px solid #e7e5e4;border-right:1px solid #e7e5e4;">
+  <!-- Card -->
+  <div style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
 
-    <p style="margin:0 0 20px;color:#1c1917;font-size:15px;line-height:1.6;">
-      Hola <strong>${nombre}</strong>,
-    </p>
-
-    <p style="margin:0 0 20px;color:#44403c;font-size:15px;line-height:1.6;">
-      Recibimos tu solicitud. Ya estamos comparando opciones de <strong>${tipoSeguro}</strong> entre mas de 10 aseguradoras para encontrar la que mejor se ajuste a tu situacion.
-    </p>
-
-    <!-- Highlight box -->
-    <div style="background:#f0fdf4;border-left:3px solid #22c55e;padding:14px 18px;border-radius:0 10px 10px 0;margin:0 0 20px;">
-      <p style="margin:0;color:#166534;font-size:14px;font-weight:600;line-height:1.5;">
-        Un agente te contactara a la brevedad.
-      </p>
+    <!-- Header with logo -->
+    <div style="background:#17281b;padding:32px 32px 28px;text-align:center;">
+      <img src="${LOGO_URL}" alt="Consulting by MF" width="160" style="display:inline-block;max-width:160px;height:auto;border:0;margin:0 0 8px;">
+      <p style="margin:0;color:#9cb8a0;font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;">${subtitleText}</p>
     </div>
 
-    <p style="margin:0 0 24px;color:#78716c;font-size:13px;line-height:1.5;">
-      Tu informacion es confidencial y no la compartimos con terceros.
-    </p>
+    <!-- Thin accent line -->
+    <div style="height:3px;background:linear-gradient(90deg,#b2d1b7 0%,#53825d 50%,#b2d1b7 100%);"></div>
 
-    <p style="margin:0 0 16px;color:#44403c;font-size:14px;line-height:1.5;">
-      Si necesitas algo antes, escribenos directo:
-    </p>
-
-    <!-- WhatsApp CTA -->
-    <div style="text-align:center;margin:0 0 8px;">
-      <a href="${waLink}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#25D366;color:#ffffff;padding:14px 32px;border-radius:12px;font-size:14px;font-weight:600;text-decoration:none;min-width:200px;">
-        Escribenos por WhatsApp
-      </a>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div style="background:#fafaf9;padding:24px 32px;border:1px solid #e7e5e4;border-top:none;border-radius:0 0 16px 16px;">
-
-    <!-- Signature -->
-    <p style="margin:0 0 4px;color:#1c1917;font-size:14px;font-weight:600;">Maria Fernanda</p>
-    <p style="margin:0 0 12px;color:#78716c;font-size:12px;line-height:1.5;">
-      Consulting by MF · Agente Independiente<br>
-      NPN #3002959176<br>
-      <a href="mailto:info@consultingbymf.com" style="color:#78716c;text-decoration:none;">info@consultingbymf.com</a> · <a href="tel:+19082280973" style="color:#78716c;text-decoration:none;">(908) 228-0973</a>
-    </p>
-
-    <!-- Instagram -->
-    <div style="margin:0 0 16px;">
-      <a href="https://www.instagram.com/insurancebymf_/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:#78716c;font-size:12px;text-decoration:none;">
-        <img src="https://cdn-icons-png.flaticon.com/16/174/174855.png" alt="" width="14" height="14" style="display:inline-block;vertical-align:middle;border:0;">
-        @insurancebymf_
-      </a>
+    <!-- Body -->
+    <div style="padding:36px 32px 32px;">
+      ${body}
     </div>
 
-    <!-- Legal -->
-    <p style="margin:0;color:#a8a29e;font-size:11px;line-height:1.5;">
-      Toda cobertura sujeta a terminos y condiciones de cada aseguradora.
-    </p>
-  </div>
+    <!-- Divider -->
+    <div style="height:1px;background:#f0eeec;margin:0 32px;"></div>
 
+    <!-- Footer -->
+    <div style="padding:24px 32px 28px;">
+      <table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+        <tr>
+          <td style="vertical-align:top;">
+            <p style="margin:0 0 2px;color:#1c1917;font-size:14px;font-weight:700;">Maria Fernanda</p>
+            <p style="margin:0 0 10px;color:#9ca3af;font-size:12px;line-height:1.6;">
+              ${signatureLine}<br>
+              NPN #3002959176
+            </p>
+            <p style="margin:0 0 14px;color:#9ca3af;font-size:12px;line-height:1.6;">
+              <a href="mailto:info@consultingbymf.com" style="color:#53825d;text-decoration:none;font-weight:500;">info@consultingbymf.com</a><br>
+              <a href="tel:+19082280973" style="color:#9ca3af;text-decoration:none;">(908) 228-0973</a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding-right:16px;">
+                  <a href="https://www.instagram.com/insurancebymf_/" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;font-size:12px;text-decoration:none;">
+                    ${IG_ICON}
+                    <span style="vertical-align:middle;margin-left:4px;">@insurancebymf_</span>
+                  </a>
+                </td>
+                <td>
+                  <a href="https://consultingbymf.com" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;font-size:12px;text-decoration:none;">
+                    <span style="vertical-align:middle;">consultingbymf.com</span>
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <p style="margin:20px 0 0;color:#c4c0bb;font-size:10px;line-height:1.5;">${legalText}</p>
+    </div>
+
+  </div>
 </div>
 </body>
 </html>`;
 }
 
+/* ── Template ES ────────────────────────────────────────────────────── */
+function buildAutoReplyES(nombre: string, tipoSeguro: string, waLink: string): string {
+  const body = `
+    <p style="margin:0 0 22px;color:#1c1917;font-size:16px;line-height:1.6;">
+      Hola <strong>${nombre}</strong>,
+    </p>
+
+    <p style="margin:0 0 22px;color:#44403c;font-size:15px;line-height:1.7;">
+      Recibimos tu solicitud. Ya estamos comparando opciones de <strong style="color:#1c1917;">${tipoSeguro}</strong> entre mas de 10 aseguradoras para encontrar la que mejor se ajuste a tu situacion.
+    </p>
+
+    <!-- Callout -->
+    <div style="background:#f8f7f5;border-radius:12px;padding:18px 22px;margin:0 0 22px;text-align:center;">
+      <p style="margin:0;color:#17281b;font-size:15px;font-weight:600;line-height:1.5;">
+        Un agente te contactara a la brevedad.
+      </p>
+    </div>
+
+    <p style="margin:0 0 28px;color:#9ca3af;font-size:13px;line-height:1.5;">
+      Tu informacion es confidencial y no la compartimos con terceros.
+    </p>
+
+    <p style="margin:0 0 14px;color:#44403c;font-size:14px;line-height:1.5;">
+      Si necesitas algo antes, escribenos directo:
+    </p>
+
+    <!-- WhatsApp CTA -->
+    <div style="text-align:center;margin:0 0 4px;">
+      <a href="${waLink}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#25D366;color:#ffffff;padding:14px 28px;border-radius:50px;font-size:14px;font-weight:600;text-decoration:none;line-height:1;">
+        <!--[if mso]><i style="mso-font-width:0;mso-text-raise:6pt;">&#8203;</i><![endif]-->
+        ${WA_ICON}
+        <span style="vertical-align:middle;margin-left:8px;">Escribenos por WhatsApp</span>
+        <!--[if mso]><i style="mso-font-width:0;">&#8203;</i><![endif]-->
+      </a>
+    </div>`;
+  return emailShell('es', body);
+}
+
 /* ── Template EN ────────────────────────────────────────────────────── */
 function buildAutoReplyEN(nombre: string, tipoSeguro: string, waLink: string): string {
-  return `
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="color-scheme" content="light dark">
-<title>We received your request</title></head>
-<body style="margin:0;padding:0;background-color:#f5f5f4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;">
-<div style="max-width:520px;margin:0 auto;padding:24px 16px;">
-
-  <!-- Header -->
-  <div style="background:#17281b;padding:28px 32px;border-radius:16px 16px 0 0;text-align:center;">
-    <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:700;letter-spacing:-0.3px;">Consulting by MF</h1>
-    <p style="margin:6px 0 0;color:#b2d1b7;font-size:12px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;">Independent Insurance Agent</p>
-  </div>
-
-  <!-- Body -->
-  <div style="background:#ffffff;padding:32px;border-left:1px solid #e7e5e4;border-right:1px solid #e7e5e4;">
-
-    <p style="margin:0 0 20px;color:#1c1917;font-size:15px;line-height:1.6;">
+  const body = `
+    <p style="margin:0 0 22px;color:#1c1917;font-size:16px;line-height:1.6;">
       Hi <strong>${nombre}</strong>,
     </p>
 
-    <p style="margin:0 0 20px;color:#44403c;font-size:15px;line-height:1.6;">
-      We got your request. We're already comparing <strong>${tipoSeguro}</strong> options across 10+ carriers to find the best fit for your situation.
+    <p style="margin:0 0 22px;color:#44403c;font-size:15px;line-height:1.7;">
+      We got your request. We're already comparing <strong style="color:#1c1917;">${tipoSeguro}</strong> options across 10+ carriers to find the best fit for your situation.
     </p>
 
-    <!-- Highlight box -->
-    <div style="background:#f0fdf4;border-left:3px solid #22c55e;padding:14px 18px;border-radius:0 10px 10px 0;margin:0 0 20px;">
-      <p style="margin:0;color:#166534;font-size:14px;font-weight:600;line-height:1.5;">
+    <!-- Callout -->
+    <div style="background:#f8f7f5;border-radius:12px;padding:18px 22px;margin:0 0 22px;text-align:center;">
+      <p style="margin:0;color:#17281b;font-size:15px;font-weight:600;line-height:1.5;">
         An agent will be in touch shortly.
       </p>
     </div>
 
-    <p style="margin:0 0 24px;color:#78716c;font-size:13px;line-height:1.5;">
+    <p style="margin:0 0 28px;color:#9ca3af;font-size:13px;line-height:1.5;">
       Your information is confidential and we do not share it with third parties.
     </p>
 
-    <p style="margin:0 0 16px;color:#44403c;font-size:14px;line-height:1.5;">
+    <p style="margin:0 0 14px;color:#44403c;font-size:14px;line-height:1.5;">
       Need something sooner? Message us directly:
     </p>
 
     <!-- WhatsApp CTA -->
-    <div style="text-align:center;margin:0 0 8px;">
-      <a href="${waLink}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#25D366;color:#ffffff;padding:14px 32px;border-radius:12px;font-size:14px;font-weight:600;text-decoration:none;min-width:200px;">
-        Message us on WhatsApp
+    <div style="text-align:center;margin:0 0 4px;">
+      <a href="${waLink}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#25D366;color:#ffffff;padding:14px 28px;border-radius:50px;font-size:14px;font-weight:600;text-decoration:none;line-height:1;">
+        <!--[if mso]><i style="mso-font-width:0;mso-text-raise:6pt;">&#8203;</i><![endif]-->
+        ${WA_ICON}
+        <span style="vertical-align:middle;margin-left:8px;">Message us on WhatsApp</span>
+        <!--[if mso]><i style="mso-font-width:0;">&#8203;</i><![endif]-->
       </a>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div style="background:#fafaf9;padding:24px 32px;border:1px solid #e7e5e4;border-top:none;border-radius:0 0 16px 16px;">
-
-    <!-- Signature -->
-    <p style="margin:0 0 4px;color:#1c1917;font-size:14px;font-weight:600;">Maria Fernanda</p>
-    <p style="margin:0 0 12px;color:#78716c;font-size:12px;line-height:1.5;">
-      Consulting by MF · Independent Agent<br>
-      NPN #3002959176<br>
-      <a href="mailto:info@consultingbymf.com" style="color:#78716c;text-decoration:none;">info@consultingbymf.com</a> · <a href="tel:+19082280973" style="color:#78716c;text-decoration:none;">(908) 228-0973</a>
-    </p>
-
-    <!-- Instagram -->
-    <div style="margin:0 0 16px;">
-      <a href="https://www.instagram.com/insurancebymf_/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;color:#78716c;font-size:12px;text-decoration:none;">
-        <img src="https://cdn-icons-png.flaticon.com/16/174/174855.png" alt="" width="14" height="14" style="display:inline-block;vertical-align:middle;border:0;">
-        @insurancebymf_
-      </a>
-    </div>
-
-    <!-- Legal -->
-    <p style="margin:0;color:#a8a29e;font-size:11px;line-height:1.5;">
-      All coverage subject to terms and conditions of each carrier.
-    </p>
-  </div>
-
-</div>
-</body>
-</html>`;
+    </div>`;
+  return emailShell('en', body);
 }
