@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    /* Notificar por email (no bloquea la respuesta) */
+    /* Notificar por email (await para que no se corte en serverless) */
     const leadInfo = {
       nombre: nombre.trim(),
       email: email?.trim(),
@@ -72,8 +72,14 @@ export async function POST(request: NextRequest) {
       lead_score: typeof lead_score === 'number' ? lead_score : null,
       lang: body.lang || 'es',
     };
-    notifyNewLead(leadInfo).catch(() => {});
-    sendAutoReply(leadInfo).catch(() => {});
+    try {
+      await Promise.all([
+        notifyNewLead(leadInfo),
+        sendAutoReply(leadInfo),
+      ]);
+    } catch (emailErr) {
+      console.error('Email notification error:', emailErr);
+    }
 
     return NextResponse.json(
       { success: true, message: 'Cotización recibida exitosamente.', id: data?.id },
