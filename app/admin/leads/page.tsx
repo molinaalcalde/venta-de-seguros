@@ -532,6 +532,9 @@ function DetailPanel({ lead, onClose, onUpdate, onDelete, toast }: {
   const [idioma, setIdioma] = useState(lead.idioma_preferido ?? 'es');
   const [fechaVenc, setFechaVenc] = useState(lead.fecha_vencimiento_poliza ?? '');
   const [savingFields, setSavingFields] = useState(false);
+  // Notas
+  const [notas, setNotas] = useState(lead.notas ?? '');
+  const [savingNotas, setSavingNotas] = useState(false);
   // Tab state
   const [tab, setTab] = useState<'info' | 'actividad' | 'seguimientos'>('info');
   // Activity & seguimientos data
@@ -544,6 +547,7 @@ function DetailPanel({ lead, onClose, onUpdate, onDelete, toast }: {
     setEstado(lead.estado);
     setShowMotivo(lead.estado === 'Cerrado - Perdido');
     setMotivo(lead.motivo_perdida ?? '');
+    setNotas(lead.notas ?? '');
     setFuente(lead.fuente ?? '');
     setAseguradora(lead.aseguradora_actual ?? '');
     setValorEst(lead.valor_estimado?.toString() ?? '');
@@ -840,6 +844,32 @@ function DetailPanel({ lead, onClose, onUpdate, onDelete, toast }: {
                 </div>
               </div>
             )}
+
+            {/* Notas internas */}
+            <div className="px-5 py-4 border-b border-slate-100">
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Notas internas</p>
+              <textarea
+                value={notas}
+                onChange={e => setNotas(e.target.value)}
+                rows={4}
+                placeholder="Agrega notas sobre este contacto..."
+                className="w-full text-sm text-slate-700 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 resize-none focus:outline-none focus:border-slate-400"
+              />
+              <button
+                onClick={async () => {
+                  setSavingNotas(true);
+                  try {
+                    await onUpdate(lead.id, { notas });
+                    toast('Notas guardadas', 'success');
+                  } catch { toast('Error al guardar notas', 'error'); }
+                  setSavingNotas(false);
+                }}
+                disabled={savingNotas}
+                className="mt-2 w-full py-2 bg-slate-800 text-white text-xs font-semibold rounded-xl hover:bg-slate-700 transition-colors disabled:opacity-50"
+              >
+                {savingNotas ? 'Guardando...' : 'Guardar notas'}
+              </button>
+            </div>
 
             {/* TCPA Consent info */}
             <div className="px-5 py-4 border-b border-slate-100">
