@@ -19,5 +19,7 @@ export async function GET() {
     estado: l.estado ?? 'Nuevo',
   }));
 
-  return NextResponse.json({ leads });
+  return NextResponse.json({ leads }, {
+    headers: { 'Cache-Control': 'no-store, max-age=0' },
+  });
 }

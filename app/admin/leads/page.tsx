@@ -159,7 +159,7 @@ function getCanal(lead: Lead): 'WhatsApp' | 'Formulario' {
 
 /* ─── API helper with session check ─────────────────────────────────────── */
 async function apiFetch(url: string, opts?: RequestInit) {
-  const res = await fetch(url, opts);
+  const res = await fetch(url, { cache: 'no-store', ...opts });
   if (res.status === 401) {
     window.location.href = '/admin/login';
     throw new Error('Sesion expirada');
