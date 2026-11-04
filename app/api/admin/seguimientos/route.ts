@@ -1,7 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase';
+import { nocache } from '@/lib/nocache';
 
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 /* GET — seguimientos por lead_id o todos los pendientes (para vista "Hoy") */
 export async function GET(req: NextRequest) {
@@ -19,8 +22,8 @@ export async function GET(req: NextRequest) {
       .eq('completado', false)
       .order('fecha_programada', { ascending: true });
 
-    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-    return NextResponse.json({ seguimientos: data ?? [] });
+    if (error) return nocache({ error: error.message }, 500);
+    return nocache({ seguimientos: data ?? [] });
   }
 
   if (leadId) {
@@ -30,11 +33,11 @@ export async function GET(req: NextRequest) {
       .eq('lead_id', leadId)
       .order('fecha_programada', { ascending: true });
 
-    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-    return NextResponse.json({ seguimientos: data ?? [] });
+    if (error) return nocache({ error: error.message }, 500);
+    return nocache({ seguimientos: data ?? [] });
   }
 
-  return NextResponse.json({ error: 'lead_id o pendientes requerido' }, { status: 400 });
+  return nocache({ error: 'lead_id o pendientes requerido' }, 400);
 }
 
 /* POST — crear seguimiento */
@@ -43,7 +46,7 @@ export async function POST(req: NextRequest) {
   const { lead_id, tipo, fecha_programada, descripcion } = body;
 
   if (!lead_id || !fecha_programada) {
-    return NextResponse.json({ error: 'lead_id y fecha_programada requeridos' }, { status: 400 });
+    return nocache({ error: 'lead_id y fecha_programada requeridos' }, 400);
   }
 
   const { data, error } = await getSupabaseAdmin()
@@ -57,6 +60,6 @@ export async function POST(req: NextRequest) {
     .select()
     .single();
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ seguimiento: data }, { status: 201 });
+  if (error) return nocache({ error: error.message }, 500);
+  return nocache({ seguimiento: data }, 201);
 }

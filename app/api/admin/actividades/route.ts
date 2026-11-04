@@ -1,7 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase';
+import { nocache } from '@/lib/nocache';
 
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 /* GET — actividades por lead_id */
 export async function GET(req: NextRequest) {
@@ -9,7 +12,7 @@ export async function GET(req: NextRequest) {
   const leadId = searchParams.get('lead_id');
 
   if (!leadId) {
-    return NextResponse.json({ error: 'lead_id requerido' }, { status: 400 });
+    return nocache({ error: 'lead_id requerido' }, 400);
   }
 
   const { data, error } = await getSupabaseAdmin()
@@ -18,8 +21,8 @@ export async function GET(req: NextRequest) {
     .eq('lead_id', leadId)
     .order('created_at', { ascending: false });
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ actividades: data ?? [] });
+  if (error) return nocache({ error: error.message }, 500);
+  return nocache({ actividades: data ?? [] });
 }
 
 /* POST — crear actividad */
@@ -28,7 +31,7 @@ export async function POST(req: NextRequest) {
   const { lead_id, tipo, descripcion, metadata } = body;
 
   if (!lead_id || !descripcion) {
-    return NextResponse.json({ error: 'lead_id y descripcion requeridos' }, { status: 400 });
+    return nocache({ error: 'lead_id y descripcion requeridos' }, 400);
   }
 
   const { data, error } = await getSupabaseAdmin()
@@ -42,6 +45,6 @@ export async function POST(req: NextRequest) {
     .select()
     .single();
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ actividad: data }, { status: 201 });
+  if (error) return nocache({ error: error.message }, 500);
+  return nocache({ actividad: data }, 201);
 }

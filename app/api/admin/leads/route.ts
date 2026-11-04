@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase';
+import { nocache } from '@/lib/nocache';
 
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 export async function GET() {
   const { data, error } = await getSupabaseAdmin()
@@ -10,7 +13,7 @@ export async function GET() {
     .order('created_at', { ascending: false });
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return nocache({ error: error.message }, 500);
   }
 
   // Normalizar: si estado no existe en la tabla, asignar 'Nuevo'
@@ -19,7 +22,5 @@ export async function GET() {
     estado: l.estado ?? 'Nuevo',
   }));
 
-  return NextResponse.json({ leads }, {
-    headers: { 'Cache-Control': 'no-store, max-age=0' },
-  });
+  return nocache({ leads });
 }

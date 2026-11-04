@@ -1,7 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase';
+import { nocache } from '@/lib/nocache';
 
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 const ALLOWED_FIELDS = [
   'estado', 'notas', 'nombre', 'email', 'telefono',
@@ -21,7 +24,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   }
 
   if (Object.keys(updates).length === 0) {
-    return NextResponse.json({ error: 'No hay campos para actualizar' }, { status: 400 });
+    return nocache({ error: 'No hay campos para actualizar' }, 400);
   }
 
   const { data, error } = await getSupabaseAdmin()
@@ -32,9 +35,9 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     .single();
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return nocache({ error: error.message }, 500);
   }
-  return NextResponse.json({ lead: data });
+  return nocache({ lead: data });
 }
 
 export async function DELETE(_req: NextRequest, { params }: { params: { id: string } }) {
@@ -44,7 +47,7 @@ export async function DELETE(_req: NextRequest, { params }: { params: { id: stri
     .eq('id', params.id);
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return nocache({ error: error.message }, 500);
   }
-  return NextResponse.json({ ok: true });
+  return nocache({ ok: true });
 }

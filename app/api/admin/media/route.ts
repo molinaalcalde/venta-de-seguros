@@ -1,7 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase';
+import { nocache } from '@/lib/nocache';
 
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 const BUCKET = 'media';
 
@@ -11,7 +14,7 @@ export async function GET() {
     .from(BUCKET)
     .list('', { sortBy: { column: 'created_at', order: 'desc' }, limit: 200 });
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) return nocache({ error: error.message }, 500);
 
   const files = (data ?? [])
     .filter(f => f.name !== '.emptyFolderPlaceholder')
@@ -22,14 +25,14 @@ export async function GET() {
       created_at: f.created_at ?? '',
     }));
 
-  return NextResponse.json({ files });
+  return nocache({ files });
 }
 
 export async function DELETE(req: NextRequest) {
   const { name } = await req.json();
-  if (!name) return NextResponse.json({ error: 'Name required' }, { status: 400 });
+  if (!name) return nocache({ error: 'Name required' }, 400);
 
   const { error } = await getSupabaseAdmin().storage.from(BUCKET).remove([name]);
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ ok: true });
+  if (error) return nocache({ error: error.message }, 500);
+  return nocache({ ok: true });
 }

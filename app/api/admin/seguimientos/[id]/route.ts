@@ -1,7 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase';
+import { nocache } from '@/lib/nocache';
 
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 /* PATCH — completar o editar seguimiento */
 export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
@@ -24,8 +27,8 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     .select()
     .single();
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ seguimiento: data });
+  if (error) return nocache({ error: error.message }, 500);
+  return nocache({ seguimiento: data });
 }
 
 /* DELETE */
@@ -35,6 +38,6 @@ export async function DELETE(_req: NextRequest, { params }: { params: { id: stri
     .delete()
     .eq('id', params.id);
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ ok: true });
+  if (error) return nocache({ error: error.message }, 500);
+  return nocache({ ok: true });
 }
