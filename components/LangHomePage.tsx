@@ -273,31 +273,31 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
       )}
 
       {/* ── Hero — Full Bleed ── */}
-      <div className="relative w-full min-h-[680px] lg:min-h-[860px] flex flex-col justify-between overflow-hidden">
-        {/* Slot 0 */}
+      <div className="relative w-full min-h-[85svh] sm:min-h-[680px] lg:min-h-[860px] flex flex-col justify-between overflow-hidden bg-slate-900">
+        {/* Slot 0 — always eager, first paint */}
         <video ref={videoRefs[0]} src={HERO_VIDEOS[0].src} autoPlay muted playsInline loop preload="auto"
           onLoadedMetadata={() => { const el = videoRefs[0].current; if (el) el.currentTime = HERO_VIDEOS[0].startTime; }}
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${heroIndex === 0 ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Slot 1 — desktop */}
-        <video ref={videoRefs[1]} src="/videos/hero2-desktop.mp4" autoPlay muted playsInline loop preload="auto"
+        <video ref={videoRefs[1]} src="/videos/hero2-desktop.mp4" muted playsInline loop preload="metadata"
           onLoadedMetadata={() => { const el = videoRefs[1].current; if (el) el.currentTime = HERO_VIDEOS[1].startTime; }}
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 hidden md:block ${heroIndex === 1 ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Slot 1 — mobile */}
-        <video src="/videos/hero2-mobile.mp4" autoPlay muted playsInline loop preload="auto"
+        <video src="/videos/hero2-mobile.mp4" muted playsInline loop preload="metadata"
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 md:hidden ${heroIndex === 1 ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Slot 2 */}
-        <video ref={videoRefs[2]} src={HERO_VIDEOS[2].src} autoPlay muted playsInline loop preload="auto"
+        <video ref={videoRefs[2]} src={HERO_VIDEOS[2].src} muted playsInline loop preload="metadata"
           onLoadedMetadata={() => { const el = videoRefs[2].current; if (el) el.currentTime = HERO_VIDEOS[2].startTime; }}
           className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${heroIndex === 2 ? 'opacity-100' : 'opacity-0'}`}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/15 to-black/70 z-[1]"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/50 z-[1]"></div>
         <div className="h-16 relative z-10" />
-        <div className="relative z-20 w-full px-6 sm:px-10 lg:px-16 pb-14 sm:pb-20 flex flex-col justify-end gap-6">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+        <div className="relative z-20 w-full px-5 sm:px-10 lg:px-16 pb-10 sm:pb-20 flex flex-col justify-end gap-4 sm:gap-6">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 lg:gap-10">
             <div className="hidden lg:flex items-center gap-3 text-white/80 text-xs font-light select-none shrink-0">
               <div className="w-5 h-8 rounded-full border border-white/60 flex items-start justify-center pt-1.5">
                 <span className="w-1 h-1.5 bg-white rounded-full animate-bounce"></span>
@@ -305,7 +305,7 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
               <span className="tracking-wide">Scroll Down</span>
             </div>
             <div className="max-w-2xl text-white lg:text-right">
-              <h1 className="text-[40px] sm:text-5xl md:text-6xl lg:text-[76px] font-normal tracking-tight leading-[1.08] drop-shadow-sm">
+              <h1 className="text-[32px] sm:text-5xl md:text-6xl lg:text-[76px] font-normal tracking-tight leading-[1.08] drop-shadow-sm">
                 {isEn ? (
                   <>The right coverage<br /><span className="font-sans font-light">for your life,</span>{' '}<span className="font-editorial-italic font-normal">your family.</span></>
                 ) : (
