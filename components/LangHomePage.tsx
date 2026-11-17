@@ -194,10 +194,12 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 { label: 'Coverage', href: '#coberturas-destacadas', sectionId: 'coberturas-destacadas' },
                 { label: 'Why Us', href: '#por-que-aegis', sectionId: 'por-que-aegis' },
                 { label: 'FAQ', href: '#faq', sectionId: 'faq' },
+                { label: 'Blog', href: '/en/blog', sectionId: '' },
               ] : [
                 { label: 'Coberturas', href: '#coberturas-destacadas', sectionId: 'coberturas-destacadas' },
                 { label: 'Por qué Nosotros', href: '#por-que-aegis', sectionId: 'por-que-aegis' },
                 { label: 'FAQ', href: '#faq', sectionId: 'faq' },
+                { label: 'Blog', href: '/es/blog', sectionId: '' },
               ]).map(({ label, href, sectionId }) => {
                 const isActive = sectionId && activeSection === sectionId;
                 return (
@@ -253,11 +255,13 @@ export default function LangHomePage({ params }: { params: { lang: string } }) {
                 { label: 'Coverage', href: '#coberturas-destacadas' },
                 { label: 'Why Us', href: '#por-que-aegis' },
                 { label: 'FAQ', href: '#faq' },
+                { label: 'Blog', href: '/en/blog' },
               ] : [
                 { label: 'Inicio', href: `/${lang}` },
                 { label: 'Coberturas', href: '#coberturas-destacadas' },
                 { label: 'Por qué Nosotros', href: '#por-que-aegis' },
                 { label: 'FAQ', href: '#faq' },
+                { label: 'Blog', href: '/es/blog' },
               ]).map(({ label, href }) => (
                 <a key={label} href={href} onClick={() => setMobileMenuOpen(false)} className="py-3.5 px-3 rounded-xl text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-all border-b border-slate-100 last:border-0">{label}</a>
               ))}

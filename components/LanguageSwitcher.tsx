@@ -37,6 +37,9 @@ const ROUTE_MAP: Record<string, { es: string; en: string }> = {
   // Protección Extra
   '/es/seguros/proteccion-extra':  { es: '/es/seguros/proteccion-extra',  en: '/en/extra-protection' },
   '/en/extra-protection':          { es: '/es/seguros/proteccion-extra',  en: '/en/extra-protection' },
+  // Blog
+  '/es/blog':                      { es: '/es/blog',                      en: '/en/blog' },
+  '/en/blog':                      { es: '/es/blog',                      en: '/en/blog' },
 };
 
 function switchToLang(pathname: string, targetLang: 'es' | 'en'): string {

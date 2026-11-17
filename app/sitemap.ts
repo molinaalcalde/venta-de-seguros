@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { getAllPosts } from '@/lib/blog';
 
 const BASE_URL = 'https://consultingbymf.com';
 
@@ -81,8 +82,72 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ]
   );
 
+  // ── Blog ──────────────────────────────────────────────────────────────────────
+  const blogIndexEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/es/blog`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          'es-US': `${BASE_URL}/es/blog`,
+          'en-US': `${BASE_URL}/en/blog`,
+          'x-default': `${BASE_URL}/es/blog`,
+        },
+      },
+    },
+    {
+      url: `${BASE_URL}/en/blog`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.75,
+      alternates: {
+        languages: {
+          'es-US': `${BASE_URL}/es/blog`,
+          'en-US': `${BASE_URL}/en/blog`,
+          'x-default': `${BASE_URL}/es/blog`,
+        },
+      },
+    },
+  ];
+
+  const esPosts = getAllPosts('es');
+  const enPosts = getAllPosts('en');
+
+  const blogPostEntries: MetadataRoute.Sitemap = [
+    ...esPosts.map((p) => ({
+      url: `${BASE_URL}/es/blog/${p.slug}`,
+      lastModified: new Date(p.date + 'T12:00:00'),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+      alternates: {
+        languages: {
+          'es-US': `${BASE_URL}/es/blog/${p.slug}`,
+          'en-US': `${BASE_URL}/en/blog/${p.slug}`,
+          'x-default': `${BASE_URL}/es/blog/${p.slug}`,
+        },
+      },
+    })),
+    ...enPosts.map((p) => ({
+      url: `${BASE_URL}/en/blog/${p.slug}`,
+      lastModified: new Date(p.date + 'T12:00:00'),
+      changeFrequency: 'monthly' as const,
+      priority: 0.65,
+      alternates: {
+        languages: {
+          'es-US': `${BASE_URL}/es/blog/${p.slug}`,
+          'en-US': `${BASE_URL}/en/blog/${p.slug}`,
+          'x-default': `${BASE_URL}/es/blog/${p.slug}`,
+        },
+      },
+    })),
+  ];
+
   return [
     ...homeEntries,
     ...segurosEntries,
+    ...blogIndexEntries,
+    ...blogPostEntries,
   ];
 }

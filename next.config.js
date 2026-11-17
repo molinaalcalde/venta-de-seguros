@@ -28,6 +28,9 @@ const nextConfig = {
     return [
       // Rutas antiguas sin prefijo → /es/ (301 permanente)
       { source: '/seguros/:path*', destination: '/es/seguros/:path*', permanent: true },
+      // Blog antiguo sin prefijo → /es/blog (301)
+      { source: '/blog', destination: '/es/blog', permanent: true },
+      { source: '/blog/:slug*', destination: '/es/blog/:slug*', permanent: true },
 
       // URLs internas en inglés con slug español → slug en inglés traducido (301)
       // Evita que los bots indexen /en/seguros/mascotas en lugar de /en/pet-insurance

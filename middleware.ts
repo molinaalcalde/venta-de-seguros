@@ -60,7 +60,7 @@ export async function middleware(req: NextRequest) {
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
     pathname.startsWith('/admin') ||
-    pathname.startsWith('/blog') ||
+    // blog is now under /[lang]/blog, old /blog redirects below
     pathname.startsWith('/static') ||
     /\.(.+)$/.test(pathname)   // tiene extensión de archivo
   ) {
