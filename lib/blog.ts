@@ -45,6 +45,7 @@ export interface PostMeta {
   lang: Lang;
   tags?: string[];
   author?: string;
+  translationSlug?: string;
 }
 
 export interface Post extends PostMeta {
@@ -82,6 +83,7 @@ export function getAllPosts(lang: Lang): PostMeta[] {
         lang,
         tags: data.tags ?? [],
         author: data.author ?? 'Maria Fernanda',
+        translationSlug: data.translationSlug,
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -102,6 +104,7 @@ export function getPostBySlug(slug: string, lang: Lang): Post {
     lang,
     tags: data.tags ?? [],
     author: data.author ?? 'Maria Fernanda',
+    translationSlug: data.translationSlug,
     content,
   };
 }

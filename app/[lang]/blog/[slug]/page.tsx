@@ -34,15 +34,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const lang = params.lang as Lang;
   try {
     const post = getPostBySlug(params.slug, lang);
+    const otherLang = lang === 'en' ? 'es' : 'en';
+    const otherSlug = post.translationSlug ?? post.slug;
     return {
       title: post.title,
       description: post.excerpt,
       alternates: {
         canonical: `${BASE_URL}/${lang}/blog/${post.slug}`,
         languages: {
-          'es-US': `${BASE_URL}/es/blog/${post.slug}`,
-          'en-US': `${BASE_URL}/en/blog/${post.slug}`,
-          'x-default': `${BASE_URL}/es/blog/${post.slug}`,
+          'es-US': `${BASE_URL}/es/blog/${lang === 'es' ? post.slug : otherSlug}`,
+          'en-US': `${BASE_URL}/en/blog/${lang === 'en' ? post.slug : otherSlug}`,
+          'x-default': `${BASE_URL}/es/blog/${lang === 'es' ? post.slug : otherSlug}`,
         },
       },
       openGraph: {

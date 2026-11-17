@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d4a3e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#17281b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="850" cy="150" r="200" fill="#3d6b5a" opacity="0.2"/>
+  <circle cx="350" cy="500" r="150" fill="#3d6b5a" opacity="0.15"/>
+  <path d="M150,350 Q400,250 650,320 T1050,280" stroke="#5a9a7a" stroke-width="2" fill="none" opacity="0.3"/>
+  <!-- Document icon -->
+  <g transform="translate(490,170)" fill="#c8dcc8" opacity="0.9">
+    <rect x="10" y="0" width="100" height="130" rx="8" fill="none" stroke="#c8dcc8" stroke-width="3"/>
+    <line x1="30" y1="30" x2="90" y2="30" stroke="#c8dcc8" stroke-width="3" stroke-linecap="round"/>
+    <line x1="30" y1="50" x2="90" y2="50" stroke="#c8dcc8" stroke-width="3" stroke-linecap="round"/>
+    <line x1="30" y1="70" x2="70" y2="70" stroke="#c8dcc8" stroke-width="3" stroke-linecap="round"/>
+    <line x1="30" y1="90" x2="80" y2="90" stroke="#c8dcc8" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <!-- Checkmark circle -->
+  <g transform="translate(540,320)" fill="#c8dcc8" opacity="0.8">
+    <circle cx="40" cy="40" r="35" fill="none" stroke="#5a9a7a" stroke-width="3"/>
+    <path d="M22,40 L35,53 L58,28" fill="none" stroke="#c8dcc8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Key icon -->
+  <g transform="translate(555,410)" stroke="#c8dcc8" stroke-width="3" fill="none" opacity="0.6">
+    <circle cx="20" cy="20" r="15"/>
+    <line x1="35" y1="20" x2="70" y2="20" stroke-linecap="round"/>
+    <line x1="60" y1="20" x2="60" y2="30" stroke-linecap="round"/>
+    <line x1="70" y1="20" x2="70" y2="30" stroke-linecap="round"/>
+  </g>
+</svg>

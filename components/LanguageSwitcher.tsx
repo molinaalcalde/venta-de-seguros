@@ -42,9 +42,29 @@ const ROUTE_MAP: Record<string, { es: string; en: string }> = {
   '/en/blog':                      { es: '/es/blog',                      en: '/en/blog' },
 };
 
+// Blog post slug mapping between ES ↔ EN
+const BLOG_SLUG_MAP: Record<string, string> = {
+  'seguro-de-auto-guia-completa': 'car-insurance-complete-guide',
+  'car-insurance-complete-guide': 'seguro-de-auto-guia-completa',
+  'seguro-sin-ssn': 'insurance-without-ssn',
+  'insurance-without-ssn': 'seguro-sin-ssn',
+  'seguro-de-vida-para-inmigrantes': 'life-insurance-for-immigrants',
+  'life-insurance-for-immigrants': 'seguro-de-vida-para-inmigrantes',
+};
+
 function switchToLang(pathname: string, targetLang: 'es' | 'en'): string {
   // Buscar en el mapa directo primero
   if (ROUTE_MAP[pathname]) return ROUTE_MAP[pathname][targetLang];
+
+  // Blog post: intentar mapear slug entre idiomas
+  const blogMatch = pathname.match(/^\/(es|en)\/blog\/(.+)$/);
+  if (blogMatch) {
+    const slug = blogMatch[2];
+    const targetSlug = BLOG_SLUG_MAP[slug];
+    if (targetSlug) return `/${targetLang}/blog/${targetSlug}`;
+    // Si no hay mapeo, ir al índice del blog
+    return `/${targetLang}/blog`;
+  }
 
   // Fallback: reemplazar prefijo de idioma si no está en el mapa
   const currentLang: 'es' | 'en' = pathname.startsWith('/en') ? 'en' : 'es';
