@@ -172,16 +172,28 @@ export default function ArticlePage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      {/* ── Article header ──────────────────────────────────────────── */}
-      <div className="bg-slate-900">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 pt-8 pb-16 sm:pb-20">
+      {/* ── Article header with cover image background ─────────────── */}
+      <div className="relative overflow-hidden">
+        {/* Background image */}
+        {post.coverImage && (
+          <img
+            src={post.coverImage}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
+        {/* Dark overlay */}
+        <div className={`absolute inset-0 ${post.coverImage ? 'bg-slate-900/80 backdrop-blur-[2px]' : 'bg-slate-900'}`} />
+
+        <div className="relative max-w-4xl mx-auto px-5 sm:px-8 pt-8 pb-16 sm:pb-20">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-slate-500 mb-8">
-            <Link href={`/${lang}`} className="hover:text-slate-300 transition-colors">
+          <nav className="flex items-center gap-2 text-xs text-slate-400 mb-8">
+            <Link href={`/${lang}`} className="hover:text-slate-200 transition-colors">
               {isEn ? 'Home' : 'Inicio'}
             </Link>
             <span className="text-slate-600">/</span>
-            <Link href={`/${lang}/blog`} className="hover:text-slate-300 transition-colors">Blog</Link>
+            <Link href={`/${lang}/blog`} className="hover:text-slate-200 transition-colors">Blog</Link>
             <span className="text-slate-600">/</span>
             <span className="text-slate-400 line-clamp-1 max-w-[200px]">{post.title}</span>
           </nav>
@@ -191,26 +203,26 @@ export default function ArticlePage({ params }: Props) {
             <span className={`inline-block px-3 py-1 rounded-full text-[11px] font-semibold ${categoryColors[post.category] ?? 'bg-slate-100 text-slate-700'}`}>
               {catLabel}
             </span>
-            <time className="text-xs text-slate-400">{formatDate(post.date, lang)}</time>
-            <span className="text-slate-600">|</span>
-            <span className="text-xs text-slate-400 flex items-center gap-1">
+            <time className="text-xs text-slate-300">{formatDate(post.date, lang)}</time>
+            <span className="text-slate-500">|</span>
+            <span className="text-xs text-slate-300 flex items-center gap-1">
               <Clock className="w-3 h-3" aria-hidden="true" />
               {post.readingTime} min {isEn ? 'read' : 'de lectura'}
             </span>
-            <span className="text-slate-600">|</span>
-            <span className="text-xs text-slate-400 flex items-center gap-1">
+            <span className="text-slate-500">|</span>
+            <span className="text-xs text-slate-300 flex items-center gap-1">
               <User className="w-3 h-3" aria-hidden="true" />
               {post.author ?? 'Maria Fernanda'}
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-light text-white tracking-tight leading-tight mb-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-light text-white tracking-tight leading-tight mb-6 drop-shadow-sm">
             {post.title}
           </h1>
 
           {/* Excerpt */}
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl font-light">
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-light">
             {post.excerpt}
           </p>
         </div>
@@ -221,17 +233,6 @@ export default function ArticlePage({ params }: Props) {
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_280px] gap-10">
           {/* Main content */}
           <article className="bg-white rounded-t-[28px] shadow-sm border border-stone-200/60 border-b-0 p-6 sm:p-10 lg:p-12 min-w-0">
-            {/* Cover image */}
-            {post.coverImage && (
-              <div className="mb-10 rounded-[20px] overflow-hidden h-72 sm:h-96">
-                <img
-                  src={post.coverImage}
-                  alt={post.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            )}
-
             {/* MDX Content */}
             <div className="min-w-0 prose-custom">
               <MDXRemote source={post.content} components={mdxComponents} />
