@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { ArrowLeft, ArrowRight, Clock, User } from 'lucide-react';
+import { ArrowRight, Clock, User, ChevronRight } from 'lucide-react';
 import {
   getAllPosts,
   getPostBySlug,
@@ -13,6 +13,8 @@ import {
   type Lang,
 } from '@/lib/blog';
 import BlogTableOfContents from '@/components/BlogTableOfContents';
+import FloatingShareSidebar from '@/components/FloatingShareSidebar';
+import BlogArticleFooter from '@/components/BlogArticleFooter';
 
 const BASE_URL = 'https://consultingbymf.com';
 
@@ -119,6 +121,20 @@ const mdxComponents = {
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
     <a className="text-sage-700 underline underline-offset-2 decoration-sage-300 hover:decoration-sage-500 transition-colors" {...props} />
   ),
+  table: (props: React.HTMLAttributes<HTMLTableElement>) => (
+    <div className="my-6 overflow-x-auto rounded-xl border border-stone-200/60">
+      <table className="w-full text-sm" {...props} />
+    </div>
+  ),
+  thead: (props: React.HTMLAttributes<HTMLTableSectionElement>) => (
+    <thead className="bg-slate-50 text-slate-700 text-xs font-semibold uppercase tracking-wider" {...props} />
+  ),
+  th: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
+    <th className="px-4 py-3 text-left" {...props} />
+  ),
+  td: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
+    <td className="px-4 py-3 text-slate-600 border-t border-stone-100" {...props} />
+  ),
 };
 
 export default function ArticlePage({ params }: Props) {
@@ -136,6 +152,7 @@ export default function ArticlePage({ params }: Props) {
   const headings = extractHeadings(post.content);
   const related = getRelatedPosts(post.slug, lang, 3);
   const catLabel = categories.find((c) => c.slug === post.category)?.label ?? post.category;
+  const articleUrl = `${BASE_URL}/${lang}/blog/${post.slug}`;
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -153,7 +170,7 @@ export default function ArticlePage({ params }: Props) {
       url: BASE_URL,
     },
     inLanguage: isEn ? 'en-US' : 'es-US',
-    mainEntityOfPage: `${BASE_URL}/${lang}/blog/${post.slug}`,
+    mainEntityOfPage: articleUrl,
     ...(post.coverImage && { image: post.coverImage }),
   };
 
@@ -163,14 +180,33 @@ export default function ArticlePage({ params }: Props) {
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: isEn ? 'Home' : 'Inicio', item: `${BASE_URL}/${lang}` },
       { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/${lang}/blog` },
-      { '@type': 'ListItem', position: 3, name: post.title, item: `${BASE_URL}/${lang}/blog/${post.slug}` },
+      { '@type': 'ListItem', position: 3, name: catLabel, item: `${BASE_URL}/${lang}/blog` },
+      { '@type': 'ListItem', position: 4, name: post.title, item: articleUrl },
     ],
   };
+
+  // Generate FAQ schema if content has FAQ-like patterns
+  const faqItems = extractFAQFromHeadings(headings);
+  const faqSchema = faqItems.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((q) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: '' },
+    })),
+  } : null;
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
+
+      {/* ── Floating share sidebar ─────────────────────────────────── */}
+      <FloatingShareSidebar title={post.title} lang={lang} />
 
       {/* ── Article header with cover image background ─────────────── */}
       <div className="relative overflow-hidden">
@@ -187,50 +223,48 @@ export default function ArticlePage({ params }: Props) {
         <div className={`absolute inset-0 ${post.coverImage ? 'bg-slate-900/80 backdrop-blur-[2px]' : 'bg-slate-900'}`} />
 
         <div className="relative max-w-4xl mx-auto px-5 sm:px-8 pt-8 pb-16 sm:pb-20">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-slate-400 mb-8">
+          {/* Breadcrumb (improved with category link + chevrons) */}
+          <nav className="flex items-center gap-1.5 text-xs text-slate-400 mb-8" aria-label="breadcrumb">
             <Link href={`/${lang}`} className="hover:text-slate-200 transition-colors">
               {isEn ? 'Home' : 'Inicio'}
             </Link>
-            <span className="text-slate-600">/</span>
+            <ChevronRight className="w-3 h-3 text-slate-600" />
             <Link href={`/${lang}/blog`} className="hover:text-slate-200 transition-colors">Blog</Link>
-            <span className="text-slate-600">/</span>
-            <span className="text-slate-400 line-clamp-1 max-w-[200px]">{post.title}</span>
+            <ChevronRight className="w-3 h-3 text-slate-600" />
+            <span className="text-sage-400 font-medium">{catLabel}</span>
           </nav>
 
-          {/* Meta */}
+          {/* Badge + reading time */}
           <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span className={`inline-block px-3 py-1 rounded-full text-[11px] font-semibold ${categoryColors[post.category] ?? 'bg-slate-100 text-slate-700'}`}>
-              {catLabel}
+            <span className="inline-block px-3.5 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-white/10 backdrop-blur-md text-white border border-white/20">
+              Editorial
             </span>
-            <time className="text-xs text-slate-300">{formatDate(post.date, lang)}</time>
-            <span className="text-slate-500">|</span>
-            <span className="text-xs text-slate-300 flex items-center gap-1">
-              <Clock className="w-3 h-3" aria-hidden="true" />
+            <span className="text-xs text-slate-300 flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5" aria-hidden="true" />
               {post.readingTime} min {isEn ? 'read' : 'de lectura'}
-            </span>
-            <span className="text-slate-500">|</span>
-            <span className="text-xs text-slate-300 flex items-center gap-1">
-              <User className="w-3 h-3" aria-hidden="true" />
-              {post.author ?? 'Maria Fernanda'}
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-light text-white tracking-tight leading-tight mb-6 drop-shadow-sm">
+          <h1 className="text-3xl sm:text-4xl lg:text-[48px] font-light text-white tracking-tight leading-[1.12] mb-6 drop-shadow-sm max-w-3xl">
             {post.title}
           </h1>
 
-          {/* Excerpt */}
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-light">
-            {post.excerpt}
-          </p>
+          {/* Author + date */}
+          <div className="flex items-center gap-3 text-xs text-slate-300">
+            <span className="flex items-center gap-1.5">
+              <User className="w-3.5 h-3.5" aria-hidden="true" />
+              {post.author ?? 'Maria Fernanda'}
+            </span>
+            <span className="text-slate-600">·</span>
+            <time>{formatDate(post.date, lang)}</time>
+          </div>
         </div>
       </div>
 
       {/* ── Article body ────────────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 -mt-4">
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_280px] gap-10">
+        <div className="grid grid-cols-1 xl:grid-cols-[1fr_300px] gap-10">
           {/* Main content */}
           <article className="bg-white rounded-t-[28px] shadow-sm border border-stone-200/60 border-b-0 p-6 sm:p-10 lg:p-12 min-w-0">
             {/* MDX Content */}
@@ -238,53 +272,50 @@ export default function ArticlePage({ params }: Props) {
               <MDXRemote source={post.content} components={mdxComponents} />
             </div>
 
-            {/* Tags */}
-            {post.tags && post.tags.length > 0 && (
-              <div className="mt-12 pt-6 border-t border-stone-100">
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="inline-block px-3 py-1.5 rounded-full bg-slate-100 text-xs text-slate-600 font-medium"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Back link */}
-            <div className="mt-10 pt-8 border-t border-stone-200">
-              <Link
-                href={`/${lang}/blog`}
-                className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors group"
-              >
-                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
-                {isEn ? 'Back to Blog' : 'Volver al Blog'}
-              </Link>
-            </div>
+            {/* Tags, Share, Newsletter, Back (client component) */}
+            <BlogArticleFooter
+              lang={lang}
+              title={post.title}
+              articleUrl={articleUrl}
+              tags={post.tags}
+            />
           </article>
 
           {/* Sidebar - Table of Contents */}
           {headings.length > 2 && (
             <aside className="hidden xl:block">
-              <BlogTableOfContents headings={headings} lang={lang} />
+              <BlogTableOfContents headings={headings} lang={lang} readingTime={post.readingTime} />
             </aside>
           )}
         </div>
       </div>
 
-      {/* ── Related posts ───────────────────────────────────────────── */}
+      {/* ── Continue Exploring (Related posts) ─────────────────────── */}
       {related.length > 0 && (
         <section className="max-w-7xl mx-auto px-5 sm:px-8 py-16">
-          <h2 className="text-2xl sm:text-3xl font-light text-slate-900 tracking-tight mb-8">
-            {isEn ? (
-              <>Related <span className="font-serif italic text-sage-700">Articles</span></>
-            ) : (
-              <>Artículos <span className="font-serif italic text-sage-700">Relacionados</span></>
-            )}
-          </h2>
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-light text-slate-900 tracking-tight">
+                {isEn ? (
+                  <>Continue <span className="font-serif italic text-sage-700">Exploring</span></>
+                ) : (
+                  <>Continua <span className="font-serif italic text-sage-700">Explorando</span></>
+                )}
+              </h2>
+              <p className="text-sm text-slate-500 mt-2 font-light">
+                {isEn
+                  ? 'Stay up to date with practical insurance guides.'
+                  : 'Mantente al dia con guias practicas de seguros.'}
+              </p>
+            </div>
+            <Link
+              href={`/${lang}/blog`}
+              className="hidden sm:inline-flex items-center gap-2 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors"
+            >
+              {isEn ? 'View Full Blog' : 'Ver Blog Completo'}
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {related.map((r) => (
               <Link
@@ -292,7 +323,7 @@ export default function ArticlePage({ params }: Props) {
                 href={`/${lang}/blog/${r.slug}`}
                 className="group bg-white rounded-[20px] overflow-hidden border border-stone-200/60 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
               >
-                <div className="relative h-40 overflow-hidden bg-gradient-to-br from-sage-50 to-sage-100">
+                <div className="relative h-44 overflow-hidden bg-gradient-to-br from-sage-50 to-sage-100">
                   {r.coverImage ? (
                     <img
                       src={r.coverImage}
@@ -306,46 +337,156 @@ export default function ArticlePage({ params }: Props) {
                       </div>
                     </div>
                   )}
-                  <span className={`absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-semibold ${categoryColors[r.category] ?? 'bg-slate-100 text-slate-700'}`}>
+                  <span className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-semibold backdrop-blur-sm ${categoryColors[r.category] ?? 'bg-slate-100 text-slate-700'}`}>
                     {categories.find((c) => c.slug === r.category)?.label ?? r.category}
                   </span>
                 </div>
                 <div className="p-5">
-                  <time className="text-[11px] text-slate-400 block mb-2">{formatDate(r.date, lang)}</time>
-                  <h3 className="text-sm font-medium text-slate-900 leading-snug group-hover:text-sage-800 transition-colors line-clamp-2">
+                  <h3 className="text-sm font-medium text-slate-900 leading-snug group-hover:text-sage-800 transition-colors line-clamp-2 mb-2">
                     {r.title}
                   </h3>
+                  <p className="text-[12px] text-slate-500 line-clamp-2 leading-relaxed mb-3">
+                    {r.excerpt}
+                  </p>
+                  <span className="text-xs font-semibold text-slate-700 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                    {isEn ? 'Read more' : 'Leer mas'}
+                    <ArrowRight className="w-3 h-3" />
+                  </span>
                 </div>
               </Link>
             ))}
+          </div>
+          <div className="sm:hidden mt-6 text-center">
+            <Link
+              href={`/${lang}/blog`}
+              className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors"
+            >
+              {isEn ? 'View Full Blog' : 'Ver Blog Completo'}
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </section>
       )}
 
       {/* ── CTA ─────────────────────────────────────────────────────── */}
-      <section className="max-w-4xl mx-auto px-5 sm:px-8 pb-20">
-        <div className="bg-slate-900 rounded-[28px] p-8 sm:p-12 text-center">
-          <h2 className="text-2xl sm:text-3xl font-light text-white tracking-tight mb-3">
-            {isEn ? (
-              <>Have questions about your <span className="font-serif italic text-sage-300">insurance</span>?</>
-            ) : (
-              <>¿Tienes preguntas sobre tu <span className="font-serif italic text-sage-300">seguro</span>?</>
-            )}
-          </h2>
-          <p className="text-sm text-slate-400 mb-7 leading-relaxed max-w-md mx-auto font-light">
-            {isEn
-              ? 'A bilingual advisor can help you at no cost. In your language, from the first contact.'
-              : 'Un asesor bilingüe te orienta sin costo y sin compromiso. En español, desde el primer contacto.'}
-          </p>
+      <section className="max-w-4xl mx-auto px-5 sm:px-8 pb-12">
+        <div className="bg-slate-900 rounded-[28px] p-8 sm:p-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="text-center sm:text-left">
+            <h2 className="text-2xl sm:text-3xl font-light text-white tracking-tight mb-2">
+              {isEn ? (
+                <>Ready to <span className="font-serif italic text-sage-300">compare</span>?</>
+              ) : (
+                <>¿Lista para <span className="font-serif italic text-sage-300">comparar</span>?</>
+              )}
+            </h2>
+            <p className="text-sm text-slate-400 leading-relaxed max-w-md font-light">
+              {isEn
+                ? 'Our bilingual advisors are available for a personalized consultation.'
+                : 'Nuestros asesores bilingues estan disponibles para una consulta personalizada.'}
+            </p>
+          </div>
           <Link
             href={isEn ? '/en#cotizador' : '/es#cotizador'}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-slate-900 text-sm font-semibold hover:bg-sage-50 transition-all active:scale-95 shadow-md"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-slate-900 text-sm font-semibold hover:bg-sage-50 transition-all active:scale-95 shadow-md shrink-0"
           >
             {isEn ? 'Get a Quote' : 'Cotizar ahora'}
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
         </div>
       </section>
+
+      {/* ── SEO Footer Links ───────────────────────────────────────── */}
+      <section className="border-t border-stone-200 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-12">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-900 mb-3">
+                {isEn ? 'Insurance Types' : 'Tipos de Seguro'}
+              </h3>
+              <ul className="space-y-2">
+                {[
+                  { href: `/${lang}/seguros/auto`, label: isEn ? 'Auto Insurance' : 'Seguro de Auto' },
+                  { href: `/${lang}/seguros/vida`, label: isEn ? 'Life Insurance' : 'Seguro de Vida' },
+                  { href: `/${lang}/seguros/comercial`, label: isEn ? 'Business Insurance' : 'Seguro Comercial' },
+                  { href: `/${lang}/seguros/mascotas`, label: isEn ? 'Pet Insurance' : 'Seguro de Mascotas' },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-xs text-slate-500 hover:text-sage-700 transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-900 mb-3">
+                {isEn ? 'Guides' : 'Guias'}
+              </h3>
+              <ul className="space-y-2">
+                {getAllPosts(lang)
+                  .filter((p) => p.category === 'Guías')
+                  .slice(0, 4)
+                  .map((p) => (
+                    <li key={p.slug}>
+                      <Link href={`/${lang}/blog/${p.slug}`} className="text-xs text-slate-500 hover:text-sage-700 transition-colors line-clamp-1">
+                        {p.title}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-900 mb-3">Blog</h3>
+              <ul className="space-y-2">
+                {getAllPosts(lang)
+                  .slice(0, 4)
+                  .map((p) => (
+                    <li key={p.slug}>
+                      <Link href={`/${lang}/blog/${p.slug}`} className="text-xs text-slate-500 hover:text-sage-700 transition-colors line-clamp-1">
+                        {p.title}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-900 mb-3">
+                {isEn ? 'Company' : 'Compania'}
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href={`/${lang}`} className="text-xs text-slate-500 hover:text-sage-700 transition-colors">
+                    {isEn ? 'Home' : 'Inicio'}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${lang}/blog`} className="text-xs text-slate-500 hover:text-sage-700 transition-colors">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${lang}/politica-de-privacidad`} className="text-xs text-slate-500 hover:text-sage-700 transition-colors">
+                    {isEn ? 'Privacy Policy' : 'Politica de Privacidad'}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${lang}/terminos-de-uso`} className="text-xs text-slate-500 hover:text-sage-700 transition-colors">
+                    {isEn ? 'Terms of Use' : 'Terminos de Uso'}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
+
+/** Extract questions from headings (headings that start with ¿ or contain ?) */
+function extractFAQFromHeadings(headings: { id: string; text: string }[]): string[] {
+  return headings
+    .filter((h) => h.text.startsWith('¿') || h.text.includes('?'))
+    .map((h) => h.text);
+}
+

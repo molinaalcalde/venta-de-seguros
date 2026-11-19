@@ -103,63 +103,60 @@ export default function BlogPage({ params }: Props) {
         </div>
       </section>
 
-      {/* ── Featured post ───────────────────────────────────────────── */}
+      {/* ── Featured post (full-width hero card like VANTIZ) ─────────── */}
       {featured && (
         <section className="max-w-7xl mx-auto px-5 sm:px-8 -mt-16 relative z-10 mb-12">
           <Link
             href={`/${lang}/blog/${featured.slug}`}
-            className="group block bg-white rounded-[28px] overflow-hidden border border-stone-200/60 shadow-lg hover:shadow-2xl transition-all duration-500"
+            className="group block relative rounded-[28px] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 min-h-[400px] sm:min-h-[460px]"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              {/* Image */}
-              <div className="relative h-64 lg:h-auto overflow-hidden bg-gradient-to-br from-sage-100 to-sage-200">
-                {featured.coverImage ? (
-                  <img
-                    src={featured.coverImage}
-                    alt={featured.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center min-h-[280px]">
-                    <div className="text-center">
-                      <div className="w-16 h-16 rounded-2xl border-2 border-sage-400/40 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
-                        <div className="w-6 h-6 rounded-lg bg-sage-400/30" />
-                      </div>
-                      <span className="text-xs uppercase tracking-[0.2em] font-semibold text-sage-600/60">
-                        {featured.category}
-                      </span>
-                    </div>
-                  </div>
-                )}
-                <span
-                  className={`absolute top-5 left-5 px-3 py-1.5 rounded-full text-[11px] font-semibold backdrop-blur-sm ${
-                    categoryColors[featured.category] ?? 'bg-slate-100 text-slate-700'
-                  }`}
-                >
-                  {categories.find((c) => c.slug === featured.category)?.label ?? featured.category}
-                </span>
-              </div>
+            {/* Background image */}
+            {featured.coverImage ? (
+              <img
+                src={featured.coverImage}
+                alt={featured.title}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-br from-sage-800 to-slate-900" />
+            )}
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/50 to-transparent" />
 
-              {/* Content */}
-              <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-                <div className="flex items-center gap-3 mb-4 text-xs text-slate-400">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sage-50 text-sage-700 font-semibold text-[11px]">
-                    {isEn ? 'Featured' : 'Destacado'}
-                  </span>
+            {/* Destacado badge */}
+            <div className="absolute top-6 right-6 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-[11px] font-semibold border border-white/20">
+              <div className="w-1.5 h-1.5 rounded-full bg-sage-400" />
+              {isEn ? 'Featured' : 'Destacado'}
+            </div>
+
+            {/* Content overlay */}
+            <div className="relative flex flex-col justify-end h-full min-h-[400px] sm:min-h-[460px] p-8 sm:p-10 lg:p-12">
+              <span
+                className={`inline-block self-start px-3 py-1.5 rounded-full text-[11px] font-semibold backdrop-blur-sm mb-4 ${
+                  categoryColors[featured.category] ?? 'bg-slate-100 text-slate-700'
+                }`}
+              >
+                {categories.find((c) => c.slug === featured.category)?.label ?? featured.category}
+              </span>
+
+              <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-light text-white tracking-tight leading-[1.15] mb-4 max-w-3xl drop-shadow-sm">
+                {featured.title}
+              </h2>
+
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 line-clamp-2 max-w-2xl">
+                {featured.excerpt}
+              </p>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3 text-xs text-slate-400">
                   <time>{formatDate(featured.date, lang)}</time>
-                  <span className="text-slate-300">|</span>
+                  <span className="text-slate-600">·</span>
                   <span>{featured.readingTime} min {isEn ? 'read' : 'de lectura'}</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-light text-slate-900 tracking-tight leading-snug mb-4 group-hover:text-sage-800 transition-colors">
-                  {featured.title}
-                </h2>
-                <p className="text-sm sm:text-base text-slate-500 leading-relaxed mb-6 line-clamp-3">
-                  {featured.excerpt}
-                </p>
-                <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 group-hover:gap-3 transition-all">
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:gap-3 transition-all">
                   {isEn ? 'Read article' : 'Leer artículo'}
                   <ArrowRight className="w-4 h-4" />
-                </div>
+                </span>
               </div>
             </div>
           </Link>
@@ -170,9 +167,46 @@ export default function BlogPage({ params }: Props) {
       <BlogFilters
         lang={lang}
         posts={rest}
+        allPostsCount={posts.length}
         categories={categories}
         categoryColors={categoryColors}
       />
+
+      {/* ── Newsletter subscription ────────────────────────────────── */}
+      <section className="max-w-4xl mx-auto px-5 sm:px-8 pb-16">
+        <div className="bg-white rounded-[28px] border border-stone-200/60 shadow-sm p-8 sm:p-12 text-center">
+          <h2 className="text-2xl sm:text-3xl font-light text-slate-900 tracking-tight mb-3">
+            {isEn ? (
+              <>Get our <span className="font-serif italic text-sage-700">Insurance Insights</span></>
+            ) : (
+              <>Recibe nuestras <span className="font-serif italic text-sage-700">Guias de Seguros</span></>
+            )}
+          </h2>
+          <p className="text-sm text-slate-500 mb-7 leading-relaxed max-w-md mx-auto font-light">
+            {isEn
+              ? 'Tips and comparisons directly to your inbox. No spam, no sales pitches.'
+              : 'Tips y comparativas directo a tu correo. Sin spam, sin presion de venta.'}
+          </p>
+          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" action="#">
+            <input
+              type="email"
+              placeholder={isEn ? 'Your email address' : 'Tu correo electronico'}
+              className="flex-1 px-5 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sage-200 focus:border-sage-300 transition-all"
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-700 transition-all active:scale-95"
+            >
+              {isEn ? 'Subscribe' : 'Suscribirse'}
+            </button>
+          </form>
+          <p className="text-[11px] text-slate-400 mt-4">
+            {isEn
+              ? 'By subscribing, you accept our privacy policy.'
+              : 'Al suscribirte, aceptas nuestra politica de privacidad.'}
+          </p>
+        </div>
+      </section>
 
       {/* ── CTA ─────────────────────────────────────────────────────── */}
       <section className="bg-slate-900 border-t border-slate-800">
@@ -180,20 +214,20 @@ export default function BlogPage({ params }: Props) {
           <div className="inline-flex items-center gap-2 mb-5">
             <div className="w-1.5 h-1.5 rounded-full bg-sage-400" />
             <span className="text-xs uppercase tracking-[0.2em] font-semibold text-sage-400">
-              {isEn ? 'Free Quote' : 'Cotización Gratis'}
+              {isEn ? 'Free Quote' : 'Cotizacion Gratis'}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-light text-white tracking-tight mb-4">
             {isEn ? (
               <>Ready to <span className="font-serif italic text-sage-300">compare</span> your options?</>
             ) : (
-              <>¿Listo para <span className="font-serif italic text-sage-300">comparar</span> tus opciones?</>
+              <>¿Lista para <span className="font-serif italic text-sage-300">comparar</span> tus opciones?</>
             )}
           </h2>
           <p className="text-sm sm:text-base text-slate-400 mb-8 leading-relaxed max-w-lg mx-auto font-light">
             {isEn
               ? 'A bilingual advisor contacts you within 24 hours. No cost, no commitment.'
-              : 'Un asesor bilingüe te contacta en 24 horas. Sin costo, sin compromiso.'}
+              : 'Un asesor bilingue te contacta en 24 horas. Sin costo, sin compromiso.'}
           </p>
           <Link
             href={isEn ? '/en#cotizador' : '/es#cotizador'}
